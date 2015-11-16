@@ -1,9 +1,14 @@
-import cssnextConfig  from '../../config/cssnext';
+import {
+  cssnext,
+  assets,
+  fontMagician
+} from '../../config/postcss';
 
 export default () => [
   require('precss'),
-  require('postcss-cssnext')(cssnextConfig),
-  require('postcss-nested'),
+  require('postcss-cssnext')(cssnext),
+  require('postcss-assets')(assets),
+  require('postcss-font-magician')(fontMagician),
   require('postcss-size'),
   require('postcss-focus'),
   require('postcss-position'),
@@ -13,6 +18,7 @@ export default () => [
   require('postcss-input-style'),
   require('postcss-quantity-queries'),
   require('postcss-responsive-type'),
+  require('cssnano'),
   require('postcss-reporter'),
   require('postcss-browser-reporter')
 ];
