@@ -1,0 +1,35 @@
+@import 'typography.css';
+
+:root {
+  --foo: rebeccapurple;
+  --bar: color(red alpha(-10%));
+  --baz: 10px;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: #fff;
+  color: #222;
+}
+
+#root {
+  height: 100%;
+}
+
+.hooy {
+  size: 300px 200px;
+  box-shadow: 10px -10px teal;
+  border-radius: 4px;
+  display: flex;
+
+  background-color: var(--foo);
+  color: var(--bar);
+  font-size: calc(var(--baz) * 2);
+}

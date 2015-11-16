@@ -1,0 +1,34 @@
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { actions } from 'redux-router5';
+
+import 'react-toolbox/lib/commons';
+import 'normalize.css';
+
+import 'styles/main.css';
+
+import AppBar from 'react-toolbox/lib/app_bar';
+import Page from './Page';
+
+import Navigation from 'components/Navigation';
+
+class Main extends Component {
+  render() {
+    const { dispatch, router } = this.props;
+    const bound = bindActionCreators({ go: actions.navigateTo }, dispatch);
+
+    return (
+      <div className='main'>
+        <AppBar top flat>
+          <Navigation router={router} {...bound} />
+        </AppBar>
+        <section className='page'>
+          <Page />
+        </section>
+      </div>
+    );
+  }
+}
+
+export default connect(s => ({ router: s.router }))(Main);

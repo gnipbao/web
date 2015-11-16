@@ -1,0 +1,22 @@
+export default [
+  'debug',
+  'keymirror',
+  'moment',
+  'normalize.css',
+  'ramda',
+  'react',
+  'react-addons-css-transition-group',
+  'react-dnd',
+  'react-dom',
+  'react-pure-render',
+  'react-router5',
+  'react-toolbox',
+  'redux-actions',
+  'redux-form',
+  'redux-promise',
+  'redux-router5',
+  'redux-thunk',
+  'reselect',
+  'router5',
+  'router5-history'
+]

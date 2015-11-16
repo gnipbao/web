@@ -1,0 +1,31 @@
+import { paths } from '../../config';
+import addHash from '../utils/addHash';
+
+const name = addHash('[path][name].[ext]', 'hash:10');
+const limit = 10000;
+
+const loader = {
+  font: {
+    file: { loader: 'file', include: [paths.assets.fonts] },
+    url: { loader: 'url', include: [paths.assets.fonts] }
+  },
+  image: { url: { loader: 'url' } }
+};
+
+const query = {
+  font: {
+    file: { prefix: 'fonts/', name },
+    url: { prefix: 'fonts/', name, limit }
+  },
+  image: { url: { prefix: 'images/', name, limit } }
+};
+
+export default [
+  { test: /\.json$/, loader: 'json' },
+  { test: /\.(jpe?g|png|gif)$/i, query: query.image.url, ...loader.image.url },
+  { test: /\.woff$/, query: { mimetype: 'application/font-woff', ...query.font.url }, ...loader.font.url },
+  { test: /\.woff2$/, query: { mimetype: 'application/font-woff2', ...query.font.url }, ...loader.font.url },
+  { test: /\.ttf/, query: { mimetype: 'application/octet-stream', ...query.font.url }, ...loader.font.url },
+  { test: /\.svg/, query: { mimetype: 'image/svg+xml', ...query.font.url }, ...loader.font.url },
+  { test: /\.eot/, query: query.font, ...loader.font.file }
+]
