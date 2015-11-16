@@ -1,13 +1,6 @@
-webapp:
+starter:
   build: .
-  working_dir: /src/app
-  volumes:
-    - ./:/src/app
   ports:
-    - '3000:3000'
-    - '3001:3001'
-    - '3002:3002'
-  environment:
-    VIRTUAL_HOST: webapp.docker
-    VIRTUAL_PORT: 3000
-  command: npm start
+    - "3000:3000"
+    - "3001:3001"
+    - "3002:3002"
