@@ -135,6 +135,16 @@ Here is some [more info about devtool](https://webpack.github.io/docs/configurat
 You can find webpack stats file in `dist/webpack.stats.json` and
 feed it to [webpack stats analyzer](http://webpack.github.io/analyse/)
 
+## updating
+
+[npm-check-updates](https://github.com/tjunnone/npm-check-updates)
+
+## postcss
+
+If you want to install any additional postcss plugin, first check if its already
+in [precss](https://github.com/jonathantneal/precss/blob/master/package.json#L34) or in 
+[postcss-cssnext](https://github.com/cssnext/postcss-cssnext/blob/master/package.json#L35)
+
 ## troubleshooting
 
 Having an issue? Report it and I'll get to it as soon as possible!
