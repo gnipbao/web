@@ -2,6 +2,7 @@ web:
   build: .
   environment:
     - OPEN_IN_BROWSER=false
+    - DEVTOOLS_DOCKABLE=true
     - HOST=0.0.0.0
     - PORT=80
   ports:

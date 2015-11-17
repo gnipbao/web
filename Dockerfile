@@ -1,3 +1,6 @@
-FROM node:onbuild
+FROM vyorkin/starter-kit:latest
 MAINTAINER Vasiliy Yorkin "vasiliy.yorkin@gmail.com"
-EXPOSE 80 3001 3002
+
+COPY . /usr/src/app
+
+CMD ["npm", "start"]
