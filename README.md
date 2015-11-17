@@ -9,10 +9,10 @@
 * [environment variables](#environment-variables)
 * TODO
 
-# up and running with docker
+# up and running with docker-compose
 
 ```
-docker build -t your-app-name .
+docker-compose up
 ```
 
 after that dev server will listen on 3001
@@ -60,7 +60,7 @@ after that dev server will listen on 3001
 
 # development
 
-if you want to develop without docker for smooth dev process install these tools:
+for a smooth dev process you can install these tools (not required):
 
 * [nvm](https://github.com/creationix/nvm)
 * [avn](https://github.com/wbyoung/avn)
@@ -69,7 +69,7 @@ if you want to develop without docker for smooth dev process install these tools
 
 ## setup
 
-There is a `config` section in `package.json`:
+there is a `config` section in `package.json`:
 
 ```
 "config": {

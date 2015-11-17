@@ -10,10 +10,5 @@ export default (props) => {
   const { router, go } = props;
   const actions = buttons(go);
 
-  return (
-    <Navigation
-      type='horizontal'
-      actions={actions}
-    />
-  );
+  return <Navigation type='horizontal' actions={actions} />;
 };
