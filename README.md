@@ -11,11 +11,14 @@
 
 # up and running with docker-compose
 
+by default it listen's on port 80,
+you can change this in [docker-compose.yml](https://github.com/vyorkin/starter-kit/blob/master/docker-compose.yml#L7)
+
 ```
 docker-compose up
 ```
 
-after that dev server will listen on 3001
+and you are all set!
 
 # directory layout
 
