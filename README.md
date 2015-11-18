@@ -13,34 +13,33 @@
 
 ## TL;DR
 
-* _I assume you are working on Mac OS X, use a docker-machine, rbenv & have
-  ruby 2.0.0 installed_
+* _I assume you are working on Mac OS X and using docker-machine_
 
-Somewhere:
-
-```
-git clone git@github.com:codekitchen/dinghy.git && cd dinghy/bin
-rbenv use 2.0.0
-./dinghy create --provider virtualbox
-./dinghy up
-```
-
-In the starter-kit's directory:
+#### Setup:
 
 ```
-docker-compose up
+make docker-setup
 ```
 
-and you are all set:
+#### Start:
 
 ```
-open http://$(docker-machine ip dinghy):3000
+make up
 ```
+
+#### Stop:
+
+```
+make halt
+```
+
+If everying is ok take a look at [the details](#the-details).
 
 ### Troubles?
 
-By default it listen's on port 3000,
+By default it listens on port 3000,
 you can change this in [docker-compose.yml](https://github.com/vyorkin/starter-kit/blob/master/docker-compose.yml#L7)
+[Makefile](https://github.com/vyorkin/starter-kit/blob/master/Makefile.yml#L3)
 
 To see your existing docker machines:
 
@@ -48,28 +47,38 @@ To see your existing docker machines:
 docker-machine ls
 ```
 
+There is one known issue with node-sass (libsass):
+`The libsass binding was not found in ...`.
+In this case you can simply rebuild the base image with `make docker-rebuild`
+
 ## Why?
 
 * vboxsf is completely unusable for active development because it breaks FSEvent & inotify,
 there are several tools that aimed at making a more pleasant local development experience,
-[https://github.com/codekitchen/dinghy#dinghy] is one of them
-* it seems that dinghy [doesn't work on ruby 2.2.1](https://github.com/codekitchen/dinghy/issues/69#issuecomment-157572381)
+[https://github.com/codekitchen/dinghy#dinghy](dinghy) is just one of them.
 
 ## The details
 
-If you are not me and want to install additional npm packages
-then you should create your own docker base image (for the sake of speed
-& productivity).
+First, take a look at these files:
+* [Dockerfile](https://github.com/vyorkin/starter-kit/blob/master/Dockerfile)
+* [Dockerfile-dev](https://github.com/vyorkin/starter-kit/blob/master/Dockerfile-dev)
+* [Makefile](https://github.com/vyorkin/starter-kit/blob/master/Makefile)
+
+And if you still need a further explanation:
+
+You can create your own docker base image and
+install any additional packages there (for the sake of speed & productivity).
 
 ```
 docker build -t yourname/base-image-name .
 ```
 
-Change the [`Dockerfile-dev`](https://github.com/vyorkin/starter-kit/blob/master/Dockerfile-dev#L1)
-to build `FROM` your new base image.
+Than change the [`Dockerfile-dev`](https://github.com/vyorkin/starter-kit/blob/master/Dockerfile-dev#L1) and
+[Makefile]([Makefile](https://github.com/vyorkin/starter-kit/blob/master/Makefile.yml#L1) to build `FROM` your new base image.
 
-Also, dont' forget to replace [the maintainer name](https://github.com/vyorkin/starter-kit/blob/master/Dockerfile#L2)
-with your's if you want to push your base image to the dockerhub.
+Also, dont' forget to replace [the maintainer](https://github.com/vyorkin/starter-kit/blob/master/Dockerfile-dev#L2)
+[name](https://github.com/vyorkin/starter-kit/blob/master/Dockerfile#L2) with your's
+if you want to push your base image to the dockerhub.
 
 # Directory layout
 
@@ -151,7 +160,9 @@ Before you start `cp .env.example .env`:
 
 ### Make tasks
 
-* `make` ­ starts development server & runs karma in watch mode (TDD)
+* `make` ­ builds app for production
+* `make test` ­ runs tests & reports coverage
+* `make tdd` ­ starts development server & runs karma in watch mode (TDD)
 
 ### npm tasks
 

@@ -1,8 +1,13 @@
+- [ ] fix phantomjs issue when running tests in docker container:
+
+```
+web_1 | 12:30:29 PM test.1 |  18 11 2015 12:30:29.884:ERROR [phantomjs.launcher]: /usr/src/app/node_modules/phantomjs/lib/phantom/bin/phantomjs: 4: /usr/src/app/node_modules/phantomjs/lib/phantom/bin/phantomjs: Syntax error: Unterminated quoted string
+```
+
+- [ ] wait for [node-forman pr](https://github.com/strongloop/node-foreman/pull/84) and switch to original packet
 - [ ] wait for [webpack-dev-server pr](https://github.com/webpack/webpack-dev-server/pull/236) and switch to original packet
 - [ ] wait for [font magician pr](https://github.com/jonathantneal/postcss-font-magician/pull/7) and switch to original packet
 - [ ] wait for [the font magician fix](https://github.com/jonathantneal/postcss-font-magician/issues/9)
-- [x] refactor RoutedPage.js
-- [ ] refactor store/create.js
 - [ ] wait for (isparta fix)[https://github.com/douglasduteil/isparta/issues/81] before upgrading to babel 6
 - [ ] wait for [babel-plugin-react-transform fix](https://github.com/gaearon/babel-plugin-react-transform/issues/46) and move to babel 6
 - [ ] replace my fork with the actual npm released version of html-webpack-plugin
