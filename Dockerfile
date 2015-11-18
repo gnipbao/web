@@ -1,6 +1,7 @@
-FROM vyorkin/starter-kit:latest
+FROM node:latest
 MAINTAINER Vasiliy Yorkin "vasiliy.yorkin@gmail.com"
 
-COPY . /usr/src/app
-
-CMD ["npm", "start"]
+RUN mkdir -p /usr/src/app
+ADD package.json /usr/src/app
+WORKDIR /usr/src/app
+RUN npm install

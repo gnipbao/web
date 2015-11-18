@@ -1,3 +1,4 @@
+- [ ] wait for [webpack-dev-server pr](https://github.com/webpack/webpack-dev-server/pull/236) and switch to original packet
 - [ ] wait for [font magician pr](https://github.com/jonathantneal/postcss-font-magician/pull/7) and switch to original packet
 - [ ] wait for [the font magician fix](https://github.com/jonathantneal/postcss-font-magician/issues/9)
 - [x] refactor RoutedPage.js

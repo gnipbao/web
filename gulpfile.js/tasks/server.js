@@ -5,7 +5,7 @@ import webpack from 'webpack';
 import DevServer from 'webpack-dev-server';
 
 gulp.task('server', (callback) => {
-  const { host, port, url } = config.app.server;
+  const { host, port, url, publicUrl } = config.app.server;
   const { devServer } = config.webpack;
 
   const compiler = webpack(config.webpack);
@@ -18,7 +18,8 @@ gulp.task('server', (callback) => {
       if (process.env.openInBrowser) {
         opn(url, { app: [config.app.developmentBrowser] });
       }
-      console.log('🚧  WDS: %s', url);
+      console.log(`🚧  WDS: ${url}`);
+      console.log(`public url: ${publicUrl}`);
     }
     callback();
   });

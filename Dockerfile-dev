@@ -1,0 +1,2 @@
+FROM vyorkin/starter-kit:latest
+CMD ["npm", "start"]

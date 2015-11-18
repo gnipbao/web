@@ -1,26 +1,15 @@
-# starter kit
+# Starter kit
 
-# table of contents
+# Table of contents
 
-* [up and running wih docker](#up-and-running-with-docker)
 * [directory layout](#directory-layout)
 * [development](#development)
+* [up and running wih docker](#up-and-running-with-docker)
 * [setup](#setup)
 * [environment variables](#environment-variables)
 * TODO
 
-# up and running with docker-compose
-
-by default it listen's on port 80,
-you can change this in [docker-compose.yml](https://github.com/vyorkin/starter-kit/blob/master/docker-compose.yml#L7)
-
-```
-docker-compose up
-```
-
-and you are all set!
-
-# directory layout
+# Directory layout
 
 ```
 .
@@ -60,19 +49,18 @@ and you are all set!
 └── package.json                           # The list of 3rd party libraries and utilities
 ```
 
+# Development
 
-# development
-
-for a smooth dev process you can install these tools (not required):
+For a smooth dev process you can install these tools (not required):
 
 * [nvm](https://github.com/creationix/nvm)
 * [avn](https://github.com/wbyoung/avn)
 * [avn-nvm](https://github.com/wbyoung/avn-nvm)
 * [node-foreman](https://github.com/strongloop/node-foreman)
 
-## setup
+## Setup
 
-there is a `config` section in `package.json`:
+There is a `config` section in `package.json`:
 
 ```
 "config": {
@@ -88,20 +76,22 @@ there is a `config` section in `package.json`:
 
 * `sourceMap` ­ enable source maps for production (its enabled by default in dev env)
 
-## environment variables
+## Flow
 
-before you start `cp .env.example .env`:
+### environment variables
+
+Before you start `cp .env.example .env`:
 
 * `API_ROOT` - api root url
 * `OPEN_IN_BROWSER` ­ set to `true` if you want to open your app in browser when running `npm start`
 * `DEVELOPMENT_BROWSER` ­ browser that you use for development
 * `DEVTOOLS_DOCKABLE` - if set to `false` it will create an external devtools window for you
 
-## make tasks
+### make tasks
 
 * `make` ­ starts development server & runs karma in watch mode (TDD)
 
-## npm tasks
+### npm tasks
 
 to install dependencies:
 ```
@@ -123,37 +113,85 @@ to run tests:
 npm test
 ```
 
-## options
+### options
 
 Options:
 * `verbose` ­ set verbosity to the maximum level
 * `quiet` - set this to true and you'll see no error output in the console and it will make much harder to now whats wrong
 
 By default source maps is generated using `cheap-module-inline-source-map` option.
-If thats not enough for you than you can change it to `eval-source-map` or even the slowest `source-map`.
+If thats not enough for you then you can change it to `eval-source-map` or even the slowest `source-map`.
 Here is some [more info about devtool](https://webpack.github.io/docs/configuration.html#devtool).
 
-## analysis
+### analysis
 
 You can find webpack stats file in `dist/webpack.stats.json` and
 feed it to [webpack stats analyzer](http://webpack.github.io/analyse/)
 
-## updating
+### updating
 
 [npm-check-updates](https://github.com/tjunnone/npm-check-updates)
 
-## postcss
+### postcss
 
 If you want to install any additional postcss plugin, first check if its already
 in [precss](https://github.com/jonathantneal/precss/blob/master/package.json#L34) or in 
 [postcss-cssnext](https://github.com/cssnext/postcss-cssnext/blob/master/package.json#L35)
 
-## troubleshooting
+# Up and running with docker-compose
 
-Having an issue? Report it and I'll get to it as soon as possible!
+## TL;DR
 
-## resources
+* _I assume you are working on Mac OS X, use a docker-machine, rbenv & have
+  ruby 2.0.0 installed_
+
+```
+git clone git@github.com:codekitchen/dinghy.git && cd dinghy/bin
+rbenv use 2.0.0
+./dinghy create --provider virtualbox
+./dinghy up
+docker-compose up
+```
+
+and you are all set:
+
+```
+open http://$(docker-machine ip dinghy):3000
+```
+
+### Troubles?
+
+By default it listen's on port 3000,
+you can change this in [docker-compose.yml](https://github.com/vyorkin/starter-kit/blob/master/docker-compose.yml#L7)
+
+To see your existing docker machines:
+
+```
+docker-machine ls
+```
+
+## the details
+
+If you are not me and want to install additional npm packages
+then you should create your own docker base image (for the sake of speed
+& productivity).
+
+```
+docker build -t yourname/base-image-name .
+```
+
+Change the [`Dockerfile-dev`](https://github.com/vyorkin/starter-kit/blob/master/Dockerfile-dev#L1)
+to build `FROM` your new base image.
+
+Also, dont' forget to replace [the maintainer name](https://github.com/vyorkin/starter-kit/blob/master/Dockerfile#L2)
+with your's if you want to push your base image to the dockerhub.
+
+# Resources
 
 * [40 webpack screencasts in russian](https://learn.javascript.ru/webpack-screencast), takes about 2h to get started
 * [awesome react](https://github.com/enaqx/awesome-react)
 * [awesome redux](https://github.com/xgrommx/awesome-redux)
+
+# Troubleshooting
+
+Having an issue? Report it and I'll get to it as soon as possible!

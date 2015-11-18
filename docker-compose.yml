@@ -1,11 +1,14 @@
 web:
   build: .
+  dockerfile: Dockerfile-dev
+  volumes:
+    - .:/usr/src/app
   environment:
     - OPEN_IN_BROWSER=false
     - DEVTOOLS_DOCKABLE=true
     - HOST=0.0.0.0
-    - PORT=80
+    - PORT=3000
   ports:
-    - "80:80"
+    - "3000:3000"
     - "3001:3001"
     - "3002:3002"

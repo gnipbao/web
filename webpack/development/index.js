@@ -11,7 +11,7 @@ import devServer from './devServer';
 
 export default merge(webpackConfig, {
   entry: [
-    'webpack-dev-server/client?' + appConfig.server.url,
+    'webpack-dev-server/client?' + appConfig.server.publicUrl,
     'webpack/hot/only-dev-server'
   ],
   module: { preLoaders, loaders },
