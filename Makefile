@@ -30,6 +30,7 @@ docker-rebuild:
 
 up:
 	dinghy up
+	eval "$(docker-machine env dinghy)"
 	docker-compose up
 	open http://$(docker-machine ip dinghy):$(PORT)
 
