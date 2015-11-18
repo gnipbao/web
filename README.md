@@ -2,12 +2,74 @@
 
 # Table of contents
 
+* [up and running wih docker](#up-and-running-with-docker)
 * [directory layout](#directory-layout)
 * [development](#development)
-* [up and running wih docker](#up-and-running-with-docker)
 * [setup](#setup)
 * [environment variables](#environment-variables)
 * TODO
+
+# Up and running with [docker-compose](https://docs.docker.com/compose/) & [dinghy](https://github.com/codekitchen/dinghy)
+
+## TL;DR
+
+* _I assume you are working on Mac OS X, use a docker-machine, rbenv & have
+  ruby 2.0.0 installed_
+
+Somewhere:
+
+```
+git clone git@github.com:codekitchen/dinghy.git && cd dinghy/bin
+rbenv use 2.0.0
+./dinghy create --provider virtualbox
+./dinghy up
+```
+
+In the starter-kit's directory:
+
+```
+docker-compose up
+```
+
+and you are all set:
+
+```
+open http://$(docker-machine ip dinghy):3000
+```
+
+### Troubles?
+
+By default it listen's on port 3000,
+you can change this in [docker-compose.yml](https://github.com/vyorkin/starter-kit/blob/master/docker-compose.yml#L7)
+
+To see your existing docker machines:
+
+```
+docker-machine ls
+```
+
+## Why?
+
+* vboxsf is completely unusable for active development because it breaks FSEvent & inotify,
+there are several tools that aimed at making a more pleasant local development experience,
+[https://github.com/codekitchen/dinghy#dinghy] is one of them
+* it seems that dinghy [doesn't work on ruby 2.2.1](https://github.com/codekitchen/dinghy/issues/69#issuecomment-157572381)
+
+## The details
+
+If you are not me and want to install additional npm packages
+then you should create your own docker base image (for the sake of speed
+& productivity).
+
+```
+docker build -t yourname/base-image-name .
+```
+
+Change the [`Dockerfile-dev`](https://github.com/vyorkin/starter-kit/blob/master/Dockerfile-dev#L1)
+to build `FROM` your new base image.
+
+Also, dont' forget to replace [the maintainer name](https://github.com/vyorkin/starter-kit/blob/master/Dockerfile#L2)
+with your's if you want to push your base image to the dockerhub.
 
 # Directory layout
 
@@ -78,7 +140,7 @@ There is a `config` section in `package.json`:
 
 ## Flow
 
-### environment variables
+### Environment variables
 
 Before you start `cp .env.example .env`:
 
@@ -87,7 +149,7 @@ Before you start `cp .env.example .env`:
 * `DEVELOPMENT_BROWSER` ­ browser that you use for development
 * `DEVTOOLS_DOCKABLE` - if set to `false` it will create an external devtools window for you
 
-### make tasks
+### Make tasks
 
 * `make` ­ starts development server & runs karma in watch mode (TDD)
 
@@ -113,7 +175,7 @@ to run tests:
 npm test
 ```
 
-### options
+### Options
 
 Options:
 * `verbose` ­ set verbosity to the maximum level
@@ -123,68 +185,20 @@ By default source maps is generated using `cheap-module-inline-source-map` optio
 If thats not enough for you then you can change it to `eval-source-map` or even the slowest `source-map`.
 Here is some [more info about devtool](https://webpack.github.io/docs/configuration.html#devtool).
 
-### analysis
+### Analysis
 
 You can find webpack stats file in `dist/webpack.stats.json` and
 feed it to [webpack stats analyzer](http://webpack.github.io/analyse/)
 
-### updating
+### Updating
 
 [npm-check-updates](https://github.com/tjunnone/npm-check-updates)
 
-### postcss
+### Postcss
 
 If you want to install any additional postcss plugin, first check if its already
 in [precss](https://github.com/jonathantneal/precss/blob/master/package.json#L34) or in 
 [postcss-cssnext](https://github.com/cssnext/postcss-cssnext/blob/master/package.json#L35)
-
-# Up and running with docker-compose
-
-## TL;DR
-
-* _I assume you are working on Mac OS X, use a docker-machine, rbenv & have
-  ruby 2.0.0 installed_
-
-```
-git clone git@github.com:codekitchen/dinghy.git && cd dinghy/bin
-rbenv use 2.0.0
-./dinghy create --provider virtualbox
-./dinghy up
-docker-compose up
-```
-
-and you are all set:
-
-```
-open http://$(docker-machine ip dinghy):3000
-```
-
-### Troubles?
-
-By default it listen's on port 3000,
-you can change this in [docker-compose.yml](https://github.com/vyorkin/starter-kit/blob/master/docker-compose.yml#L7)
-
-To see your existing docker machines:
-
-```
-docker-machine ls
-```
-
-## the details
-
-If you are not me and want to install additional npm packages
-then you should create your own docker base image (for the sake of speed
-& productivity).
-
-```
-docker build -t yourname/base-image-name .
-```
-
-Change the [`Dockerfile-dev`](https://github.com/vyorkin/starter-kit/blob/master/Dockerfile-dev#L1)
-to build `FROM` your new base image.
-
-Also, dont' forget to replace [the maintainer name](https://github.com/vyorkin/starter-kit/blob/master/Dockerfile#L2)
-with your's if you want to push your base image to the dockerhub.
 
 # Resources
 
