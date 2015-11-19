@@ -2,14 +2,13 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as CounterActions from 'actions/counter';
 import Counter from 'components/Counter';
+import { inc, dec } from 'modules/counter';
 
 const Demo = (props) => {
   const { counter, dispatch } = props;
-  const actionCreators = bindActionCreators(CounterActions, dispatch);
-
-  return (<Counter counter={counter} {...actionCreators} />);
+  const creators = bindActionCreators({ inc, dec }, dispatch);
+  return (<Counter counter={counter} {...creators} />);
 };
 
 export default connect(s => ({ counter: s.counter }))(Demo);

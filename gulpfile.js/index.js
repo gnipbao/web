@@ -1,19 +1,13 @@
 'use strict';
 
-require('dotenv').load();
 require('babel/register');
+require('dotenv').load();
 
-const appConfig = require('../config');
-const webpackConfig = require(`../webpack/${appConfig.environment}`);
+const app = require('../config');
+const webpack = require(`../webpack/${app.environment}`);
 
-global.config = {
-  app: appConfig,
-  webpack: webpackConfig
-};
-
-global.state = {
-  isWatching: false
-};
+global.config = { app, webpack };
+global.state = { isWatching: false };
 
 global.gulp = require('gulp');
 global.sequence = require('run-sequence');

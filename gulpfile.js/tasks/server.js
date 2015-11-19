@@ -15,8 +15,8 @@ gulp.task('server', (callback) => {
     if (err) {
       console.log(err);
     } else {
-      if (process.env.openInBrowser) {
-        opn(url, { app: [config.app.developmentBrowser] });
+      if (process.env.OPEN_IN_BROWSER) {
+        opn(url, { app: [process.env.DEVELOPMENT_BROWSER] });
       }
       console.log(`🚧  WDS: ${url}`);
       console.log(`public url: ${publicUrl}`);

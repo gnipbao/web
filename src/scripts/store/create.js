@@ -1,18 +1,19 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 
-import reducer from 'reducers';
-import createMiddleware from './createMiddleware';
+import createMiddleware from './middleware';
 import enhance from './enhance';
+import { reducers } from 'modules';
 
 export default (router, initialState = {}) => {
   const middleware = createMiddleware(router);
-  const creator = enhance(middleware);
+  const applied = applyMiddleware(...middleware);
+  const creator = enhance(applied);
   const create = creator(createStore);
-  const store = create(reducer, initialState);
+  const store = create(reducers, initialState);
 
   if (__DEVELOPMENT__ && module.hot) {
-    module.hot.accept('../reducers', () => {
-      const nextReducer = require('../reducers');
+    module.hot.accept('../modules/reducers', () => {
+      const nextReducer = require('../modules/reducers');
       store.replaceReducer(nextReducer);
     });
   }

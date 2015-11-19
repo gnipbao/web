@@ -124,6 +124,7 @@ if you want to push your base image to the dockerhub.
 
 For a smooth dev process you can install these tools (not required):
 
+* [npm-check-updates](https://github.com/tjunnone/npm-check-updates)
 * [nvm](https://github.com/creationix/nvm)
 * [avn](https://github.com/wbyoung/avn)
 * [avn-nvm](https://github.com/wbyoung/avn-nvm)

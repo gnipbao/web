@@ -1,7 +1,6 @@
 import minimist from 'minimist';
 
 import { name, description, config } from '../package';
-
 import server from './server';
 import paths from './paths';
 import aliases from './aliases';
@@ -26,12 +25,6 @@ export default {
 
   env: environments,
   environment: environmentName,
-
-  devTools: process.env.DEVTOOLS,
-  devToolsDockable: process.env.DEVTOOLS_DOCKABLE,
-
-  openInBrowser: process.env.OPEN_IN_BROWSER,
-  developmentBrowser: process.env.DEVELOPMENT_BROWSER || 'google chrome',
 
   ...config
 }

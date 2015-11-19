@@ -21,7 +21,7 @@ describe('Counter', () => {
   const store = createStore(router);
   const renderer = renderIntoDocument(
     <Provider store={store} key='provider'>
-      <Counter increment={1} />
+      <Counter />
     </Provider>
   );
   const dom = ReactDOM.findDOMNode(renderer);

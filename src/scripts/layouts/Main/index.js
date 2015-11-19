@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { actions } from 'redux-router5';
@@ -14,6 +14,11 @@ import Page from './Page';
 import Navigation from 'components/Navigation';
 
 class Main extends Component {
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    router: PropTypes.object.isRequired
+  }
+
   render() {
     const { dispatch, router } = this.props;
     const bound = bindActionCreators({ go: actions.navigateTo }, dispatch);
