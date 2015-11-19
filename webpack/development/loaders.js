@@ -5,6 +5,9 @@ const cssOptions = {
   sass: 'modules'
 };
 
+const scssLoader = {
+};
+
 export default [
   {
     test: /\.jsx?$/,
@@ -36,7 +39,13 @@ export default [
   },
   {
     test: /\.scss$/,
-    loaders: ['style', `css?${cssOptions.sass}`, 'sass?includePath[]=' + paths.modules],
+    exclude: /node_modules\/react-toolbox\/lib/,
+    loaders: ['style', `css?${cssOptions.sass}`, `sass?includePath[]=${paths.modules}`],
+  },
+  {
+    test: /\.scss$/,
+    include: /node_modules\/react-toolbox\/lib/,
+    loaders: ['style', `css?${cssOptions.sass}`, `sass?includePath[]=${paths.modules}`, 'toolbox'],
   },
   {
     test: /\.sass$/,

@@ -3,14 +3,12 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { actions } from 'redux-router5';
 
-import 'react-toolbox/lib/commons';
-import 'normalize.css';
-
-import 'styles/main.css';
+import 'styles/toolbox/main';
+import 'styles/main';
 
 import AppBar from 'react-toolbox/lib/app_bar';
-import Page from './Page';
 
+import Page from './Page';
 import Navigation from 'components/Navigation';
 
 class Main extends Component {

@@ -22,7 +22,13 @@ export default [
   },
   {
     test: /\.scss$/,
+    exclude: /node_modules\/react-toolbox\/lib/,
     loader: ExtractTextPlugin.extract(`css?${cssOptions.sass}!sass?includePath[]=${paths.modules}`, extractOptions)
+  },
+  {
+    test: /\.scss$/,
+    include: /node_modules\/react-toolbox\/lib/,
+    loader: ExtractTextPlugin.extract(`css?${cssOptions.sass}!sass?includePath[]=${paths.modules}!toolbox`, extractOptions)
   },
   {
     test: /\.sass$/,

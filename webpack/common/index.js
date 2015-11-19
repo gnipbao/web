@@ -4,8 +4,9 @@ import addHash from '../utils/addHash';
 
 import loaders from './loaders';
 import plugins from './plugins';
-import eslint from './eslint';
+import toolbox from './toolbox';
 import postcss from './postcss';
+import eslint from './eslint';
 
 const noParse = Object.values(config.dependencies);
 
@@ -42,6 +43,7 @@ export default {
   module: { loaders, noParse },
   plugins,
 
+  toolbox,
   postcss,
   eslint,
 
