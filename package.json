@@ -23,7 +23,6 @@
     "babel-runtime": "^5.8.20",
     "debug": "^2.2.0",
     "isomorphic-fetch": "^2.2.0",
-    "keymirror": "^0.1.1",
     "moment": "^2.10.6",
     "normalize.css": "^3.0.3",
     "normalizr": "^1.4.0",

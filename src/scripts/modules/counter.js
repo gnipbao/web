@@ -1,7 +1,7 @@
 import { createAction, handleActions } from 'redux-actions';
 
-const INC = 'examples/counter/dec';
-const DEC = 'examples/counter/inc';
+const INC = 'INC';
+const DEC = 'DEC';
 
 export const inc = createAction(INC);
 export const dec = createAction(DEC);
