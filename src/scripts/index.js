@@ -12,7 +12,9 @@ const router = createRouter(routes, { defaultRoute });
 router.start((err, state) => {
   const commonState = window.__state || {};
   const routerState = { router: { route: state } };
-  const store = createStore(router, { ...commonState, ...routerState });
+  const initialState = { ...commonState, ...routerState };
+
+  const store = createStore(router, initialState);
 
   ReactDOM.render(
     <Root store={store} router={router} />,

@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { actions } from 'redux-router5';
@@ -13,18 +14,31 @@ import Navigation from 'components/Navigation';
 
 class Main extends Component {
   static propTypes = {
-    dispatch: PropTypes.func.isRequired,
+    dispatch: PropTypes.func.isRequired
+  }
+
+  static contextTypes = {
     router: PropTypes.object.isRequired
   }
 
+  constructor(props, context) {
+    super(props);
+    this.router = context.router;
+  }
+
   render() {
-    const { dispatch, router } = this.props;
-    const bound = bindActionCreators({ go: actions.navigateTo }, dispatch);
+    const { dispatch } = this.props;
+    const bound = bindActionCreators({
+      go: actions.navigateTo
+    }, dispatch);
 
     return (
       <div className='main'>
         <AppBar top flat>
-          <Navigation router={router} {...bound} />
+          <Navigation
+            router={this.router}
+            {...bound}
+          />
         </AppBar>
         <section className='page'>
           <Page />
@@ -34,4 +48,4 @@ class Main extends Component {
   }
 }
 
-export default connect(s => ({ router: s.router }))(Main);
+export default connect(s => s)(Main);

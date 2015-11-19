@@ -1,5 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 
+import cardStyle from 'react-toolbox/lib/card/style';
+import Button from 'react-toolbox/lib/button';
+
 import style from './style';
 
 export default class Counter extends Component {
@@ -11,19 +14,19 @@ export default class Counter extends Component {
 
   renderControls() {
     const { inc, dec } = this.props;
-
     return (
-      <ul>
-        <li><button onClick={inc}>inc</button></li>
-        <li><button onClick={dec}>dec</button></li>
-      </ul>
+      <div className={style.controls}>
+        <Button icon='add' floating accent onClick={inc} />
+        <Button icon='remove' floating primary onClick={dec} />
+      </div>
     );
   }
 
   render() {
     return (
-      <div className={style.counter}>
-        <h1>{this.props.counter}</h1>
+      <div className={cardStyle.root}>
+        <h3 className={style.title}>counter</h3>
+        <h1 className={style.number}>{this.props.counter}</h1>
         {this.renderControls()}
       </div>
     );

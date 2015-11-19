@@ -27,7 +27,13 @@
     "id-length": [2, {
       "min": 2,
       "properties": "never",
-      "exceptions": ["_", "x", "y", "i", "j", "s", "d"]
+      "exceptions": [
+        "_",
+        "x", "y",
+        "i", "j", "k",
+        "s", "d",
+        "n"
+      ]
     }],
   },
   "settings": {

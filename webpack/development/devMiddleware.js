@@ -9,6 +9,7 @@ export default {
     reasons: true,
     profile: argv.profile
   },
+
   noInfo: !argv.verbose,
 
   // --quiet

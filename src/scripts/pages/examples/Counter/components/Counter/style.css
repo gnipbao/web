@@ -1,0 +1,12 @@
+.controls, .number, .title {
+  text-align: center;
+}
+.controls {
+  button {
+    margin-left: 4px;
+  }
+}
+
+.number {
+  font-size: 6em;
+}
