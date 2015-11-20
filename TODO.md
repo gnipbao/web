@@ -1,4 +1,3 @@
-- [x] fix node-dotenv
 - [ ] fix phantomjs issue when running tests in docker container:
 
 ```

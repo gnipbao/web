@@ -1,4 +1,5 @@
 import path from 'path';
+import debug from 'debug';
 import webpack from 'webpack'
 
 import HtmlPlugin from 'html-webpack-plugin';
@@ -6,7 +7,10 @@ import HtmlPlugin from 'html-webpack-plugin';
 import config from '../../config';
 import globals from './globals';
 
-const templatePath = path.join(config.paths.templates, 'index.html');
+const log = debug('app');
+const template = path.join(config.paths.templates, 'index.html');
+
+log('globals\n', globals);
 
 export default [
   new webpack.ProvidePlugin({
@@ -19,7 +23,7 @@ export default [
   new HtmlPlugin({
     title: config.name,
     description: config.description,
-    template: templatePath,
+    template,
     hash: true
   })
 ]

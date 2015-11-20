@@ -2,7 +2,12 @@ import React, { PropTypes, Component } from 'react';
 import { Tabs, Tab } from 'react-toolbox/lib/tabs';
 
 import style from './style';
+
 import Counter from '../examples/Counter';
+import Todo from '../examples/Todo';
+import Form from '../examples/Form';
+import Reddit from '../examples/Reddit';
+import SoundCloud from '../examples/SoundCloud';
 
 class Demo extends Component {
   state = {
@@ -19,9 +24,10 @@ class Demo extends Component {
         <h1>Examples</h1>
         <Tabs index={this.state.index} onChange={::this.tabChange}>
           <Tab label='Counter'><Counter /></Tab>
-          <Tab label='Todo' disabled></Tab>
-          <Tab label='Reddit' disabled></Tab>
-          <Tab label='SoundCloud' disabled></Tab>
+          <Tab label='Todo'><Todo /></Tab>
+          <Tab label='Form'><Form /></Tab>
+          <Tab label='Reddit'><Reddit /></Tab>
+          <Tab label='SoundCloud'><SoundCloud /></Tab>
         </Tabs>
       </div>
     );

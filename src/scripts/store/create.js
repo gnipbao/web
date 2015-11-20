@@ -12,9 +12,9 @@ export default (router, initialState = {}) => {
   const store = create(reducers, initialState);
 
   if (__DEVELOPMENT__ && module.hot) {
-    module.hot.accept('../modules/reducers', () => {
-      const nextReducer = require('../modules/reducers');
-      store.replaceReducer(nextReducer);
+    module.hot.accept('modules', () => {
+      const { reducers } = require('modules');
+      store.replaceReducer(reducers);
     });
   }
 

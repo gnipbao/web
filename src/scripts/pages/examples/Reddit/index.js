@@ -1,4 +1,7 @@
 import React from 'react';
-
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+
+const Example = (props) => {
+  return (<div />);
+};
+export default connect(s => s)(Example);

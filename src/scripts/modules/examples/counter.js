@@ -7,6 +7,6 @@ export const inc = createAction(INC);
 export const dec = createAction(DEC);
 
 export default handleActions({
-  INC: (s, _) => s + 1,
-  DEC: (s, _) => s - 1
+  INC: (s, _) => s + 10,
+  DEC: (s, _) => s - 10
 }, 0);

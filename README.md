@@ -215,9 +215,13 @@ in [precss](https://github.com/jonathantneal/precss/blob/master/package.json#L34
 # Resources
 
 * [40 webpack screencasts in russian](https://learn.javascript.ru/webpack-screencast), takes about 2h to get started
+* [webpack hot reloading magic (habra)](http://habrahabr.ru/company/Voximplant/blog/270593/)
 * [awesome react](https://github.com/enaqx/awesome-react)
 * [awesome redux](https://github.com/xgrommx/awesome-redux)
 
 # Troubleshooting
+
+* try to run with `--verbose --profile` keys
+* set `DEBUG=app` to see some additional logging with [debug](https://www.npmjs.com/package/debug#wildcards)
 
 Having an issue? Report it and I'll get to it as soon as possible!
