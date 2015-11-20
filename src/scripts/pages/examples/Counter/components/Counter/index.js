@@ -16,8 +16,8 @@ export default class Counter extends Component {
     const { inc, dec } = this.props;
     return (
       <div className={style.controls}>
+        <Button icon='remove' primary floating mini onClick={dec} />
         <Button icon='add' floating accent onClick={inc} />
-        <Button icon='remove' floating primary onClick={dec} />
       </div>
     );
   }
