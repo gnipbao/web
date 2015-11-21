@@ -53,7 +53,7 @@ In this case you can simply rebuild the base image with `make docker-rebuild`
 
 ## Why?
 
-* vboxsf is completely unusable for active development because it breaks FSEvent & inotify,
+* vboxsf is completely unusable for active development because it breaks FSEvents & inotify,
 there are several tools that aimed at making a more pleasant local development experience,
 [https://github.com/codekitchen/dinghy#dinghy](dinghy) is just one of them.
 
@@ -155,8 +155,6 @@ There is a `config` section in `package.json`:
 Before you start `cp .env.example .env`:
 
 * `API_ROOT` - api root url
-* `OPEN_IN_BROWSER` ­ set to `true` if you want to open your app in browser when running `npm start`
-* `DEVELOPMENT_BROWSER` ­ browser that you use for development
 * `DEVTOOLS_DOCKABLE` - if set to `false` it will create an external devtools window for you
 
 ### Make tasks

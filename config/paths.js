@@ -4,7 +4,7 @@ import resolve from './resolve';
 const rootSiblings = mapObj(resolve, (k, v) => [k, v('')]);
 
 export default {
-  ...rootSiblings,
+  ...rootSiblings, // root, dirs
 
   scripts: resolve.src('scripts'),
   styles: resolve.src('styles'),
