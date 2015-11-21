@@ -1,10 +1,19 @@
+import minimist from 'minimist';
+
 import { name, config } from '../package';
 import server from './server';
 
+const argv = minimist(process.argv.slice(2));
+const logLevel = argv.verbose || argv.profile ? 'debug' : 'info';
+
 export default {
   logPrefix: name,
-  logLevel: 'debug',
+
+  logLevel,
   logConnections: true,
+  logFileChanges: true,
+  logSnippet: true,
+
   notify: true,
 
   // Run as an https by setting 'https: true'
@@ -19,12 +28,15 @@ export default {
     forms: true,
     scroll: true
   },
+
   browser: 'google chrome',
+  open: false,
+
   startPath: '/',
   reloadOnRestart: true,
   reloadDebounce: 100,
   injectChanges: true,
+
   port: config.ports.browserSync,
-  ui: { port: config.ports.browserSyncUI },
-  open: process.env.OPEN_IN_BROWSER || false
+  ui: { port: config.ports.browserSyncUI }
 }
