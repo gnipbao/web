@@ -6,6 +6,7 @@ import paths from './paths';
 import aliases from './aliases';
 import dependencies from './dependencies';
 import browsersync from './browsersync';
+import postcss from './postcss';
 import { environments, environmentName } from './env';
 
 const argv = minimist(process.argv.slice(2));
@@ -21,6 +22,7 @@ export default {
   aliases,
   dependencies,
 
+  postcss,
   browsersync,
 
   env: environments,

@@ -1,10 +1,12 @@
 import {
   cssnext,
   assets,
-  fontMagician
+  fontMagician,
+  stylelint
 } from '../../config/postcss';
 
 export default () => [
+  require('stylelint')(stylelint),
   require('precss'),
   require('postcss-cssnext')(cssnext),
   require('postcss-assets')(assets),
@@ -20,5 +22,7 @@ export default () => [
   require('postcss-responsive-type'),
   require('cssnano'),
   require('postcss-reporter'),
-  require('postcss-browser-reporter')
+  require('postcss-browser-reporter')({
+    selector: 'body:after'
+  })
 ];

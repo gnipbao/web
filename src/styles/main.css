@@ -19,9 +19,11 @@ body {
   color: #222;
 }
 
+/* stylelint-disable selector-no-id */
 #root {
   height: 100%;
 }
+/* stylelint-enable */
 
 .hooy {
   font-family: 'Orbitron';

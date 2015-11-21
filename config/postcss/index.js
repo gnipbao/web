@@ -1,3 +1,11 @@
-export { default as cssnext } from './cssnext';
-export { default as assets } from './assets';
-export { default as fontMagician } from './fontMagician';
+import cssnext from './cssnext';
+import assets from './assets';
+import fontMagician from './fontMagician';
+import stylelint from './stylelint';
+
+export default {
+  cssnext,
+  assets,
+  fontMagician,
+  stylelint
+}

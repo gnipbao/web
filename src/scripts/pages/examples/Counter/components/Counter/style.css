@@ -1,6 +1,9 @@
-.controls, .number, .title {
+.controls,
+.number,
+.title {
   text-align: center;
 }
+
 .controls {
   button {
     margin-left: 4px;

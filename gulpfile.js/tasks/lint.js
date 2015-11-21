@@ -1,21 +1,42 @@
-'use strict';
-
 import path from 'path';
+import stylelint from 'stylelint';
+import reporter from 'postcss-reporter';
 import eslintFormatter from 'eslint-friendly-formatter';
 
-const { scripts, tests } = config.app.paths;
+const {
+  root,
+  stylelintrc,
+  scripts,
+  tests
+} = config.app.paths;
 
 const wildcards = {
-  scripts: path.join(scripts, '**/*.js'),
-  tests: path.join(tests, '**/*.js')
+  styles: path.join(root, '**/*.css'),
+  scripts: {
+    app: path.join(scripts, '**/*.js'),
+    tests: path.join(tests, '**/*.js')
+  }
 };
 
-gulp.task('lint', () => {
+gulp.task('lint:js', () => {
   const src = config.app.argv.tests ?
-    wildcards.tests : wildcards.scripts;
+    wildcards.scripts.tests :
+    wildcards.scripts.app;
 
   return gulp.src(src)
     .pipe($.eslint())
     .pipe($.eslint.format(eslintFormatter))
     .pipe($.eslint.failAfterError());
 });
+
+gulp.task('lint:css', () => {
+  const processors = [
+    stylelint(config.app.postcss.stylelint),
+    reporter({ clearMessages: true })
+  ];
+
+  return gulp.src(wildcards.styles)
+    .pipe($.postcss(processors));
+});
+
+gulp.task('lint', () => sequence(['lint:js', 'lint:css']));
