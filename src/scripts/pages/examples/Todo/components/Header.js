@@ -1,13 +1,22 @@
 import React, { PropTypes, Component } from 'react';
-
 import Input from 'react-toolbox/lib/input';
 
 class Header extends Component {
   static propTypes = {
-    add: PropTypes.func.isRequired
+    addItem: PropTypes.func.isRequired
   }
 
-  submit(e) {
+  handleKeyPress(e) {
+    if (e.which === 13) {
+      const text = e.target.value.trim();
+      this.props.addItem(text);
+    }
+  }
+
+  handleChange(e) {
+  }
+
+  handleBlur(e) {
   }
 
   render() {
@@ -15,7 +24,7 @@ class Header extends Component {
       <Input
         required
         label='What needs to be done?'
-        onKeyPress={::this.submit}
+        onKeyPress={::this.handleKeyPress}
       />
     );
   }

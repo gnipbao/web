@@ -11,16 +11,16 @@ import Main from './components/Main';
 import style from './style';
 
 const Example = (props) => {
-  const { todos, actions } = props;
+  const { items, actions } = props;
   return (
     <div className={style.root}>
       <Header addItem={actions.add} />
-      <Main items={todos} {...actions} />
+      <Main items={items} {...actions} />
     </div>
   );
 };
 
 export default connect(
-  s => ({ todos: s.todo }),
+  s => ({ items: s.todo }),
   { actions: todoActions },
 )(Example);
