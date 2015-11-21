@@ -13,8 +13,8 @@ export default (router, initialState = {}) => {
 
   if (__DEVELOPMENT__ && module.hot) {
     module.hot.accept('modules', () => {
-      const { reducers } = require('modules');
-      store.replaceReducer(reducers);
+      const modules = require('modules');
+      store.replaceReducer(modules.reducers);
     });
   }
 

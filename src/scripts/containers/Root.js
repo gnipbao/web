@@ -13,11 +13,11 @@ export default class Root extends Component {
 
   renderDevTools() {
     if (__DEVTOOLS__) {
-      const { DevToolsLogDockable } = require('components/DevTools');
+      const { DevToolsSlider } = require('components/DevTools');
       const createDevToolsWindow = require('utils/createDevToolsWindow');
 
       return __DEVTOOLS_DOCKABLE__ ?
-        <DevToolsLogDockable /> :
+        <DevToolsSlider /> :
         createDevToolsWindow(this.props.store);
     }
     return null;

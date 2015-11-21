@@ -6,12 +6,14 @@ import LogMonitor from 'redux-devtools-log-monitor';
 import DockMonitor from 'redux-devtools-dock-monitor';
 import SliderMonitor from 'redux-slider-monitor';
 
-export const DevToolsSlider = createDevTools(<SliderMonitor />);
-export const DevToolsLog = createDevTools(<LogMonitor />);
 export const DevToolsLogDockable = createDevTools(
   <DockMonitor
     toggleVisibilityKey='H'
-    changePositionKey='Q'>
+    changePositionKey='Q'
+    monitorState={{ isVisible: false }}>
     <LogMonitor />
   </DockMonitor>
 );
+
+export const DevToolsSlider = createDevTools(<SliderMonitor />);
+export const DevToolsLog = createDevTools(<LogMonitor />);

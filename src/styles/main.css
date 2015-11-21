@@ -1,9 +1,9 @@
 @import 'typography.css';
 
 :root {
-  --foo: rebeccapurple;
   --bar: color(red alpha(-10%));
   --baz: 10px;
+  --foo: rebeccapurple;
 }
 
 html {
@@ -29,8 +29,8 @@ body {
   font-family: 'Orbitron';
   font-size: calc(var(--baz) * 2);
 
-  size: 300px 200px;
   box-shadow: 10px -10px teal;
+  size: 300px 200px;
   border-radius: 4px;
   display: flex;
 
