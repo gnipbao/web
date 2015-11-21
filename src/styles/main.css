@@ -1,4 +1,4 @@
-@import 'typography.css';
+@import "typography.css";
 
 :root {
   --bar: color(red alpha(-10%));
@@ -10,7 +10,8 @@ html {
   overflow-x: hidden;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -20,20 +21,20 @@ body {
 }
 
 /* stylelint-disable selector-no-id */
+
 #root {
   height: 100%;
 }
+
 /* stylelint-enable */
 
 .hooy {
-  font-family: 'Orbitron';
-  font-size: calc(var(--baz) * 2);
-
-  box-shadow: 10px -10px teal;
-  size: 300px 200px;
-  border-radius: 4px;
-  display: flex;
-
   background-color: var(--foo);
+  border-radius: 4px;
+  box-shadow: 10px -10px teal;
   color: var(--bar);
+  display: flex;
+  font-family: "Orbitron";
+  font-size: calc(var(--baz) * 2);
+  size: 300px 200px;
 }

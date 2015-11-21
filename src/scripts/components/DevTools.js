@@ -9,8 +9,7 @@ import SliderMonitor from 'redux-slider-monitor';
 export const DevToolsLogDockable = createDevTools(
   <DockMonitor
     toggleVisibilityKey='H'
-    changePositionKey='Q'
-    monitorState={{ isVisible: false }}>
+    changePositionKey='Q'>
     <LogMonitor />
   </DockMonitor>
 );

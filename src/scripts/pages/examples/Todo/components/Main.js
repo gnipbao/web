@@ -1,28 +1,35 @@
 import React, { PropTypes, Component } from 'react';
 
-import { List, ListSubHeader, ListCheckbox } from 'react-toolbox/lib/list';
+import { List, ListSubHeader } from 'react-toolbox/lib/list';
 
-import Footer from './Footer'
+import Footer from './Footer';
+import Item from './Item';
 
 class Main extends Component {
+  static propTypes = {
+    complete: PropTypes.func.isRequired,
+    del: PropTypes.func.isRequired,
+    items: PropTypes.arrayOf(PropTypes.object).isRequired
+  }
+
   complete() {
   }
 
   render() {
+    const { items, complete, del } = this.props;
+
     return (
       <div>
         <List selectable ripple>
           <ListSubHeader caption='Todos' />
-          <ListCheckbox
-            caption='lol'
-            legend='learn some shit, write some code & die'
-            onChange={::this.complete}
-          />
-          <ListCheckbox
-            caption='lol'
-            legend='fsdafhkl skadlhf klhsadfkl'
-            onChange={::this.complete}
-          />
+          {items.map((item) =>
+            <Item
+              key={item.id}
+              item={item}
+              icon='comment'
+              {...{ complete, del }}
+            />
+          )}
         </List>
         <Footer />
       </div>
