@@ -1,5 +1,3 @@
-'use strict';
-
 import opn from 'opn';
 import webpack from 'webpack';
 import DevServer from 'webpack-dev-server';
@@ -15,11 +13,8 @@ gulp.task('server', (callback) => {
     if (err) {
       console.log(err);
     } else {
-      if (process.env.OPEN_IN_BROWSER) {
-        opn(url, { app: [process.env.DEVELOPMENT_BROWSER] });
-      }
-      console.log(`🚧  WDS: ${url}`);
-      console.log(`public url: ${publicUrl}`);
+      console.log(`\n🛠 🛠 🛠 🚽 👽 🚷 🚀 🛠 🛠 🛠  WDS: ${url}`);
+      console.log(`🍇 🍄 🍉 🍋 🍌 🍎 🍍 🍑 🍒 🍓  PUB: ${publicUrl}\n`);
     }
     callback();
   });

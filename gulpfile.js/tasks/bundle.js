@@ -1,5 +1,3 @@
-'use strict';
-
 import webpack from 'webpack';
 
 gulp.task('bundle', () => {

@@ -1,5 +1,3 @@
-'use strict';
-
 import path from 'path';
 
 const wildcard = path.join(config.app.paths.assets.root, '**/*');

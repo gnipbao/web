@@ -1,5 +1,3 @@
-'use strict';
-
 import browsersync from 'browser-sync';
 
 const wildcards = [

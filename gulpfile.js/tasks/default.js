@@ -1,3 +1,1 @@
-'use strict';
-
-gulp.task('default', () => sequence(['assets', 'server', 'watch']));
+gulp.task('default', () => sequence(['assets', 'server', 'watch', 'sync']));
