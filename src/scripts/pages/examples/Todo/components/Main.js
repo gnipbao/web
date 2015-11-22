@@ -17,6 +17,7 @@ class Main extends Component {
 
   render() {
     const { items, complete, del } = this.props;
+    const creators = { complete, del };
 
     return (
       <div>
@@ -27,7 +28,7 @@ class Main extends Component {
               key={item.id}
               item={item}
               icon='comment'
-              {...{ complete, del }}
+              {...creators}
             />
           )}
         </List>

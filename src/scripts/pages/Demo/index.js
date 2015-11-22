@@ -5,7 +5,7 @@ import style from './style';
 
 import Counter from '../examples/Counter';
 import Todo from '../examples/Todo';
-import Form from '../examples/Form';
+import FiveHundred from '../examples/500px';
 import Reddit from '../examples/Reddit';
 import SoundCloud from '../examples/SoundCloud';
 
@@ -25,7 +25,7 @@ class Demo extends Component {
         <Tabs index={this.state.index} onChange={::this.tabChange}>
           <Tab label='Counter'><Counter /></Tab>
           <Tab label='Todo'><Todo /></Tab>
-          <Tab label='Form'><Form /></Tab>
+          <Tab label='500px'><FiveHundred /></Tab>
           <Tab label='Reddit'><Reddit /></Tab>
           <Tab label='SoundCloud'><SoundCloud /></Tab>
         </Tabs>
