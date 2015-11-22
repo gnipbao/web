@@ -19,8 +19,7 @@ const Component = (props) => {
       <Button
         floating mini
         icon='delete'
-        tooltip='Delete'
-        onClick={del}
+        onClick={() => del(item.id)}
       />
     </li>
   );

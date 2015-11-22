@@ -40,9 +40,8 @@ export default handleActions({
   },
 
   TODO_COMPLETE: (s, { payload }) => {
-    const item = s.find(i => i.id === payload);
-    const completed = !item.completed;
-    return [{ completed, ...item }, ...s];
+    const ix = R.findIndex(R.propEq('id', payload))(s);
+    return R.update(ix, R.assoc('completed', !s[ix].completed, s[ix]), s);
   },
 
   TODO_COMPLETE_ALL: (s) => {

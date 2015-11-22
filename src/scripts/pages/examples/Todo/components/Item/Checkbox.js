@@ -13,7 +13,7 @@ const Component = ({ item, complete }) => {
       className={style.checkbox}
       checked={completed}
       label={<ListItemContent caption={text} />}
-      onChange={complete}
+      onChange={() => complete(item.id)}
     />
   );
 };
