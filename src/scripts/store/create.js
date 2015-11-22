@@ -1,13 +1,11 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore } from 'redux';
 
-import createMiddleware from './middleware';
+import middleware from './middleware';
 import enhance from './enhance';
 import { reducers } from 'modules';
 
 export default (router, initialState = {}) => {
-  const middleware = createMiddleware(router);
-  const applied = applyMiddleware(...middleware);
-  const creator = enhance(applied);
+  const creator = enhance(middleware, router);
   const create = creator(createStore);
   const store = create(reducers, initialState);
 

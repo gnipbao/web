@@ -1,6 +1,6 @@
 import { compose } from 'redux';
 
-export default (middleware) => {
+export default (middleware, router) => {
   if (__DEVELOPMENT__ && __CLIENT__ && __DEVTOOLS__) {
     const { DevToolsSlider } = require('components/DevTools');
     const { persistState } = require('redux-devtools');
@@ -9,8 +9,8 @@ export default (middleware) => {
     const debugSessionId = window.location.href.match(/[?&]debug_session=([^&]+)\b/);
     const persister = persistState(debugSessionId);
 
-    return compose(middleware, devTools, persister);
+    return compose(middleware, router, devTools, persister);
   } else {
-    return compose(middleware);
+    return compose(middleware, router);
   }
 };

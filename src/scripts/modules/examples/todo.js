@@ -71,7 +71,7 @@ export default undoable(reducer, {
     TODO_COMPLETE,
     TODO_COMPLETE_ALL,
     TODO_CLEAR_COMPLETED
-  ]), 
+  ]),
 
   debug: __DEVELOPMENT__
 });

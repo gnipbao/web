@@ -1,5 +1,6 @@
+import { applyMiddleware } from 'redux';
+
 import catchPromise from 'redux-catch-promise';
-import { router5Middleware } from 'redux-router5';
 import promise from 'redux-promise';
 
 function getEnvMiddleware() {
@@ -14,9 +15,8 @@ const promiseCatcher = catchPromise((promised, action, store) => {
   // looking for promises?
 });
 
-export default (router) => [
-  router5Middleware(router),
+export default applyMiddleware(
   promiseCatcher,
   promise,
   ...getEnvMiddleware()
-];
+);
