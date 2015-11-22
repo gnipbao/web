@@ -48,6 +48,7 @@
   },
   "globals": {
     "settings": true,
+    "R": true,
 
     "__TEST__": true,
     "__DEVELOPMENT__": true,
