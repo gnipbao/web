@@ -12,7 +12,11 @@ export default [
       paths.scripts,
       paths.tests
     ],
-    loader: 'babel'
+    loaders: [
+      'babel',
+      'flowcheck',
+      'babel?blacklist=flow'
+    ]
   },
   {
     test: /\.css$/,

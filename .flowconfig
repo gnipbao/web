@@ -1,0 +1,15 @@
+[ignore]
+dist/*
+tests/*
+.*/node_modules/fbjs.*
+.*/node_modules/npmconf.*
+.*/node_modules/phantomjs.*
+
+[include]
+src/scripts
+
+[libs]
+flow/
+
+[options]
+suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe

@@ -2,20 +2,22 @@
 
 # Table of contents
 
-* [up and running wih docker](#up-and-running-with-docker)
+* [up and running](#up-and-running)
 * [directory layout](#directory-layout)
 * [development](#development)
 * [setup](#setup)
 * [environment variables](#environment-variables)
 * TODO
 
-# Up and running with [docker-compose](https://docs.docker.com/compose/) & [dinghy](https://github.com/codekitchen/dinghy)
+# Up and running
 
 ## TL;DR
 
-* _I assume you are working on Mac OS X and using docker-machine_
+ _I assume you are working on Mac OS X and using docker-machine_.
 
 #### Setup:
+
+Install [docker-compose](https://docs.docker.com/compose/) & [dinghy](https://github.com/codekitchen/dinghy).
 
 ```
 make docker-setup

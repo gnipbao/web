@@ -14,7 +14,11 @@ export default [
   {
     test: /\.jsx?$/,
     include: [paths.scripts],
-    loader: 'babel'
+    loaders: [
+      'babel',
+      'flowcheck',
+      'babel?blacklist=flow'
+    ]
   },
   {
     test: /\.css$/,
