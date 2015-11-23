@@ -5,35 +5,30 @@ const cssOptions = {
   sass: 'modules'
 };
 
-const babelOptions = {
-  stage: 0,
-  plugins: ['react-transform'],
-  extra: {
-    'react-transform': {
-      transforms: [
-        {
-          transform: 'react-transform-catch-errors',
-          imports: ['react', 'redbox-react']
-        },
-        {
-          transform: 'react-transform-hmr',
-          imports: ['react'],
-          locals: ['module']
-        }
-      ]
-    }
-  }
-};
-
 export default [
   {
     test: /\.jsx?$/,
-    loaders: [
-      'babel?' + JSON.stringify(babelOptions),
-      'flowcheck',
-      'babel?blacklist=flow'
-    ],
-    include: [paths.scripts]
+    loader: 'babel',
+    include: [paths.scripts],
+    query: {
+      stage: 0,
+      plugins: ['react-transform'],
+      extra: {
+        'react-transform': {
+          transforms: [
+            {
+              transform: 'react-transform-catch-errors',
+              imports: ['react', 'redbox-react']
+            },
+            {
+              transform: 'react-transform-hmr',
+              imports: ['react'],
+              locals: ['module']
+            }
+          ]
+        }
+      }
+    }
   },
   {
     test: /\.css$/,
