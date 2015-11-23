@@ -11,7 +11,7 @@ import { createStore } from 'store';
 
 import { routes, defaultRoute } from 'routes';
 
-import Counter from 'components/Counter';
+import Counter from 'pages/examples/Counter/components/Counter';
 
 const router = createRouter(routes, { defaultRoute });
 
