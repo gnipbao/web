@@ -21,7 +21,7 @@ class Main extends Component {
     router: PropTypes.object.isRequired
   }
 
-  constructor(props, context) {
+  constructor(props: { router: Object }, context: Object) {
     super(props);
     this.router = context.router;
   }

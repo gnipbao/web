@@ -13,4 +13,4 @@
 
     es2015, webpack, babel,
     react, react-router, redux,
-    ramdajs, postcss, etc
+    immutablejs, postcss, etc

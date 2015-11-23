@@ -16,7 +16,10 @@ const items = [
   { name: 'about', label: 'About', icon: 'whatshot', disabled: true }
 ];
 
-export default (props) => {
+export default (props: {
+  router: Object;
+  go: Function;
+}) => {
   const { router, go } = props;
   const actions = items.map((item) => button(::router.isActive, go, item));
 

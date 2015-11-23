@@ -5,7 +5,14 @@
     "utility.inlineEnvironmentVariables",
     "minification.removeDebugger"
   ],
-  "plugins": ["typecheck"],
-  "loose": ["es6.classes", "es6.properties.computed"],
+  "plugins": [
+    "typecheck",
+    "react-require",
+    "babel-root-import"
+  ],
+  "loose": [
+    "es6.classes",
+    "es6.properties.computed"
+  ],
   "blacklist": ["es6.tailCall"]
 }

@@ -1,3 +1,4 @@
+import Immutable from 'immutable';
 import { createAction, handleActions } from 'redux-actions';
 import undoable, { includeAction } from 'redux-undo';
 

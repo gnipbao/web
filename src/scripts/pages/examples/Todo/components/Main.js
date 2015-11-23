@@ -1,5 +1,3 @@
-import React, { PropTypes, Component } from 'react';
-
 import { List, ListSubHeader } from 'react-toolbox/lib/list';
 
 import Footer from './Footer';

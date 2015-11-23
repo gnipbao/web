@@ -1,5 +1,3 @@
-import React, { PropTypes } from 'react';
-
 import Button from 'react-toolbox/lib/button';
 import listStyle from 'react-toolbox/lib/list/style';
 

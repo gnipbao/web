@@ -14,7 +14,7 @@ log('globals\n', globals);
 
 export default [
   new webpack.ProvidePlugin({
-    R: 'ramda'
+    Immutable: 'immutable'
   }),
   new webpack.ContextReplacementPlugin(/node_modules\/moment\/locale/, /ru|en-gb/),
   new webpack.DefinePlugin(globals),

@@ -1,18 +1,16 @@
-/* @flow */
-
 import React, { PropTypes, Component } from 'react';
 
 import { Provider } from 'react-redux';
 import { RouterProvider } from 'react-router5';
 
-import Layout from '../layouts/Main';
+import Layout from 'layouts/Main';
 
 export default class Root extends Component {
   constructor(props: {
     store: Object;
     router: Object;
   }) {
-    super(props)
+    super(props);
   }
 
   renderDevTools() {

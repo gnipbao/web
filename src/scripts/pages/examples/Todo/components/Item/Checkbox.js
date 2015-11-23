@@ -1,5 +1,3 @@
-import React, { PropTypes } from 'react';
-
 import Checkbox from 'react-toolbox/lib/checkbox';
 import ListItemContent from 'react-toolbox/lib/list/content';
 

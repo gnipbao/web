@@ -1,4 +1,3 @@
-import React from 'react';
 import Button from 'react-toolbox/lib/button';
 
 import style from './style';

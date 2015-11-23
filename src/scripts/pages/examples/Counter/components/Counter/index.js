@@ -1,5 +1,3 @@
-import React, { Component, PropTypes } from 'react';
-
 import cardStyle from 'react-toolbox/lib/card/style';
 import Button from 'react-toolbox/lib/button';
 

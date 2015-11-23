@@ -1,4 +1,3 @@
-import React, { PropTypes, Component } from 'react';
 import { reduxForm } from 'redux-form';
 
 import Input from 'react-toolbox/lib/input';

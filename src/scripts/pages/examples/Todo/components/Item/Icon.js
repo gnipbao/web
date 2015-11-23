@@ -1,5 +1,3 @@
-import React, { PropTypes } from 'react';
-
 import FontIcon from 'react-toolbox/lib/font_icon';
 import style from 'react-toolbox/lib/list/style';
 
