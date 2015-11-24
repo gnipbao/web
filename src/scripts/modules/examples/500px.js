@@ -7,9 +7,9 @@ const FHPX_RESPONSE = 'FHPX_RESPONSE';
 const request = createAction(FHPX_REQUEST);
 const response = createAction(FHPX_RESPONSE);
 
-export const loadPhotos = (term, page = 1) =>
+export const loadPhotos = (term, page) =>
   async (dispatch, getState) => {
-    const requestPage = page || getState().page + 1;
+    const requestPage = page || getState().fiveHundredPixels.page + 1;
 
     const requestAction = request({ term, page: requestPage });
     dispatch(requestAction);
@@ -28,8 +28,6 @@ const initialState = {
 
 export default handleActions({
   FHPX_REQUEST: s => ({ ...s, photos: [], loading: true }),
-  FHPX_RESPONSE: (s, { payload: { photos, page } }) => {
-    console.log('got some photos: ', photos.length);
-    return { ...s, loading: false, photos, page };
-  }
+  FHPX_RESPONSE: (s, { payload: { photos, page } }) => 
+    ({ ...s, loading: false, photos, page })
 }, initialState);
