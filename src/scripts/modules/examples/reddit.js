@@ -1,15 +1,13 @@
 import { createAction, handleActions } from 'redux-actions';
-
 import { fetchPosts } from 'api/reddit';
 
 const REDDIT_REQUEST = 'REDDIT_REQUEST';
 const REDDIT_RESPONSE = 'REDDIT_RESPONSE';
 
-const response = createAction(
-  REDDIT_RESPONSE,
-  ({ data: { children } }) => children.map((child) => child.data)
-);
+const flattenResponse = ({ data: { children } }) =>
+  children.map((child) => child.data);
 
+const response = createAction(REDDIT_RESPONSE, flattenResponse);
 const request = createAction(REDDIT_REQUEST);
 
 export const loadPosts = (reddit) => async (dispatch) => {
@@ -24,8 +22,6 @@ const initialState = {
 };
 
 export default handleActions({
-  REDDIT_REQUEST: (s) => ({ ...s, loading: true }),
-  REDDIT_RESPONSE: (s, { payload }) => {
-    return { loading: false, items: payload };
-  }
+  REDDIT_REQUEST: s => ({ ...s, items: [], loading: true }),
+  REDDIT_RESPONSE: (s, { payload }) => ({ loading: false, items: payload })
 }, initialState);

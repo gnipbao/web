@@ -11,7 +11,7 @@ import style from './style';
 
 const REDDITS = [
   { value: 'shittyprogramming', label: 'Shitty programming' },
-  { value: 'financialindependance', label: 'Financial indenpendance' },
+  { value: 'financialindependence', label: 'Financial indenpendance' },
   { value: 'haskell', label: 'Haskell' },
   { value: 'programming', label: 'Programming' },
   { value: 'git', label: 'Git' },
@@ -27,9 +27,15 @@ const REDDITS = [
 
 @connect(
   s => s.reddit,
-  d => ({ load: bindActionCreators(loadPosts, d) }) 
+  d => ({ load: bindActionCreators(loadPosts, d) })
 )
 export default class Example extends Component {
+  static propTypes = {
+    items: PropTypes.array.isRequired,
+    loading: PropTypes.bool.isRequired,
+    load: PropTypes.func.isRequired
+  }
+
   state = { reddit: REDDITS[0].value }
 
   handleChange(value) {
@@ -42,14 +48,14 @@ export default class Example extends Component {
 
     return (
       <div className={style.root}>
-        <Dropdown auto={true}
+        <Dropdown auto
           source={REDDITS}
           onChange={::this.handleChange}
           value={reddit}
         />
         <Button primary floating
           loading={loading}
-          icon='cached' 
+          icon='cached'
           onClick={() => load(reddit)}
         />
         <Feed reddit={reddit} items={items} />

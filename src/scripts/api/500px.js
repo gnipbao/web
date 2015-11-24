@@ -2,7 +2,7 @@ import Client from './Client';
 
 const api = new Client('https://api.500px.com/v1');
 
-export const fetchPopular = async (term, page) => {
+export const searchPhotos = async (term, page) => {
   return await api.get('photos/search', {
     term,
     page,
