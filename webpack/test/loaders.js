@@ -9,14 +9,11 @@ export default [
   {
     test: /\.jsx?$/,
     include: [
+      /node_modules\/qs/,
       paths.scripts,
       paths.tests
     ],
-    loaders: [
-      'babel',
-      'flowcheck',
-      'babel?blacklist=flow'
-    ]
+    loader: 'babel'
   },
   {
     test: /\.css$/,

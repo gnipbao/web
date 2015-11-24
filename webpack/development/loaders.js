@@ -9,7 +9,10 @@ export default [
   {
     test: /\.jsx?$/,
     loader: 'babel',
-    include: [paths.scripts],
+    include: [
+      /node_modules\/qs/,
+      paths.scripts
+    ],
     query: {
       stage: 0,
       plugins: ['react-transform'],

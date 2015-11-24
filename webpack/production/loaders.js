@@ -13,12 +13,11 @@ const cssOptions = {
 export default [
   {
     test: /\.jsx?$/,
-    include: [paths.scripts],
-    loaders: [
-      'babel',
-      'flowcheck',
-      'babel?blacklist=flow'
-    ]
+    include: [
+      /node_modules\/qs/,
+      paths.scripts
+    ],
+    loader: 'babel'
   },
   {
     test: /\.css$/,

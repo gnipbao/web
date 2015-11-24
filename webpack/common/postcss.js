@@ -22,7 +22,5 @@ export default () => [
   require('postcss-responsive-type'),
   require('cssnano'),
   require('postcss-reporter'),
-  require('postcss-browser-reporter')({
-    selector: 'body:after'
-  })
+  require('postcss-browser-reporter')
 ];

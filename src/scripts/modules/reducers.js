@@ -1,21 +1,11 @@
 import { combineReducers } from 'redux';
-import { router5Reducer } from 'redux-router5';
-import { reducer as formReducer } from 'redux-form';
+import { router5Reducer as router } from 'redux-router5';
+import { reducer as form } from 'redux-form';
 
-import counter from './examples/counter';
-import todo from './examples/todo';
-
-const base = {
-  router: router5Reducer,
-  form: formReducer
-};
-
-const examples = {
-  counter,
-  todo
-};
+import * as examples from './examples';
 
 export default combineReducers({
-  ...base,
+  router,
+  form,
   ...examples
 });

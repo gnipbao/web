@@ -1,4 +1,3 @@
-import Immutable from 'immutable';
 import { createAction, handleActions } from 'redux-actions';
 import undoable, { includeAction } from 'redux-undo';
 
@@ -48,8 +47,7 @@ const reducer = handleActions({
   },
 
   TODO_COMPLETE: (s, { payload }) => {
-    const ix = R.findIndex(R.propEq('id', payload))(s);
-    return R.update(ix, R.assoc('completed', !s[ix].completed, s[ix]), s);
+    return s.map(i => i.id === payload ? { ...i, completed: !i.completed } : i );
   },
 
   TODO_COMPLETE_ALL: (s) => {

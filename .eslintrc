@@ -19,6 +19,11 @@
     "no-else-return": 0,
     "jsx-quotes": [2, "prefer-single"],
 
+    "react/jsx-no-undef": 0,
+    "react/react-in-jsx-scope": 0,
+
+    "no-undef": 2,
+
     "no-unused-vars": [2, {
       "args": "after-used",
       "argsIgnorePattern": "^_"
@@ -47,8 +52,10 @@
     }
   },
   "globals": {
+    "Component": true,
+    "PropTypes": true,
+
     "settings": true,
-    "R": true,
 
     "__TEST__": true,
     "__DEVELOPMENT__": true,

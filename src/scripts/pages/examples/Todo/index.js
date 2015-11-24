@@ -23,7 +23,7 @@ const Example = (props, context) => {
 
 export default connect(
   s => ({ items: s.todo }),
-  (d) => ({
+  d => ({
     todoActionCreators: bindActionCreators(todoActions, d),
     undoActionCreators: bindActionCreators({
       undo: todoActions.undo,

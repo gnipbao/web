@@ -1,3 +1,4 @@
+import thunk from 'redux-thunk';
 import catchPromise from 'redux-catch-promise';
 import { router5Middleware } from 'redux-router5';
 import promise from 'redux-promise';
@@ -16,7 +17,8 @@ const promiseCatcher = catchPromise((promised, action, store) => {
 
 export default (router) => [
   router5Middleware(router),
-  promiseCatcher,
+  thunk,
+  // promiseCatcher,
   promise,
   ...getEnvMiddleware()
 ];
