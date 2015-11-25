@@ -3,28 +3,27 @@ import undoable, { includeAction } from 'redux-undo';
 
 import km from 'lib/keyMirror';
 
-const COUNTER_INC = 'COUNTER_INC';
-const COUNTER_DEC = 'COUNTER_DEC';
+const INC = 'COUNTER_INC';
+const DEC = 'COUNTER_DEC';
 
-const COUNTER_UNDO = 'COUNTER_UNDO';
-const COUNTER_REDO = 'COUNTER_REDO';
+const UNDO = 'COUNTER_UNDO';
+const REDO = 'COUNTER_REDO';
 
-export const inc = createAction(COUNTER_INC);
-export const dec = createAction(COUNTER_DEC);
-
-export const undo = createAction(COUNTER_UNDO);
-export const redo = createAction(COUNTER_REDO);
+export const inc = createAction(INC);
+export const dec = createAction(DEC);
+export const undo = createAction(UNDO);
+export const redo = createAction(REDO);
 
 const initialState = 0;
 
 const reducer = handleActions({
-  COUNTER_INC: (s) => s + 1,
-  COUNTER_DEC: (s) => s - 1
+  [INC]: (s) => s + 1,
+  [DEC]: (s) => s - 1
 }, initialState);
 
 export default undoable(reducer, {
-  undoType: COUNTER_UNDO,
-  redoType: COUNTER_REDO,
-  filter: includeAction([COUNTER_INC, COUNTER_DEC]),
+  undoType: UNDO,
+  redoType: REDO,
+  filter: includeAction([INC, DEC]),
   debug: __DEVELOPMENT__
 });

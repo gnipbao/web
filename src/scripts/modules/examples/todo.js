@@ -3,74 +3,72 @@ import undoable, { includeAction } from 'redux-undo';
 
 // TODO: find a better way to reduce such boilerplate!
 
-const TODO_ADD = 'TODO_ADD';
-const TODO_DEL = 'TODO_DEL';
-const TODO_EDIT = 'TODO_EDIT';
-const TODO_COMPLETE = 'TODO_COMPLETE';
-const TODO_COMPLETE_ALL = 'TODO_COMPLETE_ALL';
-const TODO_CLEAR_COMPLETED = 'TODO_CLEAR_COMPLETED';
+const ADD = 'TODO_ADD';
+const DEL = 'TODO_DEL';
+const EDIT = 'TODO_EDIT';
+const COMPLETE = 'TODO_COMPLETE';
+const COMPLETE_ALL = 'TODO_COMPLETE_ALL';
+const CLEAR_COMPLETED = 'TODO_CLEAR_COMPLETED';
 
-const TODO_UNDO = 'TODO_UNDO';
-const TODO_REDO = 'TODO_REDO';
+const UNDO = 'TODO_UNDO';
+const REDO = 'TODO_REDO';
 
-export const add = createAction(TODO_ADD);
-export const del = createAction(TODO_DEL);
-export const edit = createAction(TODO_EDIT);
-export const complete = createAction(TODO_COMPLETE);
-export const completeAll = createAction(TODO_COMPLETE_ALL);
-export const clearCompleted = createAction(TODO_CLEAR_COMPLETED);
+export const add = createAction(ADD);
+export const del = createAction(DEL);
+export const edit = createAction(EDIT);
+export const complete = createAction(COMPLETE);
+export const completeAll = createAction(COMPLETE_ALL);
+export const clearCompleted = createAction(CLEAR_COMPLETED);
 
-export const undo = createAction(TODO_UNDO);
-export const redo = createAction(TODO_REDO);
+export const undo = createAction(UNDO);
+export const redo = createAction(REDO);
 
 const initialState = [
-  { id: 0, text: 'Learn react, redux, frp, elm, etc. Write code. Die.', completed: true },
-  { id: 1, text: 'Go forth & die!', completed: false }
+  { id: 0, text: 'Learn react, redux, frp, elm, etc', completed: true },
+  { id: 1, text: 'Write code', completed: true },
+  { id: 2, text: 'Die', completed: false }
 ];
 
 const nextId = state =>
   state.reduce((max, item) => Math.max(item.id, max), -1) + 1;
 
 const reducer = handleActions({
-
-  TODO_ADD: (s, { payload }) => [{
+  [ADD]: (s, { payload }) => [{
     id: nextId(s),
     text: payload,
     completed: false
   }, ...s],
 
-  TODO_DEL: (s, { payload }) => s.filter(i => i.id !== payload),
+  [DEL]: (s, { payload }) => s.filter(i => i.id !== payload),
 
-  TODO_EDIT: (s, { payload: { id, text } }) => {
+  [EDIT]: (s, { payload: { id, text } }) => {
     const item = s.find(i => i.id === id);
     return [{ text, ...item }, ...s];
   },
 
-  TODO_COMPLETE: (s, { payload }) => {
-    return s.map(i => i.id === payload ? { ...i, completed: !i.completed } : i );
-  },
+  [COMPLETE]: (s, { payload }) =>
+    s.map(i => i.id === payload ? { ...i, completed: !i.completed } : i ),
 
-  TODO_COMPLETE_ALL: (s) => {
+  [COMPLETE_ALL]: (s) => {
     const completed = !s.every(i => i.completed);
     return s.map(i => ({ completed, ...i }));
   },
 
-  TODO_CLEAR_COMPLETED: (s) => s.filter(i => !i.completed)
-
+  [CLEAR_COMPLETED]: (s) => s.filter(i => !i.completed)
 }, initialState);
 
 export default undoable(reducer, {
-  undoType: TODO_UNDO,
-  redoType: TODO_REDO,
+  undoType: UNDO,
+  redoType: REDO,
 
   filter: includeAction([
-    TODO_ADD,
-    TODO_DEL,
-    TODO_EDIT,
-    TODO_COMPLETE,
-    TODO_COMPLETE_ALL,
-    TODO_CLEAR_COMPLETED
-  ]), 
+    ADD,
+    DEL,
+    EDIT,
+    COMPLETE,
+    COMPLETE_ALL,
+    CLEAR_COMPLETED
+  ]),
 
   debug: __DEVELOPMENT__
 });

@@ -100,6 +100,7 @@
     "karma-sourcemap-loader": "^0.3.6",
     "karma-spec-reporter": "0.0.22",
     "karma-webpack": "^1.7.0",
+    "lost": "6.6.2",
     "map-obj": "^1.0.1",
     "minimist": "^1.2.0",
     "mocha": "^2.3.3",

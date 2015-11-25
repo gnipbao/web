@@ -9,14 +9,14 @@ import Header from './components/Header';
 import Main from './components/Main';
 
 const Example = (props, context) => {
-  const { items, todoActionCreators, undoActionCreators } = props;
-  const { add, ...mainActionCreators } = todoActionCreators;
+  const { items, todoActions, undoActions } = props;
+  const { add, ...mainActions } = todoActions;
 
   return (
     <div>
       <Header addItem={add} />
-      <Main items={items.present} {...mainActionCreators} />
-      <Undo {...undoActionCreators} />
+      <Main items={items.present} {...mainActions} />
+      <Undo {...undoActions} />
     </div>
   );
 };
@@ -24,8 +24,8 @@ const Example = (props, context) => {
 export default connect(
   s => ({ items: s.todo }),
   d => ({
-    todoActionCreators: bindActionCreators(todoActions, d),
-    undoActionCreators: bindActionCreators({
+    todoActions: bindActionCreators(todoActions, d),
+    undoActions: bindActionCreators({
       undo: todoActions.undo,
       redo: todoActions.redo
     }, d)

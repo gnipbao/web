@@ -1,11 +1,11 @@
 import { createAction, handleActions } from 'redux-actions';
 import { searchPhotos } from 'api/500px';
 
-const FHPX_REQUEST = 'FHPX_REQUEST';
-const FHPX_RESPONSE = 'FHPX_RESPONSE';
+const REQUEST = '500PX_REQUEST';
+const RESPONSE = '500PX_RESPONSE';
 
-const request = createAction(FHPX_REQUEST);
-const response = createAction(FHPX_RESPONSE);
+const request = createAction(REQUEST);
+const response = createAction(RESPONSE);
 
 export const loadPhotos = (term, page) =>
   async (dispatch, getState) => {
@@ -27,7 +27,7 @@ const initialState = {
 };
 
 export default handleActions({
-  FHPX_REQUEST: s => ({ ...s, photos: [], loading: true }),
-  FHPX_RESPONSE: (s, { payload: { photos, page } }) => 
+  [REQUEST]: s => ({ ...s, photos: [], loading: true }),
+  [RESPONSE]: (s, { payload: { photos, page } }) =>
     ({ ...s, loading: false, photos, page })
 }, initialState);

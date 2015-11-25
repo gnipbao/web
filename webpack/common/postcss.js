@@ -9,6 +9,7 @@ export default () => [
   require('stylelint')(stylelint),
   require('precss'),
   require('postcss-cssnext')(cssnext),
+  require('lost'),
   require('postcss-assets')(assets),
   require('postcss-font-magician')(fontMagician),
   require('postcss-size'),
@@ -22,5 +23,5 @@ export default () => [
   require('postcss-responsive-type'),
   require('cssnano'),
   require('postcss-reporter'),
-  require('postcss-browser-reporter')
+  // require('postcss-browser-reporter')
 ];

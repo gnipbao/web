@@ -18,8 +18,8 @@ export default (props) => {
     <Card
       className={style.root}
       image={image_url}
+      type='image'
       title={name}
-      text={text}
     />
   );
 };

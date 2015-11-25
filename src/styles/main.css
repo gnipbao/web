@@ -1,10 +1,5 @@
 @import "typography.css";
-
-:root {
-  --bar: color(red alpha(-10%));
-  --baz: 10px;
-  --foo: rebeccapurple;
-}
+@lost flexbox flex;
 
 html {
   overflow-x: hidden;
@@ -20,21 +15,13 @@ body {
   color: #222;
 }
 
+
 /* stylelint-disable selector-no-id */
 
 #root {
-  height: 100%;
 }
 
 /* stylelint-enable */
 
-.hooy {
-  background-color: var(--foo);
-  border-radius: 4px;
-  box-shadow: 10px -10px teal;
-  color: var(--bar);
-  display: flex;
-  font-family: "Orbitron";
-  font-size: calc(var(--baz) * 2);
-  size: 300px 200px;
+.main {
 }
