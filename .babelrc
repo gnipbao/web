@@ -7,8 +7,7 @@
   ],
   "plugins": [
     "typecheck",
-    "react-require",
-    "babel-root-import"
+    "react-require"
   ],
   "loose": [
     "es6.classes",

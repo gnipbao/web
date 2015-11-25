@@ -1,6 +1,6 @@
 {
   "name": "starter-kit",
-  "version": "0.1.0-pre-alpha",
+  "version": "0.1.0-pre-alpha.0",
   "description": "starter kit",
   "main": "src/index.js",
   "repository": {
@@ -57,7 +57,6 @@
     "babel-plugin-react-require": "vyorkin/babel-plugin-react-require#customized",
     "babel-plugin-react-transform": "^1.1.1",
     "babel-plugin-typecheck": "^2.0.0",
-    "babel-root-import": "^2.0.1",
     "browser-sync": "^2.9.11",
     "bundle-loader": "^0.5.4",
     "chai-as-promised": "^5.1.0",
@@ -84,8 +83,8 @@
     "gulp-size": "^2.0.0",
     "gulp-util": "^3.0.7",
     "html-webpack-plugin": "ampedandwired/html-webpack-plugin",
-    "isparta": "^4.0.0",
-    "isparta-loader": "^2.0.0",
+    "isparta": "3.5.3",
+    "isparta-loader": "1.0.0",
     "json-loader": "^0.5.3",
     "karma": "^0.13.14",
     "karma-chai": "^0.1.0",
