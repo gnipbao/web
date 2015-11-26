@@ -5,7 +5,7 @@ import { expect } from 'chai';
 
 import { Provider } from 'react-redux';
 import { create as createStore } from 'store';
-import Counter from 'pages/examples/Counter/components/Counter';
+import Counter from 'examples/Counter/components/Counter';
 
 describe('Counter', () => {
   const mockStore = {};

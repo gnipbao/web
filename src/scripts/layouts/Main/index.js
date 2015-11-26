@@ -9,7 +9,7 @@ import AppBar from 'react-toolbox/lib/app_bar';
 import Navigation from 'components/Navigation';
 
 @connect(
-  s => s,
+  s => ({ path: s.routing.path }),
   d => ({ go: bindActionCreators(updatePath, d) })
 )
 export default class Main extends Component {
@@ -18,12 +18,12 @@ export default class Main extends Component {
   }
 
   render() {
-    const { go, children } = this.props;
+    const { go, path, children } = this.props;
 
     return (
       <div className='main'>
         <AppBar top flat>
-          <Navigation go={go} />
+          <Navigation go={go} path={path} />
         </AppBar>
         <section className='page'>
           {children}
