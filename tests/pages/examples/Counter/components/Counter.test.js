@@ -1,24 +1,16 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { renderIntoDocument } from 'react-addons-test-utils';
 import { expect } from 'chai';
 
 import { Provider } from 'react-redux';
-
-import { createRouter } from 'router';
-import { createStore } from 'store';
-
-import { routes, defaultRoute } from 'routes';
-
+import { create as createStore } from 'store';
 import Counter from 'pages/examples/Counter/components/Counter';
-
-const router = createRouter(routes, { defaultRoute });
 
 describe('Counter', () => {
   const mockStore = {};
 
-  const store = createStore(router);
+  const store = createStore();
   const renderer = renderIntoDocument(
     <Provider store={store} key='provider'>
       <Counter />

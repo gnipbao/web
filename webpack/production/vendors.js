@@ -1,5 +1,4 @@
 export default [
-  '@meadow/redux-ensure-fsa',
   'immutable',
   'debug',
   'moment',
@@ -15,7 +14,6 @@ export default [
   'react-pure-render',
   'redux-simple-router',
   'react-router',
-  'fbsj',
   'history',
   'react-toolbox',
   'redux-actions',
