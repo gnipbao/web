@@ -1,14 +1,11 @@
-import React, { PropTypes, Component } from 'react';
-
 import { Provider } from 'react-redux';
-import { RouterProvider } from 'react-router5';
+import { ReduxRouter } from 'redux-router';
 
-import Layout from 'layouts/Main';
+import routes from 'routes';
 
 export default class Root extends Component {
   constructor(props: {
     store: Object;
-    router: Object;
   }) {
     super(props);
   }
@@ -26,14 +23,10 @@ export default class Root extends Component {
   }
 
   render() {
-    const { router, store } = this.props;
-
     return (
-      <Provider store={store}>
+      <Provider store={this.props.store}>
         <div>
-          <RouterProvider router={router}>
-            <Layout />
-          </RouterProvider>
+          <ReduxRouter>{routes}</ReduxRouter>
           {this.renderDevTools()}
         </div>
       </Provider>

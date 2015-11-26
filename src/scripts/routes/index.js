@@ -1,19 +1,24 @@
-import notFound from 'pages/NotFound';
-import home from 'pages/Home';
-import demo from 'pages/Demo';
+import { Route, IndexRoute } from 'react-router';
 
-// routes: name <-> segment
-//  pages: segment -> path
+import Layout from 'layouts/Main';
+import NotFound from 'pages/NotFound';
+import Home from 'pages/Home';
+import Demo from 'pages/Demo';
+import About from 'pages/About';
 
-export default {
-  routes: [
-    { name: 'home', path: '/' },
-    { name: 'demo', path: '/demo' }
-  ],
-  pages: {
-    home,
-    demo,
-    notFound
-  },
-  defaultRoute: 'home'
-};
+/**
+ * please keep routes in logical order
+ */
+export default (
+  <Route path='/' component={Layout}>
+    { /* default */ }
+    <IndexRoute component={Home} />
+
+    { /* pages */ }
+    <Route path='demo' component={Demo} />
+    <Route path='about' component={About} />
+
+    { /* catch all */ }
+    <Route path='*' component={NotFound} status={404} />
+  </Route>
+);

@@ -1,7 +1,7 @@
 import thunk from 'redux-thunk';
-import catchPromise from 'redux-catch-promise';
-import { router5Middleware } from 'redux-router5';
 import promise from 'redux-promise';
+import { applyMiddleware } from 'redux';
+import catchPromise from 'redux-catch-promise';
 
 function getEnvMiddleware() {
   if (__DEVELOPMENT__ || __TEST__) {
@@ -15,10 +15,9 @@ const promiseCatcher = catchPromise((promised, action, store) => {
   // looking for promises?
 });
 
-export default (router) => [
-  router5Middleware(router),
-  thunk,
+export default applyMiddleware(
   // promiseCatcher,
+  thunk,
   promise,
   ...getEnvMiddleware()
-];
+);

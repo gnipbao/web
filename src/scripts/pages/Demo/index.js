@@ -1,4 +1,5 @@
-import React, { PropTypes, Component } from 'react';
+import { connect } from 'react-redux';
+
 import { Tabs, Tab } from 'react-toolbox/lib/tabs';
 
 import style from './style';

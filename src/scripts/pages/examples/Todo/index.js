@@ -8,7 +8,7 @@ import * as todoActions from 'modules/examples/todo';
 import Header from './components/Header';
 import Main from './components/Main';
 
-const Example = (props, context) => {
+const Example = (props) => {
   const { items, todoActions, undoActions } = props;
   const { add, ...mainActions } = todoActions;
 

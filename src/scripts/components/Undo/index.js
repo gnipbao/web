@@ -1,7 +1,5 @@
-import React, { PropTypes } from 'react';
 import Button from 'react-toolbox/lib/button';
 
-import { bindActionCreators } from 'redux';
 import { ActionCreators as undoActions } from 'redux-undo';
 
 import style from './style';
