@@ -35,7 +35,7 @@ export default class Example extends Component {
     load: PropTypes.func.isRequired
   };
 
-  state = { category: 'nude' }
+  state = { category: 'macro' }
 
   handleChange(value) {
     this.setState({ category: value });

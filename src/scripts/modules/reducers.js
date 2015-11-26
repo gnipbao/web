@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
-import { routerStateReducer as router } from 'redux-router';
+import { routeReducer as routing } from 'redux-simple-router';
 import { reducer as form } from 'redux-form';
 
 import * as examples from './examples';
 
 export default combineReducers({
-  router,
+  routing,
   form,
   ...examples
 });

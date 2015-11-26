@@ -1,17 +1,22 @@
 import ReactDOM from 'react-dom';
-import { reduxReactRouter } from 'redux-router';
+import { syncReduxAndRouter } from 'redux-simple-router';
 
-import createHistory from 'history/lib/createBrowserHistory';
-
-import { createStore } from 'store';
-import routes from 'routes';
+import { create } from 'store';
 import Root from 'containers/Root';
 
+import history from 'lib/history';
+import routes from 'routes';
+
 const initialState = window.__state || {};
-const router = reduxReactRouter({ routes, createHistory });
-const store = createStore(router, initialState);
+const store = create(initialState);
+
+syncReduxAndRouter(history, store);
 
 ReactDOM.render(
-  <Root store={store} />,
+  <Root
+    store={store}
+    history={history}
+    routes={routes}
+  />,
   document.getElementById('root')
 );

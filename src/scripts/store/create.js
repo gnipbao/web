@@ -4,8 +4,8 @@ import middleware from './middleware';
 import enhance from './enhance';
 import { reducers } from 'modules';
 
-export default (router, initialState = {}) => {
-  const creator = enhance(middleware, router);
+export default (initialState = {}) => {
+  const creator = enhance(middleware);
   const create = creator(createStore);
   const store = create(reducers, initialState);
 

@@ -16,8 +16,7 @@ const items = [
 ];
 
 export default (props) => {
-  const { pushState } = props;
-  const go = (path) => pushState(null, path);
+  const { go } = props;
   const actions = items.map((item) => button(go, item));
 
   return <Navigation type='horizontal' actions={actions} />;

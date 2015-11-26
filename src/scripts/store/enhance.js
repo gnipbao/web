@@ -1,12 +1,11 @@
 import { compose } from 'redux';
 
-export default (middleware, router) => {
+export default (middleware) => {
   const devTools = window.devToolsExtension ?
     window.devToolsExtension() : f => f;
 
   return compose(
     middleware,
-    router,
     devTools
   );
 };
