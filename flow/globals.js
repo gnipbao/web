@@ -7,6 +7,3 @@ declare var __ENVIRONMENT__: boolean;
 
 declare var __CLIENT__: boolean;
 declare var __SERVER__: boolean;
-
-declare var __DEVTOOLS__: boolean;
-declare var __DEVTOOLS_DOCKABLE__: boolean;

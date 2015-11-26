@@ -9,10 +9,7 @@ const common = {
   },
 
   __CLIENT__: true,
-  __SERVER__: false,
-
-  __DEVTOOLS__: config.env.development && process.env.DEVTOOLS,
-  __DEVTOOLS_DOCKABLE__: process.env.DEVTOOLS_DOCKABLE,
+  __SERVER__: false
 };
 
 const app = {

@@ -9,6 +9,7 @@ import AppBar from 'react-toolbox/lib/app_bar';
 import Navigation from 'components/Navigation';
 
 @connect(s => s, { pushState })
+export default class Main extends Component {
   render() {
     return (
       <div className='main'>
@@ -22,5 +23,3 @@ import Navigation from 'components/Navigation';
     );
   }
 }
-
-export default Main;

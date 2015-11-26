@@ -157,7 +157,6 @@ There is a `config` section in `package.json`:
 Before you start `cp .env.example .env`:
 
 * `API_ROOT` - api root url
-* `DEVTOOLS_DOCKABLE` - if set to `false` it will create an external devtools window for you
 
 ### Make tasks
 

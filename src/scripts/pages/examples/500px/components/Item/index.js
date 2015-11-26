@@ -6,13 +6,9 @@ export default (props) => {
   const {
     photo: {
       image_url,
-      name,
-      description
+      name
     }
   } = props;
-
-  const desc = description && description.trim();
-  const text = desc ? (desc.slice(0, 128) + '...') : '';
 
   return (
     <Card

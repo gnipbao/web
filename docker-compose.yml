@@ -4,7 +4,6 @@ web:
   volumes:
     - .:/usr/src/app
   environment:
-    - DEVTOOLS_DOCKABLE=true
     - HOST=0.0.0.0
     - PORT=3000
   ports:

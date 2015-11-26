@@ -1,3 +1,4 @@
+import ReactDOM from 'react-dom';
 import { reduxReactRouter } from 'redux-router';
 
 import createHistory from 'history/lib/createBrowserHistory';
