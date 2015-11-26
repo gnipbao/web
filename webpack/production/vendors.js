@@ -1,5 +1,4 @@
 export default [
-  'immutable',
   'debug',
   'moment',
   'normalize.css',
