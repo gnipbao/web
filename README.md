@@ -211,6 +211,7 @@ in [precss](https://github.com/jonathantneal/precss/blob/master/package.json#L34
 * [webpack hot reloading magic (habra)](http://habrahabr.ru/company/Voximplant/blog/270593/)
 * [awesome react](https://github.com/enaqx/awesome-react)
 * [awesome redux](https://github.com/xgrommx/awesome-redux)
+* [redux docs in russian](https://github.com/rajdee/redux-in-russian)
 
 # Troubleshooting
 
