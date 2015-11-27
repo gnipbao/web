@@ -1,20 +1,12 @@
 import Card from 'react-toolbox/lib/card';
-
 import style from './style';
 
-export default (props) => {
-  const {
-    photo: {
-      image_url,
-      name
-    }
-  } = props;
-
+export default ({ type, image_url, name }) => {
   return (
     <Card
       className={style.root}
       image={image_url}
-      type='image'
+      type={type}
       title={name}
     />
   );

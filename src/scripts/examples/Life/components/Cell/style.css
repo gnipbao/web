@@ -1,0 +1,9 @@
+.root {
+  size: 40px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+.alive {
+  background-color: #FF4081;
+}

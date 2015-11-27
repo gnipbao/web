@@ -17,7 +17,7 @@ export const loadPhotos = (category, pageNum) =>
   };
 
 const initialState = {
-  category: 'nude',
+  category: 'macro',
   page: 1,
   photos: [],
   loading: false

@@ -20,6 +20,7 @@ const items = [
   { path: '/examples/todo', label: 'Todo', ...appearance },
   { path: '/examples/500px', label: '500px', ...appearance },
   { path: '/examples/reddit', label: 'Reddit', ...appearance },
+  { path: '/examples/life', label: 'Life', ...appearance },
   { path: '/examples/sound-cloud', label: 'SoundCloud', ...appearance },
 ];
 
