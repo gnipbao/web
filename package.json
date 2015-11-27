@@ -20,6 +20,7 @@
   "homepage": "https://github.com/vyorkin/starter-kit#readme",
   "dependencies": {
     "babel-runtime": "^5.8.20",
+    "classnames": "2.2.1",
     "debug": "^2.2.0",
     "history": "^1.13.1",
     "isomorphic-fetch": "^2.2.0",
