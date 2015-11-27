@@ -1,11 +1,13 @@
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 
+const { object } = PropTypes;
+
 export default class Root extends Component {
   static propTypes = {
-    store: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired,
-    routes: PropTypes.object.isRequired
+    store: object.isRequired,
+    history: object.isRequired,
+    routes: object.isRequired
   }
 
   constructor(props: {
@@ -14,13 +16,27 @@ export default class Root extends Component {
     routes: Object;
   }) {
     super(props);
+    if (__DEVELOPMENT__ && __CLIENT__) {
+      this.devTools = require('components/DevTools');
+    }
+  }
+
+  renderDevTools() {
+    if (__DEVELOPMENT__ && __CLIENT__) {
+      return React.createElement(this.devTools);
+    }
   }
 
   render() {
     const { store, history, routes } = this.props;
     return (
       <Provider store={store}>
-        <Router history={history}>{routes}</Router>
+        <div>
+          <Router history={history}>
+            {routes}
+          </Router>
+          {this.renderDevTools()}
+        </div>
       </Provider>
     );
   }

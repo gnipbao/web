@@ -1,7 +1,4 @@
 import Button from 'react-toolbox/lib/button';
-
-import { ActionCreators as undoActions } from 'redux-undo';
-
 import style from './style';
 
 const Component = ({ undo, redo }) => {

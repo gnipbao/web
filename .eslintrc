@@ -34,7 +34,7 @@
       "properties": "never",
       "exceptions": [
         "_",
-        "x", "y",
+        "v", "x", "y",
         "i", "j", "k",
         "n",
         "e",
@@ -53,6 +53,7 @@
     }
   },
   "globals": {
+    "React": true,
     "Component": true,
     "PropTypes": true,
 
@@ -68,7 +69,6 @@
     "__CLIENT__": true,
     "__SERVER__": true,
 
-    "__DEVTOOLS__": true,
-    "__DEVTOOLS_DOCKABLE__": true
+    "__DEVTOOLS__": true
   }
 }

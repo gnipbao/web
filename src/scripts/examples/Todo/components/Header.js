@@ -2,10 +2,12 @@ import { reduxForm } from 'redux-form';
 
 import Input from 'react-toolbox/lib/input';
 
+const { object, func } = PropTypes;
+
 class Header extends Component {
   static propTypes = {
-    addItem: PropTypes.func.isRequired,
-    fields: PropTypes.object.isRequired
+    addItem: func.isRequired,
+    fields: object.isRequired
   }
 
   handleKeyPress(e) {
@@ -26,8 +28,7 @@ class Header extends Component {
     const { fields: { title } } = this.props;
 
     return (
-      <Input
-        required
+      <Input required
         label='What needs to be done?'
         onKeyPress={::this.handleKeyPress}
         {...title}

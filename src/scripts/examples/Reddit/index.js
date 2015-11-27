@@ -9,6 +9,8 @@ import Feed from './components/Feed';
 
 import style from './style';
 
+const { bool, array, func } = PropTypes;
+
 const REDDITS = [
   { value: 'shittyprogramming', label: 'Shitty programming' },
   { value: 'financialindependence', label: 'Financial indenpendance' },
@@ -31,9 +33,9 @@ const REDDITS = [
 )
 export default class Example extends Component {
   static propTypes = {
-    items: PropTypes.array.isRequired,
-    loading: PropTypes.bool.isRequired,
-    load: PropTypes.func.isRequired
+    items: array.isRequired,
+    loading: bool.isRequired,
+    load: func.isRequired
   }
 
   state = { reddit: REDDITS[0].value }

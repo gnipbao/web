@@ -7,7 +7,7 @@ import Root from 'containers/Root';
 import history from 'lib/history';
 import routes from 'routes';
 
-const initialState = window.__state || {};
+const initialState = Immutable(window.__state || {});
 const store = create(initialState);
 
 syncReduxAndRouter(history, store);

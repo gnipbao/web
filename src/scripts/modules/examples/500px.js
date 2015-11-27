@@ -7,27 +7,32 @@ const RESPONSE = '500PX_RESPONSE';
 const request = createAction(REQUEST);
 const response = createAction(RESPONSE);
 
-export const loadPhotos = (term, page) =>
+export const loadPhotos = (category, pageNum) =>
   async (dispatch, getState) => {
-    const requestPage = page || getState().fiveHundredPixels.page + 1;
+    const page = pageNum || getState().fiveHundredPixels.page + 1;
+    dispatch(request({ category, page }));
 
-    const requestAction = request({ term, page: requestPage });
-    dispatch(requestAction);
-
-    const { photos } = await searchPhotos(term, requestPage);
-
-    const responseAction = response({ photos, page: requestPage });
-    return dispatch(responseAction);
+    const { photos } = await searchPhotos(category, page);
+    return dispatch(response({ category, photos, page }));
   };
 
 const initialState = {
+  category: 'nude',
   page: 1,
   photos: [],
   loading: false
 };
 
 export default handleActions({
-  [REQUEST]: s => ({ ...s, photos: [], loading: true }),
-  [RESPONSE]: (s, { payload: { photos, page } }) =>
-    ({ ...s, loading: false, photos, page })
+  [REQUEST]: s => ({ ...s, loading: true }),
+  [RESPONSE]: (s, { payload: { category, photos, page } }) => {
+    const newPhotos = page > 1 ? s.photos.concat(photos) : photos;
+    return {
+      ...s,
+      category,
+      loading: false,
+      page,
+      photos: newPhotos
+    };
+  }
 }, initialState);

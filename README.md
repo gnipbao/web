@@ -152,12 +152,6 @@ There is a `config` section in `package.json`:
 
 ## Flow
 
-### Environment variables
-
-Before you start `cp .env.example .env`:
-
-* `API_ROOT` - api root url
-
 ### Make tasks
 
 * `make` ­ builds app for production

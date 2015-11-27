@@ -8,22 +8,33 @@ import 'styles/main';
 import AppBar from 'react-toolbox/lib/app_bar';
 import Navigation from 'components/Navigation';
 
+const { func } = PropTypes;
+
+const items = [
+  { path: '/', label: 'Home', icon: 'home' },
+  { path: '/examples', label: 'Examples', icon: 'extension' },
+  { path: '/about', label: 'About', icon: 'whatshot' }
+];
+
 @connect(
-  s => ({ path: s.routing.path }),
+  s => ({ currentPath: s.routing.path }),
   d => ({ go: bindActionCreators(updatePath, d) })
 )
 export default class Main extends Component {
   static propTypes = {
-    go: PropTypes.func.isRequired
+    go: func.isRequired
   }
 
   render() {
-    const { go, path, children } = this.props;
+    const { go, currentPath, children } = this.props;
 
     return (
       <div className='main'>
-        <AppBar top flat>
-          <Navigation go={go} path={path} />
+        <AppBar top>
+          <Navigation
+            type='horizontal'
+            {...{ go, currentPath, items } }
+          />
         </AppBar>
         <section className='page'>
           {children}

@@ -1,7 +1,6 @@
 'use strict';
 
 require('babel/register');
-require('dotenv').load();
 
 const app = require('../config');
 const webpack = require(`../webpack/${app.environment}`);
