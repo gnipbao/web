@@ -3,7 +3,7 @@ import { List, ListSubHeader } from 'react-toolbox/lib/list';
 import Footer from './Footer';
 import Item from './Item';
 
-class Main extends Component {
+export default class Main extends Component {
   static propTypes = {
     complete: PropTypes.func.isRequired,
     del: PropTypes.func.isRequired,
@@ -35,5 +35,3 @@ class Main extends Component {
     );
   }
 }
-
-export default Main;

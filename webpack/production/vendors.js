@@ -2,7 +2,6 @@ export default [
   'debug',
   'moment',
   'normalize.css',
-  'seamless-immutable',
   'ramda',
   'validator',
   'isomorphic-fetch',

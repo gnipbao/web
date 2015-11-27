@@ -16,8 +16,7 @@ export default [
   new webpack.ProvidePlugin({
     React: 'react',
     ReactDOM: 'react-dom',
-    R: 'ramda',
-    Immutable: 'seamless-immutable'
+    R: 'ramda'
   }),
   new webpack.ContextReplacementPlugin(/node_modules\/moment\/locale/, /ru|en-gb/),
   new webpack.DefinePlugin(globals),

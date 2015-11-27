@@ -24,6 +24,9 @@
 
     "no-undef": 2,
 
+    "new-cap": [2, {
+      "capIsNewExceptions": ["Immutable"]
+    }],
     "no-unused-vars": [2, {
       "args": "after-used",
       "argsIgnorePattern": "^_"
@@ -56,6 +59,8 @@
     "React": true,
     "Component": true,
     "PropTypes": true,
+    "Immutable": true,
+    "R": true,
 
     "settings": true,
 

@@ -1,13 +1,12 @@
-import ReactDOM from 'react-dom';
 const { node, bool, number, func } = PropTypes;
 const getScrollPosition = () => window.pageYOffset;
 
 export default class InfiniteScroll extends Component {
   static propTypes = {
-    children: node,
+    children: node.isRequired,
+    load: func.isRequired,
     distance: number,
     progress: func,
-    load: func,
     loading: bool
   }
 
@@ -31,7 +30,6 @@ export default class InfiniteScroll extends Component {
   handleScroll() {
     const { distance, loading, load } = this.props;
     if (loading) return;
-
 
     const clientHeight = document.documentElement.clientHeight;
 
