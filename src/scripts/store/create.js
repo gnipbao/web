@@ -11,8 +11,8 @@ export default (initialState = {}) => {
 
   if (__DEVELOPMENT__ && module.hot) {
     module.hot.accept('modules', () => {
-      const { patch } = require('modules');
-      store.replaceReducer(patch);
+      const modules = require('modules');
+      store.replaceReducer(modules.reducers);
     });
   }
 

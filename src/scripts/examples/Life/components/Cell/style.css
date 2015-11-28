@@ -6,4 +6,5 @@
 
 .alive {
   background-color: #ff4081;
+  transition: background-color 0.5s linear;
 }

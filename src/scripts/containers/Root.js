@@ -1,19 +1,19 @@
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 
+import routes from 'routes';
+
 const { object } = PropTypes;
 
 export default class Root extends Component {
   static propTypes = {
     store: object.isRequired,
-    history: object.isRequired,
-    routes: object.isRequired
+    history: object.isRequired
   }
 
   constructor(props: {
     store: Object;
     history: Object;
-    routes: Object;
   }) {
     super(props);
     if (__DEVELOPMENT__ && __CLIENT__) {
@@ -28,7 +28,7 @@ export default class Root extends Component {
   }
 
   render() {
-    const { store, history, routes } = this.props;
+    const { store, history } = this.props;
     return (
       <Provider store={store}>
         <div>
