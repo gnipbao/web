@@ -4,7 +4,7 @@ import config from '../../config';
 const env = mapObj(config.env, (key, val) => [`__${key.toUpperCase()}__`, val]);
 
 const API_ROOT = 'http://localhost:8080';
-const DEVTOOLS = true;
+const DEVTOOLS = false;
 
 const common = {
   'process.env': {

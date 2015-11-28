@@ -22,6 +22,6 @@ export default () => [
   require('postcss-quantity-queries'),
   require('postcss-responsive-type'),
   require('cssnano'),
-  require('postcss-reporter'),
+  // require('postcss-reporter'),
   // require('postcss-browser-reporter')
 ];

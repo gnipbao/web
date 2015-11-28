@@ -156,7 +156,7 @@
     "webpack-merge": "^0.3.0"
   },
   "scripts": {
-    "start": "gulp",
+    "start": "gulp --quiet",
     "clean": "gulp clean",
     "build": "gulp build --production",
     "build:verbose": "gulp build --production --verbose",

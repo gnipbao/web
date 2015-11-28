@@ -16,13 +16,13 @@ export default class Root extends Component {
     history: Object;
   }) {
     super(props);
-    if (__DEVELOPMENT__ && __CLIENT__) {
+    if (__DEVELOPMENT__ && __CLIENT__ && __DEVTOOLS__) {
       this.devTools = require('components/DevTools');
     }
   }
 
   renderDevTools() {
-    if (__DEVELOPMENT__ && __CLIENT__) {
+    if (__DEVELOPMENT__ && __CLIENT__ && __DEVTOOLS__) {
       return React.createElement(this.devTools);
     }
   }

@@ -35,7 +35,5 @@ export const mutate = (grid, { y, x }) => {
   const alive = grid[y][x];
   const n = neighbours(grid, { y, x });
 
-  return alive ?
-    n >= 2 && n <= 3 :
-    n === 3;
+  return alive ? n >= 2 && n <= 3 : n > 1;
 };
