@@ -18,8 +18,11 @@ export default [
   'redux-actions',
   'redux-form',
   'redux-promise',
-  'redux-catch-promise',
   'redux-logger',
   'redux-undo',
-  'reselect'
+  'reselect',
+  'classnames',
+  'rx',
+  'redux-rx',
+  'react-visibility-sensor'
 ]

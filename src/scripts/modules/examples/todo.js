@@ -47,7 +47,7 @@ const reducer = handleActions({
   },
 
   [COMPLETE]: (s, { payload }) =>
-    s.map(i => i.id === payload ? { ...i, completed: !i.completed } : i ),
+    s.map(i => i.id === payload ? { ...i, completed: !i.completed } : i ),
 
   [COMPLETE_ALL]: (s) => {
     const completed = !s.every(i => i.completed);

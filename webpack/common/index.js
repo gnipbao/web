@@ -1,3 +1,5 @@
+import debug from 'debug';
+
 import config from '../../config';
 
 import addHash from '../utils/addHash';
@@ -8,7 +10,11 @@ import toolbox from './toolbox';
 import postcss from './postcss';
 import eslint from './eslint';
 
+const log = debug('app');
 const noParse = Object.values(config.dependencies);
+
+log('dependencies:\n', config.dependencies);
+log('aliases:\n', config.aliases);
 
 export default {
   name: config.name,

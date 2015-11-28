@@ -58,7 +58,7 @@ export default class Example extends Component {
         />
         <InfiniteScroll
           loading={loading}
-          progress={() => <ProgressBar mode='indeterminate'/>}
+          spinner={() => <ProgressBar mode='indeterminate'/>}
           load={() => load(category)}>
           <List photos={photos} />
         </InfiniteScroll>

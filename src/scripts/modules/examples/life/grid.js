@@ -1,6 +1,6 @@
 import { random, empty, mutate } from './cell';
 
-const SIZE = 16;
+const SIZE = 10;
 
 export const generate = (size, create) => {
   const range = R.range(0, size);

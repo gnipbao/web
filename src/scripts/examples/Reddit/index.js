@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+const { bool, array, func } = PropTypes;
+
 import Button from 'react-toolbox/lib/button';
 import Dropdown from 'react-toolbox/lib/dropdown';
 
@@ -8,8 +10,6 @@ import { loadPosts } from 'modules/examples/reddit';
 import Feed from './components/Feed';
 
 import style from './style';
-
-const { bool, array, func } = PropTypes;
 
 const REDDITS = [
   { value: 'shittyprogramming', label: 'Shitty programming' },

@@ -1,4 +1,3 @@
-import opn from 'opn';
 import webpack from 'webpack';
 import DevServer from 'webpack-dev-server';
 

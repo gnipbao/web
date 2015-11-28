@@ -18,7 +18,7 @@ const initialState = 0;
 
 const reducer = handleActions({
   [INC]: (s) => s + 1,
-  [DEC]: (s) => s - 1
+  [DEC]: (s) => s - 10
 }, initialState);
 
 export default undoable(reducer, {

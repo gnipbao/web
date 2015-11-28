@@ -10,7 +10,7 @@ import globals from './globals';
 const log = debug('app');
 const template = path.join(config.paths.templates, 'index.html');
 
-log('globals\n', globals);
+log('globals:\n', globals);
 
 export default [
   new webpack.ProvidePlugin({

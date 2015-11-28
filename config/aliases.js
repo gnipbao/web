@@ -9,9 +9,13 @@ const scripts = fs.readdirSync(paths.scripts)
   .reduce((acc, dir) => ((acc[dir] = resolve.src('scripts', dir)) && acc), {});
 
 export default {
-  styles: resolve.src('styles'),
-  templates: resolve.src('templates'),
-  fonts: resolve.src('assets/fonts'),
+  styles: paths.styles,
+  templates: paths.templates,
+
+  fonts: paths.assets.fonts,
+  icons: paths.assets.icons,
+  images: paths.assets.images,
+
   ...scripts,
   ...dependencies
 }

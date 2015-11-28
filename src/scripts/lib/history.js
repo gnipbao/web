@@ -6,6 +6,6 @@ import useQueries from 'history/lib/useQueries';
 
 const creator = canUseDOM ?
   createHistory :
-  createMemoryHistory
+  createMemoryHistory;
 
 export default useQueries(creator)();

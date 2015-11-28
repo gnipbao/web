@@ -15,6 +15,7 @@ const appearance = {
   className: style.button,
   icon: 'extension'
 };
+
 const items = [
   { path: '/examples/counter', label: 'Counter', ...appearance },
   { path: '/examples/todo', label: 'Todo', ...appearance },

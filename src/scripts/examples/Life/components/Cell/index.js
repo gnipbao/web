@@ -3,7 +3,7 @@ import style from './style';
 
 const cx = classNames.bind(style);
 
-export default ({ alive, x }) => {
+export default ({ alive }) => {
   const className = cx({ root: true, alive });
-  return (<td key={x} className={className}></td>);
+  return (<td className={className}></td>);
 };

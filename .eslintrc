@@ -37,10 +37,10 @@
       "properties": "never",
       "exceptions": [
         "_",
-        "v", "x", "y",
+        "v", "x", "y", "z",
         "i", "j", "k",
         "n",
-        "e",
+        "e", "c",
         "s", "a", "d",
         "f"
       ]
@@ -57,6 +57,7 @@
   },
   "globals": {
     "React": true,
+    "ReactDOM": true,
     "Component": true,
     "PropTypes": true,
     "Immutable": true,
