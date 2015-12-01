@@ -22,7 +22,6 @@ export default {
 
   https: config.https,
 
-  proxy: server.host + ':' + server.port,
   ghostMode: {
     clicks: true,
     forms: true,

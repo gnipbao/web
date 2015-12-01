@@ -1,7 +1,7 @@
 import paths from '../../../config/paths';
 import common from './common';
 
-export default {
+export default [
   ...common,
   {
     test: /\.jsx?$/,
@@ -29,5 +29,5 @@ export default {
         }
       }
     }
-  },
-};
+  }
+]

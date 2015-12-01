@@ -1,5 +1,5 @@
-import { paths } from '../../config';
-import addHash from '../utils/addHash';
+import { paths } from '../../../config';
+import addHash from '../../utils/addHash';
 
 const name = addHash('[path][name].[ext]', 'hash:10');
 const limit = 10000;

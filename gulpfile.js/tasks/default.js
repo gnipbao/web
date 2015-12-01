@@ -1,1 +1,4 @@
-gulp.task('default', () => sequence(['assets', 'server', 'watch', 'sync']));
+gulp.task('default', () => sequence(
+  ['assets', 'watch'],
+  'bundle:server', 'sync:dev'
+));

@@ -1,13 +1,15 @@
 import merge from 'webpack-merge';
 
 import common from './common';
+import loaders from './loaders/server';
 import plugins from './plugins/server';
 
 export default merge(common, {
   target: 'node',
-  entry: ['./server.js'],
+  entry: ['./server/index.js'],
+  module: { loaders },
   output: {
-    library: 'AppServer',
+    library: 'ServerApp',
     libraryTarget: 'commonjs2'
   },
 

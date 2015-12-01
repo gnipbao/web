@@ -1,6 +1,7 @@
 import { argv } from '../../config';
 
 export default {
+  publicPath: '/',
   headers: { 'Access-Control-Allow-Origin': '*' },
   watchOptions: { aggregateTimeout: 0 },
   stats: {
@@ -10,6 +11,10 @@ export default {
     profile: argv.profile
   },
 
+  // --verbose
+  //
+  // if not in verbose mode display no info to console
+  // (only warnings and errors)
   noInfo: !argv.verbose,
 
   // --quiet
@@ -18,3 +23,6 @@ export default {
   // and it will make much harder to know whats wrong
   quiet: argv.quiet
 }
+
+// for other settings see
+// http://webpack.github.io/docs/webpack-dev-middleware.html

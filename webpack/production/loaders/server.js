@@ -1,5 +1,5 @@
 import common from './common';
 
-export default {
+export default [
   ...common,
-}
+]

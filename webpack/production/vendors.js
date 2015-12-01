@@ -17,6 +17,8 @@ export default [
   'history',
   'scroll-behavior',
   'react-toolbox',
+  'react-intl',
+  'react-helmet',
   'redux-act',
   'redux-form',
   'redux-promise',

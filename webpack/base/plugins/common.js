@@ -2,7 +2,7 @@ import dude from 'debug-dude';
 import path from 'path';
 import webpack from 'webpack'
 
-import config from '../../config';
+import config from '../../../config';
 
 const { log } = dude('app');
 const template = path.join(config.paths.templates, 'index.html');

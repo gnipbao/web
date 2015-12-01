@@ -3,6 +3,7 @@ import minimist from 'minimist';
 import { name, description, config } from '../package';
 import server from './server';
 import paths from './paths';
+import resolve from './resolve';
 import aliases from './aliases';
 import dependencies from './dependencies';
 import globals from './globals';
@@ -20,6 +21,7 @@ export default {
   server,
 
   paths,
+  resolve,
   aliases,
   dependencies,
   globals,

@@ -9,11 +9,10 @@ import plugins from './plugins/client';
 import loaders from './loaders/client';
 
 import preLoaders from './preLoaders';
-import devMiddleware from './devMiddleware';
 
 export default merge(base, common, {
   entry: ['webpack-hot-middleware/client'],
   module: { preLoaders, loaders },
   plugins,
-  ...devMiddleware
+  devtool: 'cheap-module-inline-source-map'
 });

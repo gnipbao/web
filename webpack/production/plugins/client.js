@@ -4,7 +4,7 @@ import StatsPlugin from 'stats-webpack-plugin';
 import { sourceMap } from '../../../config';
 import common from './common';
 
-export default {
+export default [
   ...common,
   new webpack.optimize.AggressiveMergingPlugin(),
   new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
@@ -19,4 +19,4 @@ export default {
     }
   }),
   new StatsPlugin('webpack.stats.json')
-}
+]

@@ -2,8 +2,6 @@ import dude from 'debug-dude';
 
 import config from '../../config';
 import addHash from '../utils/addHash';
-import loaders from './loaders';
-import plugins from './plugins';
 import toolbox from './toolbox';
 import postcss from './postcss';
 import eslint from './eslint';
@@ -38,7 +36,7 @@ export default {
     publicPath: '/'
   },
 
-  module: { loaders, noParse },
+  module: { noParse },
 
   toolbox,
   postcss,
