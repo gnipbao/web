@@ -34,7 +34,7 @@ export default class InfiniteScroll extends Component {
       <Scrollable onScroll={::this.handleScroll}>
         <div ref={c => this.container = c}>
           {children}
-          {(loading && spinner) ? spinner() : null}
+          {loading && spinner && spinner()}
         </div>
       </Scrollable>
     );

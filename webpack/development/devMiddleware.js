@@ -15,6 +15,6 @@ export default {
   // --quiet
   //
   // set this to true and you'll see no error output in the console
-  // and it will make much harder to now whats wrong
+  // and it will make much harder to know whats wrong
   quiet: argv.quiet
 }

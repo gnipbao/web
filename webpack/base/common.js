@@ -1,16 +1,14 @@
-import debug from 'debug';
+import dude from 'debug-dude';
 
 import config from '../../config';
-
 import addHash from '../utils/addHash';
-
 import loaders from './loaders';
 import plugins from './plugins';
 import toolbox from './toolbox';
 import postcss from './postcss';
 import eslint from './eslint';
 
-const log = debug('app');
+const { log } = dude('app');
 const noParse = Object.values(config.dependencies);
 
 log('dependencies:\n', config.dependencies);
@@ -18,16 +16,13 @@ log('aliases:\n', config.aliases);
 
 export default {
   name: config.name,
-  target: 'web',
-
   context: config.paths.scripts,
-  entry: ['./index.js'], 
 
   resolve: {
     root: config.paths.root,
     alias: config.aliases,
     modulesDirectories: ['node_modules'],
-    extensions: ['', '.jsx', '.js', '.css', '.scss', '.json'],
+    extensions: ['', '.jsx', '.js', '.json'],
   },
 
   resolveLoader: {
@@ -40,14 +35,10 @@ export default {
     filename: addHash('[name].js', 'chunkhash'),
     chunkFilename: addHash('chunk.[name].js', 'chunkhash'),
 
-    library: 'App',
-    libraryTarget: 'var',
-
     publicPath: '/'
   },
 
   module: { loaders, noParse },
-  plugins,
 
   toolbox,
   postcss,

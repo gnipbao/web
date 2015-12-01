@@ -5,6 +5,7 @@ import server from './server';
 import paths from './paths';
 import aliases from './aliases';
 import dependencies from './dependencies';
+import globals from './globals';
 import browsersync from './browsersync';
 import postcss from './postcss';
 import { environments, environmentName } from './env';
@@ -21,6 +22,7 @@ export default {
   paths,
   aliases,
   dependencies,
+  globals,
 
   postcss,
   browsersync,

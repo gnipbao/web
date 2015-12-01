@@ -1,5 +1,6 @@
 export default [
   'debug',
+  'debug-dude',
   'moment',
   'normalize.css',
   'ramda',
@@ -14,6 +15,7 @@ export default [
   'redux-simple-router',
   'react-router',
   'history',
+  'scroll-behavior',
   'react-toolbox',
   'redux-act',
   'redux-form',
@@ -21,6 +23,9 @@ export default [
   'redux-logger',
   'redux-undo',
   'reselect',
+  'recompose',
+  'rx-recompose',
+  'rx',
   'classnames',
   'react-visibility-sensor'
 ]

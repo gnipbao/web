@@ -2,7 +2,7 @@ import webpack from 'webpack';
 import merge from 'webpack-merge';
 
 import appConfig from '../../config';
-import webpackConfig from '../common';
+import webpackConfig from '../base';
 
 import loaders from './loaders';
 import plugins from './plugins';

@@ -1,4 +1,4 @@
-import paths from '../../config/paths';
+import paths from '../../../config/paths';
 
 const cssOptions = {
   css: 'importLoaders=1&modules',
@@ -6,33 +6,6 @@ const cssOptions = {
 };
 
 export default [
-  {
-    test: /\.jsx?$/,
-    loader: 'babel',
-    include: [
-      /node_modules\/qs/,
-      paths.scripts
-    ],
-    query: {
-      stage: 0,
-      plugins: ['react-transform'],
-      extra: {
-        'react-transform': {
-          transforms: [
-            {
-              transform: 'react-transform-catch-errors',
-              imports: ['react', 'redbox-react']
-            },
-            {
-              transform: 'react-transform-hmr',
-              imports: ['react'],
-              locals: ['module']
-            }
-          ]
-        }
-      }
-    }
-  },
   {
     test: /\.css$/,
     loaders: ['style', `css?${cssOptions.css}`, 'postcss']

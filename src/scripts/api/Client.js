@@ -1,4 +1,3 @@
-import 'isomorphic-fetch';
 import { stringify } from 'qs';
 
 export default class Client {
