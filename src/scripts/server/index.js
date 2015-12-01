@@ -25,7 +25,7 @@ server.listen(config.server.port, (err) => {
     error(err);
   } else {
     info('\n🍇 🍄 🍉 🍋 🍌 🍎 🍍 🍑 🍒 🍓 🛠 🚽 👽 🚷 🚀 ');
-    info('server is running at: ', config.server.url);
+    info(`server is running at: ${config.server.url}\n`);
   }
 });
 

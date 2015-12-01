@@ -1,4 +1,8 @@
+import dude from 'debug-dude';
 import webpack from 'webpack';
+
+const { debug } = dude('app:bundle');
+const { info } = dude('app:webpack');
 
 const verbose = !!config.app.argv.verbose;
 const statsDisplayOptions = {
@@ -16,19 +20,32 @@ const statsDisplayOptions = {
   children: false
 };
 
-const callback = (err, stats) => {
+const logStats = (err, stats) => {
   if (err) throw new $.util.PluginError('webpack', err);
-  $.util.log('[webpack]\n', stats.toString(statsDisplayOptions));
+  info(stats.toString(statsDisplayOptions));
 };
 
 gulp.task('bundle:client', () => {
-  const bundler = webpack(config.webpack.client)
-  return bundler.run(callback)
+  const cfg = config.webpack.client;
+
+  debug('client config: \n', cfg);
+
+  return webpack(cfg).run(logStats)
 });
+
 gulp.task('bundle:server', () => {
-  const bundler = webpack(config.webpack.server);
+  const cfg = config.webpack.server;
+  const bundler = webpack(cfg);
+
+  debug('server config: \n', cfg);
+  debug('webpack will watch & rebuild server bundle');
+
   return state.isWatching ?
     bundler.watch(200, bundle) :
-    bundler.run(callback);
+    bundler.run(logStats);
 });
-gulp.task('bundle', () => sequence(['bundle:server', 'bundle:client']));
+
+gulp.task('bundle', () => sequence([
+  'bundle:server',
+  'bundle:client'
+]));

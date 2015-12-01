@@ -1,3 +1,4 @@
+import webpack from 'webpack';
 import globals from '../../../config/globals';
 import common from './common';
 
@@ -5,7 +6,7 @@ export default [
   ...common,
 
   new webpack.DefinePlugin({
-    ...config.globals,
+    ...globals,
 
     __CLIENT__: false,
     __SERVER__: true,

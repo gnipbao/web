@@ -1,5 +1,5 @@
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import paths from '../../config/paths';
+import paths from '../../../config/paths';
 
 const extractOptions = {
   allChunks: true

@@ -1,7 +1,7 @@
 import merge from 'webpack-merge';
 
 import { sourceMap } from '../../config';
-import base from '../../base';
+import base from '../base/client';
 
 import vendors from './vendors';
 import loaders from './loaders/client';

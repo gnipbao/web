@@ -1,5 +1,5 @@
 import Checkbox from 'react-toolbox/lib/checkbox';
-import ListItemContent from 'react-toolbox/lib/list/content';
+import { ListItemContent } from 'react-toolbox/lib/list';
 
 import style from 'react-toolbox/lib/list/style';
 

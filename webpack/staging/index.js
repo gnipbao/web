@@ -1,5 +1,5 @@
 import merge from 'webpack-merge';
-import productionWebpackConfig from '../production';
 
-export default merge(productionWebpackConfig, {
-});
+export { default as client } from '../production/client';
+export { default as server } from '../production/server';
+

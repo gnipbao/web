@@ -8,8 +8,8 @@ const wildcards = [
   `${config.app.paths.dist}/*.css`
 ];
 
-const sync = (options = {}) => {
-  browsersync({ ...config.app.browsersync, ...options });
+const sync = (syncConfig = {}) => {
+  browsersync({ ...config.app.browsersync, ...syncConfig });
   return gulp.watch(wildcards, browsersync.reload);
 };
 
