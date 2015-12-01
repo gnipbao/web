@@ -15,14 +15,12 @@ export default [
   'react-router',
   'history',
   'react-toolbox',
-  'redux-actions',
+  'redux-act',
   'redux-form',
   'redux-promise',
   'redux-logger',
   'redux-undo',
   'reselect',
   'classnames',
-  'rx',
-  'redux-rx',
   'react-visibility-sensor'
 ]

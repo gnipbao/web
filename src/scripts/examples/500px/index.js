@@ -52,14 +52,14 @@ export default class Example extends Component {
           name='category'
           label='Choose category'
           disabled={loading}
-          onChange={(v) => load(v, 1)}
+          onChange={v => load(v, 1)}
           source={CATEGORIES}
           value={category}
         />
         <InfiniteScroll
           loading={loading}
-          spinner={() => <ProgressBar mode='indeterminate'/>}
-          load={() => load(category)}>
+          spinner={_ => <ProgressBar mode='indeterminate'/>}
+          load={_ => load(category)}>
           <List photos={photos} />
         </InfiniteScroll>
       </div>

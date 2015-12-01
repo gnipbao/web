@@ -1,14 +1,11 @@
-import { createAction, handleActions } from 'redux-actions';
+import { createAction, createReducer } from 'redux-act';
 import { fetchPosts } from 'api/reddit';
-
-const REQUEST = 'REDDIT_REQUEST';
-const RESPONSE = 'REDDIT_RESPONSE';
 
 const flattenResponse = ({ data: { children } }) =>
   children.map((child) => child.data);
 
-const response = createAction(RESPONSE, flattenResponse);
-const request = createAction(REQUEST);
+const request = createAction('Reddit request');
+const response = createAction('Reddit response', flattenResponse);
 
 export const loadPosts = (reddit) => async (dispatch) => {
   dispatch(request(reddit));
@@ -21,7 +18,15 @@ const initialState = {
   loading: false
 };
 
-export default handleActions({
-  [REQUEST]: s => ({ ...s, items: [], loading: true }),
-  [RESPONSE]: (s, { payload }) => ({ ...s, loading: false, items: payload })
+export default createReducer({
+  [request]: s => ({
+    ...s,
+    items: [],
+    loading: true
+  }),
+  [response]: (s, items) => ({
+    ...s,
+    loading: false,
+    items
+  })
 }, initialState);

@@ -1,18 +1,20 @@
-import { createAction, handleActions } from 'redux-actions';
+import { createAction, createReducer } from 'redux-act';
 import { generateEmpty, generateRandom, evolve } from './grid';
 
-const ITERATE = 'LIFE_ITERATE';
-const CLEAR = 'LIFE_CLEAR';
-const RANDOMIZE = 'LIFE_RANDOMIZE';
-
-export const iterate = createAction(ITERATE);
-export const clear = createAction(CLEAR);
-export const randomize = createAction(RANDOMIZE);
+export const [
+  iterate,
+  clear,
+  randomize
+] = [
+  'iterate',
+  'clear',
+  'randomize'
+].map(createAction);
 
 const initialState = generateRandom();
 
-export default handleActions({
-  [ITERATE]: s => evolve(s),
-  [CLEAR]: () => generateEmpty(),
-  [RANDOMIZE]: () => generateRandom()
+export default createReducer({
+  [iterate]: evolve,
+  [clear]: _ => generateEmpty(),
+  [randomize]: _ => generateRandom()
 }, initialState);

@@ -1,7 +1,5 @@
-import { createAction, handleActions } from 'redux-actions';
+import { createAction, createReducer } from 'redux-act';
 import undoable, { includeAction } from 'redux-undo';
-
-// TODO: find a better way to reduce such boilerplate!
 
 const ADD = 'TODO_ADD';
 const DEL = 'TODO_DEL';
@@ -13,15 +11,23 @@ const CLEAR_COMPLETED = 'TODO_CLEAR_COMPLETED';
 const UNDO = 'TODO_UNDO';
 const REDO = 'TODO_REDO';
 
-export const add = createAction(ADD);
-export const del = createAction(DEL);
-export const edit = createAction(EDIT);
-export const complete = createAction(COMPLETE);
-export const completeAll = createAction(COMPLETE_ALL);
-export const clearCompleted = createAction(CLEAR_COMPLETED);
+export const [
+  add,
+  del,
+  edit,
+  complete,
+  completeAll,
+  clearCompleted
+] = [
+  ADD,
+  DEL,
+  EDIT,
+  COMPLETE,
+  COMPLETE_ALL,
+  CLEAR_COMPLETED
+].map(createAction);
 
-export const undo = createAction(UNDO);
-export const redo = createAction(REDO);
+export const [undo, redo] = [UNDO, REDO].map(createAction);
 
 const initialState = [
   { id: 0, text: 'Learn react, redux, frp, elm, etc', completed: true },
@@ -32,29 +38,29 @@ const initialState = [
 const nextId = state =>
   state.reduce((max, item) => Math.max(item.id, max), -1) + 1;
 
-const reducer = handleActions({
-  [ADD]: (s, { payload }) => [{
+const reducer = createReducer({
+  [add]: (s, text) => [{
     id: nextId(s),
-    text: payload,
+    text,
     completed: false
   }, ...s],
 
-  [DEL]: (s, { payload }) => s.filter(i => i.id !== payload),
+  [del]: (s, id) => s.filter(i => i.id !== id),
 
-  [EDIT]: (s, { payload: { id, text } }) => {
+  [edit]: (s, { id, text }) => {
     const item = s.find(i => i.id === id);
     return [{ text, ...item }, ...s];
   },
 
-  [COMPLETE]: (s, { payload }) =>
-    s.map(i => i.id === payload ? { ...i, completed: !i.completed } : i ),
+  [complete]: (s, id) =>
+    s.map(i => i.id === id ? { ...i, completed: !i.completed } : i ),
 
-  [COMPLETE_ALL]: (s) => {
+  [completeAll]: (s) => {
     const completed = !s.every(i => i.completed);
     return s.map(i => ({ completed, ...i }));
   },
 
-  [CLEAR_COMPLETED]: (s) => s.filter(i => !i.completed)
+  [clearCompleted]: (s) => s.filter(i => !i.completed)
 }, initialState);
 
 export default undoable(reducer, {

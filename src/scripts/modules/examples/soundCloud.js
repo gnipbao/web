@@ -1,13 +1,10 @@
-import { createAction, handleActions } from 'redux-actions';
+import { createAction, createReducer } from 'redux-act';
 import { search } from 'api/soundCloud';
 
 // TODO: async flow looks always the same
 
-const REQUEST = 'SC_REQUEST';
-const RESPONSE = 'SC_RESPONSE';
-
-const request = createAction(REQUEST);
-const response = createAction(RESPONSE);
+const request = createAction('SoundCloud request');
+const response = createAction('SoundCloud response');
 
 export const loadSounds = (term) =>
   async (dispatch) => {
@@ -22,9 +19,12 @@ const initialState = {
   loading: false
 };
 
-export default handleActions({
-  [REQUEST]: s => ({ ...s, loading: true }),
-  [RESPONSE]: (s, { payload: { term, items } }) => ({
+export default createReducer({
+  [request]: s => ({
+    ...s,
+    loading: true
+  }),
+  [response]: (s, { payload: { term, items } }) => ({
     ...s,
     term,
     items,

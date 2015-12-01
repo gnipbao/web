@@ -1,7 +1,8 @@
-import { createAction, handleActions } from 'redux-actions';
+import { createAction, createReducer } from 'redux-act';
 import undoable, { includeAction } from 'redux-undo';
 
-import km from 'lib/keyMirror';
+// HINT: createAction won't generate ids if desc is a valid constant
+// (if it matches a constant regexp, see createAction source code)
 
 const INC = 'COUNTER_INC';
 const DEC = 'COUNTER_DEC';
@@ -9,16 +10,14 @@ const DEC = 'COUNTER_DEC';
 const UNDO = 'COUNTER_UNDO';
 const REDO = 'COUNTER_REDO';
 
-export const inc = createAction(INC);
-export const dec = createAction(DEC);
-export const undo = createAction(UNDO);
-export const redo = createAction(REDO);
+export const [inc, dec] = [INC, DEC].map(createAction);
+export const [undo, redo] = [UNDO, REDO].map(createAction);
 
 const initialState = 0;
 
-const reducer = handleActions({
-  [INC]: (s) => s + 1,
-  [DEC]: (s) => s - 1
+const reducer = createReducer({
+  [inc]: s => s + 1,
+  [dec]: s => s - 1
 }, initialState);
 
 export default undoable(reducer, {

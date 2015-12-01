@@ -1,19 +1,15 @@
-import { createAction, handleActions } from 'redux-actions';
+import { createAction, createReducer } from 'redux-act';
 import { searchPhotos } from 'api/500px';
 
-const REQUEST = '500PX_REQUEST';
-const RESPONSE = '500PX_RESPONSE';
-
-const request = createAction(REQUEST);
-const response = createAction(RESPONSE);
+const load = createAction('load photos from 500px');
 
 export const loadPhotos = (category, pageNum) =>
   async (dispatch, getState) => {
     const page = pageNum || getState().fiveHundredPixels.page + 1;
-    dispatch(request({ category, page }));
+    dispatch(load({ category, page }));
 
     const { photos } = await searchPhotos(category, page);
-    return dispatch(response({ category, photos, page }));
+    return dispatch(load({ category, photos, page }));
   };
 
 const initialState = {
@@ -23,12 +19,20 @@ const initialState = {
   loading: false
 };
 
-export default handleActions({
-  [REQUEST]: s => ({ ...s, loading: true }),
-  [RESPONSE]: (s, { payload: { category, photos, page } }) => {
-    const newPhotos = page > 1 ? s.photos.concat(photos) : photos;
+export default createReducer({
+  [load]: (state, { category, photos, page }) => {
+    if (!photos) {
+      return {
+        ...state,
+        loading: true
+      };
+    }
+
+    const newPhotos = page > 1 ?
+      state.photos.concat(photos) : photos;
+
     return {
-      ...s,
+      ...state,
       category,
       loading: false,
       page,
