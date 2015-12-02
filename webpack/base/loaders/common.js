@@ -1,4 +1,4 @@
-import { paths } from '../../../config';
+import paths from '../../../config/paths';
 import addHash from '../../utils/addHash';
 
 const name = addHash('[path][name].[ext]', 'hash:10');

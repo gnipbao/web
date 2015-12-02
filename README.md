@@ -192,7 +192,7 @@ Here is some [more info about devtool](https://webpack.github.io/docs/configurat
 
 ### Analysis
 
-You can find webpack stats file in `dist/webpack.stats.json` and
+In root directory you can find webpack stats file named `webpack.stats.json` and
 feed it to [webpack stats analyzer](http://webpack.github.io/analyse/)
 
 ### Updating
@@ -212,6 +212,7 @@ in [precss](https://github.com/jonathantneal/precss/blob/master/package.json#L34
 * [awesome react](https://github.com/enaqx/awesome-react)
 * [awesome redux](https://github.com/xgrommx/awesome-redux)
 * [redux docs in russian](https://github.com/rajdee/redux-in-russian)
+* [npm module checklist](https://github.com/bahmutov/npm-module-checklist)
 
 # Troubleshooting
 

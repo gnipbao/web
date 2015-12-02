@@ -17,6 +17,8 @@ const common = {
 
 const app = {
   settings: {
+    host: JSON.stringify(config.host),
+    port: JSON.stringify(config.ports.app),
     apiRoot: JSON.stringify(config.apiRoot),
   }
 };

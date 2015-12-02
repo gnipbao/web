@@ -1,5 +1,6 @@
 import merge from 'webpack-merge';
 
+import addHash from '../utils/addHash';
 import common from './common';
 import loaders from './loaders/client';
 import plugins from './plugins/client';
@@ -7,10 +8,10 @@ import plugins from './plugins/client';
 export default merge(common, {
   target: 'web',
   entry: ['./client.js'], 
-  resolve: {
-    extensions: ['.css', '.scss']
-  },
   output: {
+    filename: addHash('[name].js', 'chunkhash'),
+    chunkFilename: addHash('chunk.[name].js', 'chunkhash'),
+
     library: 'ClientApp',
     libraryTarget: 'var'
   },

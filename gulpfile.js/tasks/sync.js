@@ -1,12 +1,12 @@
+import path from 'path';
+import browsersync from 'browser-sync';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
-import browsersync from 'browser-sync';
 
-const wildcards = [
-  `${config.app.paths.dist}/*.html`,
-  `${config.app.paths.dist}/*.css`
-];
+const wildcards = ['html', 'css', 'json'].map(
+  ext => path.join(config.app.paths.dist, `*.${ext}`)
+);
 
 const sync = (syncConfig = {}) => {
   browsersync({ ...config.app.browsersync, ...syncConfig });
@@ -14,7 +14,7 @@ const sync = (syncConfig = {}) => {
 };
 
 gulp.task('sync', sync);
-gulp.task('sync:dev', () => {
+gulp.task('sync:proxy', () => {
   const bundler = webpack(config.webpack.client);
   return sync({
     proxy: {

@@ -1,7 +1,7 @@
 import dude from 'debug-dude';
+import { render as prettyjson } from 'prettyjson';
 
 import config from '../../config';
-import addHash from '../utils/addHash';
 import toolbox from './toolbox';
 import postcss from './postcss';
 import eslint from './eslint';
@@ -9,8 +9,8 @@ import eslint from './eslint';
 const { log } = dude('app');
 const noParse = Object.values(config.dependencies);
 
-log('dependencies:\n', config.dependencies);
-log('aliases:\n', config.aliases);
+log('dependencies:\n', prettyjson(config.dependencies));
+log('aliases:\n', prettyjson(config.aliases));
 
 export default {
   name: config.name,
@@ -20,7 +20,7 @@ export default {
     root: config.paths.root,
     alias: config.aliases,
     modulesDirectories: ['node_modules'],
-    extensions: ['', '.jsx', '.js', '.json'],
+    extensions: ['', '.jsx', '.js', '.css', '.scss', '.json'],
   },
 
   resolveLoader: {
@@ -30,9 +30,6 @@ export default {
 
   output: {
     path: config.paths.dist,
-    filename: addHash('[name].js', 'chunkhash'),
-    chunkFilename: addHash('chunk.[name].js', 'chunkhash'),
-
     publicPath: '/'
   },
 

@@ -8,7 +8,9 @@ export default merge(common, {
   target: 'node',
   entry: ['./server/index.js'],
   module: { loaders },
+  plugins,
   output: {
+    filename: 'server.js',
     library: 'ServerApp',
     libraryTarget: 'commonjs2'
   },
@@ -21,6 +23,5 @@ export default merge(common, {
     Buffer: false,
     __filename: false,
     __dirname: false,
-  },
-  plugins
+  }
 });

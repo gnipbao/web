@@ -1,7 +1,7 @@
 import webpack from 'webpack';
 import StatsPlugin from 'stats-webpack-plugin';
 
-import { sourceMap } from '../../../config';
+import { resolve, sourceMap } from '../../../config';
 import common from './common';
 
 export default [
@@ -18,5 +18,5 @@ export default [
       drop_console: true
     }
   }),
-  new StatsPlugin('webpack.stats.json')
+  new StatsPlugin('../webpack.stats.json')
 ]
