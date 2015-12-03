@@ -8,4 +8,4 @@ const base = [resolve(__dirname, '..')];
 const root = (...args) => resolve.apply(resolve, [...base, ...args]);
 const entries = mapObj(dirs, (k, v) => [k, root.bind(null, v)]);
 
-export default { root, ...entries  };
+export default { root, ...entries };

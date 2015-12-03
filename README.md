@@ -41,7 +41,7 @@ If everying is ok take a look at [the details](#the-details).
 
 By default it listens on port 3000,
 you can change this in [docker-compose.yml](https://github.com/vyorkin/starter-kit/blob/master/docker-compose.yml#L7)
-[Makefile](https://github.com/vyorkin/starter-kit/blob/master/Makefile.yml#L3)
+and [Makefile](https://github.com/vyorkin/starter-kit/blob/master/Makefile#L3)
 
 To see your existing docker machines:
 
