@@ -22,7 +22,15 @@ export default {
     root: config.paths.root,
     alias: config.aliases,
     modulesDirectories: ['node_modules'],
-    extensions: ['', '.jsx', '.js', '.css', '.scss', '.json'],
+    extensions: [
+      '',
+      '.jsx',
+      '.js',
+      '.hbs',
+      '.css',
+      '.scss',
+      '.json'
+    ],
   },
 
   resolveLoader: {

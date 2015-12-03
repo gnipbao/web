@@ -13,7 +13,7 @@ export default [
   ...common,
   {
     test: /\.hbs?$/,
-    include: paths.templates,
+    include: [paths.templates],
     loader: 'handlebars'
   },
   {

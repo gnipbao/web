@@ -5,7 +5,7 @@ import { start as prettyErrors } from 'pretty-error';
 import Express from 'express';
 import { Server } from 'http';
 
-import middleware from 'server/middleware';
+import middleware from './middleware';
 import render from 'lib/universal/render';
 
 prettyErrors();
@@ -20,7 +20,15 @@ const app = new Express();
 const server = new Server(app);
 
 middleware.forEach((m) => app.use(m));  // setup middleware
-app.use(render);              // unversal rendering
+app.use(render);                        // unversal rendering
+app.use((err, req, res, next) => {
+  error('rendering error: ', error);
+  res.status(500);
+  if (__DEVELOPMENT__) {
+    res.render(
+  } else {
+  }
+});
 
 const { host, port } = settings;
 const url = `http://${host}:${port}`;

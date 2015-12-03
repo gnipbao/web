@@ -2,6 +2,7 @@ import webpack from 'webpack';
 
 const { debug } = logger('app:bundle');
 const verbose = !!config.app.argv.verbose;
+
 const displayOptions = {
   colors: $.util.colors.supportsColor,
   hash: verbose,
@@ -22,24 +23,31 @@ const logStats = (err, stats) => {
   $.util.log('[webpack]\n', stats.toString(displayOptions));
 };
 
-gulp.task('bundle:client', () => {
+gulp.task('bundle:client', (cb) => {
   const cfg = config.webpack.client;
   debug('client config: ', prettyjson(cfg));
-  return webpack(cfg).run(logStats)
+  return webpack(cfg).run((err, stats) => {
+    logStats(err, stats);
+    return cb();
+  });
 });
 
-gulp.task('bundle:server', () => {
+gulp.task('bundle:server', (cb) => {
   const cfg = config.webpack.server;
   const bundler = webpack(cfg);
 
+  let runCount = 0;
+  const done = (err, stats) => {
+    logStats(err, stats);
+    return ++runCount === 1 && cb();
+  };
+
   debug('server config: ', prettyjson(cfg));
-  if (state.isWatching) {
-    debug('webpack will watch & rebuild server bundle');
-  }
+  if (state.isWatching) debug('webpack will watch & rebuild server bundle');
 
   return state.isWatching ?
-    bundler.watch(200, logStats) :
-    bundler.run(logStats);
+    bundler.watch(200, done) :
+    bundler.run(done);
 });
 
 gulp.task('bundle', () => sequence([

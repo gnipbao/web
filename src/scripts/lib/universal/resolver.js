@@ -12,11 +12,13 @@ export default class Resolver {
       { action, args }
     ];
   }
-
+j
   clean() {
   }
 
   async dispatch() {
-    this.pendingActions.forEach({ action, args } => await action(...args));
+    this.pendingActions.forEach(
+      { action, args } => await action(...args)
+    );
   }
 }

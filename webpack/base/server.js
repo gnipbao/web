@@ -1,5 +1,6 @@
 import merge from 'webpack-merge';
 
+import isExternal from '../utils/isExternal';
 import common from './common';
 import loaders from './loaders/server';
 import plugins from './plugins/server';
@@ -7,7 +8,11 @@ import plugins from './plugins/server';
 export default merge(common, {
   target: 'node',
   bail: true,
-  externals: /^[a-z][a-z\.\-0-9]*$/,
+
+  externals: [
+    (ctx, req, cb) => cb(null, isExternal(ctx, req))
+  ],
+
   entry: ['./server/index.js'],
   module: { loaders },
   plugins,
@@ -24,6 +29,6 @@ export default merge(common, {
     process: false,
     Buffer: false,
     __filename: false,
-    __dirname: false,
+    __dirname: false
   }
 });

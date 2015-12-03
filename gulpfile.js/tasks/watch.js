@@ -1,7 +1,8 @@
 import path from 'path';
 
+const wildcard = path.join(paths.assets.root, '**/*');
+
 gulp.task('watch', () => {
   global.state.isWatching = true;
-  const wildcard = path.join(paths.assets.root, '**/*');
   gulp.watch(wildcard, ['assets']);
 });
