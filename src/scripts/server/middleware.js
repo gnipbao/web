@@ -14,9 +14,9 @@ import {
 const logFormat = getLogFormat();
 
 export default [
+  favicon(path.join(__dirname, 'favicon.ico')),
   morgan(logFormat),
   Express.static('.'),
-  favicon(path.join(__dirname, 'favicon.ico')),
   compression({ filter: filterCompression, level: 3 }),
   responseTime(),
   helmet.hidePoweredBy({ setTo: 'human brains' }),
