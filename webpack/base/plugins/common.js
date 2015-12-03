@@ -1,13 +1,9 @@
-import dude from 'debug-dude';
+import logger from 'debug-dude';
 import { render as prettyjson } from 'prettyjson';
 import path from 'path';
 import webpack from 'webpack'
 
 import config from '../../../config';
-
-const { log } = dude('app');
-
-log('globals:\n', config.globals);
 
 export default [
   new webpack.ProvidePlugin({

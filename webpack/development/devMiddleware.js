@@ -8,17 +8,14 @@ export default {
     children: false,
     colors: true,
     reasons: true,
+    chunks: argv.verbose,
     profile: argv.profile
   },
 
-  // --verbose
-  //
   // if not in verbose mode display no info to console
   // (only warnings and errors)
   noInfo: !argv.verbose,
 
-  // --quiet
-  //
   // set this to true and you'll see no error output in the console
   // and it will make much harder to know whats wrong
   quiet: argv.quiet

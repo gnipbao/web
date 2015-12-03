@@ -1,8 +1,8 @@
 import webpack from 'webpack';
 
-const { debug } = dude('app:bundle');
+const { debug } = logger('app:bundle');
 const verbose = !!config.app.argv.verbose;
-const statsDisplayOptions = {
+const displayOptions = {
   colors: $.util.colors.supportsColor,
   hash: verbose,
   version: verbose,
@@ -18,8 +18,8 @@ const statsDisplayOptions = {
 };
 
 const logStats = (err, stats) => {
-  if (err) throw new $.util.PluginError('webpack', err);
-  $.util.log('[webpack]\n', stats.toString(statsDisplayOptions));
+  if (err) throw new $.util.PluginError('webpack', err, { showStack: true });
+  $.util.log('[webpack]\n', stats.toString(displayOptions));
 };
 
 gulp.task('bundle:client', () => {

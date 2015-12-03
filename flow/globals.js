@@ -7,3 +7,7 @@ declare var __ENVIRONMENT__: boolean;
 
 declare var __CLIENT__: boolean;
 declare var __SERVER__: boolean;
+
+declare var __QUIET__: boolean;
+declare var __VERBOSE__: boolean;
+declare var __PROFILE__: boolean;

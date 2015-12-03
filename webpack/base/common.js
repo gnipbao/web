@@ -1,4 +1,4 @@
-import dude from 'debug-dude';
+import logger from 'debug-dude';
 import { render as prettyjson } from 'prettyjson';
 
 import config from '../../config';
@@ -6,11 +6,13 @@ import toolbox from './toolbox';
 import postcss from './postcss';
 import eslint from './eslint';
 
-const { log } = dude('app');
-const noParse = Object.values(config.dependencies);
+const { debug } = logger('app:webpack');
 
-log('dependencies:\n', prettyjson(config.dependencies));
-log('aliases:\n', prettyjson(config.aliases));
+debug('dependencies:\n', prettyjson(config.dependencies));
+debug('aliases:\n', prettyjson(config.aliases));
+debug('globals:\n', prettyjson(config.globals));
+
+const noParse = Object.values(config.dependencies);
 
 export default {
   name: config.name,

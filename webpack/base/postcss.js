@@ -23,5 +23,5 @@ export default () => [
   require('postcss-responsive-type'),
   require('cssnano'),
   require('postcss-reporter'),
-  // require('postcss-browser-reporter')
+  require('postcss-browser-reporter')
 ];

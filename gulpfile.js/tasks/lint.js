@@ -3,18 +3,11 @@ import stylelint from 'stylelint';
 import reporter from 'postcss-reporter';
 import eslintFormatter from 'eslint-friendly-formatter';
 
-const {
-  root,
-  stylelintrc,
-  scripts,
-  tests
-} = config.app.paths;
-
 const wildcards = {
-  styles: path.join(root, '**/*.css'),
+  styles: path.join(paths.root, '**/*.css'),
   scripts: {
-    app: path.join(scripts, '**/*.js'),
-    tests: path.join(tests, '**/*.js')
+    app: path.join(paths.scripts, '**/*.js'),
+    tests: path.join(paths.tests, '**/*.js')
   }
 };
 

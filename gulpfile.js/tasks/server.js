@@ -1,3 +1,6 @@
 import monitor from '../utils/monitor';
 
-gulp.task('server', () => monitor('server', resolve.dist('server.js')));
+gulp.task('server', () => monitor('server', resolve.dist('server.js'), {
+  watch: true,
+  killTree: true
+}));

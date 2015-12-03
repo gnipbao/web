@@ -1,5 +1,4 @@
 import paths from '../../../config/paths';
-import common from './common';
 
 const cssOptions = {
   css: 'importLoaders=1&modules',
@@ -7,7 +6,6 @@ const cssOptions = {
 };
 
 export default [
-  ...common,
   {
     test: /\.css$/,
     loaders: ['style', `css?${cssOptions.css}`, 'postcss']

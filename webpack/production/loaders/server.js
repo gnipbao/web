@@ -1,5 +1,13 @@
-import common from './common';
+import paths from '../../../config/paths';
 
 export default [
-  ...common
+  {
+    test: /\.jsx?$/,
+    include: [
+      /node_modules\/qs/,
+      paths.config,
+      paths.scripts
+    ],
+    loader: 'babel'
+  }
 ]

@@ -6,6 +6,8 @@ import plugins from './plugins/server';
 
 export default merge(common, {
   target: 'node',
+  bail: true,
+  externals: /^[a-z][a-z\.\-0-9]*$/,
   entry: ['./server/index.js'],
   module: { loaders },
   plugins,

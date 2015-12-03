@@ -1,36 +1,38 @@
+import debug from 'debug';
+import logger from 'debug-dude';
 import { start as prettyErrors } from 'pretty-error';
+
 import Express from 'express';
 import { Server } from 'http';
-import morgan from 'morgan';
-import favicon from 'serve-favicon';
-import compression from 'compression';
 
-// <--
-import config, { resolve, argv } from '../../../config';
+import middleware from 'server/middleware';
 import render from 'lib/universal/render';
 
-const { verbose, profile } = argv;
-const { debug, log, info, warn, error } = dude('app:server');
-
 prettyErrors();
+
+const levels = ['error', 'warn', 'info', 'log'];
+levels.forEach(level => debug.enable(`app:server:${level}`));
+const { log, info, warn, error } = logger('app:server');
+
+info('starting...');
 
 const app = new Express();
 const server = new Server(app);
 
-app.disable('x-powered-by');
-app.use(morgan(verbose ? 'short' : 'dev'));
-app.use(favicon(resolve.dist('favicon.ico')));
-app.use(compression());
-app.use(Express.static('.'));
-app.use(render); // <<-
+middleware.forEach((m) => app.use(m));  // setup middleware
+app.use(render);              // unversal rendering
 
-const { host, port, url } = config.server;
+const { host, port } = settings;
+const url = `http://${host}:${port}`;
+
 server.listen(port, host, (err) => {
   if (err) {
     error(err);
   } else {
-    log('\n🍇 🍄 🍉 🍋 🍌 🍎 🍍 🍑 🍒 🍓 🛠 🚽 👽 🚷 🚀 ');
-    log(`server is running at: ${url}\n`);
+    if (process.send) process.send('online');
+
+    // 🍇 🍄 🍉 🍋 🍌 🍎 🍍 🍑 🍒 🍓 🛠 🚽 👽 🚷 🚀 
+    info('🚀  server is running at: %s\n', url);
   }
 });
 
