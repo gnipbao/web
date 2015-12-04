@@ -20,8 +20,8 @@ export default class Resolver {
   }
 
   async dispatch() {
-    this.pendingActions.forEach(
-      ({ action, args }) => await action(...args)
-    );
+    for (const { action, args } of this.pendingActions) {
+      await action(...args);
+    }
   }
 }

@@ -1,9 +1,10 @@
+require('./bootstrap');
+
 import logger from 'debug-dude';
 
 import Express from 'express';
 import { Server } from 'http';
 
-import * from './bootstrap';
 import middleware from './middleware';
 import render from './render';
 

@@ -1,3 +1,5 @@
+import { render as prettyjson } from 'prettyjson';
+import path from 'path';
 import fs from 'fs';
 import logger from 'debug-dude';
 import LRU from 'lru-cache';
@@ -22,10 +24,14 @@ export default async (req, res) => {
 
   syncReduxAndRouter(history, store);
 
-  // TODO: get assets from fs
   // TODO: cache all the things
   // TODO: hydrate on server
-  const assets = {};
+
+  const assetsManifestPath = path.resolve(__dirname, 'webpack.assets.json');
+  debug('using assets from ', assetsManifestPath);
+  const assetsContent = fs.readFileSync(assetsManifestPath);
+  const assets = JSON.parse(assetsContent);
+  debug('assets:\n', prettyjson(assets));
 
   const root = <Root store={store} history={history} />;
   const html = <Html store={store} assets={assets} component={root} />;
