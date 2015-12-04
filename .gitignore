@@ -4,5 +4,3 @@ coverage/
 doc/
 npm-debug*
 .env
-webpack.stats.json
-faviconData.json

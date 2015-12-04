@@ -1,3 +1,4 @@
+// Double-render approach
 export default class Resolver {
   firstRender = true;
   pendingActions = [];
@@ -12,13 +13,15 @@ export default class Resolver {
       { action, args }
     ];
   }
-j
+
   clean() {
+    this.firstRender = true;
+    this.pendingActions = [];
   }
 
   async dispatch() {
     this.pendingActions.forEach(
-      { action, args } => await action(...args)
+      ({ action, args }) => await action(...args)
     );
   }
 }

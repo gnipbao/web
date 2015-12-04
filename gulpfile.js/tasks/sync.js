@@ -5,7 +5,7 @@ import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 
 const extensions = ['html', 'xml', 'css', 'json'];
-const wildcards = extensions.map(ext => resolve.dist(`*.${ext}`));
+const wildcards = extensions.map(ext => path.join(paths.public, `*.${ext}`));
 
 const sync = (syncConfig = {}) => {
   browsersync({ ...config.app.browsersync, ...syncConfig });

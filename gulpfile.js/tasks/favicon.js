@@ -4,7 +4,7 @@ import fs from 'fs';
 const { debug } = logger('app:bundle');
 
 // File where the favicon markups are stored
-const FAVICON_DATA_FILE = 'faviconData.json';
+const FAVICON_DATA_FILE = path.join(paths.dist, 'faviconData.json');
 
 // Generate the icons. This task takes a few seconds to complete. 
 // You should run it at least once to create the icons. Then, 
@@ -12,11 +12,11 @@ const FAVICON_DATA_FILE = 'faviconData.json';
 // package (see the check-for-favicon-update task below).
 gulp.task('favicon:generate', (done) => {
   const masterPicture = path.join(paths.assets.images, 'logo.png'); 
-  debug(`generating favicon from ${masterPicture} to ${paths.dist}`);
+  debug(`generating favicon from ${masterPicture} to ${paths.public}`);
 
   $.realFavicon.generateFavicon({
     masterPicture,
-    dest: paths.dist,
+    dest: paths.public,
     iconsPath: '/',
     design: {
       ios: {

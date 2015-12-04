@@ -6,7 +6,7 @@ import useQueries from 'history/lib/useQueries';
 import useStandardScroll from 'scroll-behavior/lib/useStandardScroll';
 
 export default (
-  canUseDOM ?
+  canUseDOM() ?
     useStandardScroll(useQueries(createHistory))() :
     useQueries(createMemoryHistory)()
 );

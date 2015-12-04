@@ -1,5 +1,6 @@
 import merge from 'webpack-merge';
 
+import config from '../../config';
 import isExternal from '../utils/isExternal';
 import common from './common';
 import loaders from './loaders/server';
@@ -17,6 +18,7 @@ export default merge(common, {
   module: { loaders },
   plugins,
   output: {
+    path: config.paths.dist,
     filename: 'server.js',
     library: 'ServerApp',
     libraryTarget: 'commonjs2'

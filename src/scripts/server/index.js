@@ -1,17 +1,12 @@
-import debug from 'debug';
 import logger from 'debug-dude';
-import { start as prettyErrors } from 'pretty-error';
 
 import Express from 'express';
 import { Server } from 'http';
 
+import * from './bootstrap';
 import middleware from './middleware';
-import render from 'lib/universal/render';
+import render from './render';
 
-prettyErrors();
-
-const levels = ['error', 'warn', 'info', 'log'];
-levels.forEach(level => debug.enable(`app:server:${level}`));
 const { log, info, warn, error } = logger('app:server');
 
 info('starting...');
@@ -21,12 +16,17 @@ const server = new Server(app);
 
 middleware.forEach((m) => app.use(m));  // setup middleware
 app.use(render);                        // unversal rendering
+
+// error handling
 app.use((err, req, res, next) => {
-  error('rendering error: ', error);
+  error('server error: ', error);
+
   res.status(500);
-  if (__DEVELOPMENT__) {
-    res.render(
+
+  if (__PRODUCTION__) {
+    res.end();
   } else {
+    res.render('error', { error: err });
   }
 });
 

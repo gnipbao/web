@@ -36,6 +36,7 @@
     "debug": "2.2.0",
     "debug-dude": "1.0.3",
     "express": "4.13.3",
+    "form-serialize": "0.7.0",
     "handlebars": "4.0.5",
     "handlebars-loader": "1.1.4",
     "helmet": "0.15.0",
@@ -72,6 +73,7 @@
     "rx": "4.0.7",
     "rx-recompose": "0.2.0",
     "scroll-behavior": "0.3.0",
+    "serialize-javascript": "1.1.2",
     "serve-favicon": "2.3.0",
     "source-map-support": "0.4.0",
     "validator": "^4.2.1"
@@ -186,7 +188,8 @@
     "webpack-dev-server": "^1.12.1",
     "webpack-hot-middleware": "2.6.0",
     "webpack-isomorphic-tools": "^2.2.18",
-    "webpack-merge": "^0.3.0"
+    "webpack-merge": "^0.3.0",
+    "webpack-stats-plugin": "0.1.1"
   },
   "scripts": {
     "start": "gulp",

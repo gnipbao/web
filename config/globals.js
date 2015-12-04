@@ -12,18 +12,20 @@ const env = mapObj(
 
 const common = {
   'process.env': {
-    NODE_ENV: JSON.stringify(environmentName)
+    NODE_ENV: JSON.stringify(environmentName),
   },
 
   __QUIET__: argv.quiet,
   __VERBOSE__: argv.verbose,
   __PROFILE__: argv.profile,
 
-  __DEVTOOLS__: environments.development && config.devTools
+  __DEVTOOLS__: environments.development && config.devTools,
 };
 
 const app = {
   settings: {
+    name: JSON.stringify(config.name),
+    description: JSON.stringify(config.description),
     host: JSON.stringify(config.host),
     port: JSON.stringify(config.ports.app),
     apiRoot: JSON.stringify(config.apiRoot),
@@ -33,5 +35,5 @@ const app = {
 export default {
   ...common,
   ...env,
-  ...app
+  ...app,
 }

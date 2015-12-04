@@ -8,6 +8,8 @@ import 'styles/main';
 import AppBar from 'react-toolbox/lib/app_bar';
 import Navigation from 'components/Navigation';
 
+import Meta from './Meta';
+
 const { func } = PropTypes;
 
 const items = [
@@ -30,6 +32,7 @@ export default class Main extends Component {
 
     return (
       <div className='main'>
+        <Meta />
         <AppBar top>
           <Navigation
             type='horizontal'

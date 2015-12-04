@@ -1,5 +1,6 @@
 import webpack from 'webpack';
 import StatsPlugin from 'stats-webpack-plugin';
+import { StatsWriterPlugin } from 'webpack-stats-plugin';
 
 import { resolve, sourceMap } from '../../../config';
 import common from './common';
@@ -18,5 +19,12 @@ export default [
       drop_console: true
     }
   }),
-  new StatsPlugin('../webpack.stats.json')
+  new StatsPlugin('../webpack.stats.json'),
+  new StatsWriterPlugin({
+    filename: '../webpack.assets.json',
+    fields: null,
+    transform: data => {
+      return JSON.stringify(data.assetsByChunkName, null, 2)
+    }
+  })
 ]

@@ -92,7 +92,8 @@ if you want to push your base image to the dockerhub.
 ├── /gulp/                                 # Gulp tasks
 ├── /node_modules/                         # 3rd-party libraries and utilities
 ├── /src/                                  # The source code and resources of the application
-│   ├── /assets/                           # Static files which are copied to ./dist on compile
+│   ├── /assets/                           # Static files which are copied to ./dist/public on compile
+│   │   ├── /images
 │   │   ├── /icons/                        # Icons 
 │   │   ├── /fonts/                        # Additional fonts that used in project
 │   ├── /scripts/                          # Application scripts
@@ -105,7 +106,7 @@ if you want to push your base image to the dockerhub.
 │   │   ├── /forms/                        # React components representing forms
 │   │   ├── /layouts/                      # Application layouts
 │   │   ├── /lib/                          # App-specific code, utility classes and functions
-│   │   ├── /pages/                        # React components representing "pages" in SPA
+│   │   ├── /pages/                        # React components representing pages
 │   │   ├── /routes/                       # Routing configuration files
 │   │   ├── /stores/                       # Stores contain the application state and logic
 │   │   ├── /widets/                       # React widget components
@@ -192,8 +193,9 @@ Here is some [more info about devtool](https://webpack.github.io/docs/configurat
 
 ### Analysis
 
-In root directory you can find webpack stats file named `webpack.stats.json` and
-feed it to [webpack stats analyzer](http://webpack.github.io/analyse/)
+In `dist` directory you can find webpack stats file named `webpack.stats.json` and
+feed it to [webpack stats analyzer](http://webpack.github.io/analyse/) to see
+some useful info about your bundle.
 
 ### Updating
 

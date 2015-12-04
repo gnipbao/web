@@ -6,6 +6,8 @@ const rootSiblings = mapObj(resolve, (k, v) => [k, v('')]);
 export default {
   ...rootSiblings, // root, dirs
 
+  public: resolve.dist('public'),
+
   scripts: resolve.src('scripts'),
   styles: resolve.src('styles'),
   templates: resolve.src('templates'),

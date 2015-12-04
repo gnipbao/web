@@ -1,1 +1,4 @@
-gulp.task('build', () => sequence('clean', ['assets', 'bundle']));
+gulp.task('build', () => sequence(
+  'clean',
+  ['assets', 'favicon:generate', 'bundle']
+));
