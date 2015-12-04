@@ -9,7 +9,7 @@ import responseTime from 'response-time';
 import {
   getLogFormat,
   compressionFilter
-} from '../utils';
+} from './utils';
 
 const logFormat = getLogFormat();
 
