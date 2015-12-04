@@ -13,7 +13,8 @@ import { loadAssets } from './utils';
 
 const { debug, error } = logger('app:server');
 
-export default async (req, res) => {
+export default (req, res) => {
+  try {
   // put all shit together
 
   const store = createStore({});
@@ -26,10 +27,14 @@ export default async (req, res) => {
 
   const assets = loadAssets();
   const root = <Root store={store} history={history} />;
-  const html = <Html store={store} assets={assets} component={root} />;
+  const html = <Html store={store} assets={assets} root={root} />;
 
   const htmlStr = ReactDOMServer.renderToString(html);
   const body = `<!doctype html>\n${htmlStr}`;
 
   res.status(200).send(body);
+  } catch (err) {
+    error('fucked up: ', err);
+    res.status(500).send({ error: err });
+  }
 };

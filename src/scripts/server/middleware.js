@@ -14,10 +14,10 @@ import {
 const logFormat = getLogFormat();
 
 export default [
-  favicon(path.join(__dirname, 'public', 'favicon.ico')),
   morgan(logFormat),
-  Express.static(path.join(__dirname, 'public')),
   compression({ filter: compressionFilter, level: 3 }),
+  favicon(path.join(__dirname, 'public', 'favicon.ico')),
+  Express.static(path.join(__dirname, 'public')),
   responseTime(),
   helmet.hidePoweredBy({ setTo: 'human brains' }),
   helmet.frameguard('sameorigin'),

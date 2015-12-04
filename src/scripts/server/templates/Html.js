@@ -2,20 +2,16 @@ import serialize from 'serialize-javascript';
 
 const { object, string, node } = PropTypes;
 
-const Html = ({ store, assets, component }) => {
-  const root = ReactDOMServer.renderToString(component);
+const Html = ({ store, assets, root }) => {
+  const content = ReactDOMServer.renderToString(root);
   const head = Helmet.rewind();
   const state = serialize(store.getState());
 
   return (
     <html lang='en-us'>
       <head>
-        <meta charset='utf-8' />
-        <meta http-equiv='X-UA-Compatible' content='IE=edge' />
-
-        {head.title.toComponent()}
-        {head.meta.toComponent()}
-        {head.link.toComponent()}
+        <meta charSet='utf-8' />
+        <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
 
         <meta name='viewport' content='width=device-width, initial-scale=1' />
 
@@ -43,13 +39,13 @@ const Html = ({ store, assets, component }) => {
         <meta name='msapplication-TileColor' content='#da532c' />
         <meta name='msapplication-TileImage' content='/mstile-144x144.png' />
 
-        {assets.styles.map(href => <link href={href} rel='stylesheet' />)}
+        {assets.styles.map((href, i) => <link key={i} href={href} rel='stylesheet' type='text/css' />)}
       </head>
 
       <body>
-        <div id='root' dangerouslySetInnerHtml={{ __html: root }} />
-        <script dangerouslySetInnerHtml={{ __html: `window.__state = ${state};` }} />
-        {assets.scripts.map(src => <script src={src} async defer />)}
+        <div id='root' dangerouslySetInnerHTML={{ __html: content }} />
+        <script dangerouslySetInnerHTML={{ __html: `window.__state = ${state};` }} />
+        {assets.scripts.map((src, i) => <script key={i} src={src} async defer />)}
       </body>
     </html>
   );
@@ -58,7 +54,7 @@ const Html = ({ store, assets, component }) => {
 Html.propTypes = {
   store: object.isRequired,
   assets: object.isRequired,
-  component: node.isRequired,
+  root: node.isRequired,
 };
 
 export default Html;

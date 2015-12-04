@@ -12,7 +12,7 @@ export default (name, filename, options = {}) => {
 
   const monitor = new Monitor(filename, {
     max: 3,
-    watchDirectory: paths.public,
+    watchDirectory: paths.dist,
     watchIgnorePatterns,
     silent: true,
     ...options

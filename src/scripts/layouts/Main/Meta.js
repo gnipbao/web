@@ -39,8 +39,8 @@ const Meta = ({ og, twitter, ...props }) => {
       titleTemplate={`%s | ${settings.name}`}
       meta={[
         { name: 'description', content: description },
-        ...(og && meta.openGraph(og)),
-        ...(twitter && meta.twitter(twitter))
+        ...(og && meta.openGraph(og) || []),
+        ...(twitter && meta.twitter(twitter) || [])
       ]}
     />
   );
