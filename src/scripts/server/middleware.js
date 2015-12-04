@@ -8,8 +8,8 @@ import responseTime from 'response-time';
 
 import {
   getLogFormat,
-  filterCompression
-} from './utils';
+  compressionFilter
+} from '../utils';
 
 const logFormat = getLogFormat();
 
@@ -17,7 +17,7 @@ export default [
   favicon(path.join(__dirname, 'public', 'favicon.ico')),
   morgan(logFormat),
   Express.static(path.join(__dirname, 'public')),
-  compression({ filter: filterCompression, level: 3 }),
+  compression({ filter: compressionFilter, level: 3 }),
   responseTime(),
   helmet.hidePoweredBy({ setTo: 'human brains' }),
   helmet.frameguard('sameorigin'),

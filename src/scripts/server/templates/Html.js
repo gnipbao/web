@@ -1,11 +1,9 @@
-import ReactDOM from 'react-dom/server';
-import Helmet from 'react-helmet';
 import serialize from 'serialize-javascript';
 
 const { object, string, node } = PropTypes;
 
 const Html = ({ store, assets, component }) => {
-  const root = ReactDOM.renderToString(component);
+  const root = ReactDOMServer.renderToString(component);
   const head = Helmet.rewind();
   const state = serialize(store.getState());
 
@@ -13,7 +11,7 @@ const Html = ({ store, assets, component }) => {
     <html lang='en-us'>
       <head>
         <meta charset='utf-8' />
-          <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+        <meta http-equiv='X-UA-Compatible' content='IE=edge' />
 
         {head.title.toComponent()}
         {head.meta.toComponent()}

@@ -1,4 +1,5 @@
 import webpack from 'webpack';
+import CompressionPlugin from 'compression-webpack-plugin';
 import StatsPlugin from 'stats-webpack-plugin';
 import { StatsWriterPlugin } from 'webpack-stats-plugin';
 
@@ -33,6 +34,13 @@ export default [
       unsafe: true,
       drop_console: true
     }
+  }),
+  new CompressionPlugin({
+    asset: '{file}.gz',
+    algorithm: 'gzip',
+    regExp: /\.(js|css|html)$/,
+    threshold: 8192,
+    minRatio: 0.8
   }),
   new StatsPlugin('../webpack.stats.json'),
   new StatsWriterPlugin({

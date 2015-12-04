@@ -11,3 +11,4 @@ declare var __SERVER__: boolean;
 declare var __QUIET__: boolean;
 declare var __VERBOSE__: boolean;
 declare var __PROFILE__: boolean;
+declare var __DEBUG__: boolean;

@@ -89,6 +89,7 @@
     "browser-sync": "^2.9.11",
     "bundle-loader": "^0.5.4",
     "chai-as-promised": "^5.1.0",
+    "compression-webpack-plugin": "0.2.0",
     "coveralls": "^2.11.4",
     "css-loader": "^0.23.0",
     "cssnano": "^3.3.2",
@@ -211,7 +212,9 @@
       "browserSyncUI": 3002
     },
     "sourceMap": true,
+    "webRoot": "",
     "apiRoot": "http://localhost:8080",
-    "devTools": true
+    "devTools": true,
+    "locale": "en_US"
   }
 }
