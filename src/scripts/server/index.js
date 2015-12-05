@@ -1,4 +1,5 @@
-require('./bootstrap');
+import debug from 'debug';
+debug.enable('app:server:*');
 
 import logger from 'debug-dude';
 import PrettyError from 'pretty-error';
@@ -8,6 +9,7 @@ import { Server } from 'http';
 
 import middleware from './middleware';
 import handler from './handler';
+
 
 const { log, info, warn, error } = logger('app:server');
 

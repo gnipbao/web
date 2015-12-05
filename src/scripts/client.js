@@ -5,7 +5,6 @@ import { create as createStore } from 'store';
 import history from 'lib/history';
 import render from 'lib/render';
 
-const { error } = logger('app:server');
 const initialState = window.__state || {};
 
 const run = async () => {
@@ -29,7 +28,7 @@ const run = async () => {
       !container.firstChild.attributes ||
       !container.firstChild.attributes['data-react-checksum'];
 
-    if (failed) error('server-side React render was discarded');
+    if (failed) console.error('server-side React render was discarded, investigate');
   }
 };
 

@@ -1,3 +1,6 @@
+import debug from 'debug';
+debug.enable('app:server:*');
+
 import logger from 'debug-dude';
 import PrettyError from 'pretty-error';
 import LRU from 'lru-cache';
@@ -12,7 +15,7 @@ import render from 'lib/render';
 import routes from 'routes';
 
 const prettyError = new PrettyError();
-const { debug, error } = logger('app:server');
+const { log, info, error } = logger('app:server');
 
 const runRouter = (location) => new Promise((resolve) =>
   match({ routes, location }, (...args) => resolve(args)));
@@ -37,6 +40,7 @@ export default async (req, res) => {
       syncReduxAndRouter(history, store);
       const routerProps = { ...renderProps, location };
       const html = await render(history, store, routerProps);
+      info(`location = ${location.pathname}, original url = ${req.originalUrl}`);
       res.status(200).send(html);
     } else {
       res.status(404).send('not found');

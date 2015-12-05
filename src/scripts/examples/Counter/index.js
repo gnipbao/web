@@ -1,25 +1,19 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import Undo from 'components/Undo';
-
 import Counter from './components/Counter';
-import { inc, dec, undo, redo } from 'modules/examples/counter';
+import { inc, dec } from 'modules/examples/counter';
 
 const Example = (props) => {
   const { counter, dispatch } = props;
 
-  const counterActionCreators = bindActionCreators({ inc, dec }, dispatch);
-  const undoActionCreators = bindActionCreators({ undo, redo }, dispatch);
+  const actions = bindActionCreators({ inc, dec }, dispatch);
 
   return (
-    <div>
-      <Counter
-        counter={counter.present}
-        {...counterActionCreators}
-      />
-      <Undo {...undoActionCreators} />
-    </div>
+    <Counter
+      counter={counter.present}
+      {...actions}
+    />
   );
 };
 

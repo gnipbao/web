@@ -23,7 +23,6 @@ export default [
   'redux-form',
   'redux-promise',
   'redux-logger',
-  'redux-undo',
   'reselect',
   'recompose',
   'rx-recompose',
