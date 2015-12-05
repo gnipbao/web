@@ -3,6 +3,8 @@ import { ListItemContent } from 'react-toolbox/lib/list';
 
 import style from 'react-toolbox/lib/list/style';
 
+const { object, func } = PropTypes;
+
 const Component = ({ item, complete }) => {
   const { text, completed } = item;
 
@@ -10,15 +12,15 @@ const Component = ({ item, complete }) => {
     <Checkbox
       className={style.checkbox}
       checked={completed}
-      label={<ListItemContent caption={text} />}
+      label={text}
       onChange={() => complete(item.id)}
     />
   );
 };
 
 Component.propTypes = {
-  item: PropTypes.object.isRequired,
-  complete: PropTypes.func.isRequired
+  item: object.isRequired,
+  complete: func.isRequired
 };
 
 export default Component;

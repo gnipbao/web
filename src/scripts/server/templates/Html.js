@@ -12,6 +12,7 @@ const Html = ({ store, assets, root }) => {
       <head>
         <meta charSet='utf-8' />
         <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
+        <meta httpEquiv='cleartype' content='on' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
 
         {head && head.title.toComponent()}
@@ -37,10 +38,20 @@ const Html = ({ store, assets, root }) => {
         <link rel='mask-icon' href='/safari-pinned-tab.svg' color='#5bbad5' />
 
         <meta name='apple-mobile-web-app-title' content={settings.name} />
+        <meta name='apple-mobile-web-app-capable' content='yes' />
+        <meta name='apple-mobile-web-app-status-bar-style' content='black-translucent' />
+
+        <meta name='format-detection' content='telephone=no' />
+        <meta name='format-detection' content='address=no' />
+
+        <meta name='HandheldFriendly' content='True' />
+
         <meta name='application-name' content={settings.name} />
 
         <meta name='msapplication-TileColor' content='#da532c' />
         <meta name='msapplication-TileImage' content='/mstile-144x144.png' />
+
+        <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet' />
 
         {assets.styles.map((href, i) => <link key={i} href={href} rel='stylesheet' />)}
       </head>

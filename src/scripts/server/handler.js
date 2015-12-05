@@ -7,7 +7,8 @@ import LRU from 'lru-cache';
 import crypto from 'crypto';
 import { match } from 'react-router';
 import createLocation from 'history/lib/createLocation';
-import { syncReduxAndRouter } from 'redux-simple-router';
+import { bindActionCreators } from 'redux';
+import { syncReduxAndRouter, updatePath } from 'redux-simple-router';
 
 import { create as createStore } from 'store';
 import history from 'lib/history';
@@ -36,8 +37,10 @@ export default async (req, res) => {
       const redirectUrl = redirectLocation.pathname + redirectLocation.search;
       res.redirect(302, redirectUrl)
     } else if (renderProps) {
-      const store = createStore({}); // <- hydrate
+      // <- hydrate
+      const store = createStore({});
       syncReduxAndRouter(history, store);
+      store.dispatch(updatePath(location.pathname, true));
       const routerProps = { ...renderProps, location };
       const html = await render(history, store, routerProps);
       info(`location = ${location.pathname}, original url = ${req.originalUrl}`);

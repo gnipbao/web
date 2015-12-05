@@ -5,6 +5,7 @@ import { updatePath } from 'redux-simple-router';
 import 'styles/toolbox/main';
 import style from 'styles/main';
 
+import ToolboxApp from 'react-toolbox/lib/app';
 import AppBar from 'react-toolbox/lib/app_bar';
 import Navigation from 'components/Navigation';
 
@@ -32,19 +33,21 @@ export default class Main extends Component {
 
     return (
       <div className={style.main}>
-        <Meta
-          og={{ title: 'starter' }}
-          twitter={{ site: '@yorkin', creator: '@yorkin' }}
-        />
-        <AppBar top>
-          <Navigation
-            type='horizontal'
-            {...{ go, currentPath, items } }
+        <ToolboxApp>
+          <Meta
+            og={{ title: 'starter' }}
+            twitter={{ site: '@yorkin', creator: '@yorkin' }}
           />
-        </AppBar>
-        <section className={style.page}>
-          {children}
-        </section>
+          <AppBar top>
+            <Navigation
+              type='horizontal'
+              {...{ go, currentPath, items } }
+            />
+          </AppBar>
+          <section className={style.page}>
+            {children}
+          </section>
+        </ToolboxApp>
       </div>
     );
   }

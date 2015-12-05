@@ -21,7 +21,7 @@ export default class Main extends Component {
       <div>
         <List selectable ripple>
           <ListSubHeader caption='Todos' />
-          {items.map((item) =>
+          {items.map(item =>
             <Item
               key={item.id}
               item={item}

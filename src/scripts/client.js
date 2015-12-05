@@ -19,8 +19,10 @@ const run = async () => {
   if (!__PRODUCTION__) {
     window.React = React;
 
-    window.Perf = require('react-addons-perf');
-    window.Perf.start();
+    if (__PROFILE__) {
+      window.Perf = require('react-addons-perf');
+      window.Perf.start();
+    }
 
     const failed =
       !container ||
@@ -28,7 +30,11 @@ const run = async () => {
       !container.firstChild.attributes ||
       !container.firstChild.attributes['data-react-checksum'];
 
-    if (failed) console.error('server-side React render was discarded, investigate');
+      if (failed) {
+        console.error(
+          `Server-side React render was discarded, investigate, good luck.`
+        );
+      }
   }
 };
 
