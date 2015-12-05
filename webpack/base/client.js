@@ -10,10 +10,10 @@ export default merge(common, {
   target: 'web',
   entry: ['./client.js'], 
   output: {
+    path: config.paths.public,
+
     filename: addHash('[name].js', 'chunkhash'),
     chunkFilename: addHash('chunk.[name].js', 'chunkhash'),
-
-    path: config.paths.public,
 
     library: 'ClientApp',
     libraryTarget: 'var'

@@ -29,7 +29,6 @@ export default [
     loader: 'babel',
     include: [
       /node_modules\/qs/,
-      paths.config,
       paths.scripts
     ],
     query: {

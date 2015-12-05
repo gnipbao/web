@@ -6,7 +6,7 @@ import Express from 'express';
 import { Server } from 'http';
 
 import middleware from './middleware';
-import render from './render';
+import handler from './handler';
 
 const { log, info, warn, error } = logger('app:server');
 
@@ -16,7 +16,7 @@ const app = new Express();
 const server = new Server(app);
 
 middleware.forEach((m) => app.use(m));  // setup middleware
-app.use(render);                        // unversal rendering
+app.use(handler);                       // unversal rendering
 
 // error handling
 app.use((err, req, res, next) => {
@@ -27,7 +27,7 @@ app.use((err, req, res, next) => {
   if (__PRODUCTION__) {
     res.end();
   } else {
-    res.render('error', { error: err });
+    res.send(err.stack);
   }
 });
 

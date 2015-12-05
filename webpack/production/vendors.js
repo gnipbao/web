@@ -29,5 +29,8 @@ export default [
   'rx-recompose',
   'rx',
   'classnames',
-  'react-visibility-sensor'
+  'react-visibility-sensor',
+  'form-serialize',
+  'serialize-javascript',
+  'scroll-behavior',
 ]

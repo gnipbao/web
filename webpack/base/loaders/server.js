@@ -12,11 +12,6 @@ const cssOptions = {
 export default [
   ...common,
   {
-    test: /\.hbs?$/,
-    include: [paths.templates],
-    loader: 'handlebars'
-  },
-  {
     test: /\.css$/,
     loaders: [`css/locals?${cssOptions.css}`, 'postcss']
   },

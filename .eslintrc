@@ -58,9 +58,11 @@
   "globals": {
     "React": true,
     "ReactDOM": true,
+    "ReactDOMServer": true,
     "Component": true,
     "PropTypes": true,
     "Immutable": true,
+    "Helmet": true,
     "R": true,
 
     "settings": true,

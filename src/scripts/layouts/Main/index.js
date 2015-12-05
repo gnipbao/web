@@ -32,7 +32,10 @@ export default class Main extends Component {
 
     return (
       <div className='main'>
-        <Meta />
+        <Meta
+          og={{ title: 'starter' }}
+          twitter={{ site: '@yorkin', creator: '@yorkin' }}
+        />
         <AppBar top>
           <Navigation
             type='horizontal'

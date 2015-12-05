@@ -26,7 +26,6 @@ export default {
       '',
       '.jsx',
       '.js',
-      '.hbs',
       '.css',
       '.scss',
       '.json'

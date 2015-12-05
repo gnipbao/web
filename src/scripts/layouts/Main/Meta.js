@@ -1,10 +1,7 @@
 const { string, object } = PropTypes;
 
-const logoUrl = `${settings.webUrl}/logo.png`;
-const imageSize = {
-  width: 260,
-  height: 260
-};
+const logoUrl = `${settings.webRoot}/logo.png`;
+const imageSize = { width: 260, height: 260 };
 
 const Meta = ({ og, twitter, ...props }) => {
   const {

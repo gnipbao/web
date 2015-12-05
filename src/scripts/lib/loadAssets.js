@@ -7,7 +7,7 @@ const { debug, error } = logger('app:server');
 const ASSETS_FILE_NAME = 'webpack.assets.json';
 
 export default () => {
-  if (__DEVELOPMENT__ || __TEST__) {
+  if (__DEVELOPMENT__) {
     const timestamp = Date.now();
     const developmentBundle = `/main.js?${timestamp}`;
 

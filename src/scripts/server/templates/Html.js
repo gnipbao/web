@@ -12,8 +12,11 @@ const Html = ({ store, assets, root }) => {
       <head>
         <meta charSet='utf-8' />
         <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
-
         <meta name='viewport' content='width=device-width, initial-scale=1' />
+
+        {head.title.toComponent()}
+        {head.meta.toComponent()}
+        {head.link.toComponent()}
 
         <link rel='apple-touch-icon' sizes='57x57' href='/apple-touch-icon-57x57.png' />
         <link rel='apple-touch-icon' sizes='60x60' href='/apple-touch-icon-60x60.png' />
@@ -39,7 +42,7 @@ const Html = ({ store, assets, root }) => {
         <meta name='msapplication-TileColor' content='#da532c' />
         <meta name='msapplication-TileImage' content='/mstile-144x144.png' />
 
-        {assets.styles.map((href, i) => <link key={i} href={href} rel='stylesheet' type='text/css' />)}
+        {assets.styles.map((href, i) => <link key={i} href={href} rel='stylesheet' />)}
       </head>
 
       <body>
@@ -49,7 +52,7 @@ const Html = ({ store, assets, root }) => {
       </body>
     </html>
   );
-}
+};
 
 Html.propTypes = {
   store: object.isRequired,
