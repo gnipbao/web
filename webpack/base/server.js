@@ -1,7 +1,7 @@
 import merge from 'webpack-merge';
 
 import config from '../../config';
-import isExternal from '../utils/isExternal';
+import { isExternal } from '../utils';
 import common from './common';
 import loaders from './loaders/server';
 import plugins from './plugins/server';

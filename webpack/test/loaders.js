@@ -1,7 +1,7 @@
 import paths from '../../config/paths';
 
 const cssOptions = {
-  css: 'importLoaders=1',
+  css: 'importLoaders=2',
   sass: 'modules'
 };
 

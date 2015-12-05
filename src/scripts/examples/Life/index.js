@@ -13,7 +13,7 @@ const Example = ({ actions, cells }) => {
   return (
     <div className={style.root}>
       <Grid cells={cells} />
-      <Controls speed={10} {...actions} />
+      <Controls speed={100} {...actions} />
     </div>
   );
 };

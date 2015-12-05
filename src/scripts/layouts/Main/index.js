@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { updatePath } from 'redux-simple-router';
 
 import 'styles/toolbox/main';
-import 'styles/main';
+import style from 'styles/main';
 
 import AppBar from 'react-toolbox/lib/app_bar';
 import Navigation from 'components/Navigation';
@@ -31,7 +31,7 @@ export default class Main extends Component {
     const { go, currentPath, children } = this.props;
 
     return (
-      <div className='main'>
+      <div className={style.main}>
         <Meta
           og={{ title: 'starter' }}
           twitter={{ site: '@yorkin', creator: '@yorkin' }}
@@ -42,7 +42,7 @@ export default class Main extends Component {
             {...{ go, currentPath, items } }
           />
         </AppBar>
-        <section className='page'>
+        <section className={style.page}>
           {children}
         </section>
       </div>

@@ -1,5 +1,6 @@
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
+import { localIdentName } from '../../utils';
 import paths from '../../../config/paths';
 
 const extractOptions = {
@@ -7,8 +8,8 @@ const extractOptions = {
 };
 
 const cssOptions = {
-  css: 'minimize&importLoaders=1',
-  sass: 'minimize&modules&localIdentName=[path][name]---[local]---[hash:base64:5]'
+  css: `minimize&importLoaders=2&localIdentName=${localIdentName}`,
+  sass: `minimize&modules&localIdentName=${localIdentName}`
 };
 
 export default [

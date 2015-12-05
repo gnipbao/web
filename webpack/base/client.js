@@ -1,7 +1,7 @@
 import merge from 'webpack-merge';
 
 import config from '../../config';
-import addHash from '../utils/addHash';
+import { addHash } from '../utils';
 import common from './common';
 import loaders from './loaders/client';
 import plugins from './plugins/client';

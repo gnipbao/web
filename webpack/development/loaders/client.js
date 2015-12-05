@@ -1,8 +1,9 @@
 import paths from '../../../config/paths';
+import { localIdentName } from '../../utils';
 
 const cssOptions = {
-  css: 'importLoaders=1&modules',
-  sass: 'modules'
+  css: `importLoaders=2&modules&localIdentName=${localIdentName}`,
+  sass: `modules&localIdentName=${localIdentName}`
 };
 
 export default [
@@ -22,7 +23,7 @@ export default [
   },
   {
     test: /\.sass$/,
-    loaders: ['style', `css?${cssOptions.sass}`, 'sass?includePath[]=' + paths.modules + '&indentedSyntax'],
+    loaders: ['style', `css?${cssOptions.sass}`, `sass?includePath[]=${paths.modules}&indentedSyntax`],
   },
   {
     test: /\.jsx?$/,

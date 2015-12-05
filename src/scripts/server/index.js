@@ -10,7 +10,6 @@ import { Server } from 'http';
 import middleware from './middleware';
 import handler from './handler';
 
-
 const { log, info, warn, error } = logger('app:server');
 
 info('starting...');

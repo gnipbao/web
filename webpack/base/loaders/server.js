@@ -1,9 +1,10 @@
 import paths from '../../../config/paths';
 import common from './common';
+import { localIdentName } from '../../utils';
 
 const cssOptions = {
-  css: 'importLoaders=1&modules',
-  sass: 'modules'
+  css: `importLoaders=2&modules&localIdentName=${localIdentName}`,
+  sass: `modules&localIdentName=${localIdentName}`
 };
 
 // for more info about css loading see:
@@ -24,9 +25,5 @@ export default [
     test: /\.scss$/,
     include: /node_modules\/react-toolbox\/lib/,
     loaders: [`css/locals?${cssOptions.sass}`, `sass?includePath[]=${paths.modules}`, 'toolbox'],
-  },
-  {
-    test: /\.sass$/,
-    loaders: [`css/locals?${cssOptions.sass}`, 'sass?includePath[]=' + paths.modules + '&indentedSyntax'],
   }
 ]
