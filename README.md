@@ -1,5 +1,7 @@
 # Starter kit
 
+![logo](https://raw.githubusercontent.com/vyorkin/starter-kit/master/src/assets/images/logo.png)
+
 # Table of contents
 
 * [up and running](#up-and-running)
