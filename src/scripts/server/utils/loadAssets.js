@@ -4,21 +4,23 @@ import { render as prettyjson } from 'prettyjson';
 import logger from 'debug-dude';
 
 const { debug, error } = logger('app:server');
+
 const ASSETS_FILE_NAME = 'webpack.assets.json';
+const BUNDLE_FILE_NAME = 'main.js';
 
 export default () => {
   if (__DEVELOPMENT__) {
     const timestamp = Date.now();
-    const developmentBundle = `/main.js?${timestamp}`;
+    const bundle = `/${BUNDLE_FILE_NAME}?${timestamp}`;
 
     debug('assets are managed by webpack dev middleware in dev environment');
-    debug(`serving javascript bundle as ${developmentBundle}`);
+    debug(`serving javascript bundle from ${bundle}`);
 
-    return { scripts: [developmentBundle], styles: [] };
+    return { scripts: [bundle], styles: [] };
   } else {
-    const assetsManifestPath = path.resolve(__dirname, ASSETS_FILE_NAME);
-    debug('using assets from ', assetsManifestPath);
-    const assetsContent = fs.readFileSync(assetsManifestPath);
+    const manifestPath = path.resolve(__dirname, ASSETS_FILE_NAME);
+    debug('using assets from manifest: ', manifestPath);
+    const assetsContent = fs.readFileSync(manifestPath);
     const assets = JSON.parse(assetsContent);
     debug('assets:\n', prettyjson(assets));
 

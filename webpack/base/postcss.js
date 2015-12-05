@@ -1,12 +1,23 @@
-import {
+import { postcss, argv } from '../../config';
+
+const {
   cssnext,
   assets,
   fontMagician,
   stylelint
-} from '../../config/postcss';
+} = postcss;
+
+const linters = () => [
+  require('stylelint')(stylelint)
+];
+
+const reporters = () => [
+  require('postcss-reporter'),
+  require('postcss-browser-reporter')
+];
 
 export default () => [
-  require('stylelint')(stylelint),
+  ...(argv.lint ? linters() : []),
   require('precss'),
   require('postcss-cssnext')(cssnext),
   require('lost'),
@@ -22,6 +33,5 @@ export default () => [
   require('postcss-quantity-queries'),
   require('postcss-responsive-type'),
   require('cssnano'),
-  require('postcss-reporter'),
-  require('postcss-browser-reporter')
+  ...(argv.lint ? reporters() : [])
 ];

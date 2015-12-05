@@ -1,27 +1,48 @@
 import logger from 'debug-dude';
+import PrettyError from 'pretty-error';
 import LRU from 'lru-cache';
 import crypto from 'crypto';
+import { match } from 'react-router';
+import createLocation from 'history/lib/createLocation';
 import { syncReduxAndRouter } from 'redux-simple-router';
 
-import history from 'lib/history';
 import { create as createStore } from 'store';
+import history from 'lib/history';
 import render from 'lib/render';
+import routes from 'routes';
 
+const prettyError = new PrettyError();
 const { debug, error } = logger('app:server');
+
+const runRouter = (location) => new Promise((resolve) =>
+  match({ routes, location }, (...args) => resolve(args)));
 
 export default async (req, res) => {
   try {
     // TODO: cache all the things
     // TODO: server side routing
     // TODO: hydrate on server
+    // TODO: dispatch using redux-simple-router actions
 
-    const store = createStore({});
-    syncReduxAndRouter(history, store);
+    const location = createLocation(req.originalUrl);
+    const [error, redirectLocation, renderProps] = await runRouter(location);
 
-    const html = await render(history, store);
-    res.status(200).send(html);
+    if (error) {
+      res.status(500).send(error.message)
+    } else if (redirectLocation) {
+      const redirectUrl = redirectLocation.pathname + redirectLocation.search;
+      res.redirect(302, redirectUrl)
+    } else if (renderProps) {
+      const store = createStore({}); // <- hydrate
+      syncReduxAndRouter(history, store);
+      const routerProps = { ...renderProps, location };
+      const html = await render(history, store, routerProps);
+      res.status(200).send(html);
+    } else {
+      res.status(404).send('not found');
+    }
   } catch (err) {
-    error('fucked up: ', err);
-    res.status(500).send(err.stack);
+    error(prettyError.render(err));
+    res.status(500).end();
   }
 };

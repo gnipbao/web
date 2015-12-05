@@ -1,9 +1,11 @@
-import paths from '../../config/paths';
+import { paths, argv } from '../../config';
 
-export default [
-  {
-    test: /\.jsx?$/,
-    include: [paths.scripts],
-    loader: 'eslint'
-  }
-]
+const eslint = {
+  test: /\.jsx?$/,
+  include: [paths.scripts],
+  loader: 'eslint'
+};
+
+export default argv.lint ?
+  [eslint] :
+  [];

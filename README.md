@@ -100,7 +100,6 @@ if you want to push your base image to the dockerhub.
 │   │   ├── /actions/                      # Action creators that allow to trigger a dispatch to stores
 │   │   ├── /api/                          # REST API / Relay endpoints
 │   │   ├── /constants/                    # Action type constants
-│   │   ├── /containers/                   #
 │   │   ├── /components/                   # React components
 │   │   ├── /decorators/                   # Decorators for various needs
 │   │   ├── /forms/                        # React components representing forms
@@ -185,7 +184,10 @@ npm test
 
 Options:
 * `verbose` ­ set verbosity to the maximum level
+* `profile`
 * `quiet` - set this to true and you'll see no error output in the console and it will make much harder to now whats wrong
+* `debug`
+* `lint`
 
 By default source maps is generated using `cheap-module-inline-source-map` option.
 If thats not enough for you then you can change it to `eval-source-map` or even the slowest `source-map`.
@@ -215,6 +217,7 @@ in [precss](https://github.com/jonathantneal/precss/blob/master/package.json#L34
 * [awesome redux](https://github.com/xgrommx/awesome-redux)
 * [redux docs in russian](https://github.com/rajdee/redux-in-russian)
 * [npm module checklist](https://github.com/bahmutov/npm-module-checklist)
+* [react-router SSR](https://github.com/rackt/react-router/blob/master/docs/guides/advanced/ServerRendering.md)
 
 # Troubleshooting
 
