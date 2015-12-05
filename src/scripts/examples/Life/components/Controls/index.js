@@ -20,8 +20,8 @@ export default class Controls extends Component {
       <div className={style.root}>
         <Button mini floating primary icon='cached' onClick={randomize} />
         <Button mini floating icon='delete' onClick={clear} />
-        <Button floating accent icon='skip-next' onClick={iterate} />
-        <Button floating icon='play-arrow' onClick={::this.play} />
+        <Button floating accent icon='skip_next' onClick={iterate} />
+        <Button floating icon='play_arrow' onClick={::this.play} />
         <Button floating icon='stop' onClick={::this.stop} />
       </div>
     );

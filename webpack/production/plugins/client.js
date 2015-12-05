@@ -27,7 +27,7 @@ export default [
   new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
   new webpack.optimize.UglifyJsPlugin({
     sourceMap,
-    minimize: false,
+    minimize: true,
     compress: {
       screw_ie8: true,
       warnings: false,

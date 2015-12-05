@@ -4,10 +4,10 @@ import morgan from 'morgan';
 import favicon from 'serve-favicon';
 
 const getLogFormat = () => {
-  if (__PRODUCTION__) return 'tiny';
-  if (__VERBOSE__ || __DEVELOPMENT__) return 'short';
+  if (__PRODUCTION__) return 'common';
+  if (__DEVELOPMENT__) return __VERBOSE__ ? 'dev' : 'tiny';
 
-  return 'dev';
+  return 'default';
 };
 
 export default [

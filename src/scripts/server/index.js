@@ -1,6 +1,3 @@
-import debug from 'debug';
-debug.enable('app:server:*');
-
 import logger from 'debug-dude';
 import PrettyError from 'pretty-error';
 
