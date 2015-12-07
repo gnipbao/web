@@ -28,7 +28,8 @@ const karmaConfig = {
   autoWatch: true,
   autoWatchBatchDelay: 2000,
   reportSlowerThan: 10,
-  concurrency: 2
+  concurrency: 2,
+  browserNoActivityTimeout: 30000,
 };
 
 if (coverage.enabled) {
