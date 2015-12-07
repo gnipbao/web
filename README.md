@@ -2,6 +2,7 @@
 [![Circle](https://circleci.com/gh/vyorkin/starter-kit.svg?style=svg)](https://circleci.com/gh/vyorkin/starter-kit)
 [![Dependency Status](https://david-dm.org/vyorkin/starter-kit.svg)](https://david-dm.org/vyorkin/starter-kit)
 [![devDependency Status](https://david-dm.org/vyorkin/starter-kit/dev-status.svg)](https://david-dm.org/vyorkin/starter-kit#info=devDependencies)
+[![Code Climate](https://codeclimate.com/github/vyorkin/starter-kit/badges/gpa.svg)](https://codeclimate.com/github/vyorkin/starter-kit)
 
 # Starter kit
 
