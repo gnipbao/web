@@ -1,9 +1,10 @@
 language: node_js
 node_js:
-  - "5.0"
+  - "5.1.0"
+  - "4"
+  - "stable"
 
-install:
-  - npm install
-
+before_script:
+  - npm install -g gulp
 script:
-  - NODE_ENV=production npm run build
+  - npm run test

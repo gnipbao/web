@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/vyorkin/starter-kit.svg)](https://travis-ci.org/vyorkin/starter-kit)
+
 # Starter kit
 
 ![logo](https://raw.githubusercontent.com/vyorkin/starter-kit/master/src/assets/images/logo.png)
@@ -130,8 +132,6 @@ For a smooth dev process you can install these tools (not required):
 
 * [npm-check-updates](https://github.com/tjunnone/npm-check-updates)
 * [nvm](https://github.com/creationix/nvm)
-* [avn](https://github.com/wbyoung/avn)
-* [avn-nvm](https://github.com/wbyoung/avn-nvm)
 * [node-foreman](https://github.com/strongloop/node-foreman)
 
 ## Setup
