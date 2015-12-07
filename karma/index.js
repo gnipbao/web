@@ -14,10 +14,10 @@ const testsWildcard = resolve.src('**/*.js');
 const karmaConfig = {
   files: [
     './node_modules/phantomjs-polyfill/bind-polyfill.js',
-    'tests/index.js'
+    'tests.webpack.js'
   ],
   frameworks,
-  preprocessors: { 'tests/index.js': ['webpack', 'sourcemap'] },
+  preprocessors: { 'tests.webpack.js': ['webpack', 'sourcemap'] },
   reporters: ['mocha'],
   browsers: ['PhantomJS'],
   customLaunchers,

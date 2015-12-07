@@ -12,7 +12,8 @@ debug('dependencies:\n', prettyjson(config.dependencies));
 debug('aliases:\n', prettyjson(config.aliases));
 debug('globals:\n', prettyjson(config.globals));
 
-const noParse = Object.values(config.dependencies);
+const noParse = [
+];
 
 export default {
   name: config.name,

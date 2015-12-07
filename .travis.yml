@@ -13,5 +13,6 @@ addons:
 
 before_script:
   - npm install -g gulp
+
 script:
   - npm run test

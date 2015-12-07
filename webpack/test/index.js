@@ -6,10 +6,16 @@ import webpackConfig from '../base/client';
 
 import loaders from './loaders';
 import plugins from './plugins';
+import externals from './externals';
+
+const noParse = [
+  /node_modules\/sinon\//
+];
 
 const testWebpackConfig = merge(webpackConfig, {
-  module: { loaders },
+  module: { loaders, noParse },
   plugins,
+  externals,
 
   debug: true,
   cache: true,
