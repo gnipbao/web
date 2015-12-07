@@ -21,9 +21,7 @@ const runRouter = (location) => new Promise((resolve) =>
 export default async (req, res) => {
   try {
     // TODO: cache all the things
-    // TODO: server side routing
     // TODO: hydrate on server
-    // TODO: dispatch using redux-simple-router actions
 
     const location = createLocation(req.originalUrl);
     const [error, redirectLocation, renderProps] = await runRouter(location);

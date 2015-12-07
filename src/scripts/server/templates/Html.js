@@ -53,13 +53,13 @@ const Html = ({ store, assets, root }) => {
 
         <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet' />
 
-        {assets.styles.map((href, i) => <link key={i} href={href} rel='stylesheet' />)}
+        {assets.styles.map((href, i) => <link key={i} href={`/${href}`} rel='stylesheet' />)}
       </head>
 
       <body>
         <div id='root' dangerouslySetInnerHTML={{ __html: content }} />
         <script dangerouslySetInnerHTML={{ __html: `window.__state = ${state};` }} />
-        {assets.scripts.map((src, i) => <script key={i} src={src} async defer />)}
+        {assets.scripts.map((src, i) => <script key={i} src={`/${src}`} defer />)}
       </body>
     </html>
   );

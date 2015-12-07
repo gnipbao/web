@@ -1,9 +1,5 @@
 import paths from '../../config/paths';
-
-const cssOptions = {
-  css: 'importLoaders=2',
-  sass: 'modules'
-};
+import { cssOptions } from '../utils';
 
 export default [
   {
@@ -21,10 +17,10 @@ export default [
   },
   {
     test: /\.scss$/,
-    loaders: ['style', `css?${cssOptions.sass}`, 'sass?includePath[]=' + paths.modules],
+    loaders: ['style', `css?${cssOptions.sass}`, `sass?includePath[]=${paths.modules}`],
   },
   {
     test: /\.sass$/,
-    loaders: ['style', `css?${cssOptions.sass}`, 'sass?includePath[]=' + paths.modules + '&indentedSyntax'],
+    loaders: ['style', `css?${cssOptions.sass}`, `sass?includePath[]=${paths.modules}&indentedSyntax`],
   }
 ]

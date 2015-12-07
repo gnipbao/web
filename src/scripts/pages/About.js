@@ -1,3 +1,8 @@
 export default (props) => {
-  return (<div>Nothing to see here</div>);
+  return (
+    <div>
+      <Helmet title='About' />
+      <p>Nothing to see here</p>
+    </div>
+  );
 };

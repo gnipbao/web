@@ -1,10 +1,5 @@
 import paths from '../../../config/paths';
-import { localIdentName } from '../../utils';
-
-const cssOptions = {
-  css: `importLoaders=2&modules&localIdentName=${localIdentName}`,
-  sass: `modules&localIdentName=${localIdentName}`
-};
+import { cssOptions } from '../../utils';
 
 export default [
   {

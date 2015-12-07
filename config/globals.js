@@ -1,7 +1,12 @@
 import minimist from 'minimist';
 import mapObj from 'map-obj';
 
-import { config } from '../package';
+import {
+  name as appName,
+  description as appDescription,
+  config
+} from '../package';
+
 import server from './server';
 import { environments, environmentName } from './env';
 
@@ -28,8 +33,8 @@ const webRoot = config.webRoot || server.url;
 
 const app = {
   settings: {
-    name: JSON.stringify(config.name),
-    description: JSON.stringify(config.description),
+    name: JSON.stringify(appName),
+    description: JSON.stringify(appDescription),
     locale: JSON.stringify(config.locale),
 
     host: JSON.stringify(server.host),

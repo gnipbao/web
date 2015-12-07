@@ -10,6 +10,11 @@ export const localIdentName = env.development || env.test ?
   '[name]-[local]--[hash:base64:5]' :
   '[hash:base64:5]';
 
+export const cssOptions = {
+  css: `importLoaders=2&modules&localIdentName=${localIdentName}`,
+  sass: `modules&localIdentName=${localIdentName}`
+};
+
 export function addHash(template, hash) {
   return env.production ?
     template.replace(/\.[^.]+$/, `.[${hash}]$&`) :
