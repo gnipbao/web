@@ -30,6 +30,7 @@ const testWebpackConfig = merge(webpackConfig, {
 // we should not use output with karma-webpack,
 // as karma-webpack doesn't output anything
 
+delete testWebpackConfig.entry;
 delete testWebpackConfig.output;
 
 export default testWebpackConfig;
