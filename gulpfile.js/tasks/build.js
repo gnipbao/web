@@ -1,4 +1,4 @@
 gulp.task('build', () => sequence(
-  'clean',
+  'clean:dist',
   ['assets', 'favicon:generate', 'bundle']
 ));
