@@ -207,7 +207,7 @@
     "lint:js:tests": "gulp lint:js --tests",
     "lint:css": "stylelint src/**/*.css",
     "lint": "gulp lint",
-    "test": "gulp clean:coverage && karma start",
+    "test": "karma start",
     "test:watch": "karma start --watch"
   },
   "config": {
