@@ -9,12 +9,12 @@ export default class Scrollable extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('optimizedScroll', this.handleScroll);
     window.addEventListener('touchmove', this.handleScroll);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('optimizedScroll', this.handleScroll);
     window.removeEventListener('touchmove', this.handleScroll);
   }
 

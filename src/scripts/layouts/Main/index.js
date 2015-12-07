@@ -33,21 +33,19 @@ export default class Main extends Component {
 
     return (
       <div className={style.main}>
-        <ToolboxApp>
-          <Meta
-            og={{ title: 'starter' }}
-            twitter={{ site: '@yorkin', creator: '@yorkin' }}
+        <Meta
+          og={{ title: 'starter' }}
+          twitter={{ site: '@yorkin', creator: '@yorkin' }}
+        />
+        <AppBar top>
+          <Navigation
+            type='horizontal'
+            {...{ go, currentPath, items } }
           />
-          <AppBar top>
-            <Navigation
-              type='horizontal'
-              {...{ go, currentPath, items } }
-            />
-          </AppBar>
-          <section className={style.page}>
-            {children}
-          </section>
-        </ToolboxApp>
+        </AppBar>
+        <section className={style.page}>
+          {children}
+        </section>
       </div>
     );
   }

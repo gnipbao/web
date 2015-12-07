@@ -4,6 +4,11 @@ import { create as createStore } from 'store';
 
 import history from 'lib/history';
 import render from 'lib/render';
+import throttle from 'lib/utils/throttle';
+
+// custom throttled events
+throttle('scroll', 'optimizedScroll');
+throttle('resize', 'optimizedResize');
 
 const initialState = window.__state || {};
 
@@ -20,6 +25,7 @@ const run = async () => {
     window.React = React;
 
     if (__PROFILE__) {
+      // see https://facebook.github.io/react/docs/perf.html
       window.Perf = require('react-addons-perf');
       window.Perf.start();
     }
@@ -30,11 +36,11 @@ const run = async () => {
       !container.firstChild.attributes ||
       !container.firstChild.attributes['data-react-checksum'];
 
-      if (failed) {
-        console.error(
-          `Server-side React render was discarded, investigate, good luck.`
-        );
-      }
+    if (failed) {
+      console.error(
+        `Server-side React render was discarded, investigate, good luck.`
+      );
+    }
   }
 };
 

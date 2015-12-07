@@ -39,6 +39,9 @@ gulp.task('bundle:server', (cb) => {
   let runCount = 0;
   const done = (err, stats) => {
     logStats(err, stats);
+
+    // to continue executing gulp tasks when bundle is ready
+    // call it only once (the first time) in watch mode
     return ++runCount === 1 && cb();
   };
 

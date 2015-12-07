@@ -20,7 +20,7 @@ export default class Client {
     const url = `${this.root}/${endpoint}${query}`;
 
     return fetch(url, { method, body })
-      .then(this.processResponse);
+      .then(this.processResponse, this.processError);
   }
 
   queryParams(params) {
@@ -38,5 +38,9 @@ export default class Client {
         });
       }
     });
+  }
+
+  processError(err) {
+    console.error('api error: ', err);
   }
 }

@@ -32,11 +32,12 @@ export default async (req, res) => {
       const redirectUrl = redirectLocation.pathname + redirectLocation.search;
       res.redirect(302, redirectUrl)
     } else if (renderProps) {
-      // <- hydrate
       const store = createStore({});
+
       syncReduxAndRouter(history, store);
       store.dispatch(updatePath(location.pathname, true));
       const routerProps = { ...renderProps, location };
+
       const html = await render(history, store, routerProps);
       info(`location = ${location.pathname}, original url = ${req.originalUrl}`);
       res.status(200).send(html);

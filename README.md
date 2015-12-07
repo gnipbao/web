@@ -1,4 +1,7 @@
-[![Build Status](https://travis-ci.org/vyorkin/starter-kit.svg)](https://travis-ci.org/vyorkin/starter-kit)
+[![Travis](https://travis-ci.org/vyorkin/starter-kit.svg)](https://travis-ci.org/vyorkin/starter-kit)
+[![Circle](https://circleci.com/gh/vyorkin/starter-kit.svg?style=svg)](https://circleci.com/gh/vyorkin/starter-kit)
+[![Dependency Status](https://david-dm.org/vyorkin/starter-kit.svg)](https://david-dm.org/vyorkin/starter-kit)
+[![devDependency Status](https://david-dm.org/vyorkin/starter-kit/dev-status.svg)](https://david-dm.org/vyorkin/starter-kit#info=devDependencies)
 
 # Starter kit
 
@@ -24,7 +27,7 @@
 Install [docker-compose](https://docs.docker.com/compose/) & [dinghy](https://github.com/codekitchen/dinghy).
 
 ```
-make docker-setup
+make setup
 ```
 
 #### Start:

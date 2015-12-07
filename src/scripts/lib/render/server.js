@@ -5,12 +5,15 @@ import { loadAssets } from 'server/utils';
 
 const assets = loadAssets();
 
-export default (history, store, routerProps) => {
+export default async (history, store, routerProps) => {
   const root = (
     <Provider store={store}>
       <RoutingContext {...routerProps} />
     </Provider>
   );
+
+  ReactDOMServer.renderToString(root);
+
   const html = <Html store={store} assets={assets} root={root} />;
   const body = ReactDOMServer.renderToString(html);
 

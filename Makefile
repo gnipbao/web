@@ -14,10 +14,11 @@ test:
 tdd:
 	nf start
 
-docker-setup:
+setup:
 	@echo 'installing dinghy...'
 	brew install $(DINGHY_FORMULA)
 	dinghy create --provider $(PROVIDER)
+	gulp favicon:generate
 
 docker-build:
 	@echo 'building base image...'
@@ -39,6 +40,6 @@ halt:
 	dinghy halt
 
 .PHONY: start test build tdd
-	docker-setup docker-build
+	setup docker-build
 	docker-rebuild
 	docker-up docker-halt

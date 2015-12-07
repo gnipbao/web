@@ -1,13 +1,14 @@
-import Card from 'react-toolbox/lib/card';
+import { Card, CardTitle, CardText, CardMedia } from 'react-toolbox/lib/card';
 import style from './style';
 
-export default ({ type, image_url, name }) => {
+export default ({ image_url, name }) => {
   return (
-    <Card
-      className={style.root}
-      image={image_url}
-      type={type}
-      title={name}
-    />
+    <Card className={style.root} raised>
+      <CardMedia
+        aspectRatio='square'
+        image={image_url}
+      />
+      <CardTitle title={name} />
+    </Card>
   );
 };
