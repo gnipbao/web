@@ -1,3 +1,4 @@
+import path from 'path';
 import { argv, paths } from '../config';
 import resolve from '../config/resolve';
 
@@ -10,14 +11,17 @@ import coverage from './coverage';
 import customLaunchers from './launchers';
 
 const testsWildcard = resolve.src('**/*.js');
+const testsPath = path.resolve(__dirname, '../tests/index.js');
 
 const karmaConfig = {
   files: [
     './node_modules/phantomjs-polyfill/bind-polyfill.js',
-    'tests.webpack.js'
+    testsPath
   ],
   frameworks,
-  preprocessors: { 'tests.webpack.js': ['webpack', 'sourcemap'] },
+  preprocessors: {
+    [testsPath]: ['webpack', 'sourcemap']
+  },
   reporters: ['mocha'],
   browsers: ['PhantomJS'],
   customLaunchers,
