@@ -238,6 +238,6 @@
     "start": "gulp",
     "test": "karma start",
     "test:watch": "karma start --watch",
-    "postinstall": "gulp heroku:production --production"
+    "postinstall": "gulp heroku:run --production"
   }
 }

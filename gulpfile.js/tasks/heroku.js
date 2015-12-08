@@ -1,4 +1,4 @@
-gulp.task('heroku:production', () => sequence(
+gulp.task('heroku:run', () => sequence(
   'build',
   'server'
 ));

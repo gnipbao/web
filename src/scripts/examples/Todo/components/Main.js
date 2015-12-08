@@ -1,5 +1,4 @@
 import List from 'react-toolbox/lib/list/List';
-import ListSubheader from 'react-toolbox/lib/list/ListSubheader';
 
 import Footer from './Footer';
 import Item from './Item';
@@ -21,7 +20,6 @@ export default class Main extends Component {
     return (
       <div>
         <List selectable ripple>
-          <ListSubheader caption='Todos' />
           {items.map(item =>
             <Item
               key={item.id}
