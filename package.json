@@ -207,6 +207,9 @@
     "node": "5.x",
     "npm": "3.x"
   },
+  "engines": {
+    "node": "5.1.0"
+  },
   "homepage": "https://github.com/vyorkin/starter-kit#readme",
   "keywords": [
     "react",
@@ -234,6 +237,7 @@
     "lint:js:tests": "gulp lint:js --tests",
     "start": "gulp",
     "test": "karma start",
-    "test:watch": "karma start --watch"
+    "test:watch": "karma start --watch",
+    "postinstall": "gulp heroku:production --production"
   }
 }
