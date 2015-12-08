@@ -7,9 +7,9 @@ export default [
   'karma-sinon-chai',
   'karma-coverage',
 
-  // 'karma-phantomjs-launcher',
+  'karma-phantomjs-launcher',
   // 'karma-electron-launcher',
-  'karma-chrome-launcher',
+  // 'karma-chrome-launcher',
   // 'karma-firefox-launcher,
 
   'karma-mocha-reporter',

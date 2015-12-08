@@ -22,7 +22,7 @@ const karmaConfig = {
     [testsPath]: ['webpack', 'sourcemap']
   },
   reporters: ['mocha'],
-  browsers: ['Chrome'],
+  browsers: ['PhantomJS'],
   customLaunchers,
   webpack,
   webpackMiddleware,
