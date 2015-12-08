@@ -10,7 +10,6 @@ import frameworks from './frameworks';
 import coverage from './coverage';
 import customLaunchers from './launchers';
 
-const srcPath = path.resolve(__dirname, '../src', resolve.src('**/*.js'));
 const testsPath = path.resolve(__dirname, '../tests/index.js');
 
 const karmaConfig = {

@@ -3,4 +3,3 @@ export default {
   'cheerio': 'window',
   'react/lib/ExecutionEnvironment': true
 }
-

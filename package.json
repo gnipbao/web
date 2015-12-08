@@ -25,8 +25,8 @@
     "devTools": true,
     "locale": "en_US",
     "ghooks": {
-      "pre-commit": "npm run security:check && npm run test",
-      "post-commit": "npm run git-issues",
+      "pre-commit": "# npm run security:check && npm run test",
+      "post-commit": "# npm run git-issues",
       "update": "npm run fixpack && npm run exact-semver"
     },
     "commitizen": {
