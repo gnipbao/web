@@ -1,5 +1,4 @@
 import { renderIntoDocument } from 'react-addons-test-utils';
-import { expect } from 'chai';
 import { Provider } from 'react-redux';
 import { create as createStore } from 'store';
 
@@ -11,15 +10,19 @@ describe('<Counter />', () => {
   const store = createStore();
   const renderer = renderIntoDocument(
     <Provider store={store} key='provider'>
-      <Counter />
+      <Counter
+        counter={0}
+        inc={_ => _}
+        dec={_ => _}
+      />
     </Provider>
   );
   const dom = ReactDOM.findDOMNode(renderer);
 
-  it ('renders correclty', () => {
+  it('renders correclty', () => {
     return expect(renderer).to.be.ok;
   });
 
-  it ('has correct class name', () => {
+  it('has correct class name', () => {
   });
 });

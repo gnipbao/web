@@ -1,12 +1,7 @@
-import serialize from 'serialize-javascript';
+const { object, string } = PropTypes;
 
-const { object, string, node } = PropTypes;
-
-const Html = ({ store, assets, root }) => {
-  const content = ReactDOMServer.renderToString(root);
-  const head = Helmet.rewind();
-  const state = serialize(store.getState());
-
+const Html = ({ state, assets, head, body }) => {
+  const { scripts, styles } = assets;
   return (
     <html lang='en-us'>
       <head>
@@ -53,22 +48,23 @@ const Html = ({ store, assets, root }) => {
 
         <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet' />
 
-        {assets.styles.map((href, i) => <link key={i} href={`/${href}`} rel='stylesheet' />)}
+        {styles.map((href, i) => <link key={i} href={`/${href}`} rel='stylesheet' />)}
       </head>
 
       <body>
-        <div id='root' dangerouslySetInnerHTML={{ __html: content }} />
+        <div id='root' dangerouslySetInnerHTML={{ __html: body }} />
         <script dangerouslySetInnerHTML={{ __html: `window.__state = ${state};` }} />
-        {assets.scripts.map((src, i) => <script key={i} src={`/${src}`} defer />)}
+        {scripts.map((src, i) => <script key={i} src={`/${src}`} defer />)}
       </body>
     </html>
   );
 };
 
 Html.propTypes = {
-  store: object.isRequired,
+  state: string.isRequired,
+  head: object.isRequired,
   assets: object.isRequired,
-  root: node.isRequired,
+  body: string.isRequired,
 };
 
 export default Html;

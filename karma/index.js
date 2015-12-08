@@ -10,7 +10,7 @@ import frameworks from './frameworks';
 import coverage from './coverage';
 import customLaunchers from './launchers';
 
-const testsWildcard = resolve.src('**/*.js');
+const srcPath = path.resolve(__dirname, '../src', resolve.src('**/*.js'));
 const testsPath = path.resolve(__dirname, '../tests/index.js');
 
 const karmaConfig = {
@@ -30,7 +30,7 @@ const karmaConfig = {
   plugins,
   singleRun: !argv.watch,
   autoWatch: true,
-  autoWatchBatchDelay: 2000,
+  autoWatchBatchDelay: 0,
   reportSlowerThan: 20,
   concurrency: 2,
   browserNoActivityTimeout: 30000,

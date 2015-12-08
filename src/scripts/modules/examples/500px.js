@@ -1,18 +1,21 @@
 import { createAction, createReducer } from 'redux-act';
-import { searchPhotos } from 'api/500px';
+import { search } from 'api/500px';
 
-const load = createAction('load photos from 500px');
-
-export const loadPhotos = (category, pageNum) =>
+export const load = createAction('load photos from 500px');
+export const loadAsync = (category, pageNum) =>
   async (dispatch, getState) => {
     const page = pageNum || getState().fiveHundredPixels.page + 1;
     dispatch(load({ category, page }));
 
-    const { photos } = await searchPhotos(category, page);
-    return dispatch(load({ category, photos, page }));
+    try {
+      const { photos } = await search(category, page);
+      return dispatch(load({ category, page, photos }));
+    } catch (error) {
+      return dispatch(load({ category, page, error }));
+    }
   };
 
-const initialState = {
+export const initialState = {
   category: 'macro',
   page: 1,
   photos: [],
@@ -21,12 +24,7 @@ const initialState = {
 
 export default createReducer({
   [load]: (state, { category, photos, page }) => {
-    if (!photos) {
-      return {
-        ...state,
-        loading: true
-      };
-    }
+    if (!photos) return { ...state, loading: true };
 
     const newPhotos = page > 1 ?
       state.photos.concat(photos) : photos;

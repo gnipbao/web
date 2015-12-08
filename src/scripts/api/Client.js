@@ -16,11 +16,14 @@ export default class Client {
   ajax(endpoint, method, data) {
     const { params, body = null } = data;
 
-    const query = this.queryParams(params);
-    const url = `${this.root}/${endpoint}${query}`;
-
-    return fetch(url, { method, body })
+    const requestUrl = this.url(endpoint, params);
+    return fetch(requestUrl, { method, body })
       .then(this.processResponse, this.processError);
+  }
+
+  url(endpoint, params) {
+    const query = this.queryParams(params);
+    return `${this.root}/${endpoint}${query}`;
   }
 
   queryParams(params) {
@@ -42,5 +45,6 @@ export default class Client {
 
   processError(err) {
     console.error('api error: ', err);
+    throw err;
   }
 }

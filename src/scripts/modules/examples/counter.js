@@ -7,9 +7,7 @@ const INC = 'COUNTER_INC';
 const DEC = 'COUNTER_DEC';
 
 export const [inc, dec] = [INC, DEC].map(createAction);
-
-const initialState = 0;
-
+export const initialState = 0;
 export default createReducer({
   [inc]: s => s + 1,
   [dec]: s => s - 1

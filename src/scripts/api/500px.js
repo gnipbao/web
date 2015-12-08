@@ -1,14 +1,15 @@
 import Client from './Client';
 
-const api = new Client('https://api.500px.com/v1');
+export const url = 'https://api.500px.com/v1';
+export const api = new Client(url);
+export const searchParams = (term, page) => ({
+  term,
+  page,
+  rpp: 20,
+  image_size: 440,
+  sort: 'highest_rating',
+  consumer_key: 'IEyOrnyulAcxcOxTGo6cS2Boq4bcuUxLMsFj1qg6',
+});
 
-export const searchPhotos = async (term, page) => {
-  return await api.get('photos/search', {
-    term,
-    page,
-    rpp: 20,
-    image_size: 440,
-    sort: 'highest_rating',
-    consumer_key: 'IEyOrnyulAcxcOxTGo6cS2Boq4bcuUxLMsFj1qg6'
-  });
-};
+export const search = async (term, page) =>
+  await api.get('photos/search', searchParams(term, page));

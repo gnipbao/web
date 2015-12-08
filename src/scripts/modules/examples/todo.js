@@ -23,7 +23,7 @@ export const [
   CLEAR_COMPLETED
 ].map(createAction);
 
-const initialState = [
+export const initialState = [
   { id: 0, text: 'Learn react, redux, frp, elm, etc', completed: true },
   { id: 1, text: 'Write code', completed: true },
   { id: 2, text: 'Die', completed: false }
@@ -41,13 +41,11 @@ export default createReducer({
 
   [del]: (s, id) => s.filter(i => i.id !== id),
 
-  [edit]: (s, { id, text }) => {
-    const item = s.find(i => i.id === id);
-    return [{ text, ...item }, ...s];
-  },
+  [edit]: (s, { id, text }) => 
+    s.map(i => i.id === id ? { ...i, text } : i),
 
   [complete]: (s, id) =>
-    s.map(i => i.id === id ? { ...i, completed: !i.completed } : i ),
+    s.map(i => i.id === id ? { ...i, completed: !i.completed } : i),
 
   [completeAll]: (s) => {
     const completed = !s.every(i => i.completed);

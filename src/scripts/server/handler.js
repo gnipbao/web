@@ -10,7 +10,7 @@ import { syncReduxAndRouter, updatePath } from 'redux-simple-router';
 import { create as createStore } from 'store';
 import history from 'lib/history';
 import render from 'lib/render';
-import routes from 'routes';
+import routes, { getStatus } from 'routes';
 
 const prettyError = new PrettyError();
 const { log, info, error } = logger('app:server');
@@ -37,10 +37,11 @@ export default async (req, res) => {
       syncReduxAndRouter(history, store);
       store.dispatch(updatePath(location.pathname, true));
       const routerProps = { ...renderProps, location };
+      const status = getStatus(renderProps.routes, 200);
 
       const html = await render(history, store, routerProps);
-      info(`location = ${location.pathname}, original url = ${req.originalUrl}`);
-      res.status(200).send(html);
+      info(`location = ${location.pathname}, original url = ${req.originalUrl}, status = ${status}`);
+      res.status(status).send(html);
     } else {
       res.status(404).send('not found');
     }

@@ -8,7 +8,7 @@ import Button from 'react-toolbox/lib/button';
 
 import InfiniteScroll from 'components/InfiniteScroll';
 
-import { loadPhotos } from 'modules/examples/500px';
+import { loadAsync } from 'modules/examples/500px';
 import List from './components/List';
 
 import style from './style';
@@ -31,7 +31,7 @@ const CATEGORIES = {
 
 @connect(
   s => s.fiveHundredPixels,
-  d => ({ load: bindActionCreators(loadPhotos, d)})
+  d => ({ load: bindActionCreators(loadAsync, d)})
 )
 export default class Example extends Component {
   static propTypes = {

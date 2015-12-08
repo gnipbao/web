@@ -1,3 +1,6 @@
+- [ ] wait for any progress [on this](https://github.com/pgte/nock/issues/409)
+- [ ] try https://github.com/mdlawson/piping
+- [ ] integrate with https://github.com/Snyk/snyk
 - [ ] think about hydrate on client option
 - [ ] wait for stylelint v3, [try this again](https://github.com/stylelint/stylelint/issues/523)
 - [ ] fix phantomjs issue when running tests in docker container:

@@ -14,6 +14,8 @@ import Reddit from 'examples/Reddit';
 import Life from 'examples/Life';
 import SoundCloud from 'examples/SoundCloud';
 
+export { default as getStatus } from './getStatus';
+
 /**
  * please keep routes in logical order
  */
