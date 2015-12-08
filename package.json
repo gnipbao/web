@@ -237,7 +237,6 @@
     "lint:js:tests": "gulp lint:js --tests",
     "start": "gulp",
     "test": "karma start",
-    "test:watch": "karma start --watch",
-    "postinstall": "gulp heroku:run --production"
+    "test:watch": "karma start --watch"
   }
 }
