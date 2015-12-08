@@ -15,4 +15,4 @@ before_script:
   - npm install -g npm@latest
 
 after_success:
-- npm run codecov
+  - npm run codecov

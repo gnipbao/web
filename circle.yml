@@ -5,3 +5,7 @@ machine:
 dependencies:
   pre:
     - npm install -g npm@latest
+
+test:
+  post:
+    - npm run coveralls
