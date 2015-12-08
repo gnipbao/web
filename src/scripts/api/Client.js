@@ -15,8 +15,8 @@ export default class Client {
 
   ajax(endpoint, method, data) {
     const { params, body = null } = data;
-
     const requestUrl = this.url(endpoint, params);
+
     return fetch(requestUrl, { method, body })
       .then(this.processResponse, this.processError);
   }

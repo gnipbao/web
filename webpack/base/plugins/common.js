@@ -11,7 +11,7 @@ export default [
     ReactDOM: 'react-dom',
     ReactDOMServer: 'react-dom/server',
     R: 'ramda',
-    fetch: 'isomorphic-fetch',
+    // fetch: 'isomorphic-fetch',
     dude: 'debug-dude',
     Helmet: 'react-helmet',
   }),
