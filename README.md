@@ -4,7 +4,6 @@
 [![devDependency Status](https://david-dm.org/vyorkin/starter-kit/dev-status.svg)](https://david-dm.org/vyorkin/starter-kit#info=devDependencies)
 [![Code Climate](https://codeclimate.com/github/vyorkin/starter-kit/badges/gpa.svg)](https://codeclimate.com/github/vyorkin/starter-kit)
 [![Codecov](https://codecov.io/github/vyorkin/starter-kit/coverage.svg?branch=master)](https://codecov.io/github/vyorkin/starter-kit?branch=master)
-[![coveralls](https://coveralls.io/repos/vyorkin/starter-kit/badge.svg?branch=master&service=github)](https://coveralls.io/github/vyorkin/starter-kit?branch=master)
 
 # Starter kit
 
