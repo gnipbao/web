@@ -29,11 +29,7 @@ const CATEGORIES = {
   'landscapes': 'Landscapes'
 };
 
-@connect(
-  s => s.fiveHundredPixels,
-  d => ({ load: bindActionCreators(loadAsync, d)})
-)
-export default class Example extends Component {
+export class Example extends Component {
   static propTypes = {
     category: string.isRequired,
     photos: array.isRequired,
@@ -66,3 +62,8 @@ export default class Example extends Component {
     );
   }
 }
+
+export default connect(
+  s => s.fiveHundredPixels,
+  d => ({ load: bindActionCreators(loadAsync, d)})
+)(Example);

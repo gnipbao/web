@@ -21,7 +21,7 @@ const karmaConfig = {
   preprocessors: {
     [testsPath]: ['webpack', 'sourcemap']
   },
-  reporters: ['mocha'],
+  reporters: ['dots'],
   browsers: ['PhantomJS'],
   customLaunchers,
   webpack,
@@ -30,7 +30,7 @@ const karmaConfig = {
   singleRun: !argv.watch,
   autoWatch: true,
   autoWatchBatchDelay: 0,
-  reportSlowerThan: 20,
+  reportSlowerThan: 30,
   concurrency: 2,
   browserNoActivityTimeout: 30000,
 };

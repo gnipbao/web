@@ -19,11 +19,7 @@ const items = [
   { path: '/about', label: 'About', icon: 'whatshot' }
 ];
 
-@connect(
-  s => ({ currentPath: s.routing.path }),
-  d => ({ go: bindActionCreators(updatePath, d) })
-)
-export default class Main extends Component {
+export class Main extends Component {
   static propTypes = {
     go: func.isRequired
   }
@@ -50,3 +46,8 @@ export default class Main extends Component {
     );
   }
 }
+
+export default connect(
+  s => ({ currentPath: s.routing.path }),
+  d => ({ go: bindActionCreators(updatePath, d) })
+)(Main);

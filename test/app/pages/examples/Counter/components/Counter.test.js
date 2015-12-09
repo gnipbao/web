@@ -5,13 +5,12 @@ import { create as createStore } from 'store';
 import Counter from 'examples/Counter/components/Counter';
 
 describe('<Counter />', () => {
-  const mockStore = {};
-
-  const store = createStore();
+  const initialState = { counter: 0 };
+  const store = createStore(initialState);
   const renderer = renderIntoDocument(
     <Provider store={store} key='provider'>
       <Counter
-        counter={0}
+        counter={initialState.counter}
         inc={_ => _}
         dec={_ => _}
       />

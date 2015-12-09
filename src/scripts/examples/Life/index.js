@@ -9,7 +9,7 @@ import Controls from './components/Controls';
 
 import style from './style';
 
-const Example = ({ actions, cells }) => {
+export const Example = ({ actions, cells }) => {
   return (
     <div className={style.root}>
       <Grid cells={cells} />

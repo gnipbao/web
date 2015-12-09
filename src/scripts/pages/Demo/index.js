@@ -25,11 +25,7 @@ const items = [
   { path: '/examples/sound-cloud', label: 'SoundCloud', ...appearance },
 ];
 
-@connect(
-  s => ({ currentPath: s.routing.path }),
-  d => ({ go: bindActionCreators(updatePath, d) })
-)
-class Demo extends Component {
+export class Demo extends Component {
   static propTypes = {
     go: func.isRequired
   }
@@ -66,4 +62,7 @@ class Demo extends Component {
   }
 }
 
-export default Demo;
+export default connect(
+  s => ({ currentPath: s.routing.path }),
+  d => ({ go: bindActionCreators(updatePath, d) })
+)(Demo);

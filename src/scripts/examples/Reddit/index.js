@@ -27,11 +27,7 @@ const REDDITS = [
   { value: 'vim', label: 'Vim' }
 ];
 
-@connect(
-  s => s.reddit,
-  d => ({ load: bindActionCreators(loadPosts, d) })
-)
-export default class Example extends Component {
+export class Example extends Component {
   static propTypes = {
     items: array.isRequired,
     loading: bool.isRequired,
@@ -65,3 +61,8 @@ export default class Example extends Component {
     );
   }
 }
+
+export default connect(
+  s => s.reddit,
+  d => ({ load: bindActionCreators(loadPosts, d) })
+)(Example);
