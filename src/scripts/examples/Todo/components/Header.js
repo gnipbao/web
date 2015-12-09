@@ -1,41 +1,35 @@
 import { reduxForm } from 'redux-form';
 
 import Input from 'react-toolbox/lib/input';
+import Filter from './Filter';
 
 const { object, func } = PropTypes;
 
-class Header extends Component {
-  static propTypes = {
-    addItem: func.isRequired,
-    fields: object.isRequired
-  }
+const Header = (props) => {
+  const { add, fields: { title } } = props;
 
-  handleKeyPress(e) {
+  const handleKeyPress = (e) => {
     if (e.which !== 13) return;
-
-    const text = e.target.value.trim();
-    this.props.addItem(text);
+    add(e.target.value.trim());
     e.target.value = '';
-  }
+  };
 
-  handleChange(e) {
-  }
-
-  handleBlur(e) {
-  }
-
-  render() {
-    const { fields: { title } } = this.props;
-
-    return (
+  return (
+    <div>
+      <Filter />
       <Input required
         label='What needs to be done?'
-        onKeyPress={::this.handleKeyPress}
+        onKeyPress={handleKeyPress}
         {...title}
       />
-    );
-  }
-}
+    </div>
+  );
+};
+
+Header.propTypes = {
+  add: func.isRequired,
+  fields: object.isRequired
+};
 
 export default reduxForm({
   form: 'todo',

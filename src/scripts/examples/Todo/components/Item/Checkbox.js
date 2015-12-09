@@ -1,18 +1,17 @@
 import Checkbox from 'react-toolbox/lib/checkbox';
 import { ListItemContent } from 'react-toolbox/lib/list';
-
-import style from 'react-toolbox/lib/list/style';
+import listStyle from 'react-toolbox/lib/list/style';
 
 const { object, func } = PropTypes;
 
-const Component = ({ item, complete }) => {
+const Component = ({ item, complete, onDoubleClick }) => {
   const { text, completed } = item;
 
   return (
     <Checkbox
-      className={style.checkbox}
+      className={listStyle.checkbox}
       checked={completed}
-      label={text}
+      label={<span onDoubleClick={onDoubleClick}>{text}</span>}
       onChange={() => complete(item.id)}
     />
   );

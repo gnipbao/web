@@ -1,36 +1,25 @@
 import List from 'react-toolbox/lib/list/List';
-
-import Footer from './Footer';
 import Item from './Item';
 
-export default class Main extends Component {
-  static propTypes = {
-    complete: PropTypes.func.isRequired,
-    del: PropTypes.func.isRequired,
-    items: PropTypes.arrayOf(PropTypes.object).isRequired
-  }
+const { func, arrayOf, object } = PropTypes;
 
-  complete() {
-  }
+const Main = ({ items, ...actions }) => (
+  <List selectable ripple>
+    {items.map(item =>
+      <Item
+        key={item.id}
+        item={item}
+        icon='comment'
+        {...actions}
+      />
+    )}
+  </List>
+);
 
-  render() {
-    const { items, complete, del } = this.props;
-    const creators = { complete, del };
+Main.propTypes = {
+  complete: func.isRequired,
+  del: func.isRequired,
+  items: arrayOf(object).isRequired
+};
 
-    return (
-      <div>
-        <List selectable ripple>
-          {items.map(item =>
-            <Item
-              key={item.id}
-              item={item}
-              icon='comment'
-              {...creators}
-            />
-          )}
-        </List>
-        <Footer />
-      </div>
-    );
-  }
-}
+export default Main;

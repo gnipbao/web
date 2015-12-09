@@ -1,37 +1,89 @@
 import Button from 'react-toolbox/lib/button';
+import Input from 'react-toolbox/lib/input';
+
 import listStyle from 'react-toolbox/lib/list/style';
 
 import Icon from './Icon';
 import Checkbox from './Checkbox';
-
 import style from './style';
 
-const Component = (props) => {
-  const { item, del, complete, icon } = props;
-  const className = `${listStyle.item} ${style.root}`;
+const { object, func, string } = PropTypes;
 
-  return (
-    <li className={className}>
-      { icon ? <Icon name={icon} /> : null }
-      <Checkbox item={item} complete={complete} />
-      <Button
-        floating mini
-        icon='delete'
-        onClick={() => del(item.id)}
+export default class Item extends Component {
+  static propTypes = {
+    item: object.isRequired,
+    edit: func.isRequired,
+    del: func.isRequired,
+    complete: func.isRequired,
+    icon: string
+  }
+
+  static defaultProps = {
+    icon: 'comment'
+  }
+
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      text: props.item.text + '',
+      editing: false
+    };
+  }
+
+  edit(text) {
+    this.props.edit({ id: this.props.item.id, text });
+    this.setState({ editing: false });
+  }
+
+  handleDoubleClick = () => this.setState({ editing: true });
+
+  handleKeyPress = ({ which, target: { value } }) =>
+    which === 13 && this.edit(value);
+
+  handleChange(text) {
+    this.setState({ text });
+  }
+
+  handleBlur = (e) => this.edit(e.target.value);
+
+  renderNormal() {
+    return (
+      <Checkbox
+        onDoubleClick={::this.handleDoubleClick}
+        item={this.props.item}
+        complete={this.props.complete}
       />
-    </li>
-  );
-};
+    );
+  }
 
-Component.propTypes = {
-  item: PropTypes.object.isRequired,
-  del: PropTypes.func.isRequired,
-  complete: PropTypes.func.isRequired,
-  icon: PropTypes.string
-};
+  renderEditing() {
+    return (
+      <Input
+        className={style.input}
+        type='text'
+        onKeyPress={::this.handleKeyPress}
+        onChange={::this.handleChange}
+        onBlur={::this.handleBlur}
+        value={this.state.text}
+      />
+    );
+  }
 
-Component.defaultProps = {
-  icon: 'comment'
-};
+  render() {
+    const { item, del, icon } = this.props;
+    const { editing } = this.state;
+    const className = `${listStyle.item} ${style.root}`;
 
-export default Component;
+    return (
+      <li className={className}>
+        { icon ? <Icon name={icon} /> : null }
+        { editing ? this.renderEditing() : this.renderNormal() }
+        <Button
+          onClick={() => del(item.id)}
+          floating mini
+          icon='delete'
+        />
+      </li>
+    );
+  }
+}

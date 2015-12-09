@@ -17,7 +17,6 @@ describe('todo module', () => {
     const text = 'new item';
     const actual = reducer([], add(text));
     const expected = [{ id: 0, text, completed: false }];
-
     expect(expected).to.deep.have.members(actual);
   });
 
@@ -26,7 +25,6 @@ describe('todo module', () => {
     const todo2 = { id: 2, text: 'two', completed: false };
     const stateBefore = [todo1, todo2];
     const stateAfter = reducer(stateBefore, del(todo2.id));
-
     expect([todo1]).to.deep.have.members(stateAfter);
   });
 
@@ -37,17 +35,49 @@ describe('todo module', () => {
     const stateAfter = reducer(stateBefore, edit({ id: 3, text: 'works' }));
     const expected = [
       todo0,
-      { id: 3, text: 'works', completed: true }
+      { ...todo3, text: 'works' }
     ];
     expect(stateAfter).to.deep.have.members(expected);
   });
 
-  it('completes', () => {
+  it('toggles completed', () => {
+    const todo1 = { id: 1, text: 'one', completed: false };
+    const todo2 = { id: 2, text: 'three', completed: true };
+    const stateBefore = [todo1, todo2];
+    const stateAfter = reducer(stateBefore, complete(todo1.id));
+    const expected = [
+      { ...todo1, completed: true },
+      todo2
+    ];
+    expect(stateAfter).to.deep.have.members(expected);
   });
 
-  it('completes all', () => {
+  it('toggles completed for all', () => {
+    const todo1 = { id: 1, text: 'one', completed: false };
+    const todo2 = { id: 2, text: 'three', completed: true };
+    const stateBefore = [todo1, todo2];
+
+    const stateAfter1 = reducer(stateBefore, completeAll());
+    const expected1 = [
+      { ...todo1, completed: true },
+      { ...todo2, completed: true }
+    ];
+    expect(stateAfter1).to.deep.have.members(expected1);
+
+    const stateAfter2 = reducer(stateBefore, completeAll());
+    const expected2 = [
+      { ...todo1, completed: true },
+      { ...todo2, completed: true }
+    ];
+    expect(stateAfter2).to.deep.have.members(expected2);
   });
 
   it('clears all completed', () => {
+    const todo1 = { id: 1, text: 'one', completed: false };
+    const todo2 = { id: 2, text: 'three', completed: true };
+    const stateBefore = [todo1, todo2];
+    const stateAfter = reducer(stateBefore, clearCompleted());
+    const expected = [todo1];
+    expect(stateAfter).to.deep.have.members(expected);
   });
 });

@@ -27,8 +27,13 @@ export default [
   // 'rx-recompose',
   // 'rx',
   'classnames',
+  'react-themeable',
   // 'react-visibility-sensor',
   // 'form-serialize',
   'serialize-javascript',
   'scroll-behavior',
+  'react-progress-2',
+  'react-soundplayer',
+  'soundcloud-audio',
+  'react-demo',
 ]

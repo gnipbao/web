@@ -5,15 +5,30 @@ import * as actions from 'modules/examples/todo';
 
 import Header from './components/Header';
 import Main from './components/Main';
+import Footer from './components/Footer';
 
 const Example = (props) => {
-  const { items, actions } = props;
-  const { add, ...mainActions } = actions;
+  const {
+    items,
+    actions: {
+      add,
+      del,
+      edit,
+      complete,
+      completeAll,
+      clearCompleted
+    }
+  } = props;
+
+  const headerActions = { add };
+  const footerActions = { completeAll, clearCompleted };
+  const itemActions = { del, edit, complete };
 
   return (
     <div>
-      <Header addItem={add} />
-      <Main items={items} {...mainActions} />
+      <Header {...headerActions} />
+      <Main items={items} {...itemActions} />
+      <Footer {...footerActions} />
     </div>
   );
 };

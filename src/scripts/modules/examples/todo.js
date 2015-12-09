@@ -49,7 +49,7 @@ export default createReducer({
 
   [completeAll]: (s) => {
     const completed = !s.every(i => i.completed);
-    return s.map(i => ({ completed, ...i }));
+    return s.map(i => ({ ...i, completed }));
   },
 
   [clearCompleted]: (s) => s.filter(i => !i.completed)
