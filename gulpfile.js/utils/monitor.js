@@ -2,7 +2,10 @@ import forever, { Monitor } from 'forever-monitor';
 
 const { paths } = config.app;
 const watchIgnorePatterns = [
-  '*.css', '*.txt', '*.xml', '*.json'
+  '*.css',
+  '*.txt',
+  '*.xml',
+  '*.json'
 ];
 
 export default (name, filename, options = {}) => {

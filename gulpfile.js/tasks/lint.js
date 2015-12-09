@@ -7,13 +7,13 @@ const wildcards = {
   styles: path.join(paths.root, '**/*.css'),
   scripts: {
     app: path.join(paths.scripts, '**/*.js'),
-    tests: path.join(paths.tests, '**/*.js')
+    test: path.join(paths.test, '**/*.js')
   }
 };
 
 gulp.task('lint:js', () => {
-  const src = config.app.argv.tests ?
-    wildcards.scripts.tests :
+  const src = config.app.argv.test ?
+    wildcards.scripts.test :
     wildcards.scripts.app;
 
   return gulp.src(src)

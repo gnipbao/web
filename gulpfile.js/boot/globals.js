@@ -9,7 +9,6 @@ global.paths = app.paths;
 global.resolve = app.resolve;
 
 global.config = { app, webpack: { client, server, devMiddleware } };
-global.state = { isWatching: false };
 
 global.gulp = require('gulp');
 global.sequence = require('run-sequence');

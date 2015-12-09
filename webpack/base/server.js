@@ -8,7 +8,6 @@ import plugins from './plugins/server';
 
 export default merge(common, {
   target: 'node',
-  bail: true,
 
   externals: [
     (ctx, req, cb) => cb(null, isExternal(ctx, req))
@@ -21,7 +20,7 @@ export default merge(common, {
     path: config.paths.dist,
     filename: 'server.js',
     library: 'ServerApp',
-    libraryTarget: 'commonjs2'
+    libraryTarget: 'commonjs2',
   },
 
   // disable node mocks & polyfills
@@ -31,6 +30,6 @@ export default merge(common, {
     process: false,
     Buffer: false,
     __filename: false,
-    __dirname: false
-  }
+    __dirname: false,
+  },
 });

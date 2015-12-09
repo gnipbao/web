@@ -3,6 +3,6 @@ export default {
   config: 'config',
   src: 'src',
   dist: 'dist',
-  tests: 'tests',
+  test: 'test',
   modules: 'node_modules'
 }

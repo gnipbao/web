@@ -14,5 +14,5 @@ export default merge(base, common, {
   entry: ['webpack-hot-middleware/client'],
   module: { preLoaders, loaders },
   plugins,
-  devtool: 'cheap-module-inline-source-map'
+  devtool: 'cheap-module-inline-source-map',
 });

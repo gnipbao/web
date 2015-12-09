@@ -5,6 +5,8 @@
 [![Code Climate](https://codeclimate.com/github/vyorkin/starter-kit/badges/gpa.svg)](https://codeclimate.com/github/vyorkin/starter-kit)
 [![Codecov](https://codecov.io/github/vyorkin/starter-kit/coverage.svg?branch=master)](https://codecov.io/github/vyorkin/starter-kit?branch=master)
 
+[![Codecov stats](https://codecov.io/github/vyorkin/starter-kit/branch.svg?limit=50&vg=on&legend=on&color=on&branch=master)](https://codecov.io/github/vyorkin/starter-kit/branch.svg?limit=50&vg=on&legend=on&color=on&branch=master)
+
 # Starter kit
 
 ![logo](https://raw.githubusercontent.com/vyorkin/starter-kit/master/src/assets/images/logo.png)

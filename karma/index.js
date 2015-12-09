@@ -2,7 +2,7 @@ import path from 'path';
 import { argv, paths } from '../config';
 import resolve from '../config/resolve';
 
-import webpack from '../webpack/test';
+import webpack from '../webpack/test/client';
 import webpackMiddleware from '../webpack/development/devMiddleware';
 
 import plugins from './plugins';
@@ -10,7 +10,7 @@ import frameworks from './frameworks';
 import coverage from './coverage';
 import customLaunchers from './launchers';
 
-const testsPath = path.resolve(__dirname, '../tests/index.js');
+const testsPath = resolve.test('index.js');
 
 const karmaConfig = {
   files: [

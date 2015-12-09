@@ -7,7 +7,7 @@ export default [
     include: [
       /node_modules\/qs/,
       paths.scripts,
-      paths.tests
+      paths.test
     ],
     loader: 'babel'
   },

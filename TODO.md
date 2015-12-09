@@ -1,3 +1,5 @@
+- [ ] wait for enzyme to become good enough to remove THE SHIT from my webpack config
+- [ ] take a look [at this](https://github.com/rstacruz/mocha-jsdom)
 - [ ] fix docker workflow
 - [ ] watch [this](https://github.com/pgte/nock/issues/150)
 - [ ] wait for any progress [on this](https://github.com/pgte/nock/issues/409)
@@ -13,8 +15,8 @@ web_1 | 12:30:29 PM test.1 |  18 11 2015 12:30:29.884:ERROR [phantomjs.launcher]
 
 - [ ] wait for [font magician pr](https://github.com/jonathantneal/postcss-font-magician/pull/7) and switch to original packet
 - [ ] wait for [the font magician fix](https://github.com/jonathantneal/postcss-font-magician/issues/9)
-- [ ] wait for [isparta fix](https://github.com/douglasduteil/isparta/issues/81] before upgrading to babel 6)
-- [ ] wait for [babel-plugin-react-transform fix](https://github.com/gaearon/babel-plugin-react-transform/issues/46) and move to babel 6
+- [ ] wait for [isparta fix](https://github.com/douglasduteil/isparta/issues/81) before upgrading to babel 6)
+- [x] wait for [babel-plugin-react-transform fix](https://github.com/gaearon/babel-plugin-react-transform/issues/46) and move to babel 6
 - [ ] wait for html-webpack-plugin release & replace package source
 - [ ] wait for babel 6 fixes & update it
 - [ ] I don't have to specify mime types everywhere, see common loaders.js, fix this

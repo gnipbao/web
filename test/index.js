@@ -10,5 +10,9 @@ require('isomorphic-fetch');
 const src = require.context('../src/scripts', true, /^((?!(client|server)).)*\.jsx?/);
 src.keys().forEach(src);
 
-const tests = require.context('.', true, /.+\.test\.jsx?$/);
-tests.keys().forEach(tests);
+const frameworkTests = require.context('./framework', true, /.+\.test\.jsx?$/);
+frameworkTests.keys().forEach(frameworkTests);
+
+const appTests = require.context('./app', true, /.+\.test\.jsx?$/);
+appTests.keys().forEach(appTests);
+
