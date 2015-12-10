@@ -44,7 +44,7 @@ export default class Client {
   }
 
   processError(err) {
-    console.error('api error: ', err);
-    throw err;
+    console.error('api error (fetch): ', err);
+    return Promise.reject(err);
   }
 }

@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { updatePath } from 'redux-simple-router';
+import { pushPath } from 'redux-simple-router';
 
 import 'styles/toolbox/main';
 import style from 'styles/main';
@@ -49,5 +49,5 @@ export class Main extends Component {
 
 export default connect(
   s => ({ currentPath: s.routing.path }),
-  d => ({ go: bindActionCreators(updatePath, d) })
+  d => ({ go: bindActionCreators(pushPath, d) })
 )(Main);

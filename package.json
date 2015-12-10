@@ -131,7 +131,6 @@
     "gulp-debug": "2.1.2",
     "gulp-eslint": "^1.1.1",
     "gulp-load-plugins": "^1.1.0",
-    "gulp-mocha": "2.2.0",
     "gulp-nsp": "2.2.1",
     "gulp-postcss": "^6.0.1",
     "gulp-real-favicon": "0.1.0",
@@ -161,6 +160,7 @@
     "map-obj": "^1.0.1",
     "minimist": "^1.2.0",
     "mocha": "^2.3.4",
+    "mocha-better-spec-reporter": "3.0.1",
     "mocha-lcov-reporter": "1.0.0",
     "next-update": "1.2.0",
     "node-sass": "^3.4.2",
@@ -252,7 +252,7 @@
     "start": "gulp",
     "test": "karma start -- --test",
     "test:watch": "karma start --watch -- --test",
-    "test:mocha": "gulp test:mocha --test",
-    "test:mocha:watch": "gulp test:mocha --test --watch"
+    "test:mocha": "mocha ./test/app/modules/**/*.test.js",
+    "test:mocha:watch": "npm run test:mocha -- --watch"
   }
 }

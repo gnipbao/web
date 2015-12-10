@@ -1,3 +1,4 @@
+import R from 'ramda';
 import fetch from 'isomorphic-fetch';
 import fetchMock from 'fetch-mock';
 
@@ -15,6 +16,7 @@ addPath(path.resolve(__dirname, '../../src/scripts'));
 global.expect = expect;
 should();
 
+global.R = R;
 global.fetchMock = fetchMock;
 
 global.document = jsdom('<html><body></body></html>');

@@ -32,7 +32,7 @@ describe('todo module', () => {
     const todo0 = { id: 0, text: 'zero', completed: false };
     const todo3 = { id: 3, text: 'three', completed: true };
     const stateBefore = [todo0, todo3];
-    const stateAfter = reducer(stateBefore, edit({ id: 3, text: 'works' }));
+    const stateAfter = reducer(stateBefore, edit(3, 'works'));
     const expected = [
       todo0,
       { ...todo3, text: 'works' }

@@ -11,5 +11,4 @@ export const searchParams = (term, page) => ({
   consumer_key: 'IEyOrnyulAcxcOxTGo6cS2Boq4bcuUxLMsFj1qg6',
 });
 
-export const search = async (term, page) =>
-  await api.get('photos/search', searchParams(term, page));
+export const search = (term, page) => api.get('photos/search', searchParams(term, page));

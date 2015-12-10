@@ -31,7 +31,7 @@ export default class Item extends Component {
   }
 
   edit(text) {
-    this.props.edit({ id: this.props.item.id, text });
+    this.props.edit(this.props.item.id, text);
     this.setState({ editing: false });
   }
 

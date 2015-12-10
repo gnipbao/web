@@ -1,27 +1,14 @@
-import { createAction, createReducer } from 'redux-act';
+import {
+  createAction as action,
+  createReducer as reducer
+} from 'redux-act';
 
-const ADD = 'TODO_ADD';
-const DEL = 'TODO_DEL';
-const EDIT = 'TODO_EDIT';
-const COMPLETE = 'TODO_COMPLETE';
-const COMPLETE_ALL = 'TODO_COMPLETE_ALL';
-const CLEAR_COMPLETED = 'TODO_CLEAR_COMPLETED';
-
-export const [
-  add,
-  del,
-  edit,
-  complete,
-  completeAll,
-  clearCompleted
-] = [
-  ADD,
-  DEL,
-  EDIT,
-  COMPLETE,
-  COMPLETE_ALL,
-  CLEAR_COMPLETED
-].map(createAction);
+export const add = action('todo.add');
+export const del = action('todo.del');
+export const edit = action('todo.edit', (id, text) => ({ id, text }));
+export const complete = action('todo.complete');
+export const completeAll = action('todo.completeAll');
+export const clearCompleted = action('todo.clearCompleted');
 
 export const initialState = [
   { id: 0, text: 'Learn react, redux, frp, elm, etc', completed: true },
@@ -32,7 +19,7 @@ export const initialState = [
 const nextId = state =>
   state.reduce((max, item) => Math.max(item.id, max), -1) + 1;
 
-export default createReducer({
+export default reducer({
   [add]: (s, text) => [{
     id: nextId(s),
     text,

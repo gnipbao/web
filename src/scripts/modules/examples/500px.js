@@ -1,7 +1,11 @@
-import { createAction, createReducer } from 'redux-act';
+import {
+  createAction as action,
+  createReducer as reducer
+} from 'redux-act';
+
 import { search } from 'api/500px';
 
-export const load = createAction('load photos from 500px');
+export const load = action('500px.load');
 export const loadAsync = (category, pageNum) =>
   async (dispatch, getState) => {
     const page = pageNum || getState().fiveHundredPixels.page + 1;
@@ -22,7 +26,7 @@ export const initialState = {
   loading: false
 };
 
-export default createReducer({
+export default reducer({
   [load]: (state, { category, photos, page }) => {
     if (!photos) return { ...state, loading: true };
 

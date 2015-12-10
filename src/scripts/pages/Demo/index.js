@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { updatePath } from 'redux-simple-router';
+import { pushPath } from 'redux-simple-router';
 
 import Button from 'react-toolbox/lib/button';
 import Drawer from 'react-toolbox/lib/drawer';
@@ -64,5 +64,5 @@ export class Demo extends Component {
 
 export default connect(
   s => ({ currentPath: s.routing.path }),
-  d => ({ go: bindActionCreators(updatePath, d) })
+  d => ({ go: bindActionCreators(pushPath, d) })
 )(Demo);
