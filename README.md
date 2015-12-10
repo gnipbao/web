@@ -220,6 +220,8 @@ in [precss](https://github.com/jonathantneal/precss/blob/master/package.json#L34
 
 # Resources
 
+### Base knowledge
+
 * [40 webpack screencasts in russian](https://learn.javascript.ru/webpack-screencast), takes about 2h to get started
 * [webpack hot reloading magic (habra)](http://habrahabr.ru/company/Voximplant/blog/270593/)
 * [awesome react](https://github.com/enaqx/awesome-react)
@@ -228,6 +230,15 @@ in [precss](https://github.com/jonathantneal/precss/blob/master/package.json#L34
 * [redux docs in russian](https://github.com/rajdee/redux-in-russian)
 * [npm module checklist](https://github.com/bahmutov/npm-module-checklist)
 * [react-router SSR](https://github.com/rackt/react-router/blob/master/docs/guides/advanced/ServerRendering.md)
+
+### Testing
+
+* [mocha](http://mochajs.org/#getting-started)
+* [chai](http://chaijs.com/api/bdd/)
+* [sinon](http://sinonjs.org/)
+* [sinon-chai](https://github.com/domenic/sinon-chai)
+* [enzyme](https://github.com/airbnb/enzyme)
+* [cheerio](https://github.com/cheeriojs/cheerio)
 
 # Troubleshooting
 

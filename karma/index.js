@@ -30,7 +30,7 @@ const karmaConfig = {
   singleRun: !argv.watch,
   autoWatch: true,
   autoWatchBatchDelay: 0,
-  reportSlowerThan: 30,
+  reportSlowerThan: 40,
   concurrency: 2,
   browserNoActivityTimeout: 30000,
 };

@@ -25,7 +25,7 @@ export default class Item extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      text: props.item.text + '',
+      text: props.item.text || '',
       editing: false
     };
   }
@@ -35,16 +35,11 @@ export default class Item extends Component {
     this.setState({ editing: false });
   }
 
+  handleChange = (text) => this.setState({ text });
+  handleBlur = (e) => this.edit(e.target.value);
   handleDoubleClick = () => this.setState({ editing: true });
-
   handleKeyPress = ({ which, target: { value } }) =>
     which === 13 && this.edit(value);
-
-  handleChange(text) {
-    this.setState({ text });
-  }
-
-  handleBlur = (e) => this.edit(e.target.value);
 
   renderNormal() {
     return (

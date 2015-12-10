@@ -1,3 +1,4 @@
+- [ ] try to speed up tests using: webpack -> mocha + jsdom + enzyme, no fucking browsers, no karma
 - [ ] wait for enzyme to become good enough to remove THE SHIT from my webpack config
 - [ ] take a look [at this](https://github.com/rstacruz/mocha-jsdom)
 - [ ] fix docker workflow

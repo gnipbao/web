@@ -5,7 +5,10 @@
 }
 
 .controls {
-  button {
+  .dec {
+  }
+
+  .inc {
     margin-left: 4px;
   }
 }

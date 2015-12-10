@@ -17,6 +17,7 @@ const Main = ({ items, ...actions }) => (
 );
 
 Main.propTypes = {
+  edit: func.isRequired,
   complete: func.isRequired,
   del: func.isRequired,
   items: arrayOf(object).isRequired
