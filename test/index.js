@@ -15,4 +15,3 @@ frameworkTests.keys().forEach(frameworkTests);
 
 const appTests = require.context('./app', true, /.+\.test\.jsx?$/);
 appTests.keys().forEach(appTests);
-
