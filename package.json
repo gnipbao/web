@@ -107,7 +107,7 @@
     "del": "^2.2.0",
     "doiuse": "^2.2.0",
     "electron-prebuilt": "0.35.4",
-    "enzyme": "1.1.0",
+    "enzyme": "1.2.0",
     "es6-promise": "3.0.2",
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "^2.0.0",
