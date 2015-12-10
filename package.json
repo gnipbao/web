@@ -85,6 +85,7 @@
     "validator": "4.4.0"
   },
   "devDependencies": {
+    "app-module-path": "1.0.5",
     "autoprefixer": "^6.1.2",
     "autoprefixer-loader": "^3.1.0",
     "babel": "^5.8.21",
