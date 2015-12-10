@@ -16,5 +16,6 @@ function getEnvMiddleware() {
 export default applyMiddleware(
   thunk,
   promise,
+  api,
   ...getEnvMiddleware()
 );
