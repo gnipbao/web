@@ -3,6 +3,7 @@
 [![Dependency Status](https://david-dm.org/vyorkin/starter-kit.svg)](https://david-dm.org/vyorkin/starter-kit)
 [![devDependency Status](https://david-dm.org/vyorkin/starter-kit/dev-status.svg)](https://david-dm.org/vyorkin/starter-kit#info=devDependencies)
 [![Code Climate](https://codeclimate.com/github/vyorkin/starter-kit/badges/gpa.svg)](https://codeclimate.com/github/vyorkin/starter-kit)
+[![Coveralls](https://coveralls.io/repos/vyorkin/starter-kit/badge.svg?branch=master&service=github)](https://coveralls.io/github/vyorkin/starter-kit?branch=master)
 [![Codecov](https://codecov.io/github/vyorkin/starter-kit/coverage.svg?branch=master)](https://codecov.io/github/vyorkin/starter-kit?branch=master)
 
 [![Codecov stats](https://codecov.io/github/vyorkin/starter-kit/branch.svg?limit=50&vg=on&legend=on&color=on&branch=master)](https://codecov.io/github/vyorkin/starter-kit/branch.svg?limit=50&vg=on&legend=on&color=on&branch=master)

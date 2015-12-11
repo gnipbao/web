@@ -1,6 +1,6 @@
 export default [
   'mocha',
-  'sinon-chai',
+  'chai-sinon',
   'chai-as-promised',
   'chai'
 ]

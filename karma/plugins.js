@@ -4,7 +4,7 @@ export default [
   'karma-mocha',
   'karma-chai',
   'karma-chai-as-promised',
-  'karma-sinon-chai',
+  'karma-chai-sinon',
   'karma-coverage',
 
   'karma-phantomjs-launcher',
