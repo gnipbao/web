@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import CSS from 'react-css-modules';
 
 const { array, object } = PropTypes;
 
@@ -11,12 +12,12 @@ import style from './style';
 
 export const Example = ({ actions, cells }) => {
   return (
-    <div className={style.root}>
+    <div styleName='root'>
       <Grid cells={cells} />
       <Controls speed={100} {...actions} />
     </div>
   );
-};
+}
 
 Example.propTypes = {
   cells: array.isRequired,
@@ -26,4 +27,4 @@ Example.propTypes = {
 export default connect(
   s => ({ cells: s.life }),
   d => ({ actions: bindActionCreators(lifeActions, d) })
-)(Example);
+)(CSS(Example, style));

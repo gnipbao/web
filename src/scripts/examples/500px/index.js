@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { reduxForm } from 'redux-form';
+import CSS from 'react-css-modules';
 
 import Autocomplete from 'react-toolbox/lib/autocomplete';
 import ProgressBar from 'react-toolbox/lib/progress_bar';
@@ -29,6 +30,7 @@ const CATEGORIES = {
   'landscapes': 'Landscapes'
 };
 
+@CSS(style)
 export class Example extends Component {
   static propTypes = {
     category: string.isRequired,
@@ -41,7 +43,7 @@ export class Example extends Component {
     const { category, photos, page, load, loading } = this.props;
 
     return (
-      <div className={style.root}>
+      <div styleName='root'>
         <Autocomplete
           multiple={false}
           direction='down'

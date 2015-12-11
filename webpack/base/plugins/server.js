@@ -1,5 +1,5 @@
 import webpack from 'webpack';
-import globals from '../../../config/globals';
+import { globals } from '../../../config';
 import common from './common';
 
 export default [

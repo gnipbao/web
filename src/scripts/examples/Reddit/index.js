@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import CSS from 'react-css-modules';
 
 const { bool, array, func } = PropTypes;
 
@@ -27,6 +28,7 @@ const REDDITS = [
   { value: 'vim', label: 'Vim' }
 ];
 
+@CSS(style)
 export class Example extends Component {
   static propTypes = {
     items: array.isRequired,
@@ -45,7 +47,7 @@ export class Example extends Component {
     const { reddit } = this.state;
 
     return (
-      <div className={style.root}>
+      <div styleName='root'>
         <Dropdown auto
           source={REDDITS}
           onChange={::this.handleChange}

@@ -24,6 +24,7 @@ export default [
   'redux-logger',
   'reselect',
   'classnames',
+  'react-css-modules',
   'react-themeable',
   'react-visibility-sensor',
   'form-serialize',

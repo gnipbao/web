@@ -1,6 +1,5 @@
-import minimist from 'minimist';
-
 import { name, description, config } from '../package';
+
 import server from './server';
 import paths from './paths';
 import resolve from './resolve';
@@ -9,9 +8,12 @@ import dependencies from './dependencies';
 import globals from './globals';
 import browsersync from './browsersync';
 import postcss from './postcss';
-import { environments, environmentName } from './env';
+import env from './env';
 
-const argv = minimist(process.argv.slice(2));
+import parseArgs from './utils/parseArgs';
+
+const argv = parseArgs();
+const { environments, environmentName } = env(argv);
 
 export default {
   argv, 
@@ -24,10 +26,10 @@ export default {
   resolve,
   aliases,
   dependencies,
-  globals,
+  globals: globals(environments, environmentName, argv),
 
   postcss,
-  browsersync,
+  browsersync: browsersync(argv),
 
   env: environments,
   environment: environmentName,

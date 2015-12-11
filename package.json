@@ -56,6 +56,7 @@
     "qs": "6.0.1",
     "react": "0.14.3",
     "react-addons-css-transition-group": "0.14.3",
+    "react-css-modules": "3.6.3",
     "react-demo": "1.1.0",
     "react-dnd": "2.0.2",
     "react-dom": "0.14.3",
@@ -237,6 +238,7 @@
   },
   "scripts": {
     "build": "gulp build --production",
+    "build:full": "gulp build:full --production",
     "clean": "gulp clean",
     "commit": "git-cz",
     "exact-semver": "exact-semver",

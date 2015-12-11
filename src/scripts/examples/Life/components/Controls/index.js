@@ -1,6 +1,9 @@
+import CSS from 'react-css-modules';
+
 import Button from 'react-toolbox/lib/button';
 import style from './style';
 
+@CSS(style)
 export default class Controls extends Component {
   state = { interval: null };
 
@@ -17,7 +20,7 @@ export default class Controls extends Component {
   render() {
     const { iterate, clear, randomize } = this.props;
     return (
-      <div className={style.root}>
+      <div styleName='root'>
         <Button mini floating primary icon='cached' onClick={randomize} />
         <Button mini floating icon='delete' onClick={clear} />
         <Button floating accent icon='skip_next' onClick={iterate} />

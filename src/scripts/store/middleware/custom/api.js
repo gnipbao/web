@@ -1,7 +1,16 @@
 export default ({ dispatch, getState }) =>
   next => async (action) => {
-    const { payload: { request, ...args }, ...rest } = action;
-    if (!request) return next(action);
+    if (!action.payload || !action.payload.request) {
+      return next(action);
+    }
+
+    const {
+      payload: {
+        request,
+        ...args
+      },
+      ...rest
+    } = action;
 
     next({ payload: { ...args }, ...rest });
 

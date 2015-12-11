@@ -1,3 +1,7 @@
+.root {
+  color: #333;
+}
+
 .controls,
 .number,
 .title {
@@ -6,6 +10,7 @@
 
 .controls {
   .dec {
+    margin-right: 4px;
   }
 
   .inc {

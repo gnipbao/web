@@ -1,14 +1,18 @@
+import CSS from 'react-css-modules';
+
 import Cell from '../Cell';
 import style from './style';
 
-export default ({ cells }) => {
+export const Grid = ({ cells }) => {
   return (
-    <table className={style.root}>
+    <table styleName='root'>
       <tbody>{cells.map((row, y) => (
-        <tr key={y} className={style.root}>
+        <tr key={y} styleName='row'>
           {row.map((alive, x) => <Cell key={x + y} {...{ y, x, alive } } />)}
         </tr>
       ))}</tbody>
     </table>
   );
 };
+
+export default CSS(Grid, style);

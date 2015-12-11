@@ -1,9 +1,12 @@
+import CSS from 'react-css-modules';
 import style from './style';
 
-export default (props) => {
+export const Item = (props) => {
   return (
-    <div className={style.root}>
+    <div styleName='root'>
       item
     </div>
   );
 };
+
+export default CSS(Item, style);

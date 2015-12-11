@@ -1,9 +1,8 @@
+import CSS from 'react-css-modules';
 import style from './style';
 
-const Filter = (props) => {
-  return (
-    <div>I am filter</div>
-  );
-};
+const Filter = (props) => (
+  <div styleName='root'>I am filter</div>
+);
 
-export default Filter;
+export default CSS(Filter, style);

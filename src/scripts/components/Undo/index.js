@@ -1,9 +1,10 @@
+import CSS from 'react-css-modules';
 import Button from 'react-toolbox/lib/button';
 import style from './style';
 
 const Component = ({ undo, redo }) => {
   return (
-    <div className={style.root}>
+    <div styleName='root'>
       <Button floating mini icon='undo' onClick={undo} />
       <Button floating mini icon='redo' onClick={redo} />
     </div>
@@ -15,4 +16,4 @@ Component.propTypes = {
   redo: PropTypes.func.isRequired
 };
 
-export default Component;
+export default CSS(Component, style);

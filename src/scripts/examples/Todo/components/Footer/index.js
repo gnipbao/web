@@ -1,10 +1,11 @@
+import CSS from 'react-css-modules';
 import Button from 'react-toolbox/lib/button';
 import style from './style';
 
 const { func } = PropTypes;
 
 const Footer = ({ completeAll, clearCompleted }) => (
-  <div className={style.root}>
+  <div styleName='root'>
     <Button
       onClick={completeAll} 
       raised primary
@@ -25,4 +26,4 @@ Footer.propTypes = {
   clearCompleted: func.isRequired,
 };
 
-export default Footer;
+export default CSS(Footer, style);

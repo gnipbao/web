@@ -1,4 +1,4 @@
-import logger from 'debug-dude';
+import debug from 'debug';
 import { render as prettyjson } from 'prettyjson';
 
 import config from '../../config';
@@ -6,11 +6,9 @@ import toolbox from './toolbox';
 import postcss from './postcss';
 import eslint from './eslint';
 
-const { debug } = logger('app:webpack');
-
-debug('dependencies:\n', prettyjson(config.dependencies));
-debug('aliases:\n', prettyjson(config.aliases));
-debug('globals:\n', prettyjson(config.globals));
+debug('app:webpack:dependencies')(prettyjson(config.dependencies));
+debug('app:webpack:aliases')(prettyjson(config.aliases));
+debug('app:webpack:globals')(prettyjson(config.globals));
 
 const noParse = [
 ];

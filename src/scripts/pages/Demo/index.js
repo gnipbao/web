@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { pushPath } from 'redux-simple-router';
+import CSS from 'react-css-modules';
 
 import Button from 'react-toolbox/lib/button';
 import Drawer from 'react-toolbox/lib/drawer';
@@ -12,7 +13,7 @@ import style from './style';
 const { func } = PropTypes;
 
 const appearance = {
-  className: style.button,
+  className: 'button',
   icon: 'extension'
 };
 
@@ -25,6 +26,7 @@ const items = [
   { path: '/examples/sound-cloud', label: 'SoundCloud', ...appearance },
 ];
 
+@CSS(style)
 export class Demo extends Component {
   static propTypes = {
     go: func.isRequired
@@ -41,7 +43,7 @@ export class Demo extends Component {
     const { active } = this.state;
 
     return (
-      <div className={style.root}>
+      <div styleName='root'>
         <h1>Examples</h1>
         <Button raised accent
           label='Choose'

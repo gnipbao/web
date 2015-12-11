@@ -1,9 +1,9 @@
-import classNames from 'classnames/bind';
+import CSS from 'react-css-modules';
 import style from './style';
 
-const cx = classNames.bind(style);
-
-export default ({ alive }) => {
-  const className = cx({ root: true, alive });
-  return (<td className={className}></td>);
+export const Cell = ({ alive }) => {
+  const className = classNames({ root: true, alive });
+  return (<td styleName={className}></td>);
 };
+
+export default CSS(Cell, style, { allowMultiple: true });

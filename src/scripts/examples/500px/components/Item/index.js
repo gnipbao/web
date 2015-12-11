@@ -1,9 +1,11 @@
+import CSS from 'react-css-modules';
 import { Card, CardTitle, CardText, CardMedia } from 'react-toolbox/lib/card';
+
 import style from './style';
 
-export default ({ image_url, name }) => {
+export const Item = ({ image_url, name }) => {
   return (
-    <Card className={style.root} raised>
+    <Card styleName='root' raised>
       <CardMedia
         aspectRatio='square'
         image={image_url}
@@ -12,3 +14,5 @@ export default ({ image_url, name }) => {
     </Card>
   );
 };
+
+export default CSS(Item, style);

@@ -1,3 +1,4 @@
+- [ ] try to use webpack externals + provider plugin at the same time for thiings like isomorphic-fetch
 - [ ] try to speed up tests using: webpack -> mocha + jsdom + enzyme, no fucking browsers, no karma
 - [ ] wait for enzyme to become good enough to remove THE SHIT from my webpack config
 - [ ] take a look [at this](https://github.com/rstacruz/mocha-jsdom)
