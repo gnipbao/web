@@ -10,6 +10,8 @@ import frameworks from './frameworks';
 import coverage from './coverage';
 import customLaunchers from './launchers';
 
+// use Chrome launcher only on Travis CI
+const browser = process.env.CI && process.env.TRAVIS ? 'Chrome' : 'PhantomJS';
 const testsPath = resolve.test('index.js');
 
 const karmaConfig = {
@@ -22,7 +24,7 @@ const karmaConfig = {
     [testsPath]: ['webpack', 'sourcemap']
   },
   reporters: ['dots'],
-  browsers: ['Chrome'],
+  browsers: [browser],
   customLaunchers,
   webpack,
   webpackMiddleware,

@@ -8,8 +8,8 @@ export default [
   'karma-coverage',
 
   'karma-phantomjs-launcher',
-  // 'karma-electron-launcher',
   'karma-chrome-launcher',
+  // 'karma-electron-launcher',
   // 'karma-firefox-launcher,
 
   'karma-mocha-reporter',
