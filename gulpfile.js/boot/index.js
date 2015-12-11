@@ -2,4 +2,4 @@
 
 require('./logging.js');
 require('./globals.js');
-require('require-dir')('../tasks', { recursive: true });
+require('require-dir')('../tasks', { recurse: true });

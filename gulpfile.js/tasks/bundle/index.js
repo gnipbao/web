@@ -1,27 +1,8 @@
 import webpack from 'webpack';
+import logStats from './logStats.js';
 
 const { debug } = logger('app:bundle');
-const { verbose, watch } = config.app.argv;
-
-const displayOptions = {
-  colors: $.util.colors.supportsColor,
-  hash: verbose,
-  version: verbose,
-  timings: verbose,
-  chunks: verbose,
-  chunkModules: verbose,
-  cached: verbose,
-  cachedAssets: verbose,
-  modules: verbose,
-  assets: true,
-  errorDetails: true,
-  children: false
-};
-
-const logStats = (err, stats) => {
-  if (err) throw new $.util.PluginError('webpack', err, { showStack: true });
-  $.util.log('[webpack]\n', stats.toString(displayOptions));
-};
+const { watch } = config.app.argv;
 
 // creates a cellback function
 // that webpack runs when it's done bundling
