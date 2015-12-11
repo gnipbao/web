@@ -11,7 +11,9 @@ import coverage from './coverage';
 import customLaunchers from './launchers';
 
 // use Chrome launcher only on Travis CI
-const browser = process.env.CI && process.env.TRAVIS ? 'Chrome' : 'PhantomJS';
+const browser = process.env.CI && process.env.TRAVIS_CI ?
+  'ChromeTravisCI' : 'PhantomJS';
+
 const testsPath = resolve.test('index.js');
 
 const karmaConfig = {
