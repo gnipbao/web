@@ -9,7 +9,7 @@ export default [
 
   'karma-phantomjs-launcher',
   // 'karma-electron-launcher',
-  // 'karma-chrome-launcher',
+  'karma-chrome-launcher',
   // 'karma-firefox-launcher,
 
   'karma-mocha-reporter',
