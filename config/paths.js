@@ -19,6 +19,7 @@ export default {
     images: resolve.src('assets/images')
   },
 
+  lcov: resolve.coverage('*/lcov.info'),
   eslintrc: resolve.root('.eslintrc'),
-  karmaConfig: resolve.root('karma.conf.js')
+  karmaConfig: resolve.root('karma.conf.js'),
 }
