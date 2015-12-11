@@ -7,8 +7,8 @@ import webpackMiddleware from '../webpack/development/devMiddleware';
 
 import plugins from './plugins';
 import frameworks from './frameworks';
-import coverage from './coverage';
 import customLaunchers from './launchers';
+import getCoverageOptions from './coverage';
 
 // use Chrome launcher only on Travis CI
 const browser = process.env.CI && process.env.TRAVIS_CI ?
@@ -38,6 +38,8 @@ const karmaConfig = {
   concurrency: 2,
   browserNoActivityTimeout: 30000,
 };
+
+const coverage = getCoverageOptions(argv);
 
 if (coverage.enabled) {
   const srcWildcard = resolve.src('**/*.js');

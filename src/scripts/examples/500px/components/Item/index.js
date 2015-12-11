@@ -1,5 +1,10 @@
 import CSS from 'react-css-modules';
-import { Card, CardTitle, CardText, CardMedia } from 'react-toolbox/lib/card';
+import {
+  Card,
+  CardTitle,
+  CardText,
+  CardMedia
+} from 'react-toolbox/lib/card';
 
 import style from './style';
 
