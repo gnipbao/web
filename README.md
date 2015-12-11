@@ -6,8 +6,13 @@
 [![Coverage Status](https://coveralls.io/repos/vyorkin/starter-kit/badge.svg?branch=master&service=github)](https://coveralls.io/github/vyorkin/starter-kit?branch=master)
 [![Codecov](https://codecov.io/github/vyorkin/starter-kit/coverage.svg?branch=master)](https://codecov.io/github/vyorkin/starter-kit?branch=master)
 [![Codeship Status for vyorkin/starter-kit](https://codeship.com/projects/dfea9470-7f63-0133-3c3e-62195a4c75a1/status?branch=master)](https://codeship.com/projects/120580)
+[![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](http://forthebadge.com)
+[![forthebadge](http://forthebadge.com/images/badges/powered-by-electricity.svg)](http://forthebadge.com)
+[![forthebadge](http://forthebadge.com/images/badges/uses-badges.svg)](http://forthebadge.com)
 
 [![Codecov stats](https://codecov.io/github/vyorkin/starter-kit/branch.svg?limit=50&vg=on&legend=on&color=on&branch=master)](https://codecov.io/github/vyorkin/starter-kit/branch.svg?limit=50&vg=on&legend=on&color=on&branch=master)
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/vyorkin/starter-kit)
 
 # Starter kit
 
