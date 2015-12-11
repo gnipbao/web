@@ -1,20 +1,15 @@
 export default ({ dispatch, getState }) =>
-  next => async action => {
-    if (typeof action === 'function') return action(dispatch, getState);
-
-    const { request, types, ...rest } = action;
-
+  next => async (action) => {
+    const { payload: { request, ...args }, ...rest } = action;
     if (!request) return next(action);
 
-    const [REQUEST, SUCCESS, FAILURE] = types;
-
-    next({...rest, type: REQUEST});
+    next({ payload: { ...args }, ...rest });
 
     try {
-      const result = await request();
-      return next({ ...rest, result, type: SUCCESS });
+      const data = await request(args, getState());
+      return next({ ...rest, payload: { data, ...args } });
     } catch (error) {
       console.error('api error (middleware)', error);
-      return next({ ...rest, error, type: FAILURE });
+      return next({ ...rest, payload: { error, ...args } });
     }
   }

@@ -8,7 +8,7 @@ import Button from 'react-toolbox/lib/button';
 
 import InfiniteScroll from 'components/InfiniteScroll';
 
-import { loadAsync } from 'modules/examples/500px';
+import { load as loadAsync } from 'modules/examples/500px';
 import List from './components/List';
 
 import style from './style';
@@ -38,7 +38,7 @@ export class Example extends Component {
   };
 
   render() {
-    const { category, photos, load, loading } = this.props;
+    const { category, photos, page, load, loading } = this.props;
 
     return (
       <div className={style.root}>
@@ -55,7 +55,7 @@ export class Example extends Component {
         <InfiniteScroll
           loading={loading}
           spinner={_ => <ProgressBar mode='indeterminate'/>}
-          load={_ => load(category)}>
+          load={_ => load(category, page)}>
           <List photos={photos} />
         </InfiniteScroll>
       </div>
