@@ -1,6 +1,6 @@
 import options from './mochaOptions.js';
 
-const { resolve, argv: { watch } } = config.app;
+const { watch } = config.app.argv;
 const wildcards = [
   resolve.test('app/modules/**/*.test.js')
 ];

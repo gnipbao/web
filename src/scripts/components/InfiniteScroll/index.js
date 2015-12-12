@@ -15,10 +15,6 @@ export default class InfiniteScroll extends Component {
     threshold: 50
   }
 
-  componentDidMount() {
-    this.props.load();
-  }
-
   handleScroll(position, height, offset) {
     if (this.props.loading) return;
 

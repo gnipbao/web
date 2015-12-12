@@ -29,3 +29,11 @@ body {
 
 .page {
 }
+
+.loader-60devs {
+  height: 10px;
+
+  .loader-60devs-progress {
+    background: #ff6f00;
+  }
+}

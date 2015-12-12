@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { pushPath } from 'redux-simple-router';
 
 import 'styles/toolbox/main';
+import 'react-progress-2/main';
+
 import style from 'styles/main';
 
 import ToolboxApp from 'react-toolbox/lib/app';

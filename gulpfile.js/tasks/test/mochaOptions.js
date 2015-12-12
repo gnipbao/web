@@ -1,5 +1,3 @@
-const { resolve } = config.app;
-
 // this a duplication of mocha.opts file
 // becasue mocha node API that
 // doesn't respect mocha.opts

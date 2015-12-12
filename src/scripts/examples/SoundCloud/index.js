@@ -10,4 +10,4 @@ export const Example = (props) => (
   </div>
 );
 
-export default connect(s => s)(CSS(Example));
+export default connect(s => s)(CSS(Example, style));

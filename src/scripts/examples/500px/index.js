@@ -9,7 +9,7 @@ import Button from 'react-toolbox/lib/button';
 
 import InfiniteScroll from 'components/InfiniteScroll';
 
-import { load as loadAsync } from 'modules/examples/500px';
+import { initialState, load as loadAsync } from 'modules/examples/500px';
 import List from './components/List';
 
 import style from './style';
@@ -36,8 +36,20 @@ export class Example extends Component {
     category: string.isRequired,
     photos: array.isRequired,
     loading: bool.isRequired,
-    load: func.isRequired
+    load: func.isRequired,
   };
+
+  static bootloaders = [
+    (_params, _state) => loadAsync(
+      initialState.category,
+      initialState.page
+    ),
+  ];
+
+  componentDidMount() {
+    const { category, photos, page, load } = this.props;
+    if (R.isEmpty(photos)) load(category, page);
+  }
 
   render() {
     const { category, photos, page, load, loading } = this.props;
