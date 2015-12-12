@@ -1,6 +1,6 @@
 {
-  "name": "starter-kit",
-  "description": "starter kit",
+  "name": "PartyRooms",
+  "description": "PartyRooms: share, discover, enjoy",
   "version": "0.1.0-pre-alpha.0",
   "private": true,
   "author": {
@@ -9,7 +9,7 @@
     "url": "https://github.com/vyorkin"
   },
   "bugs": {
-    "url": "https://github.com/vyorkin/starter-kit/issues",
+    "url": "https://github.com/partyrooms/web/issues",
     "email": "vasiliy.yorkin@gmail.com"
   },
   "config": {
@@ -230,17 +230,18 @@
   "engines": {
     "node": "5.1.0"
   },
-  "homepage": "https://github.com/vyorkin/starter-kit#readme",
+  "homepage": "https://github.com/partyrooms/web#readme",
   "keywords": [
-    "react",
-    "redux",
-    "starter"
+    "partyrooms",
+    "party",
+    "music",
+    "sound"
   ],
   "license": "MIT",
   "main": "src/server/index.js",
   "repository": {
     "type": "git",
-    "url": "vyorkin/starter-kit"
+    "url": "partyrooms/web"
   },
   "scripts": {
     "build": "gulp build --production",

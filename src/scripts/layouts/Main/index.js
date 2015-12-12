@@ -32,7 +32,7 @@ export class Main extends Component {
     return (
       <div className={style.main}>
         <Meta
-          og={{ title: 'starter' }}
+          og={{ title: 'partyrooms' }}
           twitter={{ site: '@yorkin', creator: '@yorkin' }}
         />
         <AppBar top>

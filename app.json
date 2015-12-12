@@ -1,7 +1,7 @@
 {
-  "name": "Starter kit",
-  "description": "Web app starter kit",
-  "repository": "https://github.com/vyorkin/starter-kit",
-  "logo": "https://raw.githubusercontent.com/vyorkin/starter-kit/master/src/assets/images/logo.png",
-  "keywords": ["react", "redux", "starter"]
+  "name": "PartyRooms",
+  "description": "PartyRooms: share, discover, enjoy",
+  "repository": "https://github.com/partyrooms/web",
+  "logo": "https://raw.githubusercontent.com/partyrooms/web/master/src/assets/images/logo.png",
+  "keywords": ["partyrooms", "party", "music", "sound"]
 }

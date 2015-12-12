@@ -1,5 +1,5 @@
-BASE_IMAGE := vyorkin/starter-kit
-MAIN_IMAGE := starterkit_web
+BASE_IMAGE := partyrooms/web
+MAIN_IMAGE := partyrooms_web
 PORT := 3000
 
 PROVIDER := virtualbox
