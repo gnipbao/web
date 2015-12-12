@@ -14,7 +14,7 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/partyrooms/web)
 
-# PartyRooms
+# PartyRooms / Web
 
 ![logo](https://raw.githubusercontent.com/partyrooms/web/master/src/assets/images/logo.png)
 
