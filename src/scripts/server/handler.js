@@ -39,9 +39,7 @@ export default async (req, res) => {
       syncReduxAndRouter(history, store);
       store.dispatch(pushPath(location.pathname, true));
 
-      const routerProps = { ...renderProps, location };
       const status = getStatus(renderProps.routes, 200);
-      const { params, components } = renderProps;
 
       info(`
            location = ${location.pathname},
@@ -50,7 +48,8 @@ export default async (req, res) => {
       `);
 
       try {
-        await bootstrapComponents(store, components, params);
+        await bootstrapComponents(store, renderProps);
+        const routerProps = { ...renderProps, location };
         const html = await render(history, store, routerProps);
         res.status(status).send(html);
       } catch (error) {
