@@ -166,5 +166,3 @@ in [precss](https://github.com/jonathantneal/precss/blob/master/package.json#L34
 
 * try to run with `--verbose --profile` keys
 * set `DEBUG=app:*` to see some additional logging with [debug](https://www.npmjs.com/package/debug#wildcards)
-
-Having an issue? Report it and I'll get to it as soon as possible!
