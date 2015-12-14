@@ -152,7 +152,7 @@
     "karma-chai-sinon": "0.1.5",
     "karma-chrome-launcher": "^0.2.2",
     "karma-coverage": "^0.5.3",
-    "karma-electron-launcher": "0.0.5",
+    "karma-electron-launcher": "0.1.0",
     "karma-firefox-launcher": "^0.1.7",
     "karma-mocha": "^0.2.1",
     "karma-mocha-reporter": "^1.1.3",
