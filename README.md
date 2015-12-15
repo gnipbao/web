@@ -5,6 +5,7 @@
 [![Code Climate](https://codeclimate.com/github/partyrooms/web/badges/gpa.svg)](https://codeclimate.com/github/partyrooms/web)
 [![Coverage Status](https://coveralls.io/repos/partyrooms/web/badge.svg?branch=master&service=github)](https://coveralls.io/github/partyrooms/web?branch=master)
 [![Codecov](https://codecov.io/github/partyrooms/web/coverage.svg?branch=master)](https://codecov.io/github/partyrooms/web?branch=master)
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/a80d76c8267b4622b771e40be3127269)](https://www.codacy.com/app/vyorkin/web)
 [![Codeship Status for partyrooms/web](https://codeship.com/projects/dfea9470-7f63-0133-3c3e-62195a4c75a1/status?branch=master)](https://codeship.com/projects/120580)
 [![forthebadge](http://forthebadge.com/images/badges/ages-12.svg)](http://forthebadge.com)
 [![forthebadge](http://forthebadge.com/images/badges/powered-by-electricity.svg)](http://forthebadge.com)
