@@ -1,3 +1,0 @@
-FROM partyrooms/web:latest
-RUN npm install foreman -g
-CMD ["npm", "start"]

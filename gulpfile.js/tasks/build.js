@@ -1,8 +1,10 @@
-gulp.task('build', () => sequence(
-  ['assets', 'bundle']
+gulp.task('build', (cb) => sequence(
+  ['assets', 'bundle'],
+  cb
 ));
 
-gulp.task('build:full', () => sequence(
+gulp.task('build:full', (cb) => sequence(
   'clean:dist',
-  ['assets', 'favicon:generate', 'bundle']
+  ['assets', 'favicon:generate', 'bundle'],
+  cb
 ));

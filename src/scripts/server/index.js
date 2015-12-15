@@ -1,5 +1,3 @@
-import newrelic from 'newrelic';
-
 import logger from 'debug-dude';
 import PrettyError from 'pretty-error';
 

@@ -3,5 +3,11 @@
   "description": "PartyRooms: share, discover, enjoy",
   "repository": "https://github.com/partyrooms/web",
   "logo": "https://raw.githubusercontent.com/partyrooms/web/master/src/assets/images/logo.png",
-  "keywords": ["partyrooms", "party", "music", "sound"]
+  "keywords": [
+    "partyrooms",
+    "party",
+    "music",
+    "sound"
+  ],
+  "image": "heroku/nodejs"
 }

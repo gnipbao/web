@@ -1,4 +1,5 @@
-gulp.task('run', () => sequence(
+gulp.task('run', (cb) => sequence(
   'build:full',
-  'server'
+  'server',
+  cb
 ));

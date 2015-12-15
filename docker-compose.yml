@@ -1,12 +1,19 @@
 web:
   build: .
-  dockerfile: Dockerfile-dev
-  volumes:
-    - .:/usr/src/app
+  command: 'bash -c ''gulp run --production'''
+  working_dir: /app/user
   environment:
-    - HOST=0.0.0.0
-    - PORT=3000
+    PORT: 8080
   ports:
-    - "3000:3000"
-    - "3001:3001"
-    - "3002:3002"
+    - '8080:8080'
+shell:
+  build: .
+  command: bash
+  working_dir: /app/user
+  environment:
+    PORT: 8080
+  ports:
+    - '8080:8080'
+  volumes:
+    - '.:/app/user'
+

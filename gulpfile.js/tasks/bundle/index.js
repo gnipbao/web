@@ -41,7 +41,7 @@ gulp.task('bundle:client', cb => {
 });
 
 gulp.task('bundle:server', cb => bundle('server', cb));
-gulp.task('bundle', () => sequence([
+gulp.task('bundle', (cb) => sequence([
   'bundle:server',
   'bundle:client'
-]));
+], cb));
