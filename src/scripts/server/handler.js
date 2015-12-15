@@ -1,4 +1,4 @@
-import logger from 'debug-dude';
+jmport logger from 'debug-dude';
 import PrettyError from 'pretty-error';
 import LRU from 'lru-cache';
 import crypto from 'crypto';
