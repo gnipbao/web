@@ -163,6 +163,16 @@ in [precss](https://github.com/jonathantneal/precss/blob/master/package.json#L34
 * [enzyme](https://github.com/airbnb/enzyme)
 * [cheerio](https://github.com/cheeriojs/cheerio)
 
+### Deployment
+
+* web: `docker-compose up web`
+* shell: `docker-compose run shell`
+* rebuild: `docker-compose build`
+* deploy: `heroku docker:release`
+
+Here kj
+To get more info you can [read the docs at Heroku devcenter](https://devcenter.heroku.com/articles/docker).
+
 # Troubleshooting
 
 * try to run with `--verbose --profile` keys

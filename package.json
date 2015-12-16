@@ -14,7 +14,7 @@
   },
   "config": {
     "https": false,
-    "host": "localhost",
+    "host": "0.0.0.0",
     "ports": {
       "app": 3000,
       "browserSync": 3001,

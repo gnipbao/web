@@ -21,7 +21,7 @@ app.use(handler);
 const { host, port } = settings;
 const url = `http://${host}:${port}`;
 
-server.listen(port, host, (err) => {
+server.listen(process.env.PORT || port, (err) => {
   if (err) {
     error(prettyError.render(err));
   } else {

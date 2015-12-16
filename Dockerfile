@@ -1,2 +1,3 @@
-FROM heroku/nodejs
+FROM heroku/nodejs:latest
 
+RUN gulp build --production
