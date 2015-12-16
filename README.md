@@ -13,11 +13,15 @@
 
 [![Codecov stats](https://codecov.io/github/partyrooms/web/branch.svg?limit=50&vg=on&legend=on&color=on&branch=master)](https://codecov.io/github/partyrooms/web/branch.svg?limit=50&vg=on&legend=on&color=on&branch=master)
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/partyrooms/web)
-
 # PartyRooms / Web
 
 ![logo](https://raw.githubusercontent.com/partyrooms/web/master/src/assets/images/logo.png)
+
+# Related
+
+* [API](https://github.com/partyrooms/api) and [Swagger UI](https://github.com/partyrooms/swagger-ui)
+* [Desktop](https://github.com/partyrooms/desktop)
+* [iOS](https://github.com/partyrooms/ios)
 
 # Table of contents
 
