@@ -2,7 +2,6 @@
   "stage": 0,
   "optional": [
     "runtime",
-    "utility.inlineEnvironmentVariables",
     "minification.removeDebugger"
   ],
   "plugins": [

@@ -15,10 +15,6 @@ export default (environments, environmentName, argv) => {
   );
 
   const common = {
-    'process.env': {
-      NODE_ENV: JSON.stringify(environmentName),
-    },
-
     __QUIET__: argv.quiet,
     __VERBOSE__: argv.verbose,
     __PROFILE__: argv.profile,
