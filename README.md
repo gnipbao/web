@@ -175,8 +175,8 @@ Flow:
 * [rebuild](https://devcenter.heroku.com/articles/docker#rebuild-containers): `docker-compose build`
 * [deploy](https://devcenter.heroku.com/articles/docker#deploying): `heroku docker:release`
 
-Here kj
 To get more info you can [read the docs at Heroku devcenter](https://devcenter.heroku.com/articles/docker).
+And here is the [docker cheatsheet](https://github.com/wsargent/docker-cheat-sheet).
 
 # Troubleshooting
 

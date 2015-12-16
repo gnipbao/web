@@ -18,7 +18,7 @@ const server = new Server(app);
 middleware.forEach(m => app.use(m));
 app.use(handler);
 
-const { port = 80, '0.0.0.0' } = settings;
+const { port = 80, host = '0.0.0.0' } = settings;
 const url = `http://${host}:${port}`;
 
 server.listen(process.env.PORT || port, host, (err) => {

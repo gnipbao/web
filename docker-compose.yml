@@ -1,19 +1,21 @@
 web:
   build: .
-  command: 'bash -c ''gulp run --production'''
+  command: 'bash -c ''node dist/server.js'''
   working_dir: /app/user
   environment:
-    PORT: 8080
+    PORT: 3000
+    DEBUG: app:*
   ports:
-    - '8080:8080'
+    - '80:3000'
 shell:
   build: .
   command: bash
   working_dir: /app/user
   environment:
-    PORT: 8080
+    PORT: 3000
+    DEBUG: app:*
   ports:
-    - '8080:8080'
+    - '80:3000'
   volumes:
     - '.:/app/user'
 
