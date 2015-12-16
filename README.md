@@ -165,10 +165,15 @@ in [precss](https://github.com/jonathantneal/precss/blob/master/package.json#L34
 
 ### Deployment
 
+Setup:
+
 * web: `docker-compose up web`
-* shell: `docker-compose run shell`
-* rebuild: `docker-compose build`
-* deploy: `heroku docker:release`
+
+Flow:
+
+* [shell](https://devcenter.heroku.com/articles/docker#shell-access): `docker-compose run shell`
+* [rebuild](https://devcenter.heroku.com/articles/docker#rebuild-containers): `docker-compose build`
+* [deploy](https://devcenter.heroku.com/articles/docker#deploying): `heroku docker:release`
 
 Here kj
 To get more info you can [read the docs at Heroku devcenter](https://devcenter.heroku.com/articles/docker).
