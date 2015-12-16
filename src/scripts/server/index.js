@@ -19,7 +19,6 @@ middleware.forEach(m => app.use(m));
 app.use(handler);
 
 const port = process.env.PORT || settings.port || 80;
-const url = `http://${host}:${port}`;
 
 server.listen(port, (err) => {
   if (err) {
@@ -28,7 +27,7 @@ server.listen(port, (err) => {
     if (process.send) process.send('online');
 
     // 🍇 🍄 🍉 🍋 🍌 🍎 🍍 🍑 🍒 🍓 🛠 🚽 👽 🚷 🚀 
-    info('🚀  server is running at: %s\n', url);
+    info('🚀  server is listening at: %s\n', port);
   }
 });
 
