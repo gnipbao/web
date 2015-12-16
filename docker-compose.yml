@@ -3,19 +3,19 @@ web:
   command: 'bash -c ''node dist/server.js'''
   working_dir: /app/user
   environment:
-    PORT: 3000
+    PORT: 8080
     DEBUG: app:*
   ports:
-    - '80:3000'
+    - '8080:8080'
 shell:
   build: .
   command: bash
   working_dir: /app/user
   environment:
-    PORT: 3000
+    PORT: 8080
     DEBUG: app:*
   ports:
-    - '80:3000'
+    - '8080:8080'
   volumes:
     - '.:/app/user'
 
