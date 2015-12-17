@@ -119,7 +119,7 @@
     "eslint-config-airbnb": "^2.0.0",
     "eslint-friendly-formatter": "^1.2.2",
     "eslint-loader": "^1.1.1",
-    "eslint-plugin-import": "^0.12.0",
+    "eslint-plugin-import": "^0.12.1",
     "eslint-plugin-react": "^3.11.3",
     "exact-semver": "1.2.0",
     "exports-loader": "0.6.2",
