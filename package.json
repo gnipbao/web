@@ -113,7 +113,7 @@
     "cz-conventional-changelog": "1.1.5",
     "del": "^2.2.0",
     "doiuse": "^2.2.0",
-    "electron-prebuilt": "0.36.0",
+    "electron-prebuilt": "0.36.1",
     "enzyme": "1.2.0",
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "^2.0.0",
