@@ -46,7 +46,7 @@
     "deep-equal": "1.0.1",
     "express": "4.13.3",
     "form-serialize": "0.7.0",
-    "helmet": "1.0.0",
+    "helmet": "1.0.1",
     "history": "1.16.0",
     "invariant": "2.2.0",
     "isomorphic-fetch": "2.2.0",
