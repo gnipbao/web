@@ -17,8 +17,7 @@ const { func } = PropTypes;
 
 const items = [
   { path: '/', label: 'Home', icon: 'home' },
-  { path: '/examples', label: 'Examples', icon: 'extension' },
-  { path: '/about', label: 'About', icon: 'whatshot' }
+  { path: '/sign-in', label: 'Sign in', icon: 'whatshot' }
 ];
 
 export class Main extends Component {

@@ -1,4 +1,5 @@
 import logger from 'debug-dude';
+import { Provider } from 'react-redux';
 import { syncReduxAndRouter } from 'redux-simple-router';
 import { create as createStore } from 'store';
 
@@ -39,6 +40,17 @@ const run = async () => {
     if (failed) {
       console.error(
         `Server-side React render was discarded, investigate, good luck.`
+      );
+    }
+
+    if (__DEVTOOLS__ && !window.devToolsExtension) {
+      const DevTools = require('components/DevTools');
+
+      ReactDOM.render(
+        <Provider store={store} key='provider'>
+          <div>{component}<DevTools /></div>
+        </Provider>,
+        container
       );
     }
   }

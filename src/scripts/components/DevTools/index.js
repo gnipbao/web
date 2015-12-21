@@ -1,7 +1,14 @@
 import { createDevTools } from 'redux-devtools';
 
-import Monitor from 'redux-slider-monitor';
-// import Monitor from 'redux-devtools-log-monitor';
-// import Monitor from 'redux-devtools-dock-monitor';
+import SliderMonitor from 'redux-slider-monitor';
+import LogMonitor from 'redux-devtools-log-monitor';
+import DockMonitor from 'redux-devtools-dock-monitor';
 
-export default createDevTools(<Monitor />);
+const Monitor = (
+  <DockMonitor toggleVisibilityKey='H'
+               changePositionKey='Q'>
+    <LogMonitor />
+  </DockMonitor>
+);
+
+export default createDevTools(Monitor);

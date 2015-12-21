@@ -22,7 +22,7 @@
     },
     "sourceMap": true,
     "webRoot": "",
-    "apiRoot": "http://localhost:8080",
+    "apiRoot": "http://localhost:9292/api/v1",
     "devTools": true,
     "locale": "en_US",
     "ghooks": {

@@ -1,4 +1,7 @@
 @import "typography.css";
+
+@lost gutter 30px;
+@lost cycle auto;
 @lost flexbox flex;
 
 html {
@@ -14,25 +17,5 @@ body {
   background-color: #fff;
   color: #222;
   font-family: "Roboto";
-}
-
-/* stylelint-disable selector-no-id */
-
-#root {
-}
-
-/* stylelint-enable */
-
-.main {
-}
-
-.page {
-}
-
-.loader-60devs {
-  height: 10px;
-
-  .loader-60devs-progress {
-    background: #ff6f00;
-  }
+  /* lost-utility: edit; */
 }

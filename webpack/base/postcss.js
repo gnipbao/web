@@ -18,6 +18,7 @@ const reporters = () => [
 
 export default () => [
   ...(argv.lint ? linters() : []),
+
   require('precss'),
   require('postcss-cssnext')(cssnext),
   require('lost'),
@@ -32,6 +33,7 @@ export default () => [
   require('postcss-input-style'),
   require('postcss-quantity-queries'),
   require('postcss-responsive-type'),
-  require('cssnano'),
+
+  ...(argv.production ? require('cssnano') : []),
   ...(argv.lint ? reporters() : [])
 ];
