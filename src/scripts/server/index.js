@@ -1,3 +1,7 @@
+import dotenv from 'dotenv';
+
+dotenv.load();
+
 import logger from 'debug-dude';
 import PrettyError from 'pretty-error';
 

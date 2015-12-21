@@ -81,6 +81,9 @@ For a smooth dev process you can install these tools (not required):
 
 ## Setup
 
+* `cp .example.env .env` and set required environment variables
+* `npm install`
+
 There is a `config` section in `package.json`:
 
 ```
@@ -95,9 +98,6 @@ There is a `config` section in `package.json`:
     "browserSyncUI": 3002
   },
   "sourceMap": true,
-  "webRoot": "",
-  "apiRoot": "http://localhost:8080",
-  "devTools": true,
   "locale": "en_US",
 
   ...

@@ -20,22 +20,22 @@ export default (environments, environmentName, argv) => {
     __PROFILE__: argv.profile,
     __DEBUG__: argv.debug,
 
-    __DEVTOOLS__: environments.development && config.devTools,
+    __DEVTOOLS__: environments.development && !!process.env.DEVTOOLS,
   };
 
-  const webRoot = config.webRoot || server.url;
+  const webRoot = process.env.WEB_ROOT || server.url;
 
   const app = {
     settings: {
       name: JSON.stringify(appName),
       description: JSON.stringify(appDescription),
-      locale: JSON.stringify(config.locale),
+      locale: JSON.stringify(process.env.LOCALE || config.locale),
 
       host: JSON.stringify(server.host),
       port: JSON.stringify(server.port),
 
       webRoot: JSON.stringify(webRoot),
-      apiRoot: JSON.stringify(config.apiRoot),
+      apiRoot: JSON.stringify(process.env.API_ROOT),
     }
   };
 

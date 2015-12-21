@@ -2,7 +2,7 @@ import { compose } from 'redux';
 
 const createDevTools = () => {
   if (__CLIENT__ && __DEVELOPMENT__) {
-    if (__DEVTOOLS__) {
+    if (__DEVTOOLS__ && !window.devToolsExtension) {
       const DevTools = require('components/DevTools');
       return DevTools.instrument();
     }

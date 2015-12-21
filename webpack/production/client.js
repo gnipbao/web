@@ -9,7 +9,7 @@ import plugins from './plugins/client';
 
 export default merge(base, {
   entry: { app: ['./client.js'], vendors },
-  devtool: sourceMap && 'source-map',
+  devtool: (process.env.SOURCE_MAP || sourceMap) && 'source-map',
   module: { loaders },
   plugins 
 });

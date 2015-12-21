@@ -21,9 +21,6 @@
       "browserSyncUI": 3002
     },
     "sourceMap": true,
-    "webRoot": "",
-    "apiRoot": "http://localhost:9292/api/v1",
-    "devTools": true,
     "locale": "en_US",
     "ghooks": {
       "pre-commit": "# npm run security:check && npm run test",
@@ -44,6 +41,7 @@
     "debug": "2.2.0",
     "debug-dude": "1.0.3",
     "deep-equal": "1.0.1",
+    "dotenv": "1.2.0",
     "express": "4.13.3",
     "form-serialize": "0.7.0",
     "helmet": "1.0.1",

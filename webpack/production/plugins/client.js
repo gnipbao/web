@@ -26,7 +26,7 @@ export default [
   new webpack.optimize.AggressiveMergingPlugin(),
   new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
   new webpack.optimize.UglifyJsPlugin({
-    sourceMap,
+    sourceMap: process.env.SOURCE_MAP || sourceMap,
     minimize: true,
     compress: {
       screw_ie8: true,
