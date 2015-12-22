@@ -35,6 +35,7 @@ export default (environments, environmentName, argv) => {
       port: JSON.stringify(server.port),
 
       webRoot: JSON.stringify(webRoot),
+      authRoot: JSON.stringify(process.env.AUTH_ROOT),
       apiRoot: JSON.stringify(process.env.API_ROOT),
     }
   };

@@ -13,53 +13,43 @@ throttle('resize', 'optimizedResize');
 
 const initialState = window.__state || {};
 
-const run = async () => {
-  const store = createStore(initialState);
-  syncReduxAndRouter(history, store);
+const store = createStore(initialState);
+syncReduxAndRouter(history, store);
 
-  const container = window.document.getElementById('root');
-  const component = await render(history, store);
+const container = window.document.getElementById('root');
+const component = render(history, store);
 
-  ReactDOM.render(component, container);
+ReactDOM.render(component, container);
 
-  if (!__PRODUCTION__) {
-    window.React = React;
+if (!__PRODUCTION__) {
+  window.React = React;
 
-    if (__PROFILE__) {
-      // see https://facebook.github.io/react/docs/perf.html
-      window.Perf = require('react-addons-perf');
-      window.Perf.start();
-    }
-
-    const failed =
-      !container ||
-      !container.firstChild ||
-      !container.firstChild.attributes ||
-      !container.firstChild.attributes['data-react-checksum'];
-
-    if (failed) {
-      console.error(
-        `Server-side React render was discarded, investigate, good luck.`
-      );
-    }
-
-    if (__DEVTOOLS__ && !window.devToolsExtension) {
-      const DevTools = require('components/DevTools');
-
-      ReactDOM.render(
-        <Provider store={store} key='provider'>
-          <div>{component}<DevTools /></div>
-        </Provider>,
-        container
-      );
-    }
+  if (__PROFILE__) {
+    // see https://facebook.github.io/react/docs/perf.html
+    window.Perf = require('react-addons-perf');
+    window.Perf.start();
   }
-};
 
-// run the application when both:
-// DOM is ready and page content is loaded
-if (['complete', 'loaded', 'interactive'].includes(document.readyState) && document.body) {
-  run();
-} else {
-  document.addEventListener('DOMContentLoaded', run, false);
+  const failed =
+    !container ||
+    !container.firstChild ||
+    !container.firstChild.attributes ||
+    !container.firstChild.attributes['data-react-checksum'];
+
+  if (failed) {
+    console.error(
+      `Server-side React render was discarded, investigate, good luck.`
+    );
+  }
+
+  if (__DEVTOOLS__ && !window.devToolsExtension) {
+    const DevTools = require('components/DevTools');
+
+    ReactDOM.render(
+      <Provider store={store} key='provider'>
+        <div>{component}<DevTools /></div>
+      </Provider>,
+      container
+    );
+  }
 }

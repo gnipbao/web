@@ -1,3 +1,4 @@
+import mapObj from 'map-obj';
 import { reduxForm } from 'redux-form';
 import CSS from 'react-css-modules';
 import SVG from 'svg-inline-react';
@@ -18,6 +19,14 @@ const { object } = PropTypes;
 
 const TooltipButton = Tooltip(Button);
 const TooltipInput = Tooltip(Input);
+
+const buttons = [
+  { name: 'vkontakte', icon: vkontakteIcon, tooltip: 'Vkontakte' },
+  { name: 'soundcloud', icon: soundcloudIcon, tooltip: 'SoundCloud' },
+  { name: 'facebook', icon: facebookIcon, tooltip: 'Facebook' },
+  { name: 'twitter', icon: twitterIcon, tooltip: 'Twitter' },
+  { name: 'google', icon: googleIcon, tooltip: 'Google+' },
+];
 
 @CSS(style)
 export class SignIn extends Component {
@@ -42,42 +51,22 @@ export class SignIn extends Component {
               type='text'
               autoFocus
               autoComplete='off'
-              {...code}
               styleName='code'
               label='Invite code'
               tooltip='Please, enter your invite code'
+              {...code}
             />
           </div>
-          <div styleName='social-buttons'>
-            <TooltipButton href='#'
-              styleName='vkontakte'
-              floating
-              tooltip='Vkontakte'>
-              <SVG src={vkontakteIcon} />
-            </TooltipButton>
-            <TooltipButton href='#'
-              styleName='soundcloud'
-              floating
-              tooltip='SoundCloud'>
-              <SVG src={soundcloudIcon} />
-            </TooltipButton>
-            <TooltipButton href='#'
-              styleName='facebook'
-              floating
-              tooltip='Facebook'>
-              <SVG src={facebookIcon} />
-            </TooltipButton>
-            <TooltipButton href='#'
-              styleName='twitter'
-              floating tooltip='Twitter'>
-              <SVG src={twitterIcon} />
-            </TooltipButton>
-            <TooltipButton href='#'
-              styleName='google'
-              floating
-              tooltip='Google+'>
-              <SVG src={googleIcon} />
-            </TooltipButton>
+          <div styleName='social'>
+            {buttons.map(({ name, icon, tooltip }) =>
+              <TooltipButton
+                key={name}
+                styleName={name}
+                floating
+                tooltip={tooltip}>
+                <SVG src={icon} />
+              </TooltipButton>
+            )}
           </div>
         </form>
       </div>
@@ -86,6 +75,6 @@ export class SignIn extends Component {
 }
 
 export default reduxForm({
-  form: 'sign-up',
+  form: 'signin',
   fields: ['code']
 })(SignIn);

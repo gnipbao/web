@@ -8,7 +8,7 @@ import { loadAssets } from 'server/utils';
 const assets = loadAssets();
 const { renderToString } = ReactDOMServer;
 
-export default async (store, routerProps) => {
+export default (store, routerProps) => {
   const root = (
     <Provider store={store}>
       <RoutingContext {...routerProps} />
