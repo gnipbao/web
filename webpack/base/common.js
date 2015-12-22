@@ -27,6 +27,7 @@ export default {
       '.js',
       '.css',
       '.scss',
+      '.svg',
       '.json'
     ],
   },

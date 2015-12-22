@@ -33,6 +33,7 @@ export default () => [
   require('postcss-input-style'),
   require('postcss-quantity-queries'),
   require('postcss-responsive-type'),
+  require('postcss-brand-colors'),
 
   ...(argv.production ? require('cssnano') : []),
   ...(argv.lint ? reporters() : [])

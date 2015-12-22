@@ -1,3 +1,4 @@
-p {
-  color: #c21b44;
+html {
+  text-rendering: optimizeLegibility;
+  font-smoothing: antialiased;
 }

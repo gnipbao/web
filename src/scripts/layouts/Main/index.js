@@ -1,6 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { pushPath } from 'redux-simple-router';
+import CSS from 'react-css-modules';
 
 import 'styles/toolbox/main';
 import 'react-progress-2/main';
@@ -29,17 +30,11 @@ export class Main extends Component {
     const { go, currentPath, children } = this.props;
 
     return (
-      <div className={style.main}>
+      <div styleName='main'>
         <Meta
           og={{ title: 'partyrooms' }}
           twitter={{ site: '@yorkin', creator: '@yorkin' }}
         />
-        <AppBar top>
-          <Navigation
-            type='horizontal'
-            {...{ go, currentPath, items } }
-          />
-        </AppBar>
         <section className={style.page}>
           {children}
         </section>

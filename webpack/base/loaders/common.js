@@ -25,7 +25,7 @@ export default [
   { test: /\.(jpe?g|png|gif)$/i, query: query.image.url, ...loader.image.url },
   { test: /\.woff$/, query: { mimetype: 'application/font-woff', ...query.font.url }, ...loader.font.url },
   { test: /\.woff2$/, query: { mimetype: 'application/font-woff2', ...query.font.url }, ...loader.font.url },
-  { test: /\.ttf/, query: { mimetype: 'application/octet-stream', ...query.font.url }, ...loader.font.url },
-  { test: /\.svg/, query: { mimetype: 'image/svg+xml', ...query.font.url }, ...loader.font.url },
-  { test: /\.eot/, query: query.font, ...loader.font.file }
+  { test: /\.ttf$/, query: { mimetype: 'application/octet-stream', ...query.font.url }, ...loader.font.url },
+  { test: /\.eot$/, query: query.font, ...loader.font.file },
+  { test: /\.svg$/, include: [paths.scripts], loader: 'svg-inline' }
 ]

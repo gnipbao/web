@@ -1,13 +1,60 @@
 .root {
+  background: transparent url(./bg1.jpg);
+  background-color: #00e280;
+  background-size: cover;
+  min-height: 100vh;
+  color: #fff;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.title {
+  text-transform: uppercase;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.desc {
+  font-size: 1.2em;
 }
 
 .form {
+  width: 420px;
 }
 
 .fields {
   .code {
+    & > input {
+      border-color: rgba(255, 255, 255, 0.8);
+      color: #fff;
+      font-size: 1.2em;
+      text-align: center;
+    }
+
+    & > label {
+      color: #fff;
+    }
+
+    & > input:focus ~ label:not(.fixed) {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    & > span:before, span:after {
+      background-color: #fff;
+    }
   }
 }
 
 .social-buttons {
+  text-align: center;
+
+  & > a { margin: 0 4px; }
+
+  .vkontakte:not([disabled]) { background-color: vkontakte-color; }
+  .soundcloud:not([disabled]) { background-color: soundcloud-color; }
+  .facebook:not([disabled]){ background-color: facebook-color; }
+  .twitter:not([disabled]) { background-color: twitter-color; }
+  .google:not([disabled]) { background-color: google-color; }
 }

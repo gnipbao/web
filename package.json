@@ -85,6 +85,7 @@
     "serve-favicon": "2.3.0",
     "soundcloud-audio": "0.1.7",
     "source-map-support": "0.4.0",
+    "svg-inline-react": "0.3.1",
     "validator": "4.4.0",
     "warning": "2.1.0"
   },
@@ -176,6 +177,7 @@
     "phantomjs-polyfill": "0.0.1",
     "postcss-assets": "^3.0.3",
     "postcss-autoreset": "^1.0.1",
+    "postcss-brand-colors": "0.3.0",
     "postcss-browser-reporter": "^0.4.0",
     "postcss-color-rgba-fallback": "^2.0.0",
     "postcss-cssnext": "^2.2.0",
@@ -217,6 +219,7 @@
     "style-loader": "^0.13.0",
     "stylelint": "^3.0.3",
     "stylelint-config-suitcss": "^2.0.0",
+    "svg-inline-loader": "0.4.0",
     "toolbox-loader": "0.0.3",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.9",

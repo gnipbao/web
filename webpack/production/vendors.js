@@ -33,5 +33,6 @@ export default [
   'react-progress-2',
   'react-soundplayer',
   'soundcloud-audio',
+  'svg-inline-react',
   'react-demo',
 ]

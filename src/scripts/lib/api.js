@@ -1,6 +1,6 @@
 import { stringify } from 'qs';
 
-export default class Client {
+export default class Api {
   constructor(root) {
     this.root = root;
   }
