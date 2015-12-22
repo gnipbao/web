@@ -159,6 +159,11 @@ in [precss](https://github.com/jonathantneal/precss/blob/master/package.json#L34
 * [gajus/react-css-modules-examples](https://github.com/gajus/react-css-modules-examples)
 * [css-modules/webpack-demo](https://github.com/css-modules/webpack-demo)
 
+#### Icons
+
+* [thenounproject.com](https://thenounproject.com/)
+* [simpleicons.org](http://simpleicons.org)
+
 ### Testing
 
 * [mocha](http://mochajs.org/#getting-started)

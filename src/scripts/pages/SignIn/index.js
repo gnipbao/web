@@ -38,7 +38,10 @@ export class SignIn extends Component {
         <p styleName='desc'>Share, discover, enjoy</p>
         <form styleName='form' onSubmit={::this.handleSubmit}>
           <div styleName='fields'>
-            <TooltipInput required type='text'
+            <TooltipInput required
+              type='text'
+              autoFocus
+              autoComplete='off'
               {...code}
               styleName='code'
               label='Invite code'
@@ -46,19 +49,33 @@ export class SignIn extends Component {
             />
           </div>
           <div styleName='social-buttons'>
-            <TooltipButton href='#' styleName='vkontakte' floating tooltip='Vkontakte'>
+            <TooltipButton href='#'
+              styleName='vkontakte'
+              floating
+              tooltip='Vkontakte'>
               <SVG src={vkontakteIcon} />
             </TooltipButton>
-            <TooltipButton href='#' styleName='soundcloud' floating tooltip='SoundCloud'>
+            <TooltipButton href='#'
+              styleName='soundcloud'
+              floating
+              tooltip='SoundCloud'>
               <SVG src={soundcloudIcon} />
             </TooltipButton>
-            <TooltipButton href='#' styleName='facebook' floating tooltip='Facebook'>
+            <TooltipButton href='#'
+              styleName='facebook'
+              floating
+              tooltip='Facebook'>
               <SVG src={facebookIcon} />
             </TooltipButton>
-            <TooltipButton href='#' styleName='twitter' floating tooltip='Twitter'>
+            <TooltipButton href='#'
+              styleName='twitter'
+              floating tooltip='Twitter'>
               <SVG src={twitterIcon} />
             </TooltipButton>
-            <TooltipButton href='#' styleName='google' floating tooltip='Google+'>
+            <TooltipButton href='#'
+              styleName='google'
+              floating
+              tooltip='Google+'>
               <SVG src={googleIcon} />
             </TooltipButton>
           </div>
