@@ -23,11 +23,11 @@ const items = [
 
 export class Main extends Component {
   static propTypes = {
-    go: func.isRequired
+    pushPath: func.isRequired
   }
 
   render() {
-    const { go, currentPath, children } = this.props;
+    const { pushPath, currentPath, children } = this.props;
 
     return (
       <div styleName='main'>
@@ -45,5 +45,5 @@ export class Main extends Component {
 
 export default connect(
   s => ({ currentPath: s.routing.path }),
-  d => ({ go: bindActionCreators(pushPath, d) })
+  { pushPath }
 )(Main);
