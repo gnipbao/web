@@ -1,10 +1,13 @@
+$background: #00e280;
+$foreground: #fff;
+
 .root {
   align-content: center;
   align-items: center;
-  background: transparent url("./bg1.jpg");
-  background-color: #00e280;
+  background: transparent url("./bg.jpg");
+  background-color: $background;
   background-size: cover;
-  color: #fff;
+  color: $foreground;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -13,6 +16,7 @@
 
 .title {
   font-size: 2em;
+  font-weight: bold;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
   text-transform: uppercase;
 
@@ -21,10 +25,8 @@
 }
 
 .desc {
-  font-size: 1em;
-
   @media screen and (width >= 768px) and (height >= 680px) { font-size: 1.4em; }
-  @media screen and (width >= 1024px) { font-size: 1.8em; }
+  @media screen and (width >= 1024px) { font-size: 1.6em; }
 }
 
 .form {
@@ -45,28 +47,48 @@
     .code {
       & > input {
         border-color: rgba(255, 255, 255, 0.8);
-        color: #fff;
+        color: $foreground;
         text-align: center;
 
-        @media screen and (width >= 768px) and (height >= 680px) { font-size: 1.8em; }
-        @media screen and (width >= 1024px) { font-size: 2.4em; }
+        @media screen and (width >= 768px) and (height >= 680px) { font-size: 1.4em; }
+        @media screen and (width >= 1024px) { font-size: 1.8em; }
       }
 
-      & > label { color: #fff; }
+      & > label { color: $foreground; }
       & > input:focus ~ label { color: rgba(255, 255, 255, 0.8); }
 
       & > span::before,
       & > span::after {
-        background-color: #fff;
+        background-color: $foreground;
+      }
+
+      & > span {
+        color: $foreground;
       }
     }
   }
 
+  &[data-valid="true"] {
+    .social {
+      opacity: 1;
+      transition: opacity 0.2s linear;
+      visibility: visible;
+    }
+  }
+
   .social {
+    opacity: 0;
     text-align: center;
+    transition: visibility 0s 0.2s, opacity 0.2s linear;
+    visibility: hidden;
 
     & > a,
     & > button { margin: 0 2px; }
+
+    .hint {
+      margin-bottom: 8px;
+      font-size: 1.2em;
+    }
 
     .vkontakte { background-color: vkontakte-color; }
     .soundcloud { background-color: soundcloud-color; }

@@ -1,4 +1,4 @@
-import mapObj from 'map-obj';
+import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import CSS from 'react-css-modules';
 import SVG from 'svg-inline-react';
@@ -7,13 +7,15 @@ import Input from 'react-toolbox/lib/input';
 import Button from 'react-toolbox/lib/button';
 import Tooltip from 'react-toolbox/lib/tooltip';
 
+import { login as loginAsync } from 'modules/auth';
+import { validate } from './validation';
 import style from './style';
 
-import vkontakteIcon from './vkontakte';
-import soundcloudIcon from './soundcloud';
-import facebookIcon from './facebook';
-import twitterIcon from './twitter';
-import googleIcon from './google';
+import vkontakteIcon from './icons/vkontakte';
+import soundcloudIcon from './icons/soundcloud';
+import facebookIcon from './icons/facebook';
+import twitterIcon from './icons/twitter';
+import googleIcon from './icons/google';
 
 const { object } = PropTypes;
 
@@ -34,36 +36,55 @@ export class SignIn extends Component {
     fields: object.isRequired
   }
 
-  handleSubmit() {
+  handleLogin(provider, code) {
+    this.props.login(provider, code);
+    return false;
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
     return false;
   }
 
   render() {
     const { fields: { code } } = this.props;
+    const valid = !code.error;
+
+    const inputProps = {
+      label: valid ? 'Welcome!' : 'Invite code',
+      icon: valid ? 'thumb_up' : 'lock_outline',
+      tooltip: valid ?
+        'Congratulations, you did it!' :
+        'You should enter your invite code here'
+    };
+
     return (
       <div styleName='root'>
         <Helmet title='Sign in' />
         <h1 styleName='title'>party rooms</h1>
-        <p styleName='desc'>Share, discover, enjoy</p>
-        <form styleName='form' onSubmit={::this.handleSubmit}>
+        <p styleName='desc'>share, discover, enjoy</p>
+        <form styleName='form' data-valid={valid} onSubmit={::this.handleSubmit}>
           <div styleName='fields'>
             <TooltipInput required
               type='text'
-              autoFocus
               autoComplete='off'
               styleName='code'
-              label='Invite code'
-              tooltip='Please, enter your invite code'
+              {...inputProps}
               {...code}
             />
           </div>
           <div styleName='social'>
+            <p styleName='hint'>You can sign in now</p>
             {buttons.map(({ name, icon, tooltip }) =>
-              <TooltipButton
+              <TooltipButton floating
                 key={name}
+                name='provider'
                 styleName={name}
-                floating
-                tooltip={tooltip}>
+                disabled={!valid}
+                value={name}
+                tooltip={tooltip}
+                onClick={() => this.handleLogin(name, code.value)}
+                >
                 <SVG src={icon} />
               </TooltipButton>
             )}
@@ -74,7 +95,16 @@ export class SignIn extends Component {
   }
 }
 
-export default reduxForm({
+export const SignInForm = reduxForm({
   form: 'signin',
-  fields: ['code']
+  fields: ['code'],
+  touchOnBlur: false,
+  touchOnChange: false,
+  validate
 })(SignIn);
+
+export default connect(
+  s => s.auth, {
+    login: loginAsync
+  }
+)(SignInForm);
