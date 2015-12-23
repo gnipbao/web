@@ -8,6 +8,7 @@ import Button from 'react-toolbox/lib/button';
 import Tooltip from 'react-toolbox/lib/tooltip';
 import Snackbar from 'react-toolbox/lib/snackbar';
 
+import { session } from 'lib/auth';
 import { login as loginAsync } from 'modules/auth';
 import { validate } from './validation';
 import style from './style';
@@ -61,9 +62,40 @@ export class SignIn extends Component {
   }
 
   render() {
-    const { auth, fields: { code } } = this.props;
-    const { showErrors } = this.state;
+    return (
+      <div styleName='root'>
+        <Helmet title='Sign in' />
+        <h1 styleName='title'>party rooms</h1>
+        <p styleName='desc'>share, discover, enjoy</p>
+        {session.isAuthenticated() && this.renderSuccess() || this.renderForm()}
+        {this.renderErrors()}
+      </div>
+    );
+  }
 
+  renderErrors() {
+    return (
+      <Snackbar
+        timeout={5000}
+        type='error_outline'
+        icon='warning'
+        active={this.state.showErrors}
+        label={this.props.auth.error || ''}
+        onTimeout={::this.handleSnackbarTimeout}
+      />
+    );
+  }
+
+  renderSuccess() {
+    return (
+      <div>
+        <h1>Success</h1>
+      </div>
+    );
+  }
+
+  renderForm() {
+    const { auth, fields: { code } } = this.props;
     const valid = !code.error;
 
     const inputProps = {
@@ -75,46 +107,32 @@ export class SignIn extends Component {
     };
 
     return (
-      <div styleName='root'>
-        <Helmet title='Sign in' />
-        <h1 styleName='title'>party rooms</h1>
-        <p styleName='desc'>share, discover, enjoy</p>
-        <form styleName='form' data-valid={valid} onSubmit={::this.handleSubmit}>
-          <div styleName='fields'>
-            <TooltipInput required
-              type='text'
-              autoComplete='off'
-              styleName='code'
-              {...inputProps}
-              {...code}
-            />
-          </div>
-          <div styleName='social'>
-            <p styleName='hint'>You can sign in now</p>
-            {buttons.map(({ name, provider, icon, tooltip }) =>
-              <TooltipButton floating
-                key={name}
-                name='provider'
-                styleName={name}
-                disabled={!valid || auth.loading}
-                value={name}
-                tooltip={tooltip}
-                onClick={() => this.handleLogin(provider || name, code.value)}
-                >
-                <SVG src={icon} />
-              </TooltipButton>
-            )}
-          </div>
-        </form>
-        <Snackbar
-          timeout={5000}
-          type='error_outline'
-          icon='warning'
-          active={showErrors}
-          label={auth.error || ''}
-          onTimeout={::this.handleSnackbarTimeout}
-        />
-      </div>
+      <form styleName='form' data-valid={valid} onSubmit={::this.handleSubmit}>
+        <div styleName='fields'>
+          <TooltipInput required
+            type='text'
+            autoComplete='off'
+            styleName='code'
+            {...inputProps}
+            {...code}
+          />
+        </div>
+        <div styleName='social'>
+          <p styleName='hint'>You can sign in now</p>
+          {buttons.map(({ name, provider, icon, tooltip }) =>
+            <TooltipButton floating
+              key={name}
+              name='provider'
+              styleName={name}
+              disabled={!valid || auth.loading}
+              value={name}
+              tooltip={tooltip}
+              onClick={() => this.handleLogin(provider || name, code.value)} >
+              <SVG src={icon} />
+            </TooltipButton>
+          )}
+        </div>
+      </form>
     );
   }
 }

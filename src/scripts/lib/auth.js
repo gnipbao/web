@@ -1,19 +1,23 @@
-export default {
+// TODO: this is not going to work since we are universal now
+
+export const session = {
+  signIn(user) {
+    this.user = user;
+    // localStorage.setItem('currentUser', JSON.stringify(user));
+  },
+
   signOut() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('currentUser');
+    this.user = null;
+    // localStorage.removeItem('currentUser');
   },
 
   currentUser() {
-    const user = localStorage.getItem('currentUser');
-    return user && JSON.parse(user);
+    // const user = localStorage.getItem('currentUser');
+    // return this.user && JSON.parse(this.user);
+    return this.user;
   },
 
   isAuthenticated() {
-    return !!this.getToken();
-  },
-
-  getToken() {
-    return localStorage.getItem('token');
+    return !!this.currentUser();
   }
 };

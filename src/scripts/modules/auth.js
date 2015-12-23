@@ -6,6 +6,7 @@ import {
 } from 'redux-act';
 
 import openPopup from 'lib/utils/popup';
+import { session } from 'lib/auth';
 import { asyncAction } from 'lib/redux';
 import auth from 'services/auth';
 
@@ -43,9 +44,14 @@ function waitRedirect(provider, popup) {
   });
 }
 
-const loginStart = action('login.login');
-const loginComplete = action('login.complete');
-const loginError = action('login.error');
+const loginStart = action('auth.login.start');
+const loginComplete = action('auth.login.complete');
+const loginError = action('auth.login.error');
+
+export const logout = asyncAction('auth.logout',
+  () => logout(),
+  (category, page) => ({ category, page })
+);
 
 export const login = (provider, inviteCode) => async (dispatch) => {
   dispatch(loginStart({ provider, inviteCode }));
@@ -67,7 +73,6 @@ const initialState = {
 
 export default reducer({
   [loginStart]: (state, { provider, inviteCode }) => ({
-    ...initialState,
     ...state,
     provider,
     inviteCode,
@@ -79,10 +84,19 @@ export default reducer({
     loading: false,
     timestamp: Date.now()
   }),
-  [loginComplete]: (state, { userId }) => ({
-    ...state,
-    userId,
-    loading: false,
-    timestamp: Date.now()
-  })
+  [loginComplete]: (state, { userId }) => {
+    session.signIn({ id: userId }); // <-- wrong
+
+    return {
+      ...state,
+      userId,
+      loading: false,
+      timestamp: Date.now()
+    };
+  },
+  [logout]: (state) => {
+    session.singOut(); // <-- wrong
+
+    return { ...initialState, timestamp: Date.now() };
+  }
 }, initialState);
