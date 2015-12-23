@@ -5,7 +5,8 @@ import NotFound from 'pages/NotFound';
 
 import Home from 'pages/Home';
 import About from 'pages/About';
-import SignIn from 'pages/SignIn';
+
+import SignIn from 'pages/auth/SignIn';
 
 export { default as getStatus } from './getStatus';
 

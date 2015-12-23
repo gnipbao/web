@@ -1,4 +1,4 @@
-const settings = 'scrollbars=no,toolbar=no,location=no,titlebar=no,directories=no,status=no,menubar=no';
+const settings = __DEVELOPMENT__ ? '' : 'scrollbars=no,toolbar=no,location=no,titlebar=no,directories=no,status=no,menubar=no';
 
 const sizes = {
   vkontakte: [580, 550],

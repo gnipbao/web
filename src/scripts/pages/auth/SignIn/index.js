@@ -6,6 +6,7 @@ import SVG from 'svg-inline-react';
 import Input from 'react-toolbox/lib/input';
 import Button from 'react-toolbox/lib/button';
 import Tooltip from 'react-toolbox/lib/tooltip';
+import Snackbar from 'react-toolbox/lib/snackbar';
 
 import { login as loginAsync } from 'modules/auth';
 import { validate } from './validation';
@@ -27,11 +28,13 @@ const buttons = [
   { name: 'soundcloud', icon: soundcloudIcon, tooltip: 'SoundCloud' },
   { name: 'facebook', icon: facebookIcon, tooltip: 'Facebook' },
   { name: 'twitter', icon: twitterIcon, tooltip: 'Twitter' },
-  { name: 'google', icon: googleIcon, tooltip: 'Google+' },
+  { name: 'google', icon: googleIcon, tooltip: 'Google+', provider: 'google_oauth2' },
 ];
 
 @CSS(style)
 export class SignIn extends Component {
+  state = { showErrors: false };
+
   static propTypes = {
     fields: object.isRequired
   }
@@ -46,8 +49,21 @@ export class SignIn extends Component {
     return false;
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.error &&
+        nextProps.auth.timestamp != this.props.auth.timestamp) {
+      this.setState({ showErrors: true });
+    }
+  }
+
+  handleSnackbarTimeout() {
+    this.setState({ showErrors: false });
+  }
+
   render() {
-    const { fields: { code } } = this.props;
+    const { auth, fields: { code } } = this.props;
+    const { showErrors } = this.state;
+
     const valid = !code.error;
 
     const inputProps = {
@@ -75,21 +91,29 @@ export class SignIn extends Component {
           </div>
           <div styleName='social'>
             <p styleName='hint'>You can sign in now</p>
-            {buttons.map(({ name, icon, tooltip }) =>
+            {buttons.map(({ name, provider, icon, tooltip }) =>
               <TooltipButton floating
                 key={name}
                 name='provider'
                 styleName={name}
-                disabled={!valid}
+                disabled={!valid || auth.loading}
                 value={name}
                 tooltip={tooltip}
-                onClick={() => this.handleLogin(name, code.value)}
+                onClick={() => this.handleLogin(provider || name, code.value)}
                 >
                 <SVG src={icon} />
               </TooltipButton>
             )}
           </div>
         </form>
+        <Snackbar
+          timeout={5000}
+          type='error_outline'
+          icon='warning'
+          active={showErrors}
+          label={auth.error || ''}
+          onTimeout={::this.handleSnackbarTimeout}
+        />
       </div>
     );
   }
@@ -98,13 +122,7 @@ export class SignIn extends Component {
 export const SignInForm = reduxForm({
   form: 'signin',
   fields: ['code'],
-  touchOnBlur: false,
-  touchOnChange: false,
   validate
 })(SignIn);
 
-export default connect(
-  s => s.auth, {
-    login: loginAsync
-  }
-)(SignInForm);
+export default connect(s => ({ auth: s.auth }), { login: loginAsync })(SignInForm);

@@ -1,4 +1,5 @@
-import { stringify } from 'qs';
+import Qs from 'qs';
+
 import {
   createAction as action,
   createReducer as reducer
@@ -10,27 +11,32 @@ import auth from 'services/auth';
 
 function authenticate(provider, code, tab) {
   const name = !!tab ? '_blank' : provider;
-  const query = code ? '?' + stringify({ invite_code: code }) : '';
+  const query = code ? '?' + Qs.stringify({ invite_code: code }) : '';
   const url = `${settings.authRoot}/${provider}${query}`;
   const popup = openPopup(provider, url, name);
 
-  return waitCredentials(provider, popup);
+  return waitRedirect(provider, popup);
 }
 
-function waitCredentials(provider, popup) {
+function waitRedirect(provider, popup) {
   return new Promise((resolve, reject) => {
-    const interval = setInterval(function() {
+    const interval = setInterval(() => {
       if (!popup || popup.closed) {
         clearInterval(interval);
 
-        if (popup.closed) reject({ error: 'Login has been cancelled' });
         if (!popup) reject({ error: 'Popup was blocked' });
 
-        reject({ error: 'Unknown' });
+        reject({ error: 'Unknown error. Please, try again' });
       } else {
         try {
-          credentials = parseLocation(popup.location);
-          if (credentials) resolve({ credentials });
+          const params = Qs.parse(popup.location.search.slice(1));
+          if (params.user_id || params.error) popup.close();
+
+          if (params.user_id) {
+            resolve({ userId: params.user_id });
+          } else if (params.error) {
+            reject({ error: params.error });
+          }
         } catch (err) {}
       }
     }, 100);
@@ -45,26 +51,38 @@ export const login = (provider, inviteCode) => async (dispatch) => {
   dispatch(loginStart({ provider, inviteCode }));
 
   try {
-    const credentials = await authenticate(provider, inviteCode);
-    dispatch(loginComplete({ credentials }));
-  } catch ({ error }) {
-    dispatch(loginError({ error }));
+    const userData = await authenticate(provider, inviteCode);
+    dispatch(loginComplete(userData));
+  } catch (error) {
+    dispatch(loginError(error));
   }
 };
 
 const initialState = {
-  credentials: null,
+  userId: null,
   loading: false,
+  timestamp: null,
   error: null
 };
 
 export default reducer({
   [loginStart]: (state, { provider, inviteCode }) => ({
+    ...initialState,
     ...state,
     provider,
     inviteCode,
     loading: true
   }),
-  [loginError]: (state, { error }) => ({ ...state, error, loading: false }),
-    [loginComplete]: (state, { credentials }) => ({ ...state, credentials, loading: false })
+  [loginError]: (state, { error }) => ({
+    ...state,
+    error,
+    loading: false,
+    timestamp: Date.now()
+  }),
+  [loginComplete]: (state, { userId }) => ({
+    ...state,
+    userId,
+    loading: false,
+    timestamp: Date.now()
+  })
 }, initialState);
