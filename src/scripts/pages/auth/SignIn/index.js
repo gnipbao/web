@@ -9,7 +9,7 @@ import Tooltip from 'react-toolbox/lib/tooltip';
 import Snackbar from 'react-toolbox/lib/snackbar';
 
 import { session } from 'lib/auth';
-import { login as loginAsync } from 'modules/auth';
+import { login as loginAsync, logout as logoutAsync } from 'modules/auth';
 import { validate } from './validation';
 import style from './style';
 
@@ -51,8 +51,7 @@ export class SignIn extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.auth.error &&
-        nextProps.auth.timestamp != this.props.auth.timestamp) {
+    if (nextProps.auth.error && nextProps.auth.timestamp != this.props.auth.timestamp) {
       this.setState({ showErrors: true });
     }
   }
@@ -90,6 +89,7 @@ export class SignIn extends Component {
     return (
       <div>
         <h1>Success</h1>
+        <Button label='logout' onClick={() => this.props.logout()} raised primary accent />
       </div>
     );
   }
@@ -100,7 +100,7 @@ export class SignIn extends Component {
 
     const inputProps = {
       label: valid ? 'Welcome!' : 'Invite code',
-      icon: valid ? 'thumb_up' : 'lock_outline',
+      icon: valid ? 'thumb_up' : (code.active ? 'lock_open' : 'lock_outline'),
       tooltip: valid ?
         'Congratulations, you did it!' :
         'You should enter your invite code here'
@@ -110,11 +110,11 @@ export class SignIn extends Component {
       <form styleName='form' data-valid={valid} onSubmit={::this.handleSubmit}>
         <div styleName='fields'>
           <TooltipInput required
+            {...inputProps}
+            {...code}
             type='text'
             autoComplete='off'
             styleName='code'
-            {...inputProps}
-            {...code}
           />
         </div>
         <div styleName='social'>
@@ -127,7 +127,8 @@ export class SignIn extends Component {
               disabled={!valid || auth.loading}
               value={name}
               tooltip={tooltip}
-              onClick={() => this.handleLogin(provider || name, code.value)} >
+              onClick={() => this.handleLogin(provider || name, code.value)}
+            >
               <SVG src={icon} />
             </TooltipButton>
           )}
@@ -143,4 +144,9 @@ export const SignInForm = reduxForm({
   validate
 })(SignIn);
 
-export default connect(s => ({ auth: s.auth }), { login: loginAsync })(SignInForm);
+export default connect(
+  s => ({ auth: s.auth }), {
+    login: loginAsync,
+    logout: logoutAsync
+  }
+)(SignInForm);

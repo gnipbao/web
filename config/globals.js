@@ -32,11 +32,13 @@ export default (environments, environmentName, argv) => {
       locale: JSON.stringify(process.env.LOCALE || config.locale),
 
       host: JSON.stringify(server.host),
-      port: JSON.stringify(server.port),
+      port: server.port,
 
       webRoot: JSON.stringify(webRoot),
       authRoot: JSON.stringify(process.env.AUTH_ROOT),
       apiRoot: JSON.stringify(process.env.API_ROOT),
+
+      session: { ttl: 24 * 60 * 60 * 1000 }
     }
   };
 

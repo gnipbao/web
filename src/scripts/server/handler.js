@@ -7,8 +7,10 @@ import createLocation from 'history/lib/createLocation';
 import { bindActionCreators } from 'redux';
 import { syncReduxAndRouter, pushPath } from 'redux-simple-router';
 import fetch from 'isomorphic-fetch';
+import cookie from 'react-cookie';
 
 import { create as createStore } from 'store';
+import { session } from 'lib/auth';
 import history from 'lib/history';
 import render from 'lib/render';
 import routes, { getStatus } from 'routes';
@@ -25,6 +27,9 @@ export default async (req, res) => {
   try {
     // TODO: cache all the things
 
+    // universal cookie
+    cookie.plugToRequest(req, res);
+
     const location = createLocation(req.originalUrl);
     const [error, redirectLocation, renderProps] = await runRouter(location);
 
@@ -34,7 +39,7 @@ export default async (req, res) => {
       const redirectUrl = redirectLocation.pathname + redirectLocation.search;
       res.redirect(302, redirectUrl)
     } else if (renderProps) {
-      const store = createStore({});
+      const store = createStore({ auth: { authToken: session.token() } });
 
       syncReduxAndRouter(history, store);
       store.dispatch(pushPath(location.pathname, true));

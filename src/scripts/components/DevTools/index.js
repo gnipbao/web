@@ -11,4 +11,4 @@ const Monitor = (
   </DockMonitor>
 );
 
-export default createDevTools(Monitor);
+export default createDevTools(<SliderMonitor />);

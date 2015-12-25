@@ -25,16 +25,17 @@ function waitRedirect(provider, popup) {
       if (!popup || popup.closed) {
         clearInterval(interval);
 
-        if (!popup) reject({ error: 'Popup was blocked' });
+        if (!popup) reject({ error: 'Popup was blocked.' });
+        if (popup.closed) reject({ error: 'Login has been cancelled.' });
 
-        reject({ error: 'Unknown error. Please, try again' });
+        reject({ error: 'Error. Please, try again.' });
       } else {
         try {
           const params = Qs.parse(popup.location.search.slice(1));
-          if (params.user_id || params.error) popup.close();
+          if (params.auth_token || params.error) popup.close();
 
-          if (params.user_id) {
-            resolve({ userId: params.user_id });
+          if (params.auth_token) {
+            resolve({ authToken: params.auth_token });
           } else if (params.error) {
             reject({ error: params.error });
           }
@@ -65,7 +66,7 @@ export const login = (provider, inviteCode) => async (dispatch) => {
 };
 
 const initialState = {
-  userId: null,
+  authToken: session.token(),
   loading: false,
   timestamp: null,
   error: null
@@ -74,29 +75,35 @@ const initialState = {
 export default reducer({
   [loginStart]: (state, { provider, inviteCode }) => ({
     ...state,
+    error: null,
     provider,
     inviteCode,
     loading: true
   }),
+
   [loginError]: (state, { error }) => ({
     ...state,
     error,
     loading: false,
     timestamp: Date.now()
   }),
-  [loginComplete]: (state, { userId }) => {
-    session.signIn({ id: userId }); // <-- wrong
 
+  [loginComplete]: (state, { authToken }) => {
+    session.signIn(authToken);
     return {
       ...state,
-      userId,
+      authToken,
       loading: false,
       timestamp: Date.now()
     };
   },
-  [logout]: (state) => {
-    session.singOut(); // <-- wrong
 
-    return { ...initialState, timestamp: Date.now() };
+  [logout]: (state) => {
+    session.signOut();
+    return {
+      ...initialState,
+      authToken: null,
+      timestamp: Date.now()
+    };
   }
 }, initialState);

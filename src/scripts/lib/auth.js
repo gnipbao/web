@@ -1,23 +1,29 @@
-// TODO: this is not going to work since we are universal now
+import cookie from 'react-cookie';
 
 export const session = {
-  signIn(user) {
-    this.user = user;
-    // localStorage.setItem('currentUser', JSON.stringify(user));
+  KEY: 'authToken',
+  EXPIRATION: new Date().getTime() + settings.session.ttl,
+
+  signIn(authToken) {
+    this.authToken = authToken;
+    cookie.save(this.KEY, authToken, {
+      expires: new Date(this.EXPIRATION)
+    });
   },
 
   signOut() {
-    this.user = null;
-    // localStorage.removeItem('currentUser');
+    cookie.remove(this.KEY);
+    this.authToken = null;
   },
 
-  currentUser() {
-    // const user = localStorage.getItem('currentUser');
-    // return this.user && JSON.parse(this.user);
-    return this.user;
+  token() {
+    if (!this.authToken) {
+      this.authToken = cookie.load(this.KEY) || null;
+    }
+    return this.authToken;
   },
 
   isAuthenticated() {
-    return !!this.currentUser();
+    return !!this.token();
   }
 };

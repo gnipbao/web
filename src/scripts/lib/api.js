@@ -1,23 +1,33 @@
 import { stringify } from 'qs';
+import { session } from 'lib/auth';
 
 export default class Api {
   constructor(root) {
     this.root = root;
   }
 
-  get(endpoint, params) {
-    return this.ajax(endpoint, 'get', { params });
+  get(endpoint, params, headers = {}) {
+    return this.ajax(endpoint, 'get', { headers, params });
   }
 
-  post(endpoint, body) {
-    return this.ajax(endpoint, 'post', { body });
+  post(endpoint, body, headers = {}) {
+    return this.ajax(endpoint, 'post', { headers, body });
   }
 
   ajax(endpoint, method, data) {
-    const { params, body = null } = data;
+    const { params, headers = {}, body = null } = data;
     const requestUrl = this.url(endpoint, params);
+    const requestHeaders = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      ...headers
+    };
 
-    return fetch(requestUrl, { method, body })
+    if (session.isAuthenticated()) {
+      requestHeaders['Authorization'] = session.token();
+    }
+
+    return fetch(requestUrl, { method, headers: requestHeaders, body })
       .then(this.processResponse, this.processError);
   }
 
