@@ -8,7 +8,6 @@ import 'react-progress-2/main';
 
 import style from 'styles/main';
 
-import ToolboxApp from 'react-toolbox/lib/app';
 import AppBar from 'react-toolbox/lib/app_bar';
 import Navigation from 'components/Navigation';
 

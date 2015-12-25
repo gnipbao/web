@@ -1,5 +1,33 @@
 @import "variables";
+@import "animations";
+@import "mixins";
 
 .root {
-  background-color: var(--light-green);
+  @mixin flex-center;
+  background-color: color(var(--background) shade(6%));
+}
+
+.title {
+  @mixin fade-in-down 0.5s;
+
+  font-size: 4em;
+  color: #fff;
+  text-shadow: 0 1px 0 color(var(--gray) tint(60%)),
+                0 2px 0 color(var(--gray) tint(50%)),
+                0 5px 10px rgba(0, 0, 0, 0.125),
+                0 10px 20px rgba(0, 0, 0, 0.2);
+
+  @media (--medium) { font-size: 8em; }
+  @media (--large) { font-size: 10em; }
+}
+
+.actions {
+  background-color: color(var(--background) tint(50%));
+  padding: 2px 8px;
+}
+
+.footer {
+  margin-top: 12px;
+
+  & > p { color: color(var(--gray) tint(20%)); }
 }

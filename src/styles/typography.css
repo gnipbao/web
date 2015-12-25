@@ -1,4 +1,18 @@
+@import "variables";
+
+:root {
+  --link-color: var(--gray);
+}
+
 html {
   text-rendering: optimizeLegibility;
   font-smoothing: antialiased;
+}
+
+a {
+  color: var(--link-color);
+
+  &:hover {
+    color: color(var(--link-color) blackness(20%));
+  }
 }

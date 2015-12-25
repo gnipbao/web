@@ -1,0 +1,14 @@
+@define-mixin flex-center {
+  display: flex;
+  flex-flow: column nowrap;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+@define-mixin fade-in-down $duration {
+  animation-name: fade-in-down;
+  animation-duration: $duration;
+  animation-fill-mode: both;
+}

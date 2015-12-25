@@ -1,3 +1,84 @@
 :root {
-  --light-green: #00e280;
+  /* colors */
+  --green: #17a05a;
+  --gray: #545a5f;
+  --red: #ee3939;
+  --lilac: #4b5395;
+  --blue: #39adc4;
+
+  /* brand */
+  --brand-primary: #545ca6;
+  --brand-info: #4cb6cb;
+  --brand-success: #1ab667;
+  --brand-warning: #fad733;
+  --brand-danger: #f05050;
+  --brand-black: #232c32;
+  --brand-dark: #5a6a7a;
+  --brand-light: #e8eff0;
+  --brand-inverse: #433599;
+
+  --brand-primary-pastel: #ecf6fb;
+  --brand-info-pastel: #ecfcff;
+  --brand-success-pastel: #f1ffed;
+  --brand-warning-pastel: #fffee6;
+  --brand-danger-pastel: #fbedec;
+
+  /* base */
+  --background: #f2f4f8;
+  --text-color: #788188;
+  --text-muted: color(var(--text-color) tint(10%));
+
+  /* links */
+  --link-color: color(var(--text-color) shade(15%));
+  --link-hover-color: color(var(--text-color) shade(30%));
+
+  /* misc */
+  --border-color: #eaeef1;
+
+  /* buttons */
+  --btn-default-color: var(--text-color);
+  --btn-default-bg: #fff;
+  --btn-default-border: color(var(--border-color) shade(5%));
+
+  --btn-primary-color: #fff;
+  --btn-primary-bg: var(--brand-primary);
+  --btn-primary-border: var(--btn-primary-bg);
+
+  --btn-success-color: #fff;
+  --btn-success-bg: var(--brand-success);
+  --btn-success-border: var(--btn-success-bg);
+
+  --btn-info-color: #fff;
+  --btn-info-bg: var(--brand-info);
+  --btn-info-border: var(--btn-info-bg);
+
+  --btn-warning-color: #fff;
+  --btn-warning-bg: var(--brand-warning);
+  --btn-warning-border: var(--btn-warning-bg);
+
+  --btn-danger-color: #fff;
+  --btn-danger-bg: var(--brand-danger);
+  --btn-danger-border: var(--btn-danger-bg);
+
+  --btn-dark-color: #fff;
+  --btn-dark-bg: var(--brand-dark);
+  --btn-dark-border: var(--btn-dark-bg);
+
+  /* input */
+  --input-border: color(var(--border-color) shade(10%));
+  --input-border-focus: var(--brand-primary);
+  --input-border-radius: var(--border-radius-base);
+
+  /* panel */
+  --panel-bg: #fff;
+  --panel-border: var(--border-color);
+  --panel-border-radius: var(--border-radius-base);
+  --panel-heading-bg: #fff;
+  --panel-footer-bg: #fff;
+
+  --tooltip-bg: rgba(0, 0, 0, 0.9);
+  --badge-bg: color(var(--brand-light) shade(20%));
+
+  --tooltip-color: var(--brand-dark);
+  --tooltip-fallback-color: rgba(0, 0, 0, 0.9);
 }

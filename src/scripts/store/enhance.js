@@ -1,22 +1,14 @@
 import { compose } from 'redux';
 
 const createDevTools = () => {
-  if (__CLIENT__ && __DEVELOPMENT__) {
-    if (__DEVTOOLS__ && !window.devToolsExtension) {
-      const DevTools = require('components/DevTools');
-      return DevTools.instrument();
-    }
-    return window.devToolsExtension &&
-      window.devToolsExtension();
-  }
-  return f => f;
+  return __DEVTOOLS__ && !window.devToolsExtension ? 
+    require('components/DevTools').instrument() :
+    window.devToolsExtension && window.devToolsExtension();
 };
 
 export default (middleware) => {
-  const devTools = createDevTools();
-
-  return compose(
-    middleware,
-    devTools
-  );
+  if (__CLIENT__ && __DEVELOPMENT__ && (__DEVTOOLS__ || window.devToolsExtension)) {
+    return compose(middleware, createDevTools());
+  }
+  return compose(middleware);
 };

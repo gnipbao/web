@@ -1,24 +1,24 @@
 @import "variables";
+@import "animations";
+@import "mixins";
 
 :root {
-  --foreground-color: #fff;
-  --background-color: #000;
+  --text-color: #fff;
+  --background: #000;
 }
 
 .root {
-  align-content: center;
-  align-items: center;
+  @mixin flex-center;
+
   background: transparent url("./bg.jpg");
-  background-color: var(--background-color);
+  background-color: var(--background);
   background-size: cover;
-  color: var(--foreground-color);
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  min-height: 100vh;
+  color: var(--text-color);
 }
 
 .title {
+  @mixin fade-in-down 1.2s;
+
   font-size: 2em;
   font-weight: bold;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
@@ -29,6 +29,8 @@
 }
 
 .desc {
+  @mixin fade-in-down 0.8s;
+
   @media (--medium) { font-size: 1.4em; }
   @media (--large) { font-size: 1.6em; }
 }
@@ -51,23 +53,23 @@
     .code {
       & > input {
         border-color: rgba(255, 255, 255, 0.8);
-        color: var(--foreground-color);
+        color: var(--text-color);
         text-align: center;
 
         @media (--medium) { font-size: 1.4em; }
         @media (--large) { font-size: 1.8em; }
       }
 
-      & > label { color: var(--foreground-color); }
+      & > label { color: var(--text-color); }
       & > input:focus ~ label { color: rgba(255, 255, 255, 0.8); }
 
       & > span::before,
       & > span::after {
-        background-color: var(--foreground-color);
+        background-color: var(--text-color);
       }
 
       & > span {
-        color: var(--foreground-color);
+        color: var(--text-color);
       }
     }
   }

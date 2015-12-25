@@ -13,7 +13,7 @@ const modules = {
   classNames: 'classnames',
   themeable: 'react-themeable',
   dude: 'debug-dude',
-  Helmet: 'react-helmet',
+  Helmet: 'react-helmet'
 };
 
 export default [
