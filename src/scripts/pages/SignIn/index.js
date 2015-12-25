@@ -67,7 +67,7 @@ export class SignIn extends Component {
         <h1 styleName='title'>party rooms</h1>
         <p styleName='desc'>share, discover, enjoy</p>
         {session.isAuthenticated() && this.renderSuccess() || this.renderForm()}
-        {this.renderErrors()}
+        {this.state.showErrors && this.renderErrors()}
       </div>
     );
   }

@@ -1,13 +1,17 @@
-$background: #00e280;
-$foreground: #fff;
+@import "variables";
+
+:root {
+  --foreground-color: #fff;
+  --background-color: #000;
+}
 
 .root {
   align-content: center;
   align-items: center;
   background: transparent url("./bg.jpg");
-  background-color: $background;
+  background-color: var(--background-color);
   background-size: cover;
-  color: $foreground;
+  color: var(--foreground-color);
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -20,25 +24,25 @@ $foreground: #fff;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
   text-transform: uppercase;
 
-  @media screen and (width >= 768px) and (height >= 680px) { font-size: 2.4em; }
-  @media screen and (width >= 1024px) { font-size: 3em; }
+  @media (--medium) { font-size: 2.4em; }
+  @media (--large) { font-size: 3em; }
 }
 
 .desc {
-  @media screen and (width >= 768px) and (height >= 680px) { font-size: 1.4em; }
-  @media screen and (width >= 1024px) { font-size: 1.6em; }
+  @media (--medium) { font-size: 1.4em; }
+  @media (--large) { font-size: 1.6em; }
 }
 
 .form {
   width: 300px;
 
-  @media screen and (width >= 768px) and (height >= 680px) { width: 420px; }
-  @media screen and (width >= 1024px) { width: 600px; }
+  @media (--medium) { width: 420px; }
+  @media (--large) { width: 600px; }
 
   [data-react-toolbox="tooltip"] {
     display: none;
 
-    @media screen and (width >= 1024px) {
+    @media (--large) {
       display: block;
     }
   }
@@ -47,33 +51,31 @@ $foreground: #fff;
     .code {
       & > input {
         border-color: rgba(255, 255, 255, 0.8);
-        color: $foreground;
+        color: var(--foreground-color);
         text-align: center;
 
-        @media screen and (width >= 768px) and (height >= 680px) { font-size: 1.4em; }
-        @media screen and (width >= 1024px) { font-size: 1.8em; }
+        @media (--medium) { font-size: 1.4em; }
+        @media (--large) { font-size: 1.8em; }
       }
 
-      & > label { color: $foreground; }
+      & > label { color: var(--foreground-color); }
       & > input:focus ~ label { color: rgba(255, 255, 255, 0.8); }
 
       & > span::before,
       & > span::after {
-        background-color: $foreground;
+        background-color: var(--foreground-color);
       }
 
       & > span {
-        color: $foreground;
+        color: var(--foreground-color);
       }
     }
   }
 
-  &[data-valid="true"] {
-    .social {
-      opacity: 1;
-      transition: opacity 0.2s linear;
-      visibility: visible;
-    }
+  &[data-valid="true"] .social {
+    opacity: 1;
+    transition: opacity 0.2s linear;
+    visibility: visible;
   }
 
   .social {

@@ -1,4 +1,4 @@
-import { postcss, argv } from '../../config';
+import { paths, postcss, argv } from '../../config';
 
 const {
   cssnext,
@@ -16,9 +16,22 @@ const reporters = () => [
   require('postcss-browser-reporter')
 ];
 
-export default () => [
+export default (bundler) => [
   ...(argv.lint ? linters() : []),
 
+  require('postcss-import')({
+    addDependencyTo: bundler,
+    path: [paths.styles]
+  }),
+  require('postcss-custom-media')({
+    extensions: {
+      '--small': '(width >= 360px) and (height >= 480px)',
+      '--medium': '(width >= 768px) and (height >= 680px)',
+      '--large': '(width >= 1024px)'
+    },
+    preserve: true,
+    appendExtensions: true
+  }),
   require('precss'),
   require('postcss-cssnext')(cssnext),
   require('lost'),

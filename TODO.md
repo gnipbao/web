@@ -1,3 +1,4 @@
+- [ ] property lookup doesn't work https://github.com/jonathantneal/precss/issues/47
 - [ ] fix custom media extensions (see cssnext.js), is the problem related to css modules?
 - [ ] read https://medium.com/swlh/you-might-not-need-gulp-js-89a0220487dd#.rz9wwh10i
 - [ ] add newrelic browser timings support https://github.com/newrelic/node-newrelic#browser-timings-rum--real-user-monitoring
