@@ -225,7 +225,7 @@
     "webpack-dev-middleware": "1.4.0",
     "webpack-dev-server": "^1.14.0",
     "webpack-hot-middleware": "2.6.0",
-    "webpack-merge": "^0.4.0",
+    "webpack-merge": "^0.5.1",
     "webpack-stats-plugin": "0.1.1"
   },
   "devEngines": {
