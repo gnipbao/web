@@ -1,11 +1,11 @@
 import { Route, IndexRoute } from 'react-router';
 
+import requireAuth from './requireAuth';
+
 import Layout from 'layouts/Main';
 import NotFound from 'pages/NotFound';
-
 import Home from 'pages/Home';
 import About from 'pages/About';
-
 import SignIn from 'pages/SignIn';
 
 export { default as getStatus } from './getStatus';
@@ -16,10 +16,10 @@ export { default as getStatus } from './getStatus';
 export default (
   <Route path='/' component={Layout}>
     { /* default */ }
-    <IndexRoute component={Home} />
+    <IndexRoute component={Home} onEnter={requireAuth} />
 
     { /* pages */ }
-    <Route path='about' component={About} />
+    <Route path='about' component={About} onEnter={requireAuth} />
     <Route path='sign-in' component={SignIn} />
 
     { /* catch all */ }

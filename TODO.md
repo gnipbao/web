@@ -1,3 +1,4 @@
+- [ ] replace isomorphic-fetch with [bjax](https://github.com/gitterHQ/bjax)
 - [ ] property lookup doesn't work https://github.com/jonathantneal/precss/issues/47
 - [x] fix custom media extensions (see cssnext.js), is the problem related to incorrect cssnext options
 - [ ] read https://medium.com/swlh/you-might-not-need-gulp-js-89a0220487dd#.rz9wwh10i

@@ -1,4 +1,14 @@
+import { session } from 'lib/auth';
 import Api from 'lib/api';
 
+const headers = {
+  'Accept': 'application/json',
+  'Content-Type': 'application/json',
+};
+
+if (session.authenticated()) {
+  headers['Authorization'] = session.token();
+}
+
 export const url = settings.apiRoot;
-export default new Api(url);
+export default new Api(url, headers);

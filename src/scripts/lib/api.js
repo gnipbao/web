@@ -1,9 +1,9 @@
 import { stringify } from 'qs';
-import { session } from 'lib/auth';
 
 export default class Api {
-  constructor(root) {
+  constructor(root, headers = {}) {
     this.root = root;
+    this.headers = headers;
   }
 
   get(endpoint, params, headers = {}) {
@@ -17,18 +17,15 @@ export default class Api {
   ajax(endpoint, method, data) {
     const { params, headers = {}, body = null } = data;
     const requestUrl = this.url(endpoint, params);
-    const requestHeaders = {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      ...headers
-    };
 
-    if (session.isAuthenticated()) {
-      requestHeaders['Authorization'] = session.token();
-    }
-
-    return fetch(requestUrl, { method, headers: requestHeaders, body })
-      .then(this.processResponse, this.processError);
+    return fetch(requestUrl, {
+      method,
+      headers: {
+        ...this.headers,
+        ...headers
+      },
+      body,
+    }).then(this.processResponse, this.processError);
   }
 
   url(endpoint, params) {

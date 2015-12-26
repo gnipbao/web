@@ -8,7 +8,6 @@ import {
 import openPopup from 'lib/utils/popup';
 import { session } from 'lib/auth';
 import { asyncAction } from 'lib/redux';
-import auth from 'services/auth';
 
 function authenticate(provider, code, tab) {
   const name = !!tab ? '_blank' : provider;
@@ -49,10 +48,7 @@ const loginStart = action('auth.login.start');
 const loginComplete = action('auth.login.complete');
 const loginError = action('auth.login.error');
 
-export const logout = asyncAction('auth.logout',
-  () => logout(),
-  (category, page) => ({ category, page })
-);
+export const logout = action('auth.logout');
 
 export const login = (provider, inviteCode) => async (dispatch) => {
   dispatch(loginStart({ provider, inviteCode }));
@@ -88,22 +84,16 @@ export default reducer({
     timestamp: Date.now()
   }),
 
-  [loginComplete]: (state, { authToken }) => {
-    session.signIn(authToken);
-    return {
-      ...state,
-      authToken,
-      loading: false,
-      timestamp: Date.now()
-    };
-  },
+  [loginComplete]: (state, { authToken }) => ({
+    ...state,
+    authToken: session.signIn(authToken),
+    loading: false,
+    timestamp: Date.now()
+  }),
 
-  [logout]: (state) => {
-    session.signOut();
-    return {
-      ...initialState,
-      authToken: null,
-      timestamp: Date.now()
-    };
-  }
+  [logout]: (state) => ({
+    ...initialState,
+    authToken: session.signOut(),
+    timestamp: Date.now()
+  })
 }, initialState);

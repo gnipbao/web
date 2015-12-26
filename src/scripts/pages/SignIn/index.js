@@ -9,7 +9,7 @@ import Tooltip from 'react-toolbox/lib/tooltip';
 import Snackbar from 'react-toolbox/lib/snackbar';
 
 import { session } from 'lib/auth';
-import { login as loginAsync, logout as logoutAsync } from 'modules/auth';
+import { login, logout } from 'modules/auth';
 import { validate } from './validation';
 import style from './style';
 
@@ -36,24 +36,27 @@ const buttons = [
 export class SignIn extends Component {
   state = { showErrors: false };
 
+  static contextTypes = {
+    router: object
+  }
+
   static propTypes = {
     fields: object.isRequired
   }
 
   handleLogin(provider, code) {
     this.props.login(provider, code);
-    return false;
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    return false;
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.auth.error && nextProps.auth.timestamp != this.props.auth.timestamp) {
-      this.setState({ showErrors: true });
-    }
+    const { auth: { error, timestamp } } = nextProps;
+    const showErrors = error && timestamp != this.props.auth.timestamp;
+
+    this.setState({ showErrors });
   }
 
   handleSnackbarTimeout() {
@@ -66,7 +69,7 @@ export class SignIn extends Component {
         <Helmet title='Sign in' />
         <h1 styleName='title'>party rooms</h1>
         <p styleName='desc'>share, discover, enjoy</p>
-        {session.isAuthenticated() && this.renderSuccess() || this.renderForm()}
+        {session.authenticated() && this.renderSuccess() || this.renderForm()}
         {this.state.showErrors && this.renderErrors()}
       </div>
     );
@@ -89,7 +92,7 @@ export class SignIn extends Component {
     return (
       <div>
         <h1>Success</h1>
-        <Button label='logout' onClick={() => this.props.logout()} raised primary accent />
+        <Button raised primary label='logout' onClick={() => this.props.logout()}/>
       </div>
     );
   }
@@ -127,8 +130,7 @@ export class SignIn extends Component {
               disabled={!valid || auth.loading}
               value={name}
               tooltip={tooltip}
-              onClick={() => this.handleLogin(provider || name, code.value)}
-            >
+              onClick={() => this.handleLogin(provider || name, code.value)} >
               <SVG src={icon} />
             </TooltipButton>
           )}
@@ -145,8 +147,9 @@ export const SignInForm = reduxForm({
 })(SignIn);
 
 export default connect(
-  s => ({ auth: s.auth }), {
-    login: loginAsync,
-    logout: logoutAsync
-  }
+  s => ({
+    router: s.router,
+    auth: s.auth
+  }),
+  { login, logout }
 )(SignInForm);

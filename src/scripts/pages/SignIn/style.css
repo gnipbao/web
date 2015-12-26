@@ -10,6 +10,7 @@
 .root {
   @mixin flex-center;
 
+  overflow-y: hidden;
   background: transparent url("./bg.jpg");
   background-color: var(--background);
   background-size: cover;
@@ -17,10 +18,11 @@
 }
 
 .title {
-  @mixin fade-in-down 1.2s;
+  @mixin fade-in down, 0.4s;
 
   font-size: 2em;
   font-weight: bold;
+  color: var(--brand-primary-pastel);
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
   text-transform: uppercase;
 
@@ -29,13 +31,17 @@
 }
 
 .desc {
-  @mixin fade-in-down 0.8s;
+  @mixin fade-in up, 0.8s;
+
+  color: var(--brand-info-pastel);
 
   @media (--medium) { font-size: 1.4em; }
   @media (--large) { font-size: 1.6em; }
 }
 
 .form {
+  @mixin fade-in up, 1.2s;
+
   width: 300px;
 
   @media (--medium) { width: 420px; }

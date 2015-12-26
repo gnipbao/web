@@ -36,48 +36,46 @@
   --border-color: #eaeef1;
 
   /* buttons */
-  --btn-default-color: var(--text-color);
-  --btn-default-bg: #fff;
-  --btn-default-border: color(var(--border-color) shade(5%));
+  --button-default-color: var(--text-color);
+  --button-default-background: #fff;
+  --button-default-border: color(var(--border-color) shade(5%));
 
-  --btn-primary-color: #fff;
-  --btn-primary-bg: var(--brand-primary);
-  --btn-primary-border: var(--btn-primary-bg);
+  --button-primary-color: #fff;
+  --button-primary-background: var(--brand-primary);
+  --button-primary-border: var(--button-primary-background);
 
-  --btn-success-color: #fff;
-  --btn-success-bg: var(--brand-success);
-  --btn-success-border: var(--btn-success-bg);
+  --button-success-color: #fff;
+  --button-success-background: var(--brand-success);
+  --button-success-border: var(--button-success-background);
 
-  --btn-info-color: #fff;
-  --btn-info-bg: var(--brand-info);
-  --btn-info-border: var(--btn-info-bg);
+  --button-info-color: #fff;
+  --button-info-background: var(--brand-info);
+  --button-info-border: var(--button-info-background);
 
-  --btn-warning-color: #fff;
-  --btn-warning-bg: var(--brand-warning);
-  --btn-warning-border: var(--btn-warning-bg);
+  --button-warning-color: #fff;
+  --button-warning-background: var(--brand-warning);
+  --button-warning-border: var(--button-warning-background);
 
-  --btn-danger-color: #fff;
-  --btn-danger-bg: var(--brand-danger);
-  --btn-danger-border: var(--btn-danger-bg);
+  --button-danger-color: #fff;
+  --button-danger-background: var(--brand-danger);
+  --button-danger-border: var(--button-danger-background);
 
-  --btn-dark-color: #fff;
-  --btn-dark-bg: var(--brand-dark);
-  --btn-dark-border: var(--btn-dark-bg);
+  --button-dark-color: #fff;
+  --button-dark-background: var(--brand-dark);
+  --button-dark-border: var(--button-dark-background);
 
   /* input */
   --input-border: color(var(--border-color) shade(10%));
   --input-border-focus: var(--brand-primary);
-  --input-border-radius: var(--border-radius-base);
 
   /* panel */
-  --panel-bg: #fff;
+  --panel-background: #fff;
   --panel-border: var(--border-color);
-  --panel-border-radius: var(--border-radius-base);
-  --panel-heading-bg: #fff;
-  --panel-footer-bg: #fff;
+  --panel-heading-background: #fff;
+  --panel-footer-background: #fff;
 
-  --tooltip-bg: rgba(0, 0, 0, 0.9);
-  --badge-bg: color(var(--brand-light) shade(20%));
+  --tooltip-background: rgba(0, 0, 0, 0.9);
+  --badge-background: color(var(--brand-light) shade(20%));
 
   --tooltip-color: var(--brand-dark);
   --tooltip-fallback-color: rgba(0, 0, 0, 0.9);

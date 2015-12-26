@@ -8,7 +8,7 @@
 }
 
 .title {
-  @mixin fade-in-down 0.5s;
+  @mixin fade-in down, 0.5s;
 
   font-size: 4em;
   color: #fff;

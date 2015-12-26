@@ -9,11 +9,13 @@ export const session = {
     cookie.save(this.KEY, authToken, {
       expires: new Date(this.EXPIRATION)
     });
+    return authToken;
   },
 
   signOut() {
     cookie.remove(this.KEY);
     this.authToken = null;
+    return null;
   },
 
   token() {
@@ -23,7 +25,7 @@ export const session = {
     return this.authToken;
   },
 
-  isAuthenticated() {
+  authenticated() {
     return !!this.token();
   }
 };

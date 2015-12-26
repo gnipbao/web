@@ -7,8 +7,8 @@
   min-height: 100vh;
 }
 
-@define-mixin fade-in-down $duration {
-  animation-name: fade-in-down;
+@define-mixin fade-in $direction, $duration {
+  animation-name: fade-in-$(direction);
   animation-duration: $duration;
   animation-fill-mode: both;
 }
