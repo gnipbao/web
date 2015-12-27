@@ -33,7 +33,6 @@ function waitRedirect(provider, popup) {
         try {
           const params = Qs.parse(popup.location.search.slice(1));
           if (params.auth_token || params.error) popup.close();
-
           if (params.auth_token) {
             resolve({ authToken: params.auth_token });
           } else if (params.error) {

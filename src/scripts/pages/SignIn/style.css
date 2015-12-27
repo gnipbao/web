@@ -51,6 +51,8 @@
   }
 
   .fields {
+    margin-bottom: 14px;
+
     .code {
       & > input {
         border-color: rgba(255, 255, 255, 0.8);
@@ -75,25 +77,11 @@
     }
   }
 
-  &[data-valid="true"] .social {
-    opacity: 1;
-    transition: opacity 0.2s linear;
-    visibility: visible;
-  }
-
   .social {
     text-align: center;
-    opacity: 0;
-    transition: visibility 0s 0.2s, opacity 0.2s linear;
-    visibility: hidden;
 
     & > a,
     & > button { margin: 0 2px; }
-
-    .hint {
-      margin-bottom: 8px;
-      font-size: 1.2em;
-    }
 
     .vkontakte { background-color: vkontakte-color; }
     .soundcloud { background-color: soundcloud-color; }

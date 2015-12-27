@@ -1,3 +1,4 @@
+import Qs from 'qs';
 import logger from 'debug-dude';
 import PrettyError from 'pretty-error';
 import LRU from 'lru-cache';
@@ -5,7 +6,7 @@ import crypto from 'crypto';
 import { match } from 'react-router';
 import createLocation from 'history/lib/createLocation';
 import { bindActionCreators } from 'redux';
-import { syncReduxAndRouter, pushPath } from 'redux-simple-router';
+import { syncReduxAndRouter, pushPath, replacePath } from 'redux-simple-router';
 import fetch from 'isomorphic-fetch';
 import cookie from 'react-cookie';
 import { getPrefetchedData } from 'react-fetcher';
@@ -44,10 +45,20 @@ export default async (req, res) => {
     if (error) {
       res.status(500).send(error.message)
     } else if (redirectLocation) {
-      const redirectUrl = redirectLocation.pathname + redirectLocation.search;
-      res.redirect(302, redirectUrl)
+      if (redirectLocation.state && redirectLocation.state.attempted) {
+        const query = Qs.parse(redirectLocation.search);
+        query.attempted = redirectLocation.state.attempted;
+        redirectLocation.search = '?' + Qs.stringify(query);
+      }
+      res.redirect(302, redirectLocation.pathname + redirectLocation.search)
     } else if (renderProps) {
-      store.dispatch(pushPath(location.pathname, location.state));
+      const query = Qs.parse(location.search.slice(1));
+      const routingState = query.attempted && { attempted: query.attempted };
+
+      // doesn't matter, routing state will be overwritten anyways,
+      // see https://github.com/rackt/redux-simple-router/issues/122
+      store.dispatch(replacePath(location.pathname, routingState));
+
       const status = getStatus(renderProps.routes, 200);
 
       info(`

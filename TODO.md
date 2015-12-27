@@ -1,3 +1,4 @@
+- [ ] keep looking at https://github.com/rackt/redux-simple-router/issues/122 "attempted" apparently will work when its fixed
 - [ ] replace isomorphic-fetch with [bjax](https://github.com/gitterHQ/bjax)
 - [ ] property lookup doesn't work https://github.com/jonathantneal/precss/issues/47
 - [x] fix custom media extensions (see cssnext.js), is the problem related to incorrect cssnext options

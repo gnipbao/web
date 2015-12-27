@@ -22,7 +22,7 @@ import {
  */
 export const routes = (
   <Route component={layouts.base}>
-    <Route path='/sign-in' component={signIn} />
+    <Route path='/sign-in' component={signIn} requireUnauth/>
 
     <Route path='/admin' component={layouts.admin}
       requireAuth
@@ -65,6 +65,8 @@ export default store => walk(
 
       if (route.requireAuth && !authenticated) {
         replaceState({ attempted: location.pathname + location.search }, '/sign-in');
+      } else if (route.requireUnauth && authenticated) {
+        replaceState(null, '/rooms');
       } else if (route.requireRoles) {
         // TODO: check if user has role
         replaceState(null, '/forbidden');

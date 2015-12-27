@@ -32,7 +32,7 @@ const buttons = [
 ];
 
 @css(style)
-export class Page extends Component {
+export class SignInPage extends Component {
   state = { showErrors: false };
 
   static contextTypes = {
@@ -80,8 +80,8 @@ export class Page extends Component {
     return (
       <Snackbar
         timeout={3000}
-        type='error_outline'
-        icon='warning'
+        type='warning'
+        icon='error_outline'
         active={this.state.showErrors}
         label={this.props.auth.error || ''}
         onTimeout={::this.handleSnackbarTimeout}
@@ -113,13 +113,12 @@ export class Page extends Component {
           />
         </div>
         <div styleName='social'>
-          <p styleName='hint'>You can sign in now</p>
           {buttons.map(({ name, provider, icon, tooltip }) =>
             <TooltipButton floating
               key={name}
               name='provider'
               styleName={name}
-              disabled={!valid || auth.loading}
+              disabled={auth.loading}
               value={name}
               tooltip={tooltip}
               onClick={() => this.handleLogin(provider || name, code.value)} >
@@ -132,11 +131,11 @@ export class Page extends Component {
   }
 }
 
-export const FormPage = reduxForm({
+export const SignInFormPage = reduxForm({
   form: 'signin',
   fields: ['code'],
   validate
-})(Page);
+})(SignInPage);
 
 export default connect(
   s => ({
@@ -144,4 +143,4 @@ export default connect(
     auth: s.auth
   }),
   { login }
-)(FormPage);
+)(SignInFormPage);

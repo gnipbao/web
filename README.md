@@ -147,6 +147,7 @@ in [precss](https://github.com/jonathantneal/precss/blob/master/package.json#L34
 * [react-router SSR](https://github.com/rackt/react-router/blob/master/docs/guides/advanced/ServerRendering.md)
 * [fullstack redux tutorial](http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html)
 * [react redux styleguide](https://github.com/ghengeveld/react-redux-styleguide)
+* [a good post about redux-simple-router](http://jlongster.com/A-Simple-Way-to-Route-with-Redux)
 
 ### Markup & CSS
 
