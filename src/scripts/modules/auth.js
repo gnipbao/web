@@ -44,6 +44,7 @@ function waitRedirect(provider, popup) {
   });
 }
 
+
 const loginStart = action('auth.login.start');
 const loginComplete = action('auth.login.complete');
 const loginError = action('auth.login.error');

@@ -20,6 +20,7 @@ export default [
   'serialize-javascript',
   'scroll-behavior',
   'svg-inline-react',
+  // 'howler',
   // 'moment',
   // 'ramda',
   // 'normalizr',
