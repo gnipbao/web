@@ -1,4 +1,3 @@
-import logger from 'debug-dude';
 import { render as prettyjson } from 'prettyjson';
 import path from 'path';
 import webpack from 'webpack'

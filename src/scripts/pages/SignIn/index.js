@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
-import CSS from 'react-css-modules';
+import css from 'react-css-modules';
 import SVG from 'svg-inline-react';
 
 import Input from 'react-toolbox/lib/input';
@@ -8,8 +8,7 @@ import Button from 'react-toolbox/lib/button';
 import Tooltip from 'react-toolbox/lib/tooltip';
 import Snackbar from 'react-toolbox/lib/snackbar';
 
-import { session } from 'lib/auth';
-import { login, logout } from 'modules/auth';
+import { login } from 'modules/auth';
 import { validate } from './validation';
 import style from './style';
 
@@ -32,8 +31,8 @@ const buttons = [
   { name: 'google', icon: googleIcon, tooltip: 'Google+', provider: 'google_oauth2' },
 ];
 
-@CSS(style)
-export class SignIn extends Component {
+@css(style)
+export class Page extends Component {
   state = { showErrors: false };
 
   static contextTypes = {
@@ -54,9 +53,10 @@ export class SignIn extends Component {
 
   componentWillReceiveProps(nextProps) {
     const { auth: { error, timestamp } } = nextProps;
-    const showErrors = error && timestamp != this.props.auth.timestamp;
 
-    this.setState({ showErrors });
+    if (timestamp !== this.props.auth.timestamp && error) {
+      this.setState({ showErrors: true });
+    }
   }
 
   handleSnackbarTimeout() {
@@ -64,12 +64,13 @@ export class SignIn extends Component {
   }
 
   render() {
+
     return (
       <div styleName='root'>
         <Helmet title='Sign in' />
         <h1 styleName='title'>party rooms</h1>
         <p styleName='desc'>share, discover, enjoy</p>
-        {session.authenticated() && this.renderSuccess() || this.renderForm()}
+        {this.renderForm()}
         {this.state.showErrors && this.renderErrors()}
       </div>
     );
@@ -78,22 +79,13 @@ export class SignIn extends Component {
   renderErrors() {
     return (
       <Snackbar
-        timeout={5000}
+        timeout={3000}
         type='error_outline'
         icon='warning'
         active={this.state.showErrors}
         label={this.props.auth.error || ''}
         onTimeout={::this.handleSnackbarTimeout}
       />
-    );
-  }
-
-  renderSuccess() {
-    return (
-      <div>
-        <h1>Success</h1>
-        <Button raised primary label='logout' onClick={() => this.props.logout()}/>
-      </div>
     );
   }
 
@@ -140,16 +132,16 @@ export class SignIn extends Component {
   }
 }
 
-export const SignInForm = reduxForm({
+export const FormPage = reduxForm({
   form: 'signin',
   fields: ['code'],
   validate
-})(SignIn);
+})(Page);
 
 export default connect(
   s => ({
     router: s.router,
     auth: s.auth
   }),
-  { login, logout }
-)(SignInForm);
+  { login }
+)(FormPage);

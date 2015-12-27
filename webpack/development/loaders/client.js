@@ -4,6 +4,7 @@ import { cssOptions } from '../../utils';
 export default [
   {
     test: /\.css$/,
+    include: [paths.modules, paths.styles, paths.scripts],
     loaders: ['style', `css?${cssOptions.css}`, 'postcss']
   },
   {

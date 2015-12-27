@@ -1,4 +1,4 @@
-import CSS from 'react-css-modules';
+import css from 'react-css-modules';
 import { connect } from 'react-redux';
 import { pushPath } from 'redux-simple-router';
 import { List, ListItem } from 'react-toolbox/lib/list';
@@ -9,8 +9,13 @@ import style from './style';
 
 export const NotFound = (props) => {
   const { authenticated, currentPath, pushPath } = props;
-  const homePath = authenticated ? '/' : '/sign-in';
+  const homePath = authenticated ? '/rooms' : '/sign-in';
   const currentYear = new Date().getFullYear();
+
+  const linkProps = {
+    leftIcon: authenticated ? 'home' : 'lock',
+    caption: authenticated ? 'Return to home page' : 'Return to sign in page'
+  };
 
   return (
     <div styleName='root'>
@@ -19,8 +24,7 @@ export const NotFound = (props) => {
       <section styleName='actions'>
         <List selectable ripple>
           <ListItem
-            caption='Go to home page'
-            leftIcon='home'
+            {...linkProps}
             onClick={() => pushPath(homePath)}
           />
         </List>
@@ -38,4 +42,4 @@ export default connect(
     currentPath: s.routing.path
   }),
   { pushPath }
-)(CSS(NotFound, style));
+)(css(NotFound, style));

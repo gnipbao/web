@@ -1,6 +1,4 @@
 @import "variables";
-@import "animations";
-@import "mixins";
 
 :root {
   --text-color: #fff;
@@ -8,18 +6,17 @@
 }
 
 .root {
-  @mixin flex-center;
-
+  composes: box from "styles/layout";
   overflow-y: hidden;
   background: transparent url("./bg.jpg");
-  background-color: var(--background);
   background-size: cover;
+  background-color: var(--background);
   color: var(--text-color);
 }
 
 .title {
-  @mixin fade-in down, 0.4s;
-
+  composes: initial-down from "styles/animations";
+  animation-duration: 0.8s;
   font-size: 2em;
   font-weight: bold;
   color: var(--brand-primary-pastel);
@@ -31,8 +28,8 @@
 }
 
 .desc {
-  @mixin fade-in up, 0.8s;
-
+  composes: initial-down from "styles/animations";
+  animation-duration: 0.5s;
   color: var(--brand-info-pastel);
 
   @media (--medium) { font-size: 1.4em; }
@@ -40,8 +37,8 @@
 }
 
 .form {
-  @mixin fade-in up, 1.2s;
-
+  composes: initial-up from "styles/animations";
+  animation-duration: 1.2s;
   width: 300px;
 
   @media (--medium) { width: 420px; }
@@ -50,9 +47,7 @@
   [data-react-toolbox="tooltip"] {
     display: none;
 
-    @media (--large) {
-      display: block;
-    }
+    @media (--large) { display: block; }
   }
 
   .fields {
@@ -87,8 +82,8 @@
   }
 
   .social {
-    opacity: 0;
     text-align: center;
+    opacity: 0;
     transition: visibility 0s 0.2s, opacity 0.2s linear;
     visibility: hidden;
 

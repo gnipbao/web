@@ -8,30 +8,38 @@ import { bindActionCreators } from 'redux';
 import { syncReduxAndRouter, pushPath } from 'redux-simple-router';
 import fetch from 'isomorphic-fetch';
 import cookie from 'react-cookie';
+import { getPrefetchedData } from 'react-fetcher';
 
 import { create as createStore } from 'store';
 import { session } from 'lib/auth';
 import history from 'lib/history';
 import render from 'lib/render';
-import routes, { getStatus } from 'routes';
-
-import bootstrapComponents from './utils/bootstrapComponents';
+import createRoutes, { getStatus } from 'routes';
 
 const prettyError = new PrettyError();
 const { log, info, error } = logger('app:server');
 
-const runRouter = (location) => new Promise((resolve) =>
+const runRouter = (routes, location) => new Promise((resolve) =>
   match({ routes, location }, (...args) => resolve(args)));
 
 export default async (req, res) => {
   try {
-    // TODO: cache all the things
-
-    // universal cookie
     cookie.plugToRequest(req, res);
 
     const location = createLocation(req.originalUrl);
-    const [error, redirectLocation, renderProps] = await runRouter(location);
+    const authToken = session.token();
+
+    const initialState = {
+      auth: {
+        authToken,
+        authenticated: Boolean(authToken),
+      }
+    };
+
+    const store = createStore(initialState);
+    syncReduxAndRouter(history, store);
+    const routes = createRoutes(store);
+    const [error, redirectLocation, renderProps] = await runRouter(routes, location);
 
     if (error) {
       res.status(500).send(error.message)
@@ -39,11 +47,7 @@ export default async (req, res) => {
       const redirectUrl = redirectLocation.pathname + redirectLocation.search;
       res.redirect(302, redirectUrl)
     } else if (renderProps) {
-      const store = createStore({ auth: { authToken: session.token() } });
-
-      syncReduxAndRouter(history, store);
-      store.dispatch(pushPath(location.pathname, true));
-
+      store.dispatch(pushPath(location.pathname, location.state));
       const status = getStatus(renderProps.routes, 200);
 
       info(`
@@ -52,8 +56,16 @@ export default async (req, res) => {
            status = ${status}
       `);
 
+      const locals = {
+        path: renderProps.location.pathname,
+        query: renderProps.location.query,
+        params: renderProps.params,
+        state: store.getState(),
+        dispatch: store.dispatch,
+      };
+
       try {
-        await bootstrapComponents(store, renderProps);
+        await getPrefetchedData(renderProps.components, locals);
         const routerProps = { ...renderProps, location };
         const html = await render(history, store, routerProps);
         res.status(status).send(html);

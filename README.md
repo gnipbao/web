@@ -188,4 +188,10 @@ And here is the [docker cheatsheet](https://github.com/wsargent/docker-cheat-she
 # Troubleshooting
 
 * try to run with `--verbose --profile` keys
-* set `DEBUG=app:*` to see some additional logging with [debug](https://www.npmjs.com/package/debug#wildcards)
+
+### Debugging
+
+[debug](https://www.npmjs.com/package/debug) package is used for debugging. So to turn it on simply specify the **DEBUG** environment variable:
+- `DEBUG=app:server:(log|info|error)` &mdash; to see nodejs server debugging output.
+- `DEBUG=app:webpack` &mdash; to see app-related webpack output.
+- `DEBUG=app:*` &mdash; to see everything.

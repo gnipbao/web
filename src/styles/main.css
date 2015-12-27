@@ -1,19 +1,9 @@
 @import "variables";
-@import "mixins";
 @import "typography";
 
 @lost gutter 30px;
 @lost cycle auto;
 @lost flexbox flex;
 
-html {
-  overflow-x: hidden;
-}
-
-body {
-  font-family: "Roboto";
-}
-
-.root {}
-.main {}
-.page {}
+html { overflow-x: hidden; }
+body { font-family: "Roboto"; }

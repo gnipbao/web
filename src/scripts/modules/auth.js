@@ -1,4 +1,5 @@
 import Qs from 'qs';
+import { replacePath } from 'redux-simple-router';
 
 import {
   createAction as action,
@@ -49,31 +50,37 @@ const loginComplete = action('auth.login.complete');
 const loginError = action('auth.login.error');
 
 export const logout = action('auth.logout');
+export const login = (provider, inviteCode) =>
+  async (dispatch, getState) => {
+    dispatch(loginStart({ provider, inviteCode }));
 
-export const login = (provider, inviteCode) => async (dispatch) => {
-  dispatch(loginStart({ provider, inviteCode }));
+    try {
+      const userData = await authenticate(provider, inviteCode);
+      dispatch(loginComplete(userData));
 
-  try {
-    const userData = await authenticate(provider, inviteCode);
-    dispatch(loginComplete(userData));
-  } catch (error) {
-    dispatch(loginError(error));
-  }
-};
+      const { routing: { state } } = getState();
+      if (state && state.attempted) {
+        dispatch(replacePath(state.attempted));
+      } else {
+        dispatch(replacePath('/rooms'));
+      }
+    } catch (error) {
+      dispatch(loginError(error));
+    }
+  };
 
 const initialState = {
   authToken: session.token(),
+  authenticated: false,
+  error: null,
   loading: false,
   timestamp: null,
-  error: null
 };
 
 export default reducer({
-  [loginStart]: (state, { provider, inviteCode }) => ({
+  [loginStart]: (state) => ({
     ...state,
     error: null,
-    provider,
-    inviteCode,
     loading: true
   }),
 
@@ -87,13 +94,15 @@ export default reducer({
   [loginComplete]: (state, { authToken }) => ({
     ...state,
     authToken: session.signIn(authToken),
+    authenticated: Boolean(authToken),
     loading: false,
     timestamp: Date.now()
   }),
 
-  [logout]: (state) => ({
+  [logout]: () => ({
     ...initialState,
     authToken: session.signOut(),
+    authenticated: false,
     timestamp: Date.now()
   })
 }, initialState);

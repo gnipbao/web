@@ -10,6 +10,7 @@ const extractOptions = {
 export default [
   {
     test: /\.css$/,
+    include: [paths.modules, paths.styles, paths.scripts],
     loader: ExtractTextPlugin.extract(`css?minimize&${cssOptions.css}!postcss`, extractOptions)
   },
   {

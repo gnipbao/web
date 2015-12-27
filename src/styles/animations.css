@@ -1,3 +1,18 @@
+.initial {
+  animation-fill-mode: both;
+  animation-duration: 0.5s;
+}
+
+.initial-down {
+  composes: initial;
+  animation-name: fade-in-down;
+}
+
+.initial-up {
+  composes: initial;
+  animation-name: fade-in-up;
+}
+
 @keyframes fade-in-down {
   0% {
     opacity: 0;

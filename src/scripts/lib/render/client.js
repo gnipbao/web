@@ -1,9 +1,9 @@
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
-import routes from 'routes';
+import createRoutes from 'routes';
 
 export default (history, store) => (
   <Provider store={store}>
-    <Router history={history}>{routes}</Router>
+    <Router history={history}>{createRoutes(store)}</Router>
   </Provider>
 );

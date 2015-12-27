@@ -9,6 +9,7 @@ export default [
   ...common,
   {
     test: /\.css$/,
+    include: [paths.modules, paths.styles, paths.scripts],
     loaders: [`css/locals?${cssOptions.css}`, 'postcss']
   },
   {
