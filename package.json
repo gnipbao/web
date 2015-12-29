@@ -59,7 +59,7 @@
     "qs": "6.0.1",
     "query-string": "3.0.0",
     "react": "0.14.3",
-    "react-addons-css-transition-group": "0.14.4",
+    "react-addons-css-transition-group": "0.14.5",
     "react-css-modules": "3.6.3",
     "react-demo": "1.1.0",
     "react-dnd": "2.0.2",
