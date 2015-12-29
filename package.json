@@ -42,6 +42,8 @@
     "deep-equal": "1.0.1",
     "dotenv": "1.2.0",
     "express": "4.13.3",
+    "fastclick": "1.0.6",
+    "fontfaceobserver": "1.6.2",
     "helmet": "1.0.1",
     "history": "1.17.0",
     "howler": "1.1.28",
@@ -91,6 +93,7 @@
   },
   "devDependencies": {
     "app-module-path": "1.0.5",
+    "appcache-webpack-plugin": "1.2.1",
     "autoprefixer": "6.2.1",
     "autoprefixer-loader": "3.1.0",
     "babel-core": "5.8.33",
@@ -214,6 +217,7 @@
     "require-dir": "0.3.0",
     "run-sequence": "1.1.5",
     "sass-loader": "3.1.2",
+    "serviceworker-loader": "0.1.0",
     "sinon": "1.17.2",
     "sinon-chai": "2.8.0",
     "stats-webpack-plugin": "vyorkin-forks/stats-webpack-plugin",
@@ -228,7 +232,8 @@
     "webpack-dev-server": "1.14.0",
     "webpack-hot-middleware": "2.6.0",
     "webpack-merge": "0.5.1",
-    "webpack-stats-plugin": "0.1.1"
+    "webpack-stats-plugin": "0.1.1",
+    "worker-loader": "0.7.0"
   },
   "devEngines": {
     "node": "5.x",

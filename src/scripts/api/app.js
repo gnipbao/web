@@ -7,7 +7,7 @@ const headers = {
 };
 
 if (session.authenticated()) {
-  headers['Authorization'] = session.token();
+  headers['Authorization'] = 'Bearer ' + session.token();
 }
 
 export const url = settings.apiRoot;

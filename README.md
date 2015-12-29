@@ -116,6 +116,8 @@ By default source maps is generated using `cheap-module-inline-source-map` optio
 If thats not enough for you then you can change it to `eval-source-map` or even the slowest `source-map`.
 Here is some [more info about devtool](https://webpack.github.io/docs/configuration.html#devtool).
 
+manifest.json is generated automatically for you
+
 ### Analysis
 
 In `dist` directory you can find webpack stats file named `webpack.stats.json` and
@@ -157,7 +159,7 @@ in [precss](https://github.com/jonathantneal/precss/blob/master/package.json#L34
 * [gajus/react-css-modules-examples](https://github.com/gajus/react-css-modules-examples)
 * [css-modules/webpack-demo](https://github.com/css-modules/webpack-demo)
 
-#### Icons
+### Icons
 
 * [thenounproject.com](https://thenounproject.com/)
 * [simpleicons.org](http://simpleicons.org)
@@ -170,6 +172,10 @@ in [precss](https://github.com/jonathantneal/precss/blob/master/package.json#L34
 * [sinon-chai](https://github.com/domenic/sinon-chai)
 * [enzyme](https://github.com/airbnb/enzyme)
 * [cheerio](https://github.com/cheeriojs/cheerio)
+
+### Boilerplates
+
+* [mxstbr/react-boilerplate](https://github.com/mxstbr/react-boilerplate) - Quick setup for performance orientated, offline-first React.js applications.
 
 ### Deployment
 

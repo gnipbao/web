@@ -32,6 +32,8 @@ const Html = ({ state, assets, head, body }) => {
         <link rel='manifest' href='/manifest.json' />
         <link rel='mask-icon' href='/safari-pinned-tab.svg' color='#5bbad5' />
 
+        <meta name='mobile-web-app-capable' content='yes' />
+
         <meta name='apple-mobile-web-app-title' content={settings.name} />
         <meta name='apple-mobile-web-app-capable' content='yes' />
         <meta name='apple-mobile-web-app-status-bar-style' content='black-translucent' />

@@ -8,7 +8,7 @@ import plugins from './plugins/client';
 
 export default merge(common, {
   target: 'web',
-  entry: ['./client.js'], 
+  entry: ['./client'],
   output: {
     path: config.paths.public,
 
