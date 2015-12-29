@@ -5,7 +5,7 @@ import logger from 'debug-dude';
 
 const { debug, error } = logger('app:server');
 
-const ASSETS_FILE_NAME = 'webpack.assets.json';
+const ASSETS_FILE_NAME = 'assets.json';
 const BUNDLE_FILE_NAME = 'main.js';
 
 export default () => {
@@ -18,7 +18,7 @@ export default () => {
 
     return { scripts: [bundle], styles: [] };
   } else {
-    const manifestPath = path.resolve(__dirname, ASSETS_FILE_NAME);
+    const manifestPath = path.resolve(__dirname, 'public', ASSETS_FILE_NAME);
     debug('using assets from manifest: ', manifestPath);
     const assetsContent = fs.readFileSync(manifestPath);
     const assets = JSON.parse(assetsContent);

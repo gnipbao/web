@@ -91,8 +91,9 @@ There is a `config` section in `package.json`:
   "host": "localhost",
   "ports": {
     "app": 3000,
-    "browserSync": 3001,
-    "browserSyncUI": 3002
+    "socket": 3001,
+    "browserSync": 3002,
+    "browserSyncUI": 3003
   },
   "sourceMap": true,
   "locale": "en_US",

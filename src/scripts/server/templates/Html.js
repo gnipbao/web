@@ -3,7 +3,7 @@ const { object, string } = PropTypes;
 const Html = ({ state, assets, head, body }) => {
   const { scripts, styles } = assets;
   return (
-    <html lang='en-us'>
+    <html lang='en-us' manifest='manifest.appcache'>
       <head>
         <meta charSet='utf-8' />
         <meta httpEquiv='X-UA-Compatible' content='IE=edge' />

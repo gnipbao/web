@@ -1,4 +1,5 @@
 import webpack from 'webpack';
+import AppCachePlugin from 'appcache-webpack-plugin';
 import { globals, environment } from '../../../config';
 import common from './common';
 
@@ -11,5 +12,12 @@ export default [
     },
     __CLIENT__: true,
     __SERVER__: false
+  }),
+  new AppCachePlugin({
+    exclude: [
+      'main.js',
+      /.+\.map$/,
+      /.+\.serviceworker\.js$/
+    ]
   })
 ]

@@ -1,13 +1,10 @@
 var CACHE_NAME = 'party-rooms-cache-v1';
 
-// TODO: make this work
-
-// var assets = require('./webpack.assets.js');
+// TODO: get asset bundles somehow
 var assets = { scripts: [], styles: [] };
 
 // The files we want to cache
 var urlsToCache = [
-  '/',
 ]
 .concat(assets.scripts)
 .concat(assets.styles);

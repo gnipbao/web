@@ -44,7 +44,7 @@ export default [
   }),
   new StatsPlugin('../webpack.stats.json'),
   new StatsWriterPlugin({
-    filename: '../webpack.assets.json',
+    filename: 'assets.json',
     fields: null,
     transform: transformAssets
   })

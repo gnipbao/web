@@ -1,5 +1,6 @@
 // doesn't work without SSL connection
 // so you'll need this only when running in production
+//
 if (__PRODUCTION__ && __CLIENT__) {
   const registerServiceWorker = require('serviceworker!./serviceworker.js');
 
