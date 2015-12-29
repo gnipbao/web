@@ -1,4 +1,5 @@
 import Qs from 'qs';
+import jwtDecode from 'jwt-decode';
 import { replacePath } from 'redux-simple-router';
 
 import {
@@ -44,7 +45,6 @@ function waitRedirect(provider, popup) {
   });
 }
 
-
 const loginStart = action('auth.login.start');
 const loginComplete = action('auth.login.complete');
 const loginError = action('auth.login.error');
@@ -73,6 +73,7 @@ const initialState = {
   authToken: session.token(),
   authenticated: false,
   error: null,
+  data: null,
   loading: false,
   timestamp: null,
 };
@@ -94,6 +95,7 @@ export default reducer({
   [loginComplete]: (state, { authToken }) => ({
     ...state,
     authToken: session.signIn(authToken),
+    data: jwtDecode(authToken),
     authenticated: Boolean(authToken),
     loading: false,
     timestamp: Date.now()
@@ -102,6 +104,7 @@ export default reducer({
   [logout]: () => ({
     ...initialState,
     authToken: session.signOut(),
+    data: null,
     authenticated: false,
     timestamp: Date.now()
   })

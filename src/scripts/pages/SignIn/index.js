@@ -53,10 +53,9 @@ export class SignInPage extends Component {
 
   componentWillReceiveProps(nextProps) {
     const { auth: { error, timestamp } } = nextProps;
+    const showErrors = timestamp !== this.props.auth.timestamp && error;
 
-    if (timestamp !== this.props.auth.timestamp && error) {
-      this.setState({ showErrors: true });
-    }
+    this.setState({ showErrors });
   }
 
   handleSnackbarTimeout() {
@@ -95,16 +94,13 @@ export class SignInPage extends Component {
 
     const inputProps = {
       label: valid ? 'Welcome!' : 'Invite code',
-      icon: valid ? 'thumb_up' : (code.active ? 'lock_open' : 'lock_outline'),
-      tooltip: valid ?
-        'Congratulations, you did it!' :
-        'You should enter your invite code here'
+      icon: valid ? 'thumb_up' : (code.active ? 'lock_open' : 'lock_outline')
     };
 
     return (
       <form styleName='form' data-valid={valid} onSubmit={::this.handleSubmit}>
         <div styleName='fields'>
-          <TooltipInput required
+          <Input required
             {...inputProps}
             {...code}
             type='text'

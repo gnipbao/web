@@ -74,8 +74,6 @@ export default store => walk(
         const locals = {
           path: location.pathname,
           query: location.query,
-          params: 'whats that thing for?',
-
           state,
           dispatch: store.dispatch,
         };

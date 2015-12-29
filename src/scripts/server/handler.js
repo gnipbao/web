@@ -1,8 +1,9 @@
-import Qs from 'qs';
 import logger from 'debug-dude';
 import PrettyError from 'pretty-error';
 import LRU from 'lru-cache';
 import crypto from 'crypto';
+import Qs from 'qs';
+import jwtDecode from 'jwt-decode';
 import { match } from 'react-router';
 import createLocation from 'history/lib/createLocation';
 import { bindActionCreators } from 'redux';
@@ -34,6 +35,7 @@ export default async (req, res) => {
       auth: {
         authToken,
         authenticated: Boolean(authToken),
+        data: authToken && jwtDecode(authToken),
       }
     };
 
@@ -70,7 +72,6 @@ export default async (req, res) => {
       const locals = {
         path: renderProps.location.pathname,
         query: renderProps.location.query,
-        params: renderProps.params,
         state: store.getState(),
         dispatch: store.dispatch,
       };
