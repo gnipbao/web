@@ -1,6 +1,6 @@
 // doesn't work without SSL connection
 // so you'll need this only when running in production
-if (__PRODUCTION__ && __CLEINT__) {
+if (__PRODUCTION__ && __CLIENT__) {
   const registerServiceWorker = require('serviceworker!./serviceworker.js');
 
   registerServiceWorker({ scope: '/' }).then(() => {
@@ -45,7 +45,6 @@ function run() {
   }, () => {
     document.body.classList.remove('js-material-icons-loaded');
   });
-
 
   // make taps on links and buttons work fast on mobiles
   FastClick.attach(document.body);

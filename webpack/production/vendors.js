@@ -20,6 +20,8 @@ export default [
   'serialize-javascript',
   'scroll-behavior',
   'svg-inline-react',
+  'fastclick',
+  'fontfaceobserver',
   // 'howler',
   // 'moment',
   // 'ramda',
