@@ -17,10 +17,20 @@ import FastClick from 'fastclick';
 import { Provider } from 'react-redux';
 import { syncReduxAndRouter } from 'redux-simple-router';
 import { create as createStore } from 'store';
+import io from 'socket.io-client';
 
 import history from 'lib/history';
 import render from 'lib/render';
 import throttle from 'lib/utils/throttle';
+
+function setupSocket() {
+  const socket = io('http://localhost:3000');
+  socket.on('message', data => {
+    console.log('server says: ', data.text);
+  });
+}
+
+window.socket = setupSocket();
 
 function run() {
   // custom throttled events

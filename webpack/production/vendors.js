@@ -22,6 +22,7 @@ export default [
   'svg-inline-react',
   'fastclick',
   'fontfaceobserver',
+  'socket.io-client',
   // 'howler',
   // 'moment',
   // 'ramda',
