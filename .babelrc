@@ -1,16 +1,12 @@
 {
-  "stage": 0,
-  "optional": [
-    "runtime",
-    "minification.removeDebugger"
+  "presets": [
+    "es2015",
+    "stage-0",
+    "react"
   ],
   "plugins": [
+    "transform-runtime",
     "typecheck",
     "react-require"
-  ],
-  "loose": [
-    "es6.classes",
-    "es6.properties.computed"
-  ],
-  "blacklist": ["es6.tailCall"]
+  ]
 }
