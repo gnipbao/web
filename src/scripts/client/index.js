@@ -24,9 +24,20 @@ import render from 'lib/render';
 import throttle from 'lib/utils/throttle';
 
 function setupSocket() {
-  const socket = io('http://localhost:3000');
+  const port = process.env.PORT || settings.port || 80;
+  const socket = io(`http://localhost:${port}`);
+
+  // TODO: connection events should be reflected in UI in dev env at least
+  // using notifications, snackbar or something similar
+  //
+  // see https://github.com/socketio/socket.io-client#events-1
+
+  socket.on('connect', () => {
+    console.log('[PARTY] connected');
+  });
+
   socket.on('message', data => {
-    console.log('server says: ', data.text);
+    console.log('[PARTY] server says: ', data.text);
   });
 }
 
@@ -47,10 +58,11 @@ function run() {
 
   FastClick.attach(document.body)
 
-  // Observer loading of Material Icons
+  // observe loading of Material Icons
   const materialIconsObserver = new FontFaceObserver('Material Icons', {});
 
-  // When Material Icons is loaded, add the js-material-icons-loaded class to the body
+  // when Material Icons is loaded,
+  // add the js-material-icons-loaded class to the body
   materialIconsObserver.check().then(() => {
     document.body.classList.add('js-material-icons-loaded');
   }, () => {
@@ -64,6 +76,11 @@ function run() {
 
   if (!__PRODUCTION__) {
     window.React = React;
+
+    if (__DEVELOPMENT__ && __CLIENT__) {
+      window.appDebug = require('debug');
+      window.appDebug.enable('app:*');
+    }
 
     if (__PROFILE__) {
       // see https://facebook.github.io/react/docs/perf.html

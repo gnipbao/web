@@ -1,9 +1,16 @@
+import serialize from 'serialize-javascript';
+
 const { object, string } = PropTypes;
 
 const Html = ({ state, assets, head, body }) => {
   const { scripts, styles } = assets;
+  const serializedState = serialize(state);
+
+  // TODO: appcache disabled for now, learn all the things & set it up correctly
+  // const htmlProps = { manifest: 'manifest.appcache' };
+
   return (
-    <html lang='en-us' manifest='manifest.appcache'>
+    <html lang='en-us'>
       <head>
         <meta charSet='utf-8' />
         <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
@@ -55,7 +62,7 @@ const Html = ({ state, assets, head, body }) => {
 
       <body>
         <div id='root' dangerouslySetInnerHTML={{ __html: body }} />
-        <script dangerouslySetInnerHTML={{ __html: `window.__state = ${state};` }} />
+        <script dangerouslySetInnerHTML={{ __html: `window.__state = ${serializedState};` }} />
         {scripts.map((src, i) => <script key={i} src={`/${src}`} defer />)}
       </body>
     </html>
@@ -63,7 +70,7 @@ const Html = ({ state, assets, head, body }) => {
 };
 
 Html.propTypes = {
-  state: string.isRequired,
+  state: object.isRequired,
   head: object.isRequired,
   assets: object.isRequired,
   body: string.isRequired,

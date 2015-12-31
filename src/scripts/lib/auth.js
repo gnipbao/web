@@ -5,7 +5,6 @@ export const session = {
   EXPIRATION: new Date().getTime() + settings.session.ttl,
 
   signIn(authToken) {
-    this.authToken = authToken;
     cookie.save(this.KEY, authToken, {
       expires: new Date(this.EXPIRATION)
     });
@@ -14,15 +13,10 @@ export const session = {
 
   signOut() {
     cookie.remove(this.KEY);
-    this.authToken = null;
-    return null;
   },
 
   token() {
-    if (!this.authToken) {
-      this.authToken = cookie.load(this.KEY) || null;
-    }
-    return this.authToken;
+    return cookie.load(this.KEY) || null;
   },
 
   authenticated() {

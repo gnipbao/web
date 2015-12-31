@@ -3,23 +3,21 @@ import PrettyError from 'pretty-error';
 import LRU from 'lru-cache';
 import crypto from 'crypto';
 import Qs from 'qs';
-import jwtDecode from 'jwt-decode';
 import { match } from 'react-router';
 import createLocation from 'history/lib/createLocation';
 import { bindActionCreators } from 'redux';
-import { syncReduxAndRouter, pushPath, replacePath } from 'redux-simple-router';
+import { syncReduxAndRouter, replacePath } from 'redux-simple-router';
 import fetch from 'isomorphic-fetch';
 import cookie from 'react-cookie';
 import { getPrefetchedData } from 'react-fetcher';
 
+import { getInitialState } from './utils';
 import { create as createStore } from 'store';
-import { session } from 'lib/auth';
 import history from 'lib/history';
 import render from 'lib/render';
 import createRoutes, { getStatus } from 'routes';
 
 const prettyError = new PrettyError();
-const { log, info, error } = logger('app:server');
 
 const runRouter = (routes, location) => new Promise((resolve) =>
   match({ routes, location }, (...args) => resolve(args)));
@@ -27,17 +25,10 @@ const runRouter = (routes, location) => new Promise((resolve) =>
 export default async (req, res) => {
   try {
     cookie.plugToRequest(req, res);
-
     const location = createLocation(req.originalUrl);
-    const authToken = session.token();
 
-    const initialState = {
-      auth: {
-        authToken,
-        authenticated: Boolean(authToken),
-        data: authToken && jwtDecode(authToken),
-      }
-    };
+    const initialState = getInitialState();
+    console.info('initialState: ', initialState);
 
     const store = createStore(initialState);
     syncReduxAndRouter(history, store);
@@ -63,7 +54,7 @@ export default async (req, res) => {
 
       const status = getStatus(renderProps.routes, 200);
 
-      info(`
+      console.info(`
            location = ${location.pathname},
            original url = ${req.originalUrl},
            status = ${status}
@@ -88,7 +79,7 @@ export default async (req, res) => {
       res.status(404).send('not found');
     }
   } catch (err) {
-    error(prettyError.render(err));
+    console.error(prettyError.render(err));
     res.status(500).end();
   }
 };

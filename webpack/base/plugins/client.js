@@ -13,11 +13,14 @@ export default [
     __CLIENT__: true,
     __SERVER__: false
   }),
-  new AppCachePlugin({
-    exclude: [
-      'main.js',
-      /.+\.map$/,
-      /.+\.serviceworker\.js$/
-    ]
-  })
+
+  // TODO: learn & setup correctly, disabled for now
+  //
+  // new AppCachePlugin({
+  //   exclude: [
+  //     'main.js',
+  //     /.+\.map$/,
+  //     /.+\.serviceworker\.js$/
+  //   ]
+  // })
 ]

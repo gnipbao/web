@@ -22,9 +22,16 @@ const server = new Server(app);
 
 const io = new SocketIO(server);
 io.on('connection', socket => {
+  log('client connected');
+
   socket.emit('message', { text: 'whats up?' });
+
   socket.on('ping', () => {
     socket.emit('message', { text: 'pong' });
+  });
+
+  socket.on('disconnect', () => {
+    log('client disconnected');
   });
 });
 

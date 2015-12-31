@@ -1,4 +1,3 @@
-import serialize from 'serialize-javascript';
 import { RoutingContext } from 'react-router';
 import { Provider } from 'react-redux';
 
@@ -15,11 +14,14 @@ export default (store, routerProps) => {
     </Provider>
   );
 
-  const body = renderToString(root);
-  const head = Helmet.rewind();
-  const state = serialize(store.getState());
+  const props = {
+    body: renderToString(root),
+    head: Helmet.rewind(),
+    state: store.getState(),
+    assets,
+  };
 
-  const html = <Html state={state} assets={assets} head={head} body={body} />;
+  const html = <Html {...props } />;
   const content = renderToString(html);
 
   return `<!doctype html>\n${content}`;

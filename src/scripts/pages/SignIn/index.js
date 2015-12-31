@@ -53,7 +53,7 @@ export class SignInPage extends Component {
 
   componentWillReceiveProps(nextProps) {
     const { auth: { error, timestamp } } = nextProps;
-    const showErrors = timestamp !== this.props.auth.timestamp && error;
+    const showErrors = timestamp !== this.props.auth.timestamp && !!error;
 
     this.setState({ showErrors });
   }
