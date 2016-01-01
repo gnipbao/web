@@ -1,4 +1,4 @@
-import { session } from 'lib/auth';
+import session from 'lib/session';
 import Api from 'lib/api';
 
 const headers = {

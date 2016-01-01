@@ -8,7 +8,7 @@ import {
 } from 'redux-act';
 
 import openPopup from 'lib/utils/popup';
-import { session } from 'lib/auth';
+import session from 'lib/session';
 import { asyncAction } from 'lib/redux';
 
 function authenticate(provider, code, tab) {
@@ -35,7 +35,8 @@ function waitRedirect(provider, popup) {
           const params = Qs.parse(popup.location.search.slice(1));
           if (params.auth_token || params.error) popup.close();
           if (params.auth_token) {
-            resolve({ authToken: params.auth_token });
+            const data = jwtDecode(params.auth_token);
+            resolve({ authToken: params.auth_token, data });
           } else if (params.error) {
             reject({ error: params.error });
           }
@@ -49,7 +50,7 @@ const loginStart = action('auth.login.start');
 const loginComplete = action('auth.login.complete');
 const loginError = action('auth.login.error');
 
-export const logout = action('auth.logout');
+export const logout = action('auth.logout', () => session.signOut());
 export const login = (provider, inviteCode) =>
   async (dispatch, getState) => {
     dispatch(loginStart({ provider, inviteCode }));
@@ -57,6 +58,7 @@ export const login = (provider, inviteCode) =>
     try {
       const userData = await authenticate(provider, inviteCode);
       dispatch(loginComplete(userData));
+      session.signIn(authToken);
 
       const { routing: { state } } = getState();
       if (state && state.attempted) {
@@ -92,18 +94,18 @@ export default reducer({
     timestamp: Date.now()
   }),
 
-  [loginComplete]: (state, { authToken }) => ({
+  [loginComplete]: (state, { authToken, data }) => ({
     ...state,
-    authToken: session.signIn(authToken),
-    data: jwtDecode(authToken),
-    authenticated: Boolean(authToken),
+    authToken,
+    data,
+    authenticated: true,
     loading: false,
     timestamp: Date.now()
   }),
 
   [logout]: () => ({
     ...initialState,
-    authToken: session.signOut(),
+    authToken: null,
     data: null,
     authenticated: false,
     timestamp: Date.now()
