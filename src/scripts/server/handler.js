@@ -11,11 +11,13 @@ import fetch from 'isomorphic-fetch';
 import cookie from 'react-cookie';
 import { getPrefetchedData } from 'react-fetcher';
 
-import { getInitialState } from './utils';
-import { create as createStore } from 'store';
+import getInitialState from './utils/getInitialState';
+import createStore from 'store/create';
 import history from 'lib/history';
 import render from 'lib/render';
-import createRoutes, { getStatus } from 'routes';
+
+import createRoutes from 'routes';
+import getStatus from 'routes/getStatus';
 
 const prettyError = new PrettyError();
 

@@ -16,7 +16,7 @@ import FontFaceObserver from 'fontfaceobserver';
 import FastClick from 'fastclick';
 import { Provider } from 'react-redux';
 import { syncReduxAndRouter } from 'redux-simple-router';
-import { create as createStore } from 'store';
+import createStore from 'store/create';
 import io from 'socket.io-client';
 
 import history from 'lib/history';

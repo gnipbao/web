@@ -4,8 +4,6 @@ import { getDeferredData } from 'react-fetcher';
 
 import walk from './walk';
 
-export { default as getStatus } from './getStatus';
-
 import * as layouts from 'layouts';
 import {
   notFound,

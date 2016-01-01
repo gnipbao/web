@@ -80,6 +80,7 @@ For a smooth dev process you can install these tools (not required):
 
 * `cp .example.env .env` and set required environment variables
 * `npm install`
+* you have to `npm i` and build modules that is pulled from github by yourself
 
 There is a `config` section in `package.json`:
 

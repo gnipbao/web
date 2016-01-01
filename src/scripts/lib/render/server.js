@@ -2,7 +2,7 @@ import { RoutingContext } from 'react-router';
 import { Provider } from 'react-redux';
 
 import Html from 'server/templates/Html';
-import { loadAssets } from 'server/utils';
+import loadAssets from 'server/utils/loadAssets';
 
 const assets = loadAssets();
 const { renderToString } = ReactDOMServer;

@@ -2,7 +2,8 @@ import thunk from 'redux-thunk';
 import promise from 'redux-promise';
 import { applyMiddleware } from 'redux';
 
-import { api, delay } from './custom';
+import api from './custom/api';
+import delay from './custom/delay';
 
 function getEnvMiddleware() {
   if (__DEVELOPMENT__ || __TEST__) {

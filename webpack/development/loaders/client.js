@@ -54,24 +54,14 @@ export default [
         'es2015',
         'stage-0',
         'react',
+        'react-hmre'
       ],
       plugins: [
-        'react-transform', {
-          transforms: [
-            {
-              transform: 'react-transform-catch-errors',
-              imports: [
-                'react',
-                'redbox-react',
-              ]
-            },
-            {
-              transform: 'react-transform-hmr',
-              imports: ['react'],
-              locals: ['module']
-            }
-          ]
-        }
+        'transform-runtime',
+        'typecheck',
+        'transform-decorators-legacy',
+        'add-module-exports',
+        'react-require'
       ]
     }
   }
