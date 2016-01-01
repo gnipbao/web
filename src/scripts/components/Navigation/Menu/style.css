@@ -1,0 +1,36 @@
+@import "variables";
+
+:root {
+  --normal-background: color(var(--brand-black) shade(30%));
+  --primary-background: var(--brand-black);
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.normal {
+  composes: menu;
+  background-color: var(--normal-background);
+}
+
+.primary {
+  composes: menu;
+  background-color: var(--primary-background);
+}
+
+.title {
+  padding: 12px;
+  font-size: 0.8em;
+  color: var(--text-muted);
+}
+
+.list {
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+}

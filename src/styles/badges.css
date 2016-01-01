@@ -1,0 +1,12 @@
+@import "variables";
+
+.badge {
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  vertical-align: middle;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 10px;
+}

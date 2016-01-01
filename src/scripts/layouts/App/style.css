@@ -1,0 +1,10 @@
+.root {
+  display: flex;
+  flex-flow: column;
+
+  @media (--large) { flex-flow: row; }
+}
+
+.main {
+  padding: 20px;
+}

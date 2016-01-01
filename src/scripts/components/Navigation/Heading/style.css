@@ -1,0 +1,23 @@
+@import "variables";
+
+:root {
+  --background: var(--brand-info);
+  --logo-size: 34px;
+}
+
+.root {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+  padding: 12px 20px;
+  background-color: var(--background);
+}
+
+.logo { size: var(--logo-size); }
+
+.title {
+  margin-left: 10px;
+  font-size: 1.4em;
+  font-weight: bold;
+}

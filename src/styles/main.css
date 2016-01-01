@@ -5,5 +5,4 @@
 @lost cycle auto;
 @lost flexbox flex;
 
-html { overflow-x: hidden; }
-body { font-family: "Roboto"; }
+html, body { overflow: hidden; }

@@ -35,8 +35,10 @@ function waitRedirect(provider, popup) {
           const params = Qs.parse(popup.location.search.slice(1));
           if (params.auth_token || params.error) popup.close();
           if (params.auth_token) {
-            const data = jwtDecode(params.auth_token);
-            resolve({ authToken: params.auth_token, data });
+            const authToken = params.auth_token;
+            const data = jwtDecode(authToken);
+            session.signIn(authToken);
+            resolve({ authToken, data });
           } else if (params.error) {
             reject({ error: params.error });
           }
@@ -58,7 +60,6 @@ export const login = (provider, inviteCode) =>
     try {
       const userData = await authenticate(provider, inviteCode);
       dispatch(loginComplete(userData));
-      session.signIn(authToken);
 
       const { routing: { state } } = getState();
       if (state && state.attempted) {

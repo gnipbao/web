@@ -38,7 +38,7 @@ export default async (req, res) => {
     const [error, redirectLocation, renderProps] = await runRouter(routes, location);
 
     if (error) {
-      res.status(500).send(error.message)
+      res.status(500).send(error.stack)
     } else if (redirectLocation) {
       if (redirectLocation.state && redirectLocation.state.attempted) {
         const query = Qs.parse(redirectLocation.search);
@@ -75,7 +75,7 @@ export default async (req, res) => {
         const html = await render(history, store, routerProps);
         res.status(status).send(html);
       } catch (error) {
-        res.status(500).send(error.message)
+        res.status(500).send(error.stack)
       }
     } else {
       res.status(404).send('not found');

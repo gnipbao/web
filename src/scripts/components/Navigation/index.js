@@ -1,16 +1,36 @@
-import Navigation from 'react-toolbox/lib/navigation';
+import css from 'react-css-modules';
 
-const isActive = (current, path) => current === path;
+import style from './style';
+import { menus } from './config';
+import Heading from './Heading';
+import Menu from './Menu';
 
-export default (props) => {
-  const { go, currentPath, type, items } = props;
+const { func, string, bool } = PropTypes;
 
-  const actions = items.map(({ path, ...item }) => ({
-    onClick: () => currentPath !== path && go(path),
-    accent: isActive(currentPath, path),
-    raised: true,
-    ...item
-  }));
+export const Navigation = (props) => {
+  const { slim, pushPath, currentPath } = props;
 
-  return <Navigation {...{ type, actions } } />;
+  return (
+    <aside styleName={slim ? 'slim' : 'normal'}>
+      <Heading title='Party Rooms' />
+      {menus.map((menu, i) =>
+        <Menu key={i}
+          {...menu}
+          {...{ pushPath, currentPath }}
+        />
+      )}
+    </aside>
+  );
 };
+
+Navigation.propTypes = {
+  pushPath: func.isRequired,
+  currentPath: string.isRequired,
+  slim: bool
+};
+
+Navigation.defaultProps = {
+  slim: false
+};
+
+export default css(Navigation, style);

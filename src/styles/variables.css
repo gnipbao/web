@@ -1,4 +1,8 @@
 :root {
+  /* fonts */
+  --font-family: 'Roboto';
+  --font-size: 62.5%; /* 1em = 10px */
+
   /* colors */
   --green: #17a05a;
   --gray: #545a5f;
@@ -79,4 +83,8 @@
 
   --tooltip-color: var(--brand-dark);
   --tooltip-fallback-color: rgba(0, 0, 0, 0.9);
+
+  --shadow-key-umbra-opacity: 0.2;
+  --shadow-key-penumbra-opacity: 0.14;
+  --shadow-ambient-shadow-opacity: 0.12;
 }

@@ -1,0 +1,51 @@
+@import "variables";
+
+:root {
+  --font-size-normal: 0.9em;
+  --font-size-tiny: 0.8em;
+  --font-size-icon: 1.2em;
+
+  --background-active: color(var(--brand-black) lightness(10%));
+  --background-hover: color(var(--brand-black) lightness(20%));
+}
+
+.root {
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: background-color .2s ease-in-out 0s;
+
+  &:hover {
+    background-color: var(--background-hover);
+  }
+}
+
+.normal {
+  composes: root;
+}
+
+.active {
+  composes: root;
+  background-color: var(--background-active);
+}
+
+.icon {
+  font-size: var(--font-size-icon);
+}
+
+.count {
+  composes: badge from "styles/badges";
+  font-size: var(--font-size-tiny);
+  background-color: var(--brand-info);
+  color: #fff;
+}
+
+.label {
+  font-size: var(--font-size-normal);
+  margin-left: 14px;
+  text-transform: capitalize;
+}
