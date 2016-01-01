@@ -54,7 +54,7 @@
     "moment": "2.10.6",
     "morgan": "1.6.1",
     "normalize.css": "3.0.3",
-    "normalizr": "1.4.0",
+    "normalizr": "1.4.1",
     "pretty-error": "2.0.0",
     "qs": "6.0.1",
     "query-string": "3.0.0",
