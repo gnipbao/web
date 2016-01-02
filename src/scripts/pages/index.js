@@ -6,6 +6,8 @@ import about from './About';
 
 import * as rooms from './Rooms';
 import * as profiles from './Profiles';
+import * as playlists from './Playlists';
+import * as tracks from './Tracks';
 
 import * as admin from './Admin';
 
@@ -18,5 +20,8 @@ export default {
 
   rooms,
   profiles,
+  playlists,
+  tracks,
+
   admin
 }

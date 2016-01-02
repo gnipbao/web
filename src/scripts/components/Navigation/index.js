@@ -1,6 +1,6 @@
 import css from 'react-css-modules';
 
-import { menus } from './config';
+import createMenus from './createMenus';
 import Heading from './Heading';
 import Footer from './Footer';
 import Menu from './Menu';
@@ -11,6 +11,7 @@ const { func, string, object, bool } = PropTypes;
 
 export const Navigation = (props) => {
   const { user, slim, pushPath, logout, currentPath } = props;
+  const menus = createMenus(user);
 
   return (
     <aside styleName={slim ? 'slim' : 'normal'}>
@@ -21,7 +22,7 @@ export const Navigation = (props) => {
           {...{ pushPath, currentPath } }
         />
       )}
-      <Footer {...{ user, logout } }/>
+      <Footer {...{ user, pushPath, logout } }/>
     </aside>
   );
 };

@@ -1,7 +1,7 @@
 import jwtDecode from 'jwt-decode';
 import session from 'lib/session';
 
-export default () => {
+export default function() {
   const authToken = session.token();
 
   return {

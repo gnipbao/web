@@ -9,14 +9,18 @@ const TooltipButton = Tooltip(Button);
 import style from './style';
 const { func, object, bool } = PropTypes;
 
-export const Footer = ({ logout, user }) => {
-  const { picture, first_name, last_name, role } = user;
+export const Footer = ({ pushPath, logout, user }) => {
+  const { picture, nickname, first_name, last_name, role } = user;
+  const name = `${first_name} ${last_name}`;
+
   return (
     <div styleName='root'>
-      <Avatar><img src={picture} /></Avatar>
+      <Avatar styleName='avatar'
+        image={picture} title={nickname || first_name}
+        onClick={() => pushPath('/profile')} />
       <dl styleName='info'>
-        <dt>{first_name} {last_name}</dt>
-        <dt>{role}</dt>
+        <dt styleName='username'>{name}</dt>
+        <dt styleName='role'>{role}</dt>
       </dl>
       <div styleName='actions'>
         <TooltipButton

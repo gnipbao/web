@@ -12,6 +12,8 @@ import {
   about,
   rooms,
   profiles,
+  playlists,
+  tracks,
   admin,
 } from 'pages';
 
@@ -43,6 +45,13 @@ export const routes = (
       <Route path='/profile' component={profiles.show} />
       <Route path='/profile/edit' component={profiles.edit} />
       <Route path='/profile/:id' component={profiles.show} />
+
+      <Route path='/playlists' component={playlists.list} />
+      <Route path='/playlists/:id' component={playlists.show} />
+      <Route path='/playlists/:id/edit' component={playlists.edit} />
+
+      <Route path='/playlists/:id/tracks' component={tracks.list} />
+      <Route path='/playlists/:id/tracks/:track_id/edit' component={tracks.edit} />
 
       <Route path='/about' component={about} />
     </Route>

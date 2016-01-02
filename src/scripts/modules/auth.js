@@ -9,7 +9,6 @@ import {
 
 import openPopup from 'lib/utils/popup';
 import session from 'lib/session';
-import { asyncAction } from 'lib/redux';
 
 function authenticate(provider, code, tab) {
   const name = !!tab ? '_blank' : provider;

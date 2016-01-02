@@ -1,5 +1,7 @@
 import { createAction } from 'redux-act';
 
-export default (desc, request, payloadReducer = f => f) =>
+const identity = f => f;
+
+export default (desc, request, payloadReducer = identity) =>
   createAction(desc, (...args) =>
     ({ ...(payloadReducer(...args)), request }));

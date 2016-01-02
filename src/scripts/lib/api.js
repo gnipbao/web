@@ -1,9 +1,9 @@
 import { stringify } from 'qs';
 
 export default class Api {
-  constructor(root, headers = {}) {
+  constructor(root, getHeaders = () => {}) {
     this.root = root;
-    this.headers = headers;
+    this.getHeaders = getHeaders;
   }
 
   get(endpoint, params, headers = {}) {
@@ -17,15 +17,15 @@ export default class Api {
   ajax(endpoint, method, data) {
     const { params, headers = {}, body = null } = data;
     const requestUrl = this.url(endpoint, params);
+    const requestHeaders = {
+      ...this.getHeaders(),
+      ...headers
+    };
 
-    return fetch(requestUrl, {
-      method,
-      headers: {
-        ...this.headers,
-        ...headers
-      },
-      body,
-    }).then(this.processResponse, this.processError);
+    console.log(`fetching ${requestUrl}, headers: `, requestHeaders);
+
+    return fetch(requestUrl, { method, headers: requestHeaders, body })
+      .then(this.processResponse, this.processError);
   }
 
   url(endpoint, params) {

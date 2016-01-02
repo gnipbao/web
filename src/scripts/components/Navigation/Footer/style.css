@@ -13,10 +13,26 @@
   @media (--large) { justify-content: space-between; }
 }
 
+.avatar {
+  cursor: pointer;
+
+  &:hover {
+  }
+}
+
 .info {
   margin-left: 10px;
   color: var(--text-color);
   font-size: 0.8em;
+}
+
+.username {
+  composes: truncate from "styles/utils";
+  max-width: 80px;
+}
+
+.role {
+  color: var(--brand-success);
 }
 
 .actions {
