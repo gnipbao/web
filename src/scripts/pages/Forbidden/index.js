@@ -12,9 +12,9 @@ export class Page extends Component {
   render() {
     return (
       <div>
-        <Helmet title='Page' />
-        <h1>Hey, its me, your page</h1>
-        <p>Don't you remember me?</p>
+        <Helmet title='Forbidden' />
+        <h1>You can't access this page</h1>
+        <p>Go away</p>
       </div>
     );
   }

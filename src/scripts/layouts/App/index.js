@@ -1,24 +1,34 @@
 import css from 'react-css-modules';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { pushPath } from 'redux-simple-router';
+import { pushPath, replacePath } from 'redux-simple-router';
 
+import { logout } from 'modules/auth';
 import Navigation from 'components/Navigation';
 import style from './style';
 
-const { func } = PropTypes;
+const { func, string, object } = PropTypes;
 
 export class App extends Component {
   static propTypes = {
-    pushPath: func.isRequired
+    pushPath: func.isRequired,
+    logout: func.isRequired,
+    currentPath: string.isRequired,
+    user: object.isRequired,
+  }
+
+  handleLogout() {
+    this.props.logout();
+    this.props.replacePath('/sign-in');
   }
 
   render() {
-    const { pushPath, currentPath, children } = this.props;
-
+    const { user, pushPath, logout, currentPath, children } = this.props;
     return (
       <div styleName='root'>
-        <Navigation {...{ pushPath, currentPath } } />
+        <Navigation
+          logout={::this.handleLogout}
+          { ...{ user, pushPath, currentPath } } />
         <div styleName='main'>
           {children}
         </div>
@@ -28,6 +38,12 @@ export class App extends Component {
 }
 
 export default connect(
-  s => ({ currentPath: s.routing.path }),
-  { pushPath }
+  s => ({
+    user: s.auth.data.user,
+    currentPath: s.routing.path
+  }), {
+    replacePath,
+    pushPath,
+    logout
+  }
 )(css(App, style));

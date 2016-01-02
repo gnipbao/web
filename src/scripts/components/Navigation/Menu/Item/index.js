@@ -6,22 +6,13 @@ import style from './style';
 const { bool, string, number, func } = PropTypes;
 
 export const Item = (props) => {
-  const { 
-    active,
-    onClick,
-    label,
-    icon,
-    count,
-    ...anchor
-  } = props;
-
+  const { active, onClick, label, icon, count, styleName, ...anchor } = props;
   return (
-    <a
-      styleName='root'
+    <a styleName={active ? 'active' : 'normal' }
       {...{ ...anchor, onClick } }>
       {icon ? <FontIcon className={style.icon} value={icon} /> : null}
       {label ? <abbr styleName='label'>{label}</abbr> : null}
-      {count && parseInt(count) !== 0 ? <small styleName='counter'>{count}</small> : null}
+      {count && parseInt(count) !== 0 ? <small styleName='count'>{count}</small> : null}
     </a>
   );
 };
@@ -32,10 +23,12 @@ Item.propTypes = {
   icon: string,
   count: number,
   onClick: func,
+  styleName: string
 };
 
 Item.defaultProps = {
-  icon: 'extension'
+  icon: 'extension',
+  styleName: ''
 };
 
 export default css(Item, style);

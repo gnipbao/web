@@ -53,6 +53,7 @@ const loginComplete = action('auth.login.complete');
 const loginError = action('auth.login.error');
 
 export const logout = action('auth.logout', () => session.signOut());
+
 export const login = (provider, inviteCode) =>
   async (dispatch, getState) => {
     dispatch(loginStart({ provider, inviteCode }));

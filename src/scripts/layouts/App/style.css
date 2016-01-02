@@ -1,6 +1,9 @@
+@import "variables";
+
 .root {
   display: flex;
   flex-flow: column;
+  background-color: var(--background);
 
   @media (--large) { flex-flow: row; }
 }

@@ -1,14 +1,16 @@
 import css from 'react-css-modules';
 
-import style from './style';
 import { menus } from './config';
 import Heading from './Heading';
+import Footer from './Footer';
 import Menu from './Menu';
 
-const { func, string, bool } = PropTypes;
+import style from './style';
+
+const { func, string, object, bool } = PropTypes;
 
 export const Navigation = (props) => {
-  const { slim, pushPath, currentPath } = props;
+  const { user, slim, pushPath, logout, currentPath } = props;
 
   return (
     <aside styleName={slim ? 'slim' : 'normal'}>
@@ -16,17 +18,20 @@ export const Navigation = (props) => {
       {menus.map((menu, i) =>
         <Menu key={i}
           {...menu}
-          {...{ pushPath, currentPath }}
+          {...{ pushPath, currentPath } }
         />
       )}
+      <Footer {...{ user, logout } }/>
     </aside>
   );
 };
 
 Navigation.propTypes = {
   pushPath: func.isRequired,
+  logout: func.isRequired,
   currentPath: string.isRequired,
-  slim: bool
+  user: object.isRequired,
+  slim: bool,
 };
 
 Navigation.defaultProps = {

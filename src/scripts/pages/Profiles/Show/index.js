@@ -10,11 +10,16 @@ const { object } = PropTypes;
 @css(style)
 export class Page extends Component {
   render() {
+    const { picture, first_name, last_name, role } = this.props.auth.data.user;
+    const name = `${first_name} ${last_name}`;
     return (
       <div>
-        <Helmet title='Page' />
-        <h1>Hey, its me, your page</h1>
-        <p>Don't you remember me?</p>
+        <Helmet title={name} />
+        <img src={picture} />
+        <dl>
+          <dt>{name}</dt>
+          <dt>{role}</dt>
+        </dl>
       </div>
     );
   }

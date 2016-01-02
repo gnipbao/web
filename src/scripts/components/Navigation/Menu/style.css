@@ -1,28 +1,28 @@
 @import "variables";
 
 :root {
-  --normal-background: color(var(--brand-black) shade(30%));
-  --primary-background: var(--brand-black);
+  --background-normal: color(var(--brand-black) shade(30%));
+  --background-primary: var(--brand-black);
+  --font-size-title: 0.8em;
 }
 
 .menu {
-  display: flex;
-  flex-direction: column;
+  list-style: none;
 }
 
 .normal {
   composes: menu;
-  background-color: var(--normal-background);
+  background-color: var(--background-normal);
 }
 
 .primary {
   composes: menu;
-  background-color: var(--primary-background);
+  background-color: var(--background-primary);
 }
 
 .title {
   padding: 12px;
-  font-size: 0.8em;
+  font-size: var(--font-size-title);
   color: var(--text-muted);
 }
 
@@ -30,7 +30,5 @@
 }
 
 .item {
-  display: flex;
-  align-items: flex-start;
-  flex-direction: row;
+  display: block;
 }
