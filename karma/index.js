@@ -19,7 +19,6 @@ const testsPath = resolve.test('index.js');
 const karmaConfig = {
   files: [
     './node_modules/phantomjs-polyfill/bind-polyfill.js',
-    './node_modules/babel-core/browser-polyfill.js',
     testsPath
   ],
   frameworks,

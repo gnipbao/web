@@ -25,9 +25,9 @@
 web_1 | 12:30:29 PM test.1 |  18 11 2015 12:30:29.884:ERROR [phantomjs.launcher]: /usr/src/app/node_modules/phantomjs/lib/phantom/bin/phantomjs: 4: /usr/src/app/node_modules/phantomjs/lib/phantom/bin/phantomjs: Syntax error: Unterminated quoted string
 ```
 
-- [x] wait for [font magician pr](https://github.com/jonathantneal/postcss-font-magician/pull/7) and switch to original packet
 - [ ] wait for [the font magician fix](https://github.com/jonathantneal/postcss-font-magician/issues/9)
-- [ ] wait for [isparta fix](https://github.com/douglasduteil/isparta/issues/81) before upgrading to babel 6)
+- [x] wait for [font magician pr](https://github.com/jonathantneal/postcss-font-magician/pull/7) and switch to original packet
+- [x] wait for [isparta fix](https://github.com/douglasduteil/isparta/issues/81) before upgrading to babel 6)
 - [x] wait for [babel-plugin-react-transform fix](https://github.com/gaearon/babel-plugin-react-transform/issues/46) and move to babel 6
 - [ ] wait for html-webpack-plugin release & replace package source
 - [ ] wait for babel 6 fixes & update it
