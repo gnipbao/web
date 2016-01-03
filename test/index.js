@@ -1,3 +1,4 @@
+require('babel-polyfill');
 require('isomorphic-fetch');
 
 // see https://github.com/webpack/karma-webpack#alternative-usage
