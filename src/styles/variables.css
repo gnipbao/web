@@ -78,11 +78,11 @@
   --panel-heading-background: #fff;
   --panel-footer-background: #fff;
 
-  --tooltip-background: rgba(0, 0, 0, 0.9);
+  --tooltip-background: rgba(#000, 0.9);
   --badge-background: color(var(--brand-light) shade(20%));
 
   --tooltip-color: var(--brand-dark);
-  --tooltip-fallback-color: rgba(0, 0, 0, 0.9);
+  --tooltip-fallback-color: rgba(#000, 0.9);
 
   --shadow-key-umbra-opacity: 0.2;
   --shadow-key-penumbra-opacity: 0.14;

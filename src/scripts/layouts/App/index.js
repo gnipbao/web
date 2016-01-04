@@ -5,6 +5,8 @@ import { pushPath, replacePath } from 'redux-simple-router';
 
 import { logout } from 'modules/auth';
 import Navigation from 'components/Navigation';
+import Toolbar from 'components/Toolbar';
+
 import style from './style';
 
 const { func, string, object } = PropTypes;
@@ -30,6 +32,7 @@ export class App extends Component {
           logout={::this.handleLogout}
           { ...{ user, pushPath, currentPath } } />
         <div styleName='main'>
+          <Toolbar />
           {children}
         </div>
       </div>

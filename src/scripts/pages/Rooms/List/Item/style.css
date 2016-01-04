@@ -1,3 +1,7 @@
 .root {
+  composes: card from "styles/layout";
+}
+
+.card {
   overflow: visible;
 }

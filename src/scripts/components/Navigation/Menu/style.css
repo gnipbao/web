@@ -3,7 +3,6 @@
 :root {
   --background-normal: color(var(--brand-black) shade(30%));
   --background-primary: var(--brand-black);
-  --font-size-title: 0.8em;
 }
 
 .menu {
@@ -22,7 +21,7 @@
 
 .title {
   padding: 12px;
-  font-size: var(--font-size-title);
+  font-size: responsive 0.8rem 1rem;
   color: var(--text-muted);
 }
 

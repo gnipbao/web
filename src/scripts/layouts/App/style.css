@@ -1,11 +1,12 @@
 @import "variables";
+@import "media";
 
 .root {
   display: flex;
-  flex-flow: column;
+  flex-direction: column;
   background-color: var(--background);
 
-  @media (--large) { flex-flow: row; }
+  @media (--medium) { flex-direction: row; }
 }
 
 .main {

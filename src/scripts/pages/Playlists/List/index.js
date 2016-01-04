@@ -28,9 +28,11 @@ export class Page extends Component {
     return (
       <div styleName='root'>
         <Helmet title='Playlists' />
-        <Button raised accent onClick={index}
-          label='DO THIS SHIT RIGHT NOW' icon='touch_app' />
-        {playlists.list.map((item, i) => <Item key={i} {...item} />)}
+        <Item key={123} title='1111' />
+        <Item key={222} title='2222' />
+        <Item key={333} title='333' />
+        <Item key={4} title='44' />
+        <Item key={5} title='5555555' />
       </div>
     );
   }

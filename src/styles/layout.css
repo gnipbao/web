@@ -1,3 +1,5 @@
+@import "media";
+
 .flex { display: flex; }
 
 .vertical { flex-flow: column nowrap; }
@@ -14,3 +16,10 @@
 }
 
 .box { composes: flex vertical centered full; }
+
+.card {
+  lost-column: 1/1 0 0;
+  @media (--medium) { lost-column: 1/2 0 0; }
+  @media (--large) { lost-column: 1/3 0 0; }
+  @media (--desktop) { lost-column: 1/4 0 0; }
+}

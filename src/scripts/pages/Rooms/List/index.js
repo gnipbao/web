@@ -17,6 +17,12 @@ export class Page extends Component {
       <div styleName='root'>
         <Helmet title='Rooms' />
         <Item />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
       </div>
     );
   }

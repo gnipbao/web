@@ -5,4 +5,4 @@
 @lost cycle auto;
 @lost flexbox flex;
 
-html, body { overflow: hidden; }
+/* html, body { overflow-x: hidden; } */

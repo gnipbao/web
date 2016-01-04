@@ -142,6 +142,7 @@ in [precss](https://github.com/jonathantneal/precss/blob/master/package.json#L34
 ### Base knowledge
 
 * [40 webpack screencasts in russian](https://learn.javascript.ru/webpack-screencast) - takes about 2h to get started
+* [postcss screencasts](https://www.youtube.com/watch?v=yv83dcT97Wk&list=PLLnpHn493BHFvjZzyYrQP0RTsG-Al7j9m) - including lost grid system tutorials
 * [webpack hot reloading magic (habra)](http://habrahabr.ru/company/Voximplant/blog/270593/)
 * [awesome react](https://github.com/enaqx/awesome-react)
 * [awesome redux](https://github.com/xgrommx/awesome-redux)

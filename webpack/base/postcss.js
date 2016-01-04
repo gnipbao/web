@@ -23,13 +23,7 @@ export default (bundler) => [
     addDependencyTo: bundler,
     path: [paths.styles]
   }),
-  require('postcss-custom-media')({
-    extensions: {
-      '--small': '(width >= 360px) and (height >= 480px)',
-      '--medium': '(width >= 768px) and (height >= 680px)',
-      '--large': '(width >= 1024px)'
-    }
-  }),
+  require('postcss-custom-media'),
   require('precss'),
   require('postcss-cssnext')(cssnext),
   require('lost'),
@@ -39,12 +33,18 @@ export default (bundler) => [
   require('postcss-focus'),
   require('postcss-position'),
   require('postcss-easings'),
+  require('postcss-brand-colors'),
   require('postcss-hexrgba'),
   require('postcss-color-rgba-fallback'),
   require('postcss-input-style'),
   require('postcss-quantity-queries'),
-  require('postcss-responsive-type'),
-  require('postcss-brand-colors'),
+  require('postcss-responsive-type')({
+    minSize: '1rem',
+    maxSize: '2rem',
+    minWidth: '22.5rem',
+    maxWidth: '85.375rem',
+    rootSize: '1rem'
+  }),
 
   ...(argv.production ? require('cssnano') : []),
   ...(argv.lint ? reporters() : [])

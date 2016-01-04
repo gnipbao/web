@@ -1,4 +1,5 @@
 @import "variables";
+@import "animations";
 
 :root {
   --background: color(var(--brand-black) shade(10%));
@@ -9,26 +10,28 @@
   align-items: center;
   padding: 12px 20px;
   background-color: var(--background);
-
-  @media (--large) { justify-content: space-between; }
 }
 
 .avatar {
+  min-width: 40px;
   cursor: pointer;
+  background-color: var(--background);
 
   &:hover {
+    animation-duration: 0.5s;
+    animation-name: rotate;
   }
 }
 
 .info {
-  margin-left: 10px;
+  flex-grow: 2;
+  margin-left: 8px;
   color: var(--text-color);
-  font-size: 0.8em;
+  font-size: 1.2rem;
 }
 
 .username {
   composes: truncate from "styles/utils";
-  max-width: 80px;
 }
 
 .role {
