@@ -38,7 +38,7 @@
     "babel-runtime": "5.8.20",
     "classnames": "2.2.2",
     "compression": "1.6.0",
-    "core-js": "2.0.1",
+    "core-js": "2.0.2",
     "cors": "2.7.1",
     "crypto": "0.0.3",
     "debug": "2.2.0",
