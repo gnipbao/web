@@ -4,9 +4,16 @@ tests/*
 .*/node_modules/fbjs.*
 .*/node_modules/npmconf.*
 .*/node_modules/phantomjs.*
+.*/node_modules/babel-helper-builder-binary-assignment-operator-visitor.*
+.*/node_modules/babel-helper-explode-assignable-expression.*
+.*/node_modules/babel-helper-remap-async-to-generator.*
+.*/node_modules/babel-template.*
+.*/node_modules/babel-traverse.*
+.*/node_modules/redux.*
 
 [include]
 src/scripts
+/node_modules/
 
 [libs]
 flow/
