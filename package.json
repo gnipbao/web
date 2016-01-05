@@ -100,7 +100,7 @@
     "babel-loader": "^6.2.1",
     "babel-plugin-react-require": "vyorkin-forks/babel-plugin-react-require#customized",
     "babel-plugin-react-transform": "^2.0.0",
-    "babel-plugin-typecheck": "^2.0.0",
+    "babel-plugin-typecheck": "^3.6.0",
     "browser-sync": "^2.11.0",
     "bundle-loader": "^0.5.4",
     "chai": "3.4.1",
