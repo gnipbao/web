@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "babel-runtime": "5.8.20",
-    "classnames": "2.2.2",
+    "classnames": "2.2.3",
     "compression": "1.6.0",
     "core-js": "2.0.2",
     "cors": "2.7.1",
