@@ -138,7 +138,7 @@
     "gulp-coveralls": "0.1.4",
     "gulp-debug": "2.1.2",
     "gulp-eslint": "^1.1.1",
-    "gulp-load-plugins": "^1.1.0",
+    "gulp-load-plugins": "^1.2.0",
     "gulp-mocha": "2.2.0",
     "gulp-nsp": "2.2.1",
     "gulp-plumber": "1.0.1",
