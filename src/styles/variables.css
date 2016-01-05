@@ -2,6 +2,7 @@
   /* fonts */
   --font-family: 'Roboto';
   --font-size: 62.5%; /* 1em = 10px */
+  --font-size-base: 1.8rem;
 
   /* colors */
   --green: #17a05a;

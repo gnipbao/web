@@ -11,18 +11,18 @@ const { func, string, object, bool } = PropTypes;
 
 export const Navigation = (props) => {
   const { user, slim, pushPath, logout, currentPath } = props;
-  const menus = createMenus(user);
+  const menus = createMenus(props);
 
   return (
     <aside styleName={slim ? 'slim' : 'normal'}>
-      <Heading title='Party Rooms' />
+      <Heading slim={slim} title='Party Rooms' />
       {menus.map((menu, i) =>
         <Menu key={i}
           {...menu}
-          {...{ pushPath, currentPath } }
+          {...{ slim, pushPath, currentPath } }
         />
       )}
-      <Footer {...{ user, pushPath, logout } }/>
+      <Footer {...{ slim, user, pushPath, logout } }/>
     </aside>
   );
 };
@@ -32,7 +32,9 @@ Navigation.propTypes = {
   logout: func.isRequired,
   currentPath: string.isRequired,
   user: object.isRequired,
-  slim: bool,
+  playlists: object.isRequired,
+  rooms: object.isRequired,
+  slim: bool
 };
 
 Navigation.defaultProps = {

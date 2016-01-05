@@ -6,13 +6,13 @@ import style from './style';
 const { bool, string, number, func } = PropTypes;
 
 export const Item = (props) => {
-  const { active, onClick, label, icon, count, styleName, ...anchor } = props;
+  const { active, onClick, slim, label, icon, count, styleName, ...anchor } = props;
   return (
     <a styleName={active ? 'active' : 'normal' }
       {...{ ...anchor, onClick } }>
       {icon ? <FontIcon className={style.icon} value={icon} /> : null}
-      {label ? <abbr styleName='label'>{label}</abbr> : null}
-      {count && parseInt(count) !== 0 ? <small styleName='count'>{count}</small> : null}
+      {!slim && label ? <abbr styleName='label'>{label}</abbr> : null}
+      {!slim && count && parseInt(count) !== 0 ? <small styleName='count'>{count}</small> : null}
     </a>
   );
 };

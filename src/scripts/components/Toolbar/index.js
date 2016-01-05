@@ -4,26 +4,39 @@ import FontIcon from 'react-toolbox/lib/font_icon';
 import Button from 'react-toolbox/lib/button';
 import Tooltip from 'react-toolbox/lib/tooltip';
 import Input from 'react-toolbox/lib/input';
-import { Menu, MenuItem, MenuDivider, IconMenu } from 'react-toolbox/lib/menu';
+
+const TooltipButton = Tooltip(Button);
 
 import style from './style';
 
-const { bool, string, number, func } = PropTypes;
+const { bool, func, object } = PropTypes;
 
 export const Toolbar = (props) => {
+  const { navigation } = props;
+
   return (
     <div styleName='root'>
-      <Button icon='format_indent_decrease' />
-      <Input type='text' label='search rooms' />
-      <IconMenu icon='more_vert' position='top-left' menuRipple>
-        <MenuItem value='download' icon='get_app' caption='Download' />
-        <MenuItem value='help' icon='favorite' caption='Favorite' />
-        <MenuItem value='settings' icon='open_in_browser' caption='Open in app' />
-        <MenuDivider />
-        <MenuItem value='signout' icon='delete' caption='Delete' disabled />
-      </IconMenu>
+      <TooltipButton flat ripple={false}
+        icon={ navigation.slim ? 'format_indent_increase' : 'format_indent_decrease' }
+        onClick={navigation.toggle}
+        tooltip='Toggle navigation bar'
+        className={style.toggle}
+      />
+      <TooltipButton flat
+        icon='search'
+        tooltip='Search rooms'
+        className={style.search}
+      />
+      <Input type='text'
+        label='search rooms'
+        className={style.input}
+      />
     </div>
   );
+};
+
+Toolbar.propTypes = {
+  navigation: object.isRequired,
 };
 
 export default css(Toolbar, style);

@@ -9,17 +9,16 @@ const TooltipButton = Tooltip(Button);
 import style from './style';
 const { func, object, bool } = PropTypes;
 
-export const Footer = ({ pushPath, logout, user }) => {
-  const { picture, nickname, first_name, last_name, role } = user;
-  const name = `${first_name} ${last_name}`;
+export const Footer = ({ slim, pushPath, logout, user }) => {
+  const { picture, nickname, first_name, role } = user;
 
   return (
-    <div styleName='root'>
+    <div styleName={ slim ? 'slim' : 'normal' }>
       <Avatar styleName='avatar'
-        image={picture} title={nickname || first_name}
+        image={picture} title={picture ? null : nickname || first_name}
         onClick={() => pushPath('/profile')} />
       <dl styleName='info'>
-        <dt styleName='username'>{name}</dt>
+        <dt styleName='username'>{first_name}</dt>
         <dt styleName='role'>{role}</dt>
       </dl>
       <div styleName='actions'>
@@ -38,6 +37,7 @@ export const Footer = ({ pushPath, logout, user }) => {
 
 Footer.propTypes = {
   logout: func.isRequired,
+  slim: bool.isRequired
 }
 
 export default css(Footer, style);

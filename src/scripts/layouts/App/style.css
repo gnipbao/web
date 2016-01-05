@@ -10,5 +10,11 @@
 }
 
 .main {
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.content {
+  padding: 12px;
 }

@@ -8,6 +8,7 @@ const isActive = (current, path) => current === path;
 
 export const Menu = (props) => {
   const {
+    slim,
     primary,
     title,
     items,
@@ -18,12 +19,12 @@ export const Menu = (props) => {
   const list = items.map(({ path, ...item }) => ({
     onClick: () => currentPath !== path && pushPath(path),
     active: isActive(currentPath, path),
-    ...item
+    ...{ ...item, slim }
   }));
 
   return (
-    <nav styleName={ primary ? 'primary' : 'normal'}>
-      {title && <h4 styleName='title'>{title}</h4>}
+    <nav styleName={ primary ? 'primary' : 'normal' }>
+      {!slim && title && <h4 styleName='title'>{title}</h4>}
       <ul styleName='list'>
         {list.map((item, i) =>
           <li key={i} styleName='item'>
@@ -36,9 +37,10 @@ export const Menu = (props) => {
 };
 
 Menu.propTypes = {
-  items: array.isRequired,
-  title: string,
+  slim: bool.isRequired,
   primary: bool,
+  title: string,
+  items: array.isRequired
 };
 
 Menu.defaultProps = {

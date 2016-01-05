@@ -1,9 +1,5 @@
 @import "media";
 
-.flex { display: flex; }
-
-.vertical { flex-flow: column nowrap; }
-
 .centered {
   align-content: center;
   align-items: center;
@@ -15,7 +11,11 @@
   min-height: 100vh;
 }
 
-.box { composes: flex vertical centered full; }
+.box {
+  composes: centered full;
+  display: flex;
+  flex-flow: column nowrap;
+}
 
 .card {
   lost-column: 1/1 0 0;

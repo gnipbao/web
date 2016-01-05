@@ -8,26 +8,45 @@
 .root {
   display: flex;
   align-items: center;
-  padding: 12px 20px;
+  padding: 12px;
   background-color: var(--background);
 }
 
-.avatar {
-  min-width: 40px;
-  cursor: pointer;
-  background-color: var(--background);
+.normal {
+  composes: root;
 
-  &:hover {
-    animation-duration: 0.5s;
-    animation-name: rotate;
+  .avatar {
+    min-width: 40px;
+
+    &:hover {
+      animation-duration: 0.5s;
+      animation-name: rotate;
+    }
+  }
+
+  .info {
+    flex-grow: 2;
+    margin-left: 8px;
+    color: var(--text-color);
+    font-size: 1.2rem;
+  }
+
+  .actions {
+    margin-left: 10px;
   }
 }
 
-.info {
-  flex-grow: 2;
-  margin-left: 8px;
-  color: var(--text-color);
-  font-size: 1.2rem;
+.slim {
+  composes: root;
+
+  .info, .actions {
+    display: none;
+  }
+}
+
+.avatar {
+  cursor: pointer;
+  background-color: var(--background);
 }
 
 .username {
@@ -36,8 +55,4 @@
 
 .role {
   color: var(--brand-success);
-}
-
-.actions {
-  margin-left: 10px;
 }

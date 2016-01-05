@@ -2,7 +2,7 @@
 
 :root {
   --background: var(--brand-info);
-  --logo-size: 34px;
+  --logo-size: 24px;
 }
 
 .root {
@@ -10,14 +10,27 @@
   justify-content: flex-start;
   align-content: center;
   align-items: center;
-  padding: 12px 20px;
+  padding: 12px;
+  height: 6rem;
   background-color: var(--background);
+
+  svg { size: var(--logo-size); }
 }
 
-.logo { size: var(--logo-size); }
+.normal {
+  composes: root;
 
-.title {
-  margin-left: 10px;
-  font-size: 2rem;
-  font-weight: bold;
+  > .title {
+    margin-left: 14px;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+}
+
+.slim {
+  composes: root;
+
+  > .title {
+    display: none;
+  }
 }

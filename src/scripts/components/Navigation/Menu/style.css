@@ -21,7 +21,7 @@
 
 .title {
   padding: 12px;
-  font-size: responsive 0.8rem 1rem;
+  font-size: responsive 1rem 1.2rem;
   color: var(--text-muted);
 }
 

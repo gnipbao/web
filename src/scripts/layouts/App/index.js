@@ -4,6 +4,8 @@ import { bindActionCreators } from 'redux';
 import { pushPath, replacePath } from 'redux-simple-router';
 
 import { logout } from 'modules/auth';
+import { toggle as toggleNavigation } from 'modules/navigation';
+
 import Navigation from 'components/Navigation';
 import Toolbar from 'components/Toolbar';
 
@@ -14,9 +16,8 @@ const { func, string, object } = PropTypes;
 export class App extends Component {
   static propTypes = {
     pushPath: func.isRequired,
+    replacePath: func.isRequired,
     logout: func.isRequired,
-    currentPath: string.isRequired,
-    user: object.isRequired,
   }
 
   handleLogout() {
@@ -25,28 +26,54 @@ export class App extends Component {
   }
 
   render() {
-    const { user, pushPath, logout, currentPath, children } = this.props;
+    const {
+      auth: { data: { user } },
+      routing,
+      navigation,
+      toggleNavigation,
+      rooms,
+      playlists,
+      pushPath,
+      children
+    } = this.props;
+
+    const commonProps = {
+      user,
+      currentPath: routing.path,
+      pushPath,
+      rooms,
+      playlists
+    };
+
+    const navigationProps = {
+      ...navigation,
+      ...commonProps
+    };
+
+    const toolbarProps = {
+      navigation: {
+        slim: navigation.slim,
+        toggle: toggleNavigation
+      }
+    };
+
     return (
       <div styleName='root'>
-        <Navigation
-          logout={::this.handleLogout}
-          { ...{ user, pushPath, currentPath } } />
+        <Navigation { ...navigationProps } logout={::this.handleLogout} />
         <div styleName='main'>
-          <Toolbar />
-          {children}
+          <Toolbar { ...toolbarProps } />
+          <section styleName='content'>
+            {children}
+          </section>
         </div>
       </div>
     );
   }
 }
 
-export default connect(
-  s => ({
-    user: s.auth.data.user,
-    currentPath: s.routing.path
-  }), {
-    replacePath,
-    pushPath,
-    logout
-  }
-)(css(App, style));
+export default connect(s => s, {
+  replacePath,
+  pushPath,
+  logout,
+  toggleNavigation
+})(css(App, style));

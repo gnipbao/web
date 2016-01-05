@@ -1,4 +1,51 @@
+@import "variables";
+@import "media";
+
+:root {
+}
+
+.button {
+  min-width: 5rem;
+  min-height: 6rem;
+}
+
+.toggle {
+  composes: button;
+  background-color: var(--background);
+}
+
+.search {
+  composes: button;
+  background-color: #fff;
+}
+
+.input {
+  min-width: 28rem;
+}
+
 .root {
-  display: flex;
-  align-items: center;
+  display: none;
+  height: 6rem;
+  background-color: #fff;
+
+  & > .search[data-react-toolbox="button"] {
+    color: var(--text-color);
+
+    &:hover {
+      background-color: #fff;
+      color: var(--brand-dark);
+    }
+  }
+  & > .toggle[data-react-toolbox="button"] {
+    color: var(--brand-dark);
+    &:hover {
+      background-color: #fff;
+      color: var(--brand-dark);
+    }
+  }
+
+  @media (--medium) {
+    display: flex;
+    align-items: center;
+  }
 }
