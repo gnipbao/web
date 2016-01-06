@@ -8,14 +8,15 @@
 }
 
 .info {
-  lost-row: 1/4 0 0;
-  display: flex;
-  flex-direction: column;
+  lost-row: 1/4;
+  lost-flex-container: column;
+
   align-items: center;
   justify-content: center;
+
   margin-top: 20px;
 
-  @media (--medium) { lost-column: 1/4 0 0; }
+  @media (--medium) { lost-column: 1/4; }
 }
 
 .profile {
@@ -24,8 +25,13 @@
 }
 
 .avatar {
-  size: 128px;
   margin-bottom: 12px;
+  size: 128px;
+
+  & > span {
+    padding: 46px 20px;
+    font-size: 12rem;
+  }
 }
 
 .username {
@@ -38,43 +44,8 @@
   color: color(var(--text-color) tint(30%));
 }
 
-.stats {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 100%;
-  margin: 15px 0;
-  padding: 14px;
-  list-style: none;
-  border: 1px solid transparent;
-  border-radius: 2px;
-  background-color: #fff;
-  box-shadow: 0 1px 1px rgba(#000, .05);
-  text-align: center;
-  font-size: responsive 1.2rem 1.4rem;
-
-  @media (--medium) { flex-direction: column; }
-  @media (--large) { flex-direction: row; }
-
-  .label, .value {
-    font-size: responsive 1rem 1.4rem;
-    display: block;
-    margin-bottom: 4px;
-  }
-
-  .value {
-    font-weight: bold;
-    color: color(var(--text-color) shade(30%));
-  }
-
-  .label {
-    color: color(var(--text-color) tint(30%));
-  }
-}
-
 .activity {
-  lost-row: 3/4 0 0;
+  lost-row: 3/4;
 
-  @media (--medium) { lost-column: 3/4 0 0; }
+  @media (--medium) { lost-column: 3/4; }
 }

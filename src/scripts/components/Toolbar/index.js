@@ -1,5 +1,6 @@
 import css from 'react-css-modules';
 
+import Select from 'react-select';
 import FontIcon from 'react-toolbox/lib/font_icon';
 import Button from 'react-toolbox/lib/button';
 import Tooltip from 'react-toolbox/lib/tooltip';
@@ -11,6 +12,11 @@ import style from './style';
 
 const { bool, func, object } = PropTypes;
 
+const options = [
+  { value: 'one', label: 'One' },
+  { value: 'two', label: 'Two' }
+];
+
 export const Toolbar = (props) => {
   const { navigation } = props;
 
@@ -20,16 +26,21 @@ export const Toolbar = (props) => {
         icon={ navigation.slim ? 'format_indent_increase' : 'format_indent_decrease' }
         onClick={navigation.toggle}
         tooltip='Toggle navigation bar'
-        className={style.toggle}
+        styleName='toggle'
       />
       <TooltipButton flat
         icon='search'
         tooltip='Search rooms'
-        className={style.search}
+        styleName='search'
       />
       <Input type='text'
         label='search rooms'
-        className={style.input}
+        styleName='input'
+      />
+      <Select
+        name='form-field-name'
+        value='one'
+        options={options}
       />
     </div>
   );

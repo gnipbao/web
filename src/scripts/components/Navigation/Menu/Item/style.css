@@ -14,7 +14,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 8px 12px;
+  padding: 18px;
   cursor: pointer;
   transition: background-color .2s ease-in-out 0s;
 
@@ -37,6 +37,7 @@
 }
 
 .icon {
+  color: var(--brand-light);
   font-size: responsive 1.4rem 1.8rem;
 }
 

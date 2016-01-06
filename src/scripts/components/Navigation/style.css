@@ -25,5 +25,5 @@
 
 .slim {
   composes: nav;
-  @media (--medium) { width: 48px; }
+  @media (--medium) { width: 60px; }
 }

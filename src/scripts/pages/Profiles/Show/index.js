@@ -1,23 +1,36 @@
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
-
 import css from 'react-css-modules';
 
+import Progress from 'react-progress-2';
+import { prefetch, defer } from 'react-fetcher';
+
 import { Tabs, Tab } from 'react-toolbox/lib/tabs';
-import Avatar from 'react-toolbox/lib/avatar';
-import Button from 'react-toolbox/lib/button';
 import Tooltip from 'react-toolbox/lib/tooltip';
+import Button from 'react-toolbox/lib/button';
 
 const TooltipButton = Tooltip(Button);
 
+import * as actions from 'modules/profile';
+
+import Avatar from 'components/user/avatar';
+import Stats from './Stats';
 import Activity from './Activity';
 import Favorites from './Favorites';
 import style from './style';
 
 const { object } = PropTypes;
 
+@prefetch(({ dispatch }) => dispatch(actions.index()))
+@css(style)
 export class Page extends Component {
-  state = { index: 1 };
+  state = { index: 2 };
+
+  componentDidMount() {
+    const { index, profile: { data } } = this.props;
+    if (!data) index();
+    // Progress.show();
+  }
 
   handleTabChange(index) {
     this.setState({ index });
@@ -27,35 +40,37 @@ export class Page extends Component {
   }
 
   render() {
-    const { picture, first_name, last_name, role, karma } = this.props.auth.data.user;
+    const { profile: { data } } = this.props;
+    const { first_name, last_name, role, karma, stats } = data;
+
     const name = `${first_name} ${last_name}`;
+
     return (
-      <div styleName='root'>
+      <section>
         <Helmet title={name} />
-        <section styleName='info'>
-          <Avatar styleName='avatar'
-            image={picture}
-            title={picture ? null : nickname || first_name}
-          />
-          <dl styleName='profile'>
-            <dt styleName='username'>{name}</dt>
-            <dt styleName='role'>{role}</dt>
-          </dl>
-          <ul styleName='stats'>
-            <li><span styleName='value'>{karma}</span><span styleName='label'>karma</span></li>
-            <li><span styleName='value'>0</span><span styleName='label'>playlists</span></li>
-            <li><span styleName='value'>0</span><span styleName='label'>tracks</span></li>
-          </ul>
-        </section>
-        <section styleName='activity'>
-          <Tabs index={this.state.index} onChange={::this.handleTabChange}>
-            <Tab label='Activity'><Activity /></Tab>
-            <Tab label='Favorites' onActive={this.handleActive}><Favorites /></Tab>
-          </Tabs>
-        </section>
-      </div>
+        <Progress.Component />
+        <div styleName='root'>
+          <section styleName='info'>
+            <Avatar styleName='avatar' { ...data } />
+            <dl styleName='profile'>
+              <dt styleName='username'>{name}</dt>
+              <dt styleName='role'>{role}</dt>
+            </dl>
+            <Stats { ...stats } />
+          </section>
+          <section styleName='activity'>
+            <Tabs index={this.state.index} onChange={::this.handleTabChange}>
+              <Tab label='Activity'><Activity /></Tab>
+              <Tab label='Invites'><p>Nothing to see here...</p></Tab>
+              <Tab label='Favorites' onActive={this.handleActive}><Favorites /></Tab>
+            </Tabs>
+          </section>
+        </div>
+      </section>
     );
   }
 }
 
-export default connect(s => s)(css(Page, style));
+export default connect(s => ({
+  profile: s.profile
+}), { ...actions })(Page);

@@ -10,7 +10,7 @@ export const Item = (props) => {
   return (
     <a styleName={active ? 'active' : 'normal' }
       {...{ ...anchor, onClick } }>
-      {icon ? <FontIcon className={style.icon} value={icon} /> : null}
+      {icon ? <FontIcon styleName='icon' value={icon} /> : null}
       {!slim && label ? <abbr styleName='label'>{label}</abbr> : null}
       {!slim && count && parseInt(count) !== 0 ? <small styleName='count'>{count}</small> : null}
     </a>

@@ -6,8 +6,6 @@ import ReduxIntlContainer from 'components/ReduxIntlContainer';
 
 export default (history, store) => (
   <Provider store={store}>
-    <ReduxIntlContainer>
-      <Router history={history}>{createRoutes(store)}</Router>
-    </ReduxIntlContainer>
+    <Router history={history}>{createRoutes(store)}</Router>
   </Provider>
 );

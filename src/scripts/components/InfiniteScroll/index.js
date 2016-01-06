@@ -1,4 +1,4 @@
-import Scrollable from '../Scrollable';
+import Scrollable from 'components/Scrollable';
 
 const { node, bool, number, func } = PropTypes;
 

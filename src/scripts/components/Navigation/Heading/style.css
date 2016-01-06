@@ -11,16 +11,20 @@
   align-content: center;
   align-items: center;
   padding: 12px;
-  height: 6rem;
+  height: 60px;
   background-color: var(--background);
 
-  svg { size: var(--logo-size); }
+  svg {
+    width: 34px;
+    height: 28.8px;
+  }
 }
 
 .normal {
   composes: root;
 
   > .title {
+    color: var(--brand-light);
     margin-left: 14px;
     font-size: 2rem;
     font-weight: bold;

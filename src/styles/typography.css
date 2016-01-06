@@ -1,7 +1,7 @@
 @import "variables";
 
 :root {
-  --link-color: var(--gray);
+  --link-color: var(--text-color);
 }
 
 html {
@@ -17,6 +17,17 @@ html, body {
 body {
   font-family: var(--font-family);
   font-size: var(--font-size-base);
+}
+
+h1, h2, h3, h4, h6, h6 {
+  color: var(--text-color);
+}
+
+section {
+  & > h1 {
+    font-weight: 100;
+    font-size: responsive 3rem 4rem;
+  }
 }
 
 a {

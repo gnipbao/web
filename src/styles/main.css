@@ -1,8 +1,7 @@
-@import "variables";
 @import "typography";
 
-@lost gutter 30px;
+@lost gutter 10px;
 @lost cycle auto;
 @lost flexbox flex;
 
-/* html, body { overflow-x: hidden; } */
+html, body { overflow-x: hidden; }

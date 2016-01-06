@@ -1,7 +1,58 @@
+@import "variables";
+
 .root {
   composes: card from "styles/layout";
+  margin-bottom: 10px;
 }
 
 .card {
+  background-color: #fff;
   overflow: visible;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  background-color: var(--brand-light);
+  color: var(--text-color);
+}
+
+.title {
+  font-size: responsive 1.2rem 2.4rem;
+  text-shadow: 1px 1px 2px #fff;
+}
+
+.rating {
+  composes: badge from "styles/badges";
+  background-color: var(--brand-danger);
+  color: var(--brand-light);
+  font-size: responsive 1rem 1.8rem;
+}
+
+.info {
+}
+
+.stats {
+}
+
+.actions {
+  padding: 0;
+  background-color: color(var(--brand-light) shade(5%));
+
+  & > button[data-react-toolbox="button"] {
+    margin: 0;
+    width: 100%;
+    border-radius: 0;
+    font-size: 2rem;
+  }
+
+  & > .join[data-react-toolbox="button"] {
+    color: var(--text-color);
+  }
+
+  & > .listen[data-react-toolbox="button"] {
+    color: var(--text-color);
+  }
 }

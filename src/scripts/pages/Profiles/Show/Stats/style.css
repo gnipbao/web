@@ -1,0 +1,38 @@
+@import "variables";
+@import "media";
+
+.root {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  margin: 15px 0;
+  padding: 14px;
+  list-style: none;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  background-color: #fff;
+  box-shadow: 0 1px 1px rgba(#000, .05);
+  text-align: center;
+  font-size: responsive 1.2rem 1.4rem;
+
+  @media (--medium) { flex-direction: column; }
+  @media (--large) { flex-direction: row; }
+
+  .label, .value {
+    font-size: responsive 1.2rem 1.4rem;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .value {
+    font-weight: bold;
+    color: color(var(--text-color) shade(30%));
+  }
+
+  .label {
+    color: color(var(--text-color) tint(30%));
+  }
+}
+

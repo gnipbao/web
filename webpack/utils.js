@@ -11,7 +11,7 @@ export const localIdentName = env.development || env.test ?
   '[hash:base64:5]';
 
 export const cssOptions = {
-  css: `importLoaders=2&modules&localIdentName=${localIdentName}`,
+  css: `modules&importLoaders=2&localIdentName=${localIdentName}`,
   sass: `modules&localIdentName=${localIdentName}`
 };
 

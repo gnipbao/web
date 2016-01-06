@@ -4,15 +4,23 @@ import { cssOptions } from '../../utils';
 export default [
   {
     test: /\.css$/,
+    include: [paths.modules],
+    loaders: [
+      'style',
+      'css?importLoaders=1',
+      'postcss'
+    ]
+  },
+  {
+    test: /\.css$/,
     include: [
-      paths.modules,
       paths.styles,
-      paths.scripts,
+      paths.scripts
     ],
     loaders: [
       'style',
       `css?${cssOptions.css}`,
-      'postcss',
+      'postcss'
     ]
   },
   {
@@ -20,8 +28,8 @@ export default [
     exclude: /node_modules\/react-toolbox\/lib/,
     loaders: [
       'style',
-      `css?${cssOptions.sass}`,
-      `sass?includePath[]=${paths.modules}`,
+      'css',
+      `sass?includePath[]=${paths.modules}`
     ],
   },
   {
@@ -31,23 +39,24 @@ export default [
       'style',
       `css?${cssOptions.sass}`,
       `sass?includePath[]=${paths.modules}`,
-      'toolbox',
-    ],
+      'toolbox'
+    ]
   },
   {
     test: /\.sass$/,
+    include: [paths.modules],
     loaders: [
       'style',
       `css?${cssOptions.sass}`,
-      `sass?includePath[]=${paths.modules}&indentedSyntax`,
-    ],
+      `sass?includePath[]=${paths.modules}&indentedSyntax`
+    ]
   },
   {
     test: /\.jsx?$/,
     loader: 'babel',
     include: [
       /node_modules\/qs/,
-      paths.scripts,
+      paths.scripts
     ],
     query: {
       presets: [

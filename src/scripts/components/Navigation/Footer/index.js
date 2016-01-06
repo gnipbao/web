@@ -1,6 +1,6 @@
 import css from 'react-css-modules';
 
-import Avatar from 'react-toolbox/lib/avatar';
+import Avatar from 'components/user/avatar';
 import Button from 'react-toolbox/lib/button';
 import Tooltip from 'react-toolbox/lib/tooltip';
 

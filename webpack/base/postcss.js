@@ -21,7 +21,10 @@ export default (bundler) => [
 
   require('postcss-import')({
     addDependencyTo: bundler,
-    path: [paths.styles]
+    path: [
+      paths.modules,
+      paths.styles
+    ]
   }),
   require('postcss-custom-media'),
   require('precss'),

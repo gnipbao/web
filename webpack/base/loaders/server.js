@@ -9,17 +9,38 @@ export default [
   ...common,
   {
     test: /\.css$/,
-    include: [paths.modules, paths.styles, paths.scripts],
-    loaders: [`css/locals?${cssOptions.css}`, 'postcss']
+    include: [paths.modules],
+    loaders: [
+      'css/locals',
+      'postcss'
+    ]
+  },
+  {
+    test: /\.css$/,
+    include: [
+      paths.styles,
+      paths.scripts
+    ],
+    loaders: [
+      `css/locals?${cssOptions.css}`,
+      'postcss'
+    ]
   },
   {
     test: /\.scss$/,
     exclude: /node_modules\/react-toolbox\/lib/,
-    loaders: [`css/locals?${cssOptions.sass}`, `sass?includePath[]=${paths.modules}`],
+    loaders: [
+      'css/locals',
+      `sass?includePath[]=${paths.modules}`
+    ]
   },
   {
     test: /\.scss$/,
     include: /node_modules\/react-toolbox\/lib/,
-    loaders: [`css/locals?${cssOptions.sass}`, `sass?includePath[]=${paths.modules}`, 'toolbox'],
+    loaders: [
+      'css/locals',
+      `sass?includePath[]=${paths.modules}`,
+      'toolbox'
+    ]
   }
 ]

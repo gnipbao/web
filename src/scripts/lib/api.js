@@ -1,4 +1,5 @@
 import { stringify } from 'qs';
+import fetch from 'isomorphic-fetch';
 
 export default class Api {
   constructor(root, getHeaders = () => {}) {

@@ -4,6 +4,7 @@ import css from 'react-css-modules';
 
 import { prefetch, defer } from 'react-fetcher';
 
+import { List } from 'react-toolbox/lib/list';
 import Tooltip from 'react-toolbox/lib/tooltip';
 import Button from 'react-toolbox/lib/button';
 
@@ -23,17 +24,18 @@ export class Page extends Component {
   }
 
   render() {
-    const { index, playlists } = this.props;
+    const { playlists } = this.props;
 
     return (
-      <div styleName='root'>
+      <section>
         <Helmet title='Playlists' />
-        <Item key={123} title='1111' />
-        <Item key={222} title='2222' />
-        <Item key={333} title='333' />
-        <Item key={4} title='44' />
-        <Item key={5} title='5555555' />
-      </div>
+        <h1>Playlists</h1>
+        <div styleName='root'>
+          <List selectable ripple>
+            {playlists.list.map((item, i) => <Item key={i} {...item} />)}
+          </List>
+        </div>
+      </section>
     );
   }
 }
