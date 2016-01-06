@@ -127,7 +127,7 @@
     "electron-prebuilt": "0.36.2",
     "enzyme": "1.2.0",
     "eslint": "1.10.3",
-    "eslint-config-airbnb": "3.0.0",
+    "eslint-config-airbnb": "3.0.1",
     "eslint-friendly-formatter": "1.2.2",
     "eslint-loader": "1.2.0",
     "eslint-plugin-import": "0.12.1",
