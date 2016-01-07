@@ -232,7 +232,7 @@
     "sinon-chai": "2.8.0",
     "stats-webpack-plugin": "vyorkin-forks/stats-webpack-plugin",
     "style-loader": "0.13.0",
-    "stylelint": "3.2.0",
+    "stylelint": "3.2.1",
     "stylelint-config-suitcss": "2.0.0",
     "svg-inline-loader": "0.4.0",
     "toolbox-loader": "0.0.3",
