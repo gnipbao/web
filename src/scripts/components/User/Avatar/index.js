@@ -10,7 +10,6 @@ const Ava = (props) => {
     floating,
 
     small,
-    normal,
     big,
 
     picture,
@@ -24,7 +23,8 @@ const Ava = (props) => {
 
 
   const shape = floating ? 'floating' : 'squared';
-  const styleName = classNames(shape, { small, normal, big });
+  const size = small ? 'small' : big ? 'big' : 'normal';
+  const styleName = classNames(shape, size);
   const title = nickname || first_name;
 
   return (
@@ -40,7 +40,6 @@ const Ava = (props) => {
 Ava.propTypes = {
   floating: bool,
   small: bool,
-  normal: bool,
   big: bool,
 
   children: node,
@@ -53,7 +52,6 @@ Ava.propTypes = {
 Ava.defaultProps = {
   floating: false,
   small: false,
-  normal: true,
   big: false
 };
 

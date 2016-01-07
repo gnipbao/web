@@ -16,8 +16,6 @@
   composes: root;
 
   .avatar {
-    min-width: 40px;
-
     &:hover {
       animation-duration: 0.5s;
       animation-name: rotate;

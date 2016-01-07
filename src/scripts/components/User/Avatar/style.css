@@ -42,19 +42,16 @@
 }
 
 .small {
-  composes: root;
-  size: 24px;
+  size: 30px;
   font-size: 2.4rem;
 }
 
 .normal {
-  composes: root;
   size: 40px;
   font-size: 3.4rem;
 }
 
 .big {
-  composes: root;
   size: 128px;
   font-size: 8rem;
 }
