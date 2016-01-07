@@ -1,6 +1,5 @@
 import css from 'react-css-modules';
 
-import 'react-progress-2/main.css';
 import 'react-select/dist/react-select.css';
 
 import 'styles/toolbox/main';

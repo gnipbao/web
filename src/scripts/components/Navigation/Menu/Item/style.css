@@ -42,7 +42,7 @@
 }
 
 .count {
-  composes: badge from "styles/badges";
+  composes: round from "styles/badges";
   margin-left: 14px;
   font-size: responsive 0.8rem 1rem;
   background-color: var(--brand-dark);

@@ -1,32 +1,62 @@
-import Avatar from 'react-toolbox/lib/avatar';
+import css from 'react-css-modules';
+import classNames from 'classnames';
 
 import style from './style';
 
-const { string } = PropTypes;
+const { string, bool, node } = PropTypes;
 
 const Ava = (props) => {
   const {
+    floating,
+
+    small,
+    normal,
+    big,
+
     picture,
     nickname,
     first_name,
-    className,
+
+    children,
+
     ...other
   } = props;
 
+
+  const shape = floating ? 'floating' : 'squared';
+  const styleName = classNames(shape, { small, normal, big });
+  const title = nickname || first_name;
+
   return (
-    <Avatar className={`${style.root} ${className}`}
-      image={picture}
-      title={picture ? null : nickname || first_name || '?'}
-      {...other}
-    />
+    <div { ...{ ...other, styleName } }>
+      {children}
+      {picture ?
+        <img styleName='image' src={picture} title={title || 'avatar'} /> :
+        <span styleName='letter'>{title && title[0] || '?'}</span>}
+    </div>
   );
 };
 
 Ava.propTypes = {
+  floating: bool,
+  small: bool,
+  normal: bool,
+  big: bool,
+
+  children: node,
+
   picture: string,
   nickname: string,
-  first_name: string,
-  className: string
+  first_name: string
 };
 
-export default Ava;
+Ava.defaultProps = {
+  floating: false,
+  small: false,
+  normal: true,
+  big: false
+};
+
+export default css(Ava, style, {
+  allowMultiple: true
+});

@@ -15,10 +15,14 @@ const { bool, func, object } = PropTypes;
 export const Toolbar = (props) => {
   const { navigation } = props;
 
+  const icon = navigation.slim ?
+    'format_indent_increase' :
+    'format_indent_decrease';
+
   return (
     <div styleName='root'>
       <TooltipButton flat ripple={false}
-        icon={ navigation.slim ? 'format_indent_increase' : 'format_indent_decrease' }
+        icon={icon}
         onClick={navigation.toggle}
         tooltip='Toggle navigation bar'
         styleName='toggle'

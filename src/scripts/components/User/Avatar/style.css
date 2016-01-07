@@ -1,8 +1,60 @@
 @import "variables";
 
 :root {
+  --root-background: color(var(--background) shade(10%));
+  --root-text-color: #fff;
 }
 
 .root {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  text-align: center;
+  background-color: var(--root-background);
+  color: var(--root-text-color);
+}
+
+.image {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  background-position: center;
+  background-size: cover;
+}
+
+.letter {
   text-transform: uppercase;
+}
+
+.squared {
+  composes: root;
+}
+
+.floating {
+  composes: root;
+  border-radius: 50%;
+
+  & > .image {
+    border-radius: 50%;
+  }
+}
+
+.small {
+  composes: root;
+  size: 24px;
+  font-size: 2.4rem;
+}
+
+.normal {
+  composes: root;
+  size: 40px;
+  font-size: 3.4rem;
+}
+
+.big {
+  composes: root;
+  size: 128px;
+  font-size: 8rem;
 }

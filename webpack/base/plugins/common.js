@@ -9,7 +9,6 @@ const modules = {
   ReactDOM: 'react-dom',
   ReactDOMServer: 'react-dom/server',
   R: 'ramda',
-  classNames: 'classnames',
   themeable: 'react-themeable',
   dude: 'debug-dude',
   Helmet: 'react-helmet'

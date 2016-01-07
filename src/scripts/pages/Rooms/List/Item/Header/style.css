@@ -18,15 +18,15 @@
   composes: truncate from "styles/utils";
 
   max-width: 75%;
-  font-size: responsive 1.4rem 1.8rem;
+  font-size: responsive 1.4rem 1.6rem;
   text-shadow: 1px 1px 2px #fff;
 }
 
 .rating {
-  composes: badge from "styles/badges";
+  composes: squared from "styles/badges";
 
   background-color: color(var(--brand-dark) tint(40%));
   color: var(--brand-light);
-  font-size: responsive 1.2rem 1.6rem;
+  font-size: responsive 1.2rem 1.4rem;
 }
 

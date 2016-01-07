@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { pushPath, replacePath } from 'redux-simple-router';
 
 import { logout } from 'modules/auth';
+import { reset as resetProfile  } from 'modules/profile';
 import { toggle as toggleNavigation } from 'modules/navigation';
 
 import Navigation from 'components/Navigation';
@@ -18,10 +19,12 @@ export class App extends Component {
     pushPath: func.isRequired,
     replacePath: func.isRequired,
     logout: func.isRequired,
+    resetProfile: func.isRequired
   };
 
   handleLogout() {
     this.props.logout();
+    this.props.resetProfile();
     this.props.replacePath('/sign-in');
   }
 
@@ -75,5 +78,6 @@ export default connect(s => s, {
   replacePath,
   pushPath,
   logout,
+  resetProfile,
   toggleNavigation
 })(css(App, style));

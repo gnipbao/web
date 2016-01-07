@@ -14,9 +14,11 @@ export const Footer = ({ slim, pushPath, logout, user }) => {
 
   return (
     <div styleName={ slim ? 'slim' : 'normal' }>
-      <Avatar styleName='avatar'
-        image={picture} title={picture ? null : nickname || first_name}
-        onClick={() => pushPath('/profile')} />
+      <Avatar floating small
+        styleName='avatar'
+        onClick={() => pushPath('/profile')}
+        { ...{ nickname, first_name, picture } }
+      />
       <dl styleName='info'>
         <dt styleName='username'>{first_name}</dt>
         <dt styleName='role'>{role}</dt>
@@ -36,8 +38,10 @@ export const Footer = ({ slim, pushPath, logout, user }) => {
 }
 
 Footer.propTypes = {
+  slim: bool.isRequired,
+  pushPath: func.isRequired,
   logout: func.isRequired,
-  slim: bool.isRequired
+  user: object.isRequired
 }
 
 export default css(Footer, style);

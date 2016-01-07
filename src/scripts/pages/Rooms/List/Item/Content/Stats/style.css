@@ -9,7 +9,6 @@
   .label, .value {
     display: block;
     margin-bottom: 4px;
-    color: var(--text-color);
   }
 
   .value {
@@ -19,11 +18,11 @@
 
   .label {
     font-size: responsive 1.2rem 1.4rem;
+    color: var(--text-color);
   }
 }
 
 .item {
-  color: var(--brand-light);
   width: 50%;
   padding: 8px;
 }
@@ -31,9 +30,11 @@
 .users {
   composes: item;
   background-color: var(--brand-success-pastel);
+  color: var(--brand-success);
 }
 
 .tracks {
   composes: item;
   background-color: var(--brand-info-pastel);
+  color: var(--brand-info);
 }

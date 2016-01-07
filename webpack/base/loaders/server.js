@@ -11,7 +11,7 @@ export default [
     test: /\.css$/,
     include: [paths.modules],
     loaders: [
-      'css/locals',
+      'css/locals?importLoaders=1',
       'postcss'
     ]
   },
@@ -38,9 +38,17 @@ export default [
     test: /\.scss$/,
     include: /node_modules\/react-toolbox\/lib/,
     loaders: [
-      'css/locals',
+      `css/locals?${cssOptions.sass}`,
       `sass?includePath[]=${paths.modules}`,
       'toolbox'
     ]
-  }
+  },
+  {
+    test: /\.sass$/,
+    include: [paths.modules],
+    loaders: [
+      'css/locals',
+      `sass?includePath[]=${paths.modules}&indentedSyntax`
+    ]
+  },
 ]

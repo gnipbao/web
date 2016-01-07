@@ -2,12 +2,12 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import css from 'react-css-modules';
 
-import Progress from 'react-progress-2';
 import { prefetch, defer } from 'react-fetcher';
 
 import { Tabs, Tab } from 'react-toolbox/lib/tabs';
 import Tooltip from 'react-toolbox/lib/tooltip';
 import Button from 'react-toolbox/lib/button';
+import ProgressBar from 'react-toolbox/lib/progress_bar';
 
 const TooltipButton = Tooltip(Button);
 
@@ -31,16 +31,6 @@ export class Page extends Component {
     if (R.isEmpty(data)) index();
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { profile: { loading } } = nextProps;
-
-    if (loading) {
-      Progress.show();
-    } else {
-      Progress.hide();
-    }
-  }
-
   handleTabChange(index) {
     this.setState({ index });
   }
@@ -52,18 +42,45 @@ export class Page extends Component {
     const { profile } = this.props;
     const { loading, error, data } = profile;
 
-    if (loading) return null;
+    return loading ? this.renderProgress() : this.renderData(data);
+  }
 
+  renderProgress() {
+    return <ProgressBar />;
+  }
+
+  renderData(data) {
     const { first_name, last_name } = data;
 
     return (
       <section>
         <Helmet title={`${first_name} ${last_name}`} />
-        <Progress.Component />
         <div styleName='root'>
           {this.renderInfo(data)}
           {this.renderTabs()}
         </div>
+      </section>
+    );
+  }
+
+  renderInfo(data) {
+    const {
+      first_name,
+      last_name,
+      role,
+      karma,
+      stats
+    } = data;
+
+    return (
+      <section styleName='info'>
+        <Avatar floating big styleName='avatar' { ...data } />
+        <dl styleName='profile'>
+          <dt styleName='username'>{`${first_name} ${last_name}`}</dt>
+          <dt styleName='role'>{role}</dt>
+          <dt styleName='karma'>{karma.toFixed(2)}</dt>
+        </dl>
+        <Stats { ...stats } />
       </section>
     );
   }
@@ -79,28 +96,6 @@ export class Page extends Component {
         <Tab label='Favorites' onActive={this.handleActive}><Favorites /></Tab>
 
       </Tabs>
-    );
-  }
-
-  renderInfo(data) {
-    const {
-      first_name,
-      last_name,
-      role,
-      karma,
-      stats
-    } = data;
-
-    return (
-      <section styleName='info'>
-        <Avatar styleName='avatar' { ...data } />
-        <dl styleName='profile'>
-          <dt styleName='username'>{`${first_name} ${last_name}`}</dt>
-          <dt styleName='role'>{role}</dt>
-          <dt styleName='karma'>{karma.toFixed(2)}</dt>
-        </dl>
-        <Stats { ...stats } />
-      </section>
     );
   }
 }
