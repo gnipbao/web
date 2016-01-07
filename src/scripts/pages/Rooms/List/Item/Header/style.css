@@ -1,7 +1,7 @@
 @import "variables";
 
 :root {
-  --root-background: color(var(--background) shade(10%));
+  --root-background: color(var(--background) shade(5%));
   --root-text-color: color(var(--text-color) shade(20%));
 }
 
@@ -25,7 +25,7 @@
 .rating {
   composes: badge from "styles/badges";
 
-  background-color: color(var(--brand-dark) tint(20%));
+  background-color: color(var(--brand-dark) tint(40%));
   color: var(--brand-light);
   font-size: responsive 1.2rem 1.6rem;
 }

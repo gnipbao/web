@@ -4,6 +4,7 @@
 }
 
 .root {
+  background-color: var(--brand-primary-pastel);
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -13,6 +14,7 @@
 
 .avatar {
   size: 64px;
+  margin-right: 10px;
 
   & > span {
     padding: 14px 10px;
@@ -22,12 +24,14 @@
 
 .details {
   composes: vertical from "styles/layout";
+  max-width: 60%;
 }
 
 .username {
+  composes: truncate from "styles/utils";
+
   margin-bottom: 6px;
-  font-size: 1.2em;
-  font-weight: bold;
+  font-size: responsive 1.2rem 1.6rem;
   color: color(var(--text-color) shade(20%));
 }
 

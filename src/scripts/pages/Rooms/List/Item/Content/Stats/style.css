@@ -35,5 +35,5 @@
 
 .tracks {
   composes: item;
-  background-color: var(--brand-primary-pastel);
+  background-color: var(--brand-info-pastel);
 }

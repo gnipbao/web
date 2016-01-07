@@ -18,7 +18,7 @@ export class App extends Component {
     pushPath: func.isRequired,
     replacePath: func.isRequired,
     logout: func.isRequired,
-  }
+  };
 
   handleLogout() {
     this.props.logout();

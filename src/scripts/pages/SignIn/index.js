@@ -37,11 +37,11 @@ export class SignInPage extends Component {
 
   static contextTypes = {
     router: object
-  }
+  };
 
   static propTypes = {
     fields: object.isRequired
-  }
+  };
 
   handleLogin(provider, code) {
     this.props.login(provider, code);

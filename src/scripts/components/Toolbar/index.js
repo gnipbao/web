@@ -12,11 +12,6 @@ import style from './style';
 
 const { bool, func, object } = PropTypes;
 
-const options = [
-  { value: 'one', label: 'One' },
-  { value: 'two', label: 'Two' }
-];
-
 export const Toolbar = (props) => {
   const { navigation } = props;
 
@@ -36,11 +31,6 @@ export const Toolbar = (props) => {
       <Input type='text'
         label='search rooms'
         styleName='input'
-      />
-      <Select
-        name='form-field-name'
-        value='one'
-        options={options}
       />
     </div>
   );
