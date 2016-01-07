@@ -6,7 +6,17 @@ import style from './style';
 const { bool, string, number, func } = PropTypes;
 
 export const Item = (props) => {
-  const { active, onClick, slim, label, icon, count, styleName, ...anchor } = props;
+  const {
+    active,
+    onClick,
+    slim,
+    label,
+    icon,
+    count,
+    styleName,
+    ...anchor
+  } = props;
+
   return (
     <a styleName={active ? 'active' : 'normal' }
       {...{ ...anchor, onClick } }>

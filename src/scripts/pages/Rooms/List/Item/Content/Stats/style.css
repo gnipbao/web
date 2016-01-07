@@ -1,0 +1,39 @@
+@import "variables";
+
+:root {
+}
+
+.root {
+  composes: stats from "styles/layout";
+
+  .label, .value {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--text-color);
+  }
+
+  .value {
+    font-size: responsive 1.8rem 2.2rem;
+    font-weight: bold;
+  }
+
+  .label {
+    font-size: responsive 1.2rem 1.4rem;
+  }
+}
+
+.item {
+  color: var(--brand-light);
+  width: 50%;
+  padding: 8px;
+}
+
+.users {
+  composes: item;
+  background-color: var(--brand-success-pastel);
+}
+
+.tracks {
+  composes: item;
+  background-color: var(--brand-primary-pastel);
+}

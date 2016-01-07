@@ -6,14 +6,14 @@ import { prefetch, defer } from 'react-fetcher';
 import Tooltip from 'react-toolbox/lib/tooltip';
 import Button from 'react-toolbox/lib/button';
 
-import * as rooms from 'modules/rooms';
+import * as actions from 'modules/rooms';
 
 import Item from './Item';
 import style from './style';
 
 const { object } = PropTypes;
 
-@prefetch(({ dispatch }) => dispatch(rooms.index()))
+@prefetch(({ dispatch }) => dispatch(actions.index()))
 @css(style)
 export class Page extends Component {
   componentDidMount() {
@@ -38,4 +38,4 @@ export class Page extends Component {
 
 export default connect(s => ({
   rooms: s.rooms
-}), { ...rooms })(Page);
+}), { ...actions })(Page);

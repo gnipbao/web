@@ -9,7 +9,7 @@ import * as api from 'services/profile';
 export const index = asyncAction('profile.index', () => api.index());
 
 const initialState = {
-  data: null,
+  data: {},
   loading: false
 };
 

@@ -44,7 +44,15 @@
   color: color(var(--text-color) tint(30%));
 }
 
-.activity {
+.karma {
+  composes: badge from "styles/badges";
+  margin-top: 10px;
+  font-size: responsive 2rem 2.4rem;
+  background-color: var(--brand-success);
+  color: var(--brand-light);
+}
+
+.tabs {
   lost-row: 3/4;
 
   @media (--medium) { lost-column: 3/4; }

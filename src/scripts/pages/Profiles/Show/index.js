@@ -13,7 +13,7 @@ const TooltipButton = Tooltip(Button);
 
 import * as actions from 'modules/profile';
 
-import Avatar from 'components/user/avatar';
+import Avatar from 'components/User/Avatar';
 import Stats from './Stats';
 import Activity from './Activity';
 import Favorites from './Favorites';
@@ -28,8 +28,17 @@ export class Page extends Component {
 
   componentDidMount() {
     const { index, profile: { data } } = this.props;
-    if (!data) index();
-    // Progress.show();
+    if (R.isEmpty(data)) index();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { profile: { loading } } = nextProps;
+
+    if (loading) {
+      Progress.show();
+    } else {
+      Progress.hide();
+    }
   }
 
   handleTabChange(index) {
@@ -40,32 +49,57 @@ export class Page extends Component {
   }
 
   render() {
-    const { profile: { data } } = this.props;
-    const { first_name, last_name, role, karma, stats } = data;
+    const { profile } = this.props;
+    const { loading, error, data } = profile;
 
-    const name = `${first_name} ${last_name}`;
+    if (loading) return null;
+
+    const { first_name, last_name } = data;
 
     return (
       <section>
-        <Helmet title={name} />
+        <Helmet title={`${first_name} ${last_name}`} />
         <Progress.Component />
         <div styleName='root'>
-          <section styleName='info'>
-            <Avatar styleName='avatar' { ...data } />
-            <dl styleName='profile'>
-              <dt styleName='username'>{name}</dt>
-              <dt styleName='role'>{role}</dt>
-            </dl>
-            <Stats { ...stats } />
-          </section>
-          <section styleName='activity'>
-            <Tabs index={this.state.index} onChange={::this.handleTabChange}>
-              <Tab label='Activity'><Activity /></Tab>
-              <Tab label='Invites'><p>Nothing to see here...</p></Tab>
-              <Tab label='Favorites' onActive={this.handleActive}><Favorites /></Tab>
-            </Tabs>
-          </section>
+          {this.renderInfo(data)}
+          {this.renderTabs()}
         </div>
+      </section>
+    );
+  }
+
+  renderTabs() {
+    return (
+      <Tabs styleName='tabs'
+        index={this.state.index}
+        onChange={::this.handleTabChange}>
+
+        <Tab label='Activity'><Activity /></Tab>
+        <Tab label='Invites'><p>Nothing to see here...</p></Tab>
+        <Tab label='Favorites' onActive={this.handleActive}><Favorites /></Tab>
+
+      </Tabs>
+    );
+  }
+
+  renderInfo(data) {
+    const {
+      first_name,
+      last_name,
+      role,
+      karma,
+      stats
+    } = data;
+
+    return (
+      <section styleName='info'>
+        <Avatar styleName='avatar' { ...data } />
+        <dl styleName='profile'>
+          <dt styleName='username'>{`${first_name} ${last_name}`}</dt>
+          <dt styleName='role'>{role}</dt>
+          <dt styleName='karma'>{karma.toFixed(2)}</dt>
+        </dl>
+        <Stats { ...stats } />
       </section>
     );
   }

@@ -47,7 +47,7 @@ export default [
     include: [paths.modules],
     loaders: [
       'style',
-      `css?${cssOptions.sass}`,
+      'css',
       `sass?includePath[]=${paths.modules}&indentedSyntax`
     ]
   },

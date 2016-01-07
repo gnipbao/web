@@ -2,8 +2,8 @@
 @import "media";
 
 :root {
-  --text-color: #fff;
-  --background: #000;
+  --root-text-color: #fff;
+  --root-background: #000;
 }
 
 .root {
@@ -11,8 +11,8 @@
   overflow-y: hidden;
   background: transparent url("./bg.jpg");
   background-size: cover;
-  background-color: var(--background);
-  color: var(--text-color);
+  background-color: var(--root-background);
+  color: var(--root-text-color);
 }
 
 .title {
@@ -53,20 +53,20 @@
       & > input {
         font-size: responsive;
         border-color: rgba(#fff, 0.8);
-        color: var(--text-color);
+        color: var(--root-text-color);
         text-align: center;
       }
 
-      & > label { color: var(--text-color); }
+      & > label { color: var(--root-text-color); }
       & > input:focus ~ label { color: rgba(#fff, 0.8); }
 
       & > span::before,
       & > span::after {
-        background-color: var(--text-color);
+        background-color: var(--root-text-color);
       }
 
       & > span {
-        color: var(--text-color);
+        color: var(--root-text-color);
       }
     }
   }

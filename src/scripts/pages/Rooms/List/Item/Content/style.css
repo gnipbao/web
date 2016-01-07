@@ -1,0 +1,10 @@
+@import "variables";
+
+.root {
+  padding: 0;
+  color: var(--text-color);
+}
+
+.description {
+  padding: 14px;
+}
