@@ -11,7 +11,7 @@ export const Owner = ({ user }) => {
 
   return (
     <dl styleName='root'>
-      <dt><Avatar floating styleName='avatar' { ...avatarProps } /></dt>
+      <dt><Avatar rounded rotate styleName='avatar' { ...avatarProps } /></dt>
       <dd styleName='details'>
         <span styleName='username'>{username}</span>
         <span styleName='karma'>{karma.toFixed(2)}</span>

@@ -30,7 +30,6 @@ export default [
   'howler',
   'moment',
   'react-intl',
-  'ramda',
   // 'normalizr',
   // 'react-pure-render',
   // 'reselect',

@@ -1,0 +1,42 @@
+@import "variables";
+@import "media";
+
+.root {
+  lost-row: 1/3;
+  lost-flex-container: column;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 20px;
+
+  @media (--medium) { lost-column: 1/3; }
+  @media (--desktop) { lost-column: 1/4; }
+}
+
+.profile {
+  text-align: center;
+  color: var(--text-color);
+}
+
+.avatar {
+  margin-bottom: 12px;
+}
+
+.username {
+  composes: truncate from "styles/utils";
+  font-size: responsive 1.4rem 1.8rem;
+}
+
+.role {
+  font-size: responsive 1rem 1.4rem;
+  color: color(var(--text-color) tint(30%));
+}
+
+.karma {
+  composes: squared from "styles/badges";
+  margin-top: 10px;
+  font-size: responsive 1.6rem 2rem;
+  background-color: var(--brand-success);
+  color: var(--brand-light);
+}

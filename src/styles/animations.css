@@ -14,7 +14,10 @@
 }
 
 .rotate {
-  animation-name: rotate;
+  &:hover {
+    animation-duration: 0.5s;
+    animation-name: rotate;
+  }
 }
 
 @keyframes fade-in-down {

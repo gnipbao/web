@@ -1,10 +1,9 @@
 import logger from 'debug-dude';
-import R from 'ramda';
 
 import { env, aliases } from '../config';
 
 const { debug } = logger('app:webpack');
-export const modules = R.keys(aliases);
+export const modules = Object.keys(aliases);
 
 export const localIdentName = env.development || env.test ?
   '[name]-[local]--[hash:base64:5]' :

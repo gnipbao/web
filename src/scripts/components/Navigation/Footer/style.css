@@ -1,5 +1,4 @@
 @import "variables";
-@import "animations";
 
 :root {
   --background: color(var(--brand-black) shade(10%));
@@ -14,13 +13,6 @@
 
 .normal {
   composes: root;
-
-  .avatar {
-    &:hover {
-      animation-duration: 0.5s;
-      animation-name: rotate;
-    }
-  }
 
   .info {
     flex-grow: 2;

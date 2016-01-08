@@ -27,12 +27,7 @@
   }
 }
 
-.normal {
-  composes: root;
-}
-
 .active {
-  composes: root;
   background-color: var(--background-active);
 }
 

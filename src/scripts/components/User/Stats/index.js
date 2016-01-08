@@ -1,29 +1,29 @@
 import css from 'react-css-modules';
+import { Link } from 'react-router'
 
-import Link from 'components/Link'
 import style from './style';
 
 const { number } = PropTypes;
 
 export const Stats = (props) => {
   const {
-    roomsCount,
-    playlistsCount,
-    tracksCount
+    rooms_count,
+    playlists_count,
+    tracks_count
   } = props;
 
   return (
     <ul styleName='root'>
       <li>
-        <span styleName='value'>{roomsCount}</span>
+        <span styleName='value'>{rooms_count}</span>
         <span styleName='label'>rooms</span>
       </li>
       <li>
-        <span styleName='value'>{playlistsCount}</span>
+        <span styleName='value'>{playlists_count}</span>
         <span styleName='label'>playlists</span>
       </li>
       <li>
-        <span styleName='value'>{tracksCount}</span>
+        <span styleName='value'>{tracks_count}</span>
         <span styleName='label'>tracks</span>
       </li>
     </ul>
@@ -31,9 +31,9 @@ export const Stats = (props) => {
 };
 
 Stats.propTypes = {
-  roomsCount: number.isRequired,
-  playlistsCount: number.isRequired,
-  tracksCount: number.isRequired
+  rooms_count: number.isRequired,
+  playlists_count: number.isRequired,
+  tracks_count: number.isRequired
 };
 
 export default css(Stats, style);

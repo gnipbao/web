@@ -1,4 +1,5 @@
 import css from 'react-css-modules';
+import { Link } from 'react-router';
 import FontIcon from 'react-toolbox/lib/font_icon';
 
 import style from './style';
@@ -7,38 +8,36 @@ const { bool, string, number, func } = PropTypes;
 
 export const Item = (props) => {
   const {
-    active,
-    onClick,
-    slim,
+    path,
     label,
+    slim,
     icon,
     count,
-    styleName,
-    ...anchor
+    ...linkProps
   } = props;
 
   return (
-    <a styleName={active ? 'active' : 'normal' }
-      {...{ ...anchor, onClick } }>
+    <Link
+      styleName='root'
+      activeClassName={style.active}
+      to={path}
+      {...linkProps }>
+
       {icon ? <FontIcon styleName='icon' value={icon} /> : null}
       {!slim && label ? <abbr styleName='label'>{label}</abbr> : null}
       {!slim && count && parseInt(count) !== 0 ? <small styleName='count'>{count}</small> : null}
-    </a>
+    </Link>
   );
 };
 
 Item.propTypes = {
   label: string.isRequired,
-  active: bool.isRequired,
   icon: string,
-  count: number,
-  onClick: func,
-  styleName: string
+  count: number
 };
 
 Item.defaultProps = {
-  icon: 'extension',
-  styleName: ''
+  icon: 'extension'
 };
 
 export default css(Item, style);

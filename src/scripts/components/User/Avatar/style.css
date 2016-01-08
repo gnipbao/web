@@ -32,7 +32,7 @@
   composes: root;
 }
 
-.floating {
+.rounded {
   composes: root;
   border-radius: 50%;
 
@@ -54,4 +54,9 @@
 .big {
   size: 128px;
   font-size: 8rem;
+}
+
+.rotate {
+  composes: rotate from "styles/animations";
+  animation-delay: 0.2s;
 }

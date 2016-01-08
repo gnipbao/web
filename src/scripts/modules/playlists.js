@@ -1,20 +1,19 @@
-import {
-  createAction as action,
-  createReducer as reducer
-} from 'redux-act';
-
-import asyncAction from 'lib/redux/asyncAction';
+import { normalize, Schema, arrayOf } from 'normalizr';
+import { action, asyncAction, reducer } from 'lib/redux';
 import * as api from 'services/playlists';
 
-export const index = asyncAction('playlists.index', () => api.index());
+export const index = asyncAction('playlists.index', api.index);
 export const find = asyncAction('playlists.find',
-  ({ id }, _state) => api.find(id),
-  (id) => ({ id })
+  ({ id }) => api.find(id), (id) => ({ id })
 );
 
+const schema = new Schema('index');
+schema.define({
+  owner: new Schema('users'),
+  provider: new Schema('providers')
+});
+
 const initialState = {
-  list: [],
-  item: null,
   loading: false
 };
 
@@ -25,8 +24,8 @@ export default reducer({
 
     return {
       ...state,
-      loading: false,
-      list: data
+      ...normalize(data, arrayOf(schema)),
+      loading: false
     };
   },
 

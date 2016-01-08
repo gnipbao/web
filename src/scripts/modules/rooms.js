@@ -1,20 +1,15 @@
-import {
-  createAction as action,
-  createReducer as reducer
-} from 'redux-act';
-
-import asyncAction from 'lib/redux/asyncAction';
+import { normalize, Schema, arrayOf } from 'normalizr';
+import { action, asyncAction, reducer } from 'lib/redux';
 import * as api from 'services/rooms';
 
-export const index = asyncAction('rooms.index', () => api.index());
+export const index = asyncAction('rooms.index', api.index);
 export const find = asyncAction('rooms.find',
-  ({ id }, _state) => api.find(id),
+  ({ id }) => api.find(id),
   (id) => ({ id })
 );
 
 const initialState = {
   list: [],
-  item: null,
   loading: false
 };
 

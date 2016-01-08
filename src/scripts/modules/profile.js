@@ -1,13 +1,8 @@
-import {
-  createAction as action,
-  createReducer as reducer
-} from 'redux-act';
-
-import asyncAction from 'lib/redux/asyncAction';
+import { action, asyncAction, reducer } from 'lib/redux';
 import * as api from 'services/profile';
 
 export const reset = action('profile.reset');
-export const index = asyncAction('profile.index', () => api.index());
+export const index = asyncAction('profile.index', api.index);
 
 const initialState = {
   data: {},

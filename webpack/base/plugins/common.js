@@ -8,7 +8,6 @@ const modules = {
   React: 'react',
   ReactDOM: 'react-dom',
   ReactDOMServer: 'react-dom/server',
-  R: 'ramda',
   themeable: 'react-themeable',
   dude: 'debug-dude',
   Helmet: 'react-helmet'

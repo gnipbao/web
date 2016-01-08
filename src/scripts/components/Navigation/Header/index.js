@@ -6,15 +6,15 @@ import logo from './logo';
 
 const { string, bool } = PropTypes;
 
-export const Heading = ({ title, slim }) => (
+export const Header = ({ title, slim }) => (
   <div styleName={ slim ? 'slim' : 'normal' }>
     <SVG src={logo} /><h1 styleName='title'>{title}</h1>
   </div>
 );
 
-Heading.propTypes = {
+Header.propTypes = {
   slim: bool.isRequired,
   title: string.isRequired
 };
 
-export default css(Heading, style);
+export default css(Header, style);

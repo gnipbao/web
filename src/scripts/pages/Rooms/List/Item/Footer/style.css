@@ -2,7 +2,7 @@
 
 :root {
   --root-background: #fff;
-  --root-text-color: color(var(--text-color) shade(20%));
+  --root-text-color: color(var(--text-color) tint(20%));
 }
 
 .root {

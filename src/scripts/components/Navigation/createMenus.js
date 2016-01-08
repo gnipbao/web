@@ -8,13 +8,13 @@ export default function(props) {
           icon: 'dashboard',
           path: '/rooms',
           label: 'rooms',
-          count: props.rooms.list.length
+          count: 0
         },
         {
           icon: 'library_music',
           path: '/playlists',
           label: 'playlists',
-          count: props.playlists.list.length
+          count: 0
         }
       ]
     }

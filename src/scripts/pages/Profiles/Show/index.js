@@ -1,5 +1,5 @@
+import isEmpty from 'lodash/lang/isEmpty';
 import { connect } from 'react-redux';
-import { reduxForm } from 'redux-form';
 import css from 'react-css-modules';
 
 import { prefetch, defer } from 'react-fetcher';
@@ -13,10 +13,10 @@ const TooltipButton = Tooltip(Button);
 
 import * as actions from 'modules/profile';
 
-import Avatar from 'components/User/Avatar';
-import Stats from './Stats';
+import Info from 'components/User/Info';
 import Activity from './Activity';
 import Favorites from './Favorites';
+
 import style from './style';
 
 const { object } = PropTypes;
@@ -24,15 +24,15 @@ const { object } = PropTypes;
 @prefetch(({ dispatch }) => dispatch(actions.index()))
 @css(style)
 export class Page extends Component {
-  state = { index: 2 };
+  state = { tabIndex: 1 };
 
   componentDidMount() {
     const { index, profile: { data } } = this.props;
-    if (R.isEmpty(data)) index();
+    if (isEmpty(data)) index();
   }
 
-  handleTabChange(index) {
-    this.setState({ index });
+  handleTabChange(tabIndex) {
+    this.setState({ tabIndex });
   }
 
   handleActive() {
@@ -42,11 +42,10 @@ export class Page extends Component {
     const { profile } = this.props;
     const { loading, error, data } = profile;
 
-    return loading ? this.renderProgress() : this.renderData(data);
-  }
+    if (loading) return <ProgressBar />;
+    if (!isEmpty(data)) return this.renderData(data);
 
-  renderProgress() {
-    return <ProgressBar />;
+    return null;
   }
 
   renderData(data) {
@@ -56,46 +55,17 @@ export class Page extends Component {
       <section>
         <Helmet title={`${first_name} ${last_name}`} />
         <div styleName='root'>
-          {this.renderInfo(data)}
-          {this.renderTabs()}
+          <Info { ...data } />
+          <Tabs styleName='tabs'
+            index={this.state.tabIndex}
+            onChange={::this.handleTabChange}>
+            <Tab label='Activity'><Activity /></Tab>
+            <Tab label='Favorites' onActive={this.handleActive}><Favorites /></Tab>
+            <Tab label='Invites'><p>Nothing to see here...</p></Tab>
+            <Tab label='Identities'><p>Nothing to see here...</p></Tab>
+          </Tabs>
         </div>
       </section>
-    );
-  }
-
-  renderInfo(data) {
-    const {
-      first_name,
-      last_name,
-      role,
-      karma,
-      stats
-    } = data;
-
-    return (
-      <section styleName='info'>
-        <Avatar floating big styleName='avatar' { ...data } />
-        <dl styleName='profile'>
-          <dt styleName='username'>{`${first_name} ${last_name}`}</dt>
-          <dt styleName='role'>{role}</dt>
-          <dt styleName='karma'>{karma.toFixed(2)}</dt>
-        </dl>
-        <Stats { ...stats } />
-      </section>
-    );
-  }
-
-  renderTabs() {
-    return (
-      <Tabs styleName='tabs'
-        index={this.state.index}
-        onChange={::this.handleTabChange}>
-
-        <Tab label='Activity'><Activity /></Tab>
-        <Tab label='Invites'><p>Nothing to see here...</p></Tab>
-        <Tab label='Favorites' onActive={this.handleActive}><Favorites /></Tab>
-
-      </Tabs>
     );
   }
 }

@@ -1,3 +1,5 @@
+export const API = Symbol('API');
+
 export default function({ dispatch, getState }) {
   return function(next) {
     return async function(action) {

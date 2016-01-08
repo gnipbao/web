@@ -57,13 +57,13 @@ const Html = ({ state, assets, head, body }) => {
 
         <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet' />
 
-        {styles.map((href, i) => <link key={i} href={`/${href}`} rel='stylesheet' />)}
+        {styles.map((href) => <link key={href} href={`/${href}`} rel='stylesheet' />)}
       </head>
 
       <body>
         <div id='root' dangerouslySetInnerHTML={{ __html: body }} />
         <script dangerouslySetInnerHTML={{ __html: `window.__state = ${serializedState};` }} />
-        {scripts.map((src, i) => <script key={i} src={`/${src}`} defer />)}
+        {scripts.map((src) => <script key={src} src={`/${src}`} defer />)}
       </body>
     </html>
   );

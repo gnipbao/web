@@ -5,26 +5,23 @@ import style from './style';
 
 const { string, bool, node } = PropTypes;
 
-const Ava = (props) => {
+const Avatar = (props) => {
   const {
-    floating,
-
+    rounded,
     small,
-    big,
-
+    big, 
+    rotate,
     picture,
     nickname,
     first_name,
-
     children,
-
     ...other
   } = props;
 
 
-  const shape = floating ? 'floating' : 'squared';
+  const shape = rounded ? 'rounded' : 'squared';
   const size = small ? 'small' : big ? 'big' : 'normal';
-  const styleName = classNames(shape, size);
+  const styleName = classNames(shape, size, { rotate });
   const title = nickname || first_name;
 
   return (
@@ -37,24 +34,24 @@ const Ava = (props) => {
   );
 };
 
-Ava.propTypes = {
-  floating: bool,
+Avatar.propTypes = {
+  rounded: bool,
   small: bool,
   big: bool,
-
+  rotate: bool,
   children: node,
-
   picture: string,
   nickname: string,
   first_name: string
 };
 
-Ava.defaultProps = {
-  floating: false,
+Avatar.defaultProps = {
+  rounded: false,
   small: false,
-  big: false
+  big: false,
+  rotate: false
 };
 
-export default css(Ava, style, {
+export default css(Avatar, style, {
   allowMultiple: true
 });

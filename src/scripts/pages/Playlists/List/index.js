@@ -1,5 +1,5 @@
+import isEmpty from 'lodash/lang/isEmpty';
 import { connect } from 'react-redux';
-import { reduxForm } from 'redux-form';
 import css from 'react-css-modules';
 
 import { prefetch, defer } from 'react-fetcher';
@@ -7,6 +7,7 @@ import { prefetch, defer } from 'react-fetcher';
 import { List } from 'react-toolbox/lib/list';
 import Tooltip from 'react-toolbox/lib/tooltip';
 import Button from 'react-toolbox/lib/button';
+import ProgressBar from 'react-toolbox/lib/progress_bar';
 
 import * as playlists from 'modules/playlists';
 
@@ -20,23 +21,32 @@ const { object } = PropTypes;
 export class Page extends Component {
   componentDidMount() {
     const { index, playlists } = this.props;
-    if (R.isEmpty(playlists.list)) index();
+    if (isEmpty(playlists.entities)) index();
   }
 
   render() {
     const { playlists } = this.props;
+    const { loading, error, entities } = playlists;
 
-    return (
-      <section>
-        <Helmet title='Playlists' />
-        <h1>Playlists</h1>
-        <div styleName='root'>
-          <List selectable ripple>
-            {playlists.list.map((item, i) => <Item key={i} {...item} />)}
-          </List>
-        </div>
-      </section>
-    );
+    if (loading) return <ProgressBar />;
+
+    if (!isEmpty(entities)) {
+      const items = Object.values(entities.index);
+
+      return (
+        <section>
+          <Helmet title='Playlists' />
+          <h1>Playlists</h1>
+          <div styleName='root'>
+            <List selectable ripple>
+              {items.map(item => <Item key={item.id} {...item} />)}
+            </List>
+          </div>
+        </section>
+      );
+    }
+
+    return null;
   }
 }
 
