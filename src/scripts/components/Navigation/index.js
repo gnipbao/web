@@ -25,8 +25,6 @@ export const Navigation = (props) => {
 Navigation.propTypes = {
   logout: func.isRequired,
   user: object.isRequired,
-  playlists: object.isRequired,
-  rooms: object.isRequired,
   slim: bool
 };
 

@@ -6,7 +6,7 @@ export default class Scrollable extends Component {
   static propTypes = {
     onScroll: func.isRequired,
     children: node.isRequired
-  }
+  };
 
   componentDidMount() {
     window.addEventListener('optimizedScroll', this.handleScroll);

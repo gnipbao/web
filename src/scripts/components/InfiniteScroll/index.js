@@ -9,11 +9,11 @@ export default class InfiniteScroll extends Component {
     threshold: number,
     spinner: func,
     loading: bool
-  }
+  };
 
   static defaultProps = {
     threshold: 50
-  }
+  };
 
   handleScroll(position, height, offset) {
     if (this.props.loading) return;
