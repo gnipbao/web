@@ -11,7 +11,7 @@ import style from './style';
 const { array, object, bool, func } = PropTypes;
 
 export const Item = (props) => {
-  const { name, rating, ...contentProps } = props;
+  const { name, rating, owner, users, tracks } = props;
 
   return (
     <div styleName='root'>

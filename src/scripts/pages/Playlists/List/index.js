@@ -9,29 +9,26 @@ import Tooltip from 'react-toolbox/lib/tooltip';
 import Button from 'react-toolbox/lib/button';
 import ProgressBar from 'react-toolbox/lib/progress_bar';
 
-import * as playlists from 'modules/playlists';
+import * as actions from 'modules/playlists';
 
 import Item from './Item';
 import style from './style';
 
 const { object } = PropTypes;
 
-@prefetch(({ dispatch }) => dispatch(playlists.index()))
+@prefetch(({ dispatch }) => dispatch(actions.list()))
 @css(style)
 export class Page extends Component {
   componentDidMount() {
-    const { index, playlists } = this.props;
-    if (isEmpty(playlists.entities)) index();
+    const { list, domain: { entities: { playlists } } } = this.props;
+    if (isEmpty(playlists)) list();
   }
 
   render() {
-    const { playlists } = this.props;
-    const { loading, error, entities } = playlists;
+    const { domain: { entities: { playlists } } } = this.props;
 
-    if (loading) return <ProgressBar />;
-
-    if (!isEmpty(entities)) {
-      const items = Object.values(entities.index);
+    if (!isEmpty(playlists)) {
+      const items = Object.values(playlists);
 
       return (
         <section>
@@ -46,10 +43,8 @@ export class Page extends Component {
       );
     }
 
-    return null;
+    return <ProgressBar />;
   }
 }
 
-export default connect(s => ({
-  playlists: s.playlists
-}), { ...playlists })(Page);
+export default connect(s => s, { ...actions })(Page);

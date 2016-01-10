@@ -1,29 +1,28 @@
+import { camelizeKeys } from 'humps';
+import { normalize } from 'normalizr';
+
 export const API = Symbol('API');
 
-export default function({ dispatch, getState }) {
-  return function(next) {
-    return async function(action) {
-      if (!action.payload || !action.payload.request) {
-        return next(action);
-      }
+const transform = (json, schema) => {
+  const camelized = camelizeKeys(json);
+  return normalize(camelized, schema);
+};
 
-      let {
-        payload: {
-          request,
-          ...args
-        },
-        ...rest
-      } = action;
+export default ({ dispatch, getState }) => next => async (action) => {
+  if (!action.meta || !action.meta[API]) return next(action);
 
-      next({ payload: { ...args }, ...rest });
+  let { request, schema } = action.meta[API];
+  let { payload, ...rest } = action;
 
-      try {
-        const data = await request(args, getState());
-        return next({ ...rest, payload: { data, ...args } });
-      } catch (error) {
-        console.error('api error (middleware)', error);
-        return next({ ...rest, payload: { error, ...args } });
-      }
-    };
-  };
+  next({ payload, ...rest });
+
+  try {
+    const json = await request(payload, getState());
+    const data = transform(json, schema);
+
+    return next({ ...rest, payload: { data, ...payload } });
+  } catch (error) {
+    console.error('api error (middleware)', error);
+    return next({ ...rest, payload: { error, ...payload } });
+  }
 }

@@ -1,8 +1,9 @@
-import { action, asyncAction, reducer } from 'lib/redux';
-import * as api from 'services/profile';
+import { action, apiAction, reducer } from 'lib/redux';
+import * as schemas from 'api/schemas';
+import * as service from 'services/profile';
 
 export const reset = action('profile.reset');
-export const index = asyncAction('profile.index', api.index);
+export const load = apiAction('profile.load', service.load, schemas.user);
 
 const initialState = {
   data: {},
@@ -11,7 +12,7 @@ const initialState = {
 
 export default reducer({
   [reset]: (state) => initialState,
-  [index]: (state, { data, error }) => {
+  [load]: (state, { data, error }) => {
     if (!data) return { ...state, loading: true };
     if (error) return state;
 

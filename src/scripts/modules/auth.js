@@ -2,11 +2,7 @@ import Qs from 'qs';
 import jwtDecode from 'jwt-decode';
 import { replacePath } from 'redux-simple-router';
 
-import {
-  createAction as action,
-  createReducer as reducer
-} from 'redux-act';
-
+import { action, reducer } from 'lib/redux';
 import openPopup from 'lib/utils/popup';
 import session from 'lib/session';
 

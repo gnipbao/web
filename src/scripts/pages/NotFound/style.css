@@ -19,8 +19,8 @@
   padding: 2px 8px;
   background-color: color(var(--background) tint(50%));
 
-  > ul > li span {
-    font-size: responsive 1.4rem 1.6rem;
+  > ul > li > span > span:first-child {
+    font-size: responsive 3rem 3.6rem;
   }
 }
 

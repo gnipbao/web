@@ -1,8 +1,4 @@
-import {
-  createAction as action,
-  createReducer as reducer
-} from 'redux-act';
-
+import { action, reducer } from 'lib/redux';
 import session from 'lib/session';
 
 export const setLocale = action('locale.set', (locale, messages) => {

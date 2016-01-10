@@ -1,7 +1,4 @@
-import {
-  createAction as action,
-  createReducer as reducer
-} from 'redux-act';
+import { action, reducer } from 'lib/redux';
 
 export const toggle = action('navigation.toggle');
 
