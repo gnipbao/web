@@ -20,12 +20,12 @@ const { object } = PropTypes;
 @css(style)
 export class Page extends Component {
   componentDidMount() {
-    const { list, domain: { entities: { playlists } } } = this.props;
+    const { list, entities: { playlists } } = this.props;
     if (isEmpty(playlists)) list();
   }
 
   render() {
-    const { domain: { entities: { playlists } } } = this.props;
+    const { entities: { playlists } } = this.props;
 
     if (!isEmpty(playlists)) {
       const items = Object.values(playlists);

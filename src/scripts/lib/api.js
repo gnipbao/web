@@ -1,4 +1,5 @@
 import { stringify } from 'qs';
+import parseLinkHeader from 'parse-link-header';
 import fetch from 'isomorphic-fetch';
 
 export default class Api {
@@ -23,10 +24,15 @@ export default class Api {
       ...headers
     };
 
-    console.log(`fetching ${requestUrl}, headers: `, requestHeaders);
-
-    return fetch(requestUrl, { method, headers: requestHeaders, body })
-      .then(this.processResponse, this.processError);
+    return fetch(requestUrl, {
+      mode: 'cors',
+      method,
+      headers: requestHeaders,
+      body
+    }).then(
+      ::this.processResponse,
+      ::this.processError
+    );
   }
 
   url(endpoint, params) {
@@ -41,7 +47,10 @@ export default class Api {
   processResponse(response) {
     return new Promise((resolve, reject) => {
       if (response.ok) {
-        resolve(response.json());
+        const linkHeader = response.headers.get('Link');
+        const links = parseLinkHeader(linkHeader);
+
+        response.json().then(json => resolve({ json, links }));
       } else {
         reject({
           status: response.status,

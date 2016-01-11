@@ -1,4 +1,4 @@
-import { action, apiAction, reducer } from 'lib/redux';
+import { apiAction, action, reducer } from 'lib/redux';
 import * as schemas from 'api/schemas';
 import * as service from 'services/profile';
 

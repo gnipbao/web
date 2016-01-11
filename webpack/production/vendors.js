@@ -29,6 +29,7 @@ export default [
   'react-notification-system',
   'howler',
   'moment',
+  'parse-link-header',
   'react-intl',
   // 'normalizr',
   // 'react-pure-render',

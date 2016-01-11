@@ -17,7 +17,6 @@ export const Item = (props) => {
     <div styleName='root'>
       <Card styleName='card'>
         <Header { ...{ name, rating } } />
-        <Content { ...contentProps } />
         <Footer />
       </Card>
     </div>

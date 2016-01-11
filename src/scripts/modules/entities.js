@@ -10,6 +10,14 @@ const initialState = {
 };
 
 export default (state = initialState, { payload, meta, ...rest }) => {
-  if (!meta || !meta[API]) return state;
-  return merge({}, state, payload.data.entities);
+  const isApiAction = meta && meta[API];
+  const hasData = payload && payload.data;
+
+  // TODO: here payload.data contains links also
+
+  if (isApiAction && hasData) {
+    return merge({}, state, payload.data.entities);
+  }
+
+  return state;
 }

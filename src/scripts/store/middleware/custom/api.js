@@ -9,16 +9,19 @@ const transform = (json, schema) => {
 };
 
 export default ({ dispatch, getState }) => next => async (action) => {
-  if (!action.meta || !action.meta[API]) return next(action);
+  const { meta } = action;
+  if (!meta || !meta[API]) return next(action);
 
-  let { request, schema } = action.meta[API];
-  let { payload, ...rest } = action;
-
-  next({ payload, ...rest });
+  next(action);
 
   try {
-    const json = await request(payload, getState());
-    const data = transform(json, schema);
+    const { request, schema } = meta[API];
+    const { payload, ...rest } = action;
+
+    const response = await request();
+    const { json, links } = response;
+    const normalized = transform(json, schema);
+    const data = { ...normalized, links };
 
     return next({ ...rest, payload: { data, ...payload } });
   } catch (error) {
