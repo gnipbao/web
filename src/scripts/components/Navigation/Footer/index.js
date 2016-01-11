@@ -12,18 +12,18 @@ import style from './style';
 const { func, object, bool } = PropTypes;
 
 export const Footer = ({ slim, logout, user }) => {
-  const { picture, nickname, first_name, role } = user;
+  const { picture, nickname, firstName, role } = user;
 
   return (
     <div styleName={ slim ? 'slim' : 'normal' }>
       <Link to='/profile'>
         <Avatar rounded small rotate
           styleName='avatar'
-          { ...{ nickname, first_name, picture } }
+          { ...{ nickname, firstName, picture } }
         />
       </Link>
       <dl styleName='info'>
-        <dt styleName='username'>{first_name}</dt>
+        <dt styleName='username'>{firstName}</dt>
         <dt styleName='role'>{role}</dt>
       </dl>
       <div styleName='actions'>

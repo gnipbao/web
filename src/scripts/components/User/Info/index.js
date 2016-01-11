@@ -10,21 +10,21 @@ const { object, string, number } = PropTypes;
 export const Info = (props) => {
   const {
     nickname,
-    first_name,
-    last_name,
+    firstName,
+    lastName,
     picture,
     role,
     karma,
     stats
   } = props;
 
-  const username = `${first_name} ${last_name}`;
+  const username = `${firstName} ${lastName}`;
 
   return (
     <section styleName='root'>
       <Avatar rounded big
         styleName='avatar'
-        { ...{ nickname, first_name, picture } }
+        { ...{ nickname, firstName, picture } }
       />
       <dl styleName='profile'>
         <dt styleName='username'>{username}</dt>
@@ -38,8 +38,8 @@ export const Info = (props) => {
 
 Info.propTypes = {
   nickname: string,
-  first_name: string,
-  last_name: string,
+  firstName: string,
+  lastName: string,
   picture: string,
   role: string,
   karma: number,

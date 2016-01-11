@@ -2,7 +2,7 @@ import css from 'react-css-modules';
 
 import style from './style';
 
-const { object } = PropTypes;
+const { array } = PropTypes;
 
 export const Stats = (props) => {
   const { users, tracks } = props;
@@ -10,11 +10,11 @@ export const Stats = (props) => {
   return (
     <ul styleName='root'>
       <li styleName='users'>
-        <span styleName='value'>{users.count}</span>
+        <span styleName='value'>{users.length}</span>
         <span styleName='label'>users</span>
       </li>
       <li styleName='tracks'>
-        <span styleName='value'>{tracks.count}</span>
+        <span styleName='value'>{tracks.length}</span>
         <span styleName='label'>tracks</span>
       </li>
     </ul>
@@ -22,8 +22,8 @@ export const Stats = (props) => {
 };
 
 Stats.propTypes = {
-  users: object.isRequired,
-  tracks: object.isRequired
+  users: array.isRequired,
+  tracks: array.isRequired
 };
 
 export default css(Stats, style);

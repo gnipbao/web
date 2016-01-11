@@ -6,8 +6,8 @@ import style from './style';
 const { object } = PropTypes;
 
 export const Owner = ({ user }) => {
-  const { first_name, last_name, karma, ...avatarProps } = user;
-  const username = `${first_name} ${last_name}`;
+  const { firstName, lastName, karma, ...avatarProps } = user;
+  const username = `${firstName} ${lastName}`;
 
   return (
     <dl styleName='root'>

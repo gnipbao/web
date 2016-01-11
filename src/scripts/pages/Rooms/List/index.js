@@ -20,12 +20,12 @@ const { object } = PropTypes;
 @css(style)
 export class Page extends Component {
   componentDidMount() {
-    const { list, entities: { rooms } } = this.props;
+    const { list, rooms } = this.props;
     if (isEmpty(rooms)) list();
   }
 
   render() {
-    const { entities: { rooms, users } } = this.props;
+    const { rooms, entities } = this.props;
 
     if (!isEmpty(rooms)) {
       const items = Object.values(rooms);
@@ -35,7 +35,7 @@ export class Page extends Component {
           <Helmet title='Rooms' />
           <h1>Rooms</h1>
           <div styleName='root'>
-            {items.map(item => <Item key={item.id} {...item} />)}
+            {items.map(item => <Item key={item.id} { ...{ ...item, entities } } />)}
           </div>
         </section>
       );
@@ -45,4 +45,13 @@ export class Page extends Component {
   }
 }
 
-export default connect(s => s, { ...actions })(Page);
+function mapStateToProps(state) {
+  const { rooms, entities } = state;
+
+  return {
+    entities,
+    rooms: rooms.ids.map(r => entities.rooms[r])
+  };
+}
+
+export default connect(mapStateToProps, actions)(Page);

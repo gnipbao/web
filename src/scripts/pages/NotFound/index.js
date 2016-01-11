@@ -8,7 +8,7 @@ import history from 'lib/history';
 import style from './style';
 
 export const NotFound = (props) => {
-  const { authenticated, currentPath, pushPath } = props;
+  const { authenticated, pushPath } = props;
   const homePath = authenticated ? '/rooms' : '/sign-in';
   const currentYear = new Date().getFullYear();
 
@@ -37,9 +37,6 @@ export const NotFound = (props) => {
 }
 
 export default connect(
-  s => ({
-    authenticated: Boolean(s.auth.authToken),
-    currentPath: s.routing.path
-  }),
+  ({ auth: { authToken } }) => ({ authenticated: Boolean(authToken) }),
   { pushPath }
 )(css(NotFound, style));

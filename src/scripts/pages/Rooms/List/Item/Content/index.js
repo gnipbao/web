@@ -16,26 +16,31 @@ export const Content = (props) => {
     description,
     state,
     users,
-    tracks
+    tracks,
+    entities
   } = props;
 
   return (
     <CardText className={style.root}>
-      <Owner user={owner} />
+      <Owner user={entities.users[owner]} />
       {description && <p className={style.description}>{description}</p>}
-      {playback && <Playback { ...playback } /> }
+      {playback &&
+        <Playback
+          offset={playback.offset}
+          track={entities.tracks[playback.track]} />
+      }
       <Stats { ...{ users, tracks } } />
     </CardText>
   );
 };
 
 Content.propTypes = {
-  owner: object.isRequired,
+  owner: string.isRequired,
   playback: object,
   description: string,
   state: string.isRequired,
-  users: object.isRequired,
-  tracks: object.isRequired
+  users: array.isRequired,
+  tracks: array.isRequired
 };
 
 export default Content;

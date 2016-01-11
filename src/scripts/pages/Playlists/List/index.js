@@ -47,4 +47,4 @@ export class Page extends Component {
   }
 }
 
-export default connect(s => s, { ...actions })(Page);
+export default connect(s => s, actions)(Page);

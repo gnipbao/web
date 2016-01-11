@@ -20,12 +20,11 @@ export default ({ dispatch, getState }) => next => async (action) => {
 
     const response = await request();
     const { json, links } = response;
-    const normalized = transform(json, schema);
-    const data = { ...normalized, links };
+    const data = transform(json, schema);
 
-    return next({ ...rest, payload: { data, ...payload } });
+    return next({ ...rest, payload: { ...payload, data, links } });
   } catch (error) {
     console.error('api error (middleware)', error);
-    return next({ ...rest, payload: { error, ...payload } });
+    return next({ ...rest, payload: { ...payload, error } });
   }
 }

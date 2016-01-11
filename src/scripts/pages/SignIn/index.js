@@ -134,9 +134,6 @@ export const SignInFormPage = reduxForm({
 })(SignInPage);
 
 export default connect(
-  s => ({
-    router: s.router,
-    auth: s.auth
-  }),
+  ({ router, auth }) => ({ router, auth }),
   { login }
 )(SignInFormPage);

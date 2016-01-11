@@ -7,23 +7,23 @@ const { number } = PropTypes;
 
 export const Stats = (props) => {
   const {
-    rooms_count,
-    playlists_count,
-    tracks_count
+    roomsCount,
+    playlistsCount,
+    tracksCount
   } = props;
 
   return (
     <ul styleName='root'>
       <li>
-        <span styleName='value'>{rooms_count}</span>
+        <span styleName='value'>{roomsCount}</span>
         <span styleName='label'>rooms</span>
       </li>
       <li>
-        <span styleName='value'>{playlists_count}</span>
+        <span styleName='value'>{playlistsCount}</span>
         <span styleName='label'>playlists</span>
       </li>
       <li>
-        <span styleName='value'>{tracks_count}</span>
+        <span styleName='value'>{tracksCount}</span>
         <span styleName='label'>tracks</span>
       </li>
     </ul>
@@ -31,9 +31,9 @@ export const Stats = (props) => {
 };
 
 Stats.propTypes = {
-  rooms_count: number.isRequired,
-  playlists_count: number.isRequired,
-  tracks_count: number.isRequired
+  roomsCount: number.isRequired,
+  playlistsCount: number.isRequired,
+  tracksCount: number.isRequired
 };
 
 export default css(Stats, style);

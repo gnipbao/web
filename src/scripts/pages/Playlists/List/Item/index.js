@@ -10,7 +10,7 @@ export const Item = (props) => {
       styleName='root'
       caption={title}
       avatar={props.owner.picture}
-      legend={props.owner.first_name}
+      legend={props.owner.firstName}
       leftIcon='queue_music'
     />
   )

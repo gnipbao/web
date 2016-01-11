@@ -21,14 +21,14 @@ import style from './style';
 
 const { object } = PropTypes;
 
-@prefetch(({ dispatch }) => dispatch(actions.index()))
+@prefetch(({ dispatch }) => dispatch(actions.load()))
 @css(style)
 export class Page extends Component {
   state = { tabIndex: 1 };
 
   componentDidMount() {
-    const { index, profile: { data } } = this.props;
-    if (isEmpty(data)) index();
+    const { load, users, profile: { id } } = this.props;
+    if (!id) load();
   }
 
   handleTabChange(tabIndex) {
@@ -39,23 +39,23 @@ export class Page extends Component {
   }
 
   render() {
-    const { profile } = this.props;
-    const { loading, error, data } = profile;
+    const { profile, users } = this.props;
+    const { loading, error, id } = profile;
 
     if (loading) return <ProgressBar />;
-    if (!isEmpty(data)) return this.renderData(data);
+    if (id && users[id]) return this.renderUser(users[id]);
 
     return null;
   }
 
-  renderData(data) {
-    const { first_name, last_name } = data;
+  renderUser(user) {
+    const { firstName, lastName } = user;
 
     return (
       <section>
-        <Helmet title={`${first_name} ${last_name}`} />
+        <Helmet title={`${firstName} ${lastName}`} />
         <div styleName='root'>
-          <Info { ...data } />
+          <Info { ...user} />
           <Tabs styleName='tabs'
             index={this.state.tabIndex}
             onChange={::this.handleTabChange}>
@@ -71,5 +71,6 @@ export class Page extends Component {
 }
 
 export default connect(s => ({
-  profile: s.profile
-}), { ...actions })(Page);
+  profile: s.profile,
+  users: s.entities.users
+}), actions)(Page);

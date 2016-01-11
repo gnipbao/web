@@ -6,7 +6,7 @@ export const reset = action('profile.reset');
 export const load = apiAction('profile.load', service.load, schemas.user);
 
 const initialState = {
-  data: {},
+  id: null,
   loading: false
 };
 
@@ -19,7 +19,7 @@ export default reducer({
     return {
       ...state,
       loading: false,
-      data
+      id: data.result
     };
   }
 }, initialState);

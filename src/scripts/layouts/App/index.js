@@ -1,7 +1,7 @@
 import css from 'react-css-modules';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { pushPath, replacePath } from 'redux-simple-router';
+import { replacePath } from 'redux-simple-router';
 
 import { logout } from 'modules/auth';
 import { reset as resetProfile  } from 'modules/profile';
@@ -16,7 +16,6 @@ const { func, string, object } = PropTypes;
 
 export class App extends Component {
   static propTypes = {
-    pushPath: func.isRequired,
     replacePath: func.isRequired,
     logout: func.isRequired,
     resetProfile: func.isRequired
@@ -36,14 +35,11 @@ export class App extends Component {
       toggleNavigation,
       rooms,
       playlists,
-      pushPath,
       children
     } = this.props;
 
     const commonProps = {
       user,
-      currentPath: routing.path,
-      pushPath,
       rooms,
       playlists
     };
@@ -74,9 +70,12 @@ export class App extends Component {
   }
 }
 
-export default connect(s => s, {
+function mapStateToProps(state) {
+  return state;
+}
+
+export default connect(mapStateToProps, {
   replacePath,
-  pushPath,
   logout,
   resetProfile,
   toggleNavigation

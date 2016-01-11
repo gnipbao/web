@@ -13,7 +13,7 @@ const Avatar = (props) => {
     rotate,
     picture,
     nickname,
-    first_name,
+    firstName,
     children,
     ...other
   } = props;
@@ -22,7 +22,7 @@ const Avatar = (props) => {
   const shape = rounded ? 'rounded' : 'squared';
   const size = small ? 'small' : big ? 'big' : 'normal';
   const styleName = classNames(shape, size, { rotate });
-  const title = nickname || first_name;
+  const title = nickname || firstName;
 
   return (
     <div { ...{ ...other, styleName } }>
@@ -42,7 +42,7 @@ Avatar.propTypes = {
   children: node,
   picture: string,
   nickname: string,
-  first_name: string
+  firstName: string
 };
 
 Avatar.defaultProps = {

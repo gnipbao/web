@@ -10,7 +10,7 @@ const TooltipButton = Tooltip(Button);
 
 import style from './style';
 
-const { bool, func, object } = PropTypes;
+const { bool, func, object, shape } = PropTypes;
 
 export const Toolbar = (props) => {
   const { navigation } = props;
@@ -41,7 +41,10 @@ export const Toolbar = (props) => {
 };
 
 Toolbar.propTypes = {
-  navigation: object.isRequired,
+  navigation: shape({
+    slim: bool.isRequired,
+    toggle: func.isRequired
+  })
 };
 
 export default css(Toolbar, style);
