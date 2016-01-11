@@ -14,7 +14,7 @@ export default reducer({
   [reset]: (state) => initialState,
   [load]: (state, { data, error }) => {
     if (!data) return { ...state, loading: true };
-    if (error) return state;
+    if (error) return { ...state, loading: false };
 
     return {
       ...state,
