@@ -237,7 +237,7 @@
     "svg-inline-loader": "0.4.0",
     "toolbox-loader": "0.0.3",
     "url-loader": "0.5.7",
-    "webpack": "1.12.10",
+    "webpack": "1.12.11",
     "webpack-dev-middleware": "1.4.0",
     "webpack-dev-server": "1.14.0",
     "webpack-hot-middleware": "2.6.0",
