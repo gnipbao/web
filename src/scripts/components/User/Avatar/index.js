@@ -26,7 +26,7 @@ const Avatar = (props) => {
   const styleName = classNames(shape, size, { rotate });
   const title = nickname || firstName;
 
-  const path = id ? `/profile/${id}` : '/profile';
+  const path = id ? `/users/${id}` : '/profile';
 
   return (
     <Link to={path} { ...{ ...other, styleName } }>

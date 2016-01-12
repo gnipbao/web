@@ -30,10 +30,10 @@ export const routes = (
 
       <IndexRoute components={admin.dashboard} />
 
-      <Route path='/users' component={admin.users.list} />
-      <Route path='/users/:id' component={admin.users.show} />
-      <Route path='/users/:id/new' component={admin.users.create} />
-      <Route path='/users/:id/edit' component={admin.users.edit} />
+      <Route path='/admin/users' component={admin.users.list} />
+      <Route path='/admin/users/:id' component={admin.users.show} />
+      <Route path='/admin/users/:id/new' component={admin.users.create} />
+      <Route path='/admin/users/:id/edit' component={admin.users.edit} />
     </Route>
 
     <Route component={layouts.app} requireAuth>
@@ -44,7 +44,8 @@ export const routes = (
 
       <Route path='/profile' component={profiles.show} />
       <Route path='/profile/edit' component={profiles.edit} />
-      <Route path='/profile/:id' component={profiles.show} />
+
+      <Route path='/users/:id' component={profiles.show} />
 
       <Route path='/playlists' component={playlists.list} />
       <Route path='/playlists/:id' component={playlists.show} />

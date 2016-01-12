@@ -18,7 +18,6 @@ export const Item = (props) => {
       <Card styleName='card'>
         <Header { ...{ id, name, rating } } />
         <Content { ...contentProps } />
-        <Footer { ...{ id } } />
       </Card>
     </div>
   );
