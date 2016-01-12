@@ -1,5 +1,6 @@
 import css from 'react-css-modules';
 import classNames from 'classnames';
+import { Link } from 'react-router'
 
 import style from './style';
 
@@ -7,6 +8,7 @@ const { string, bool, node } = PropTypes;
 
 const Avatar = (props) => {
   const {
+    id,
     rounded,
     small,
     big, 
@@ -24,13 +26,15 @@ const Avatar = (props) => {
   const styleName = classNames(shape, size, { rotate });
   const title = nickname || firstName;
 
+  const path = id ? `/profile/${id}` : '/profile';
+
   return (
-    <div { ...{ ...other, styleName } }>
+    <Link to={path} { ...{ ...other, styleName } }>
       {children}
       {picture ?
         <img styleName='image' src={picture} title={title || 'avatar'} /> :
         <span styleName='letter'>{title && title[0] || '?'}</span>}
-    </div>
+    </Link>
   );
 };
 
@@ -40,6 +44,7 @@ Avatar.propTypes = {
   big: bool,
   rotate: bool,
   children: node,
+  id: string,
   picture: string,
   nickname: string,
   firstName: string

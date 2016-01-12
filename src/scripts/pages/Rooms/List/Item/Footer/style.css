@@ -2,7 +2,9 @@
 
 :root {
   --root-background: #fff;
-  --root-text-color: color(var(--text-color) tint(20%));
+  --root-text-color: color(var(--text-color) tint(50%));
+  --button-hover-background: color(var(--root-background) shade(10%));
+  --button-hover-text-color: color(var(--text-color) tint(20%));
 }
 
 .root {
@@ -20,9 +22,17 @@
 
   & > .listen[data-react-toolbox="button"] {
     color: var(--root-text-color);
+    &:hover {
+      color: var(--button-hover-text-color);
+      background-color: var(--button-hover-background);
+    }
   }
 
   & > .join[data-react-toolbox="button"] {
     color: var(--root-text-color);
+    &:hover {
+      color: var(--button-hover-text-color);
+      background-color: var(--button-hover-background);
+    }
   }
 }

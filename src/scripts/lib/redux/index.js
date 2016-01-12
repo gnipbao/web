@@ -33,7 +33,7 @@ const reducers = {
     };
   },
 
-  find: (state, { data, error }) => {
+  load: (state, { data, error }) => {
     return {
       ...state,
       loading: false,
@@ -52,10 +52,10 @@ const initial = {
 export function apiReducer(actions, initialState = initial) {
   const result = createReducer({}, initialState);
 
-  const { list, find } = actions;
+  const { list, load } = actions;
 
   if (list) result.on(list, reducers.list);
-  if (find) result.on(find, reducers.find);
+  if (load) result.on(load, reducers.load);
 
   return result;
 }

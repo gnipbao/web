@@ -1,5 +1,4 @@
 import css from 'react-css-modules';
-import { Link } from 'react-router'
 
 import Avatar from 'components/User/Avatar';
 import Button from 'react-toolbox/lib/button';
@@ -12,18 +11,16 @@ import style from './style';
 const { func, object, bool } = PropTypes;
 
 export const Footer = ({ slim, logout, user }) => {
-  const { picture, nickname, firstName, role } = user;
+  const { picture, nickname, first_name, role } = user;
 
   return (
     <div styleName={ slim ? 'slim' : 'normal' }>
-      <Link to='/profile'>
-        <Avatar rounded small rotate
-          styleName='avatar'
-          { ...{ nickname, firstName, picture } }
-        />
-      </Link>
+      <Avatar rounded small rotate
+        styleName='avatar'
+        { ...{ nickname, first_name, picture } }
+      />
       <dl styleName='info'>
-        <dt styleName='username'>{firstName}</dt>
+        <dt styleName='username'>{first_name}</dt>
         <dt styleName='role'>{role}</dt>
       </dl>
       <div styleName='actions'>

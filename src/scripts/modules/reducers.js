@@ -7,6 +7,7 @@ import locale from './locale';
 import navigation from './navigation';
 
 import profile from './profile';
+import users from './users';
 import rooms from './rooms';
 import playlists from './playlists';
 import entities from './entities';
@@ -21,6 +22,7 @@ export default combineReducers({
 
   entities,
   profile,
+  users,
   rooms,
   playlists
 });

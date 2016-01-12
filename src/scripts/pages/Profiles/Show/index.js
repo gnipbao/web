@@ -11,7 +11,8 @@ import ProgressBar from 'react-toolbox/lib/progress_bar';
 
 const TooltipButton = Tooltip(Button);
 
-import * as actions from 'modules/profile';
+import { load as loadProfile } from 'modules/profile';
+import { load as loadUser } from 'modules/users';
 
 import Info from 'components/User/Info';
 import Activity from './Activity';
@@ -21,14 +22,30 @@ import style from './style';
 
 const { object } = PropTypes;
 
-@prefetch(({ dispatch }) => dispatch(actions.load()))
+function loadSubject({ dispatch, params }) {
+  return dispatch(
+    params && params.id ?
+      loadUser(params.id) :
+      loadProfile()
+  )
+}
+
+@prefetch(loadSubject)
 @css(style)
 export class Page extends Component {
   state = { tabIndex: 1 };
 
   componentDidMount() {
-    const { load, users, profile: { id } } = this.props;
-    if (!id) load();
+    const {
+      loadUser, loadProfile,
+      params, entities, profile, users
+    } = this.props;
+
+    if (params && params.id && !entities.users[params.id] && !users.loading) {
+      loadUser(params.id);
+    } else if (profile && !profile.id && !profile.loading) {
+      loadProfile();
+    }
   }
 
   handleTabChange(tabIndex) {
@@ -39,13 +56,23 @@ export class Page extends Component {
   }
 
   render() {
-    const { profile, users } = this.props;
-    const { loading, error, id } = profile;
+    const { entities: { users } } = this.props;
+    const { loading, id } = this.getParams();
 
     if (loading) return <ProgressBar />;
     if (id && users[id]) return this.renderUser(users[id]);
 
     return null;
+  }
+
+  getParams() {
+    const { params, profile, users } = this.props;
+
+    if (params && params.id) {
+      return { id: params.id, loading: users.loading };
+    } else {
+      return { ...profile };
+    }
   }
 
   renderUser(user) {
@@ -70,7 +97,15 @@ export class Page extends Component {
   }
 }
 
-export default connect(s => ({
-  profile: s.profile,
-  users: s.entities.users
-}), actions)(Page);
+export default connect(({
+  profile,
+  users,
+  entities
+}) => ({
+  profile,
+  users,
+  entities
+}), {
+  loadUser,
+  loadProfile
+})(Page);

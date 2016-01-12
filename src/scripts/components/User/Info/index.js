@@ -9,6 +9,7 @@ const { object, string, number } = PropTypes;
 
 export const Info = (props) => {
   const {
+    id,
     nickname,
     firstName,
     lastName,
@@ -24,7 +25,7 @@ export const Info = (props) => {
     <section styleName='root'>
       <Avatar rounded big
         styleName='avatar'
-        { ...{ nickname, firstName, picture } }
+        { ...{ id, nickname, firstName, picture } }
       />
       <dl styleName='profile'>
         <dt styleName='username'>{username}</dt>
@@ -37,6 +38,7 @@ export const Info = (props) => {
 };
 
 Info.propTypes = {
+  id: string,
   nickname: string,
   firstName: string,
   lastName: string,

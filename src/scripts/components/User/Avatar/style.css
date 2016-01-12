@@ -53,10 +53,10 @@
 
 .big {
   size: 128px;
-  font-size: 8rem;
+  font-size: 11rem;
 }
 
 .rotate {
   composes: rotate from "styles/animations";
-  animation-delay: 0.2s;
+  animation-delay: 0.1s;
 }

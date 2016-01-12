@@ -20,36 +20,33 @@ const { object } = PropTypes;
 @css(style)
 export class Page extends Component {
   componentDidMount() {
-    const { list, rooms } = this.props;
-    if (isEmpty(rooms)) list();
+    const { list, rooms, loading } = this.props;
+    if (isEmpty(rooms) && !loading) list();
   }
 
   render() {
-    const { rooms, entities } = this.props;
+    const { rooms, loading, entities } = this.props;
 
-    if (!isEmpty(rooms)) {
-      const items = Object.values(rooms);
-
-      return (
-        <section>
-          <Helmet title='Rooms' />
-          <h1>Rooms</h1>
-          <div styleName='root'>
-            {items.map(item => <Item key={item.id} { ...{ ...item, entities } } />)}
-          </div>
-        </section>
-      );
+    if (isEmpty(rooms) || loading) {
+      return <ProgressBar />;
     }
 
-    return <ProgressBar />;
+    return (
+      <section>
+        <Helmet title='Rooms' />
+        <h1>Rooms</h1>
+        <div styleName='root'>
+          {rooms.map(item => <Item key={item.id} { ...{ ...item, entities } } />)}
+        </div>
+      </section>
+    );
   }
 }
 
 function mapStateToProps(state) {
   const { rooms, entities } = state;
 
-  return {
-    entities,
+  return { entities, ...rooms,
     rooms: rooms.ids.map(r => entities.rooms[r])
   };
 }
