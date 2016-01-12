@@ -28,7 +28,7 @@
     }
   }
 
-  & > .join[data-react-toolbox="button"] {
+  & > .enter[data-react-toolbox="button"] {
     color: var(--root-text-color);
     &:hover {
       color: var(--button-hover-text-color);

@@ -19,4 +19,8 @@ export class Page extends Component {
   }
 }
 
-export default connect(s => s)(Page);
+function select(state, ownProps) {
+  return state;
+}
+
+export default connect(select)(Page);

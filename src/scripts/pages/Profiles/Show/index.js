@@ -1,4 +1,5 @@
 import isEmpty from 'lodash/lang/isEmpty';
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 import css from 'react-css-modules';
 
@@ -22,27 +23,37 @@ import style from './style';
 
 const { object } = PropTypes;
 
-function loadSubject({ dispatch, params }) {
+function fetchData({ dispatch, params }) {
   return params && params.id ?
     dispatch(loadUser(params.id)) :
     dispatch(loadProfile());
 }
 
-@prefetch(loadSubject)
+@prefetch(fetchData)
 @css(style)
 export class Page extends Component {
   state = { tabIndex: 1 };
 
   componentWillMount() {
+    this.load();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.id !== this.props.id) {
+      this.load(nextProps);
+    }
+  }
+
+  load(props = this.props) {
     const {
       loadUser, loadProfile,
-      params, entities, profile, users
-    } = this.props;
+      params, loading, data
+    } = props;
 
-    if (params && params.id && !entities.users[params.id] && !users.loading) {
-      loadUser(params.id);
-    } else if (profile && !profile.id && !profile.loading) {
-      loadProfile();
+    if (isEmpty(data) && !loading) {
+      return params && params.id ?
+        loadUser(params.id) :
+        loadProfile();
     }
   }
 
@@ -54,33 +65,23 @@ export class Page extends Component {
   }
 
   render() {
-    const { entities: { users } } = this.props;
-    const { loading, id } = this.getParams();
+    const { loading, data } = this.props;
 
-    if (loading) return <ProgressBar />;
-    if (id && users[id]) return this.renderUser(users[id]);
-
-    return null;
-  }
-
-  getParams() {
-    const { params, profile, users } = this.props;
-
-    if (params && params.id) {
-      return { id: params.id, loading: users.loading };
-    } else {
-      return { ...profile };
+    if (isEmpty(data) || loading) {
+      return <ProgressBar />;
     }
+
+    return this.renderContent(data);
   }
 
-  renderUser(user) {
-    const { firstName, lastName } = user;
+  renderContent(data) {
+    const { firstName, lastName } = data;
 
     return (
       <section>
         <Helmet title={`${firstName} ${lastName}`} />
         <div styleName='root'>
-          <Info { ...user} />
+          <Info { ...data } />
           <Tabs styleName='tabs'
             index={this.state.tabIndex}
             onChange={::this.handleTabChange}>
@@ -95,15 +96,22 @@ export class Page extends Component {
   }
 }
 
-function select({ profile, users, entities }) {
+function select(state, ownProps) {
+  const { profile, users, entities } = state;
+  const { params } = ownProps;
+
+  if (params && params.id) {
+    return {
+      id: params.id,
+      loading: users.loading,
+      data: entities.users[params.id]
+    };
+  }
+
   return {
-    profile,
-    users,
-    entities
+    ...profile,
+    data: entities.users[profile.id]
   };
 }
 
-export default connect(select, {
-  loadUser,
-  loadProfile
-})(Page);
+export default connect(select, { loadUser, loadProfile })(Page);

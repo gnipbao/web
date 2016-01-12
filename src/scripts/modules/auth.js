@@ -30,10 +30,10 @@ function waitRedirect(provider, popup) {
           const params = Qs.parse(popup.location.search.slice(1));
           if (params.auth_token || params.error) popup.close();
           if (params.auth_token) {
-            const authToken = params.auth_token;
-            const data = jwtDecode(authToken);
-            session.signIn(authToken);
-            resolve({ authToken, data });
+            const token = params.auth_token;
+            const data = jwtDecode(token);
+            session.signIn(token);
+            resolve({ token, data });
           } else if (params.error) {
             reject({ error: params.error });
           }
@@ -69,7 +69,7 @@ export const login = (provider, inviteCode) =>
   };
 
 const initialState = {
-  authToken: session.token(),
+  token: session.token(),
   authenticated: false,
   error: null,
   data: null,
@@ -91,9 +91,9 @@ export default reducer({
     timestamp: Date.now()
   }),
 
-  [loginComplete]: (state, { authToken, data }) => ({
+  [loginComplete]: (state, { token, data }) => ({
     ...state,
-    authToken,
+    token,
     data,
     authenticated: true,
     loading: false,
@@ -102,7 +102,7 @@ export default reducer({
 
   [logout]: () => ({
     ...initialState,
-    authToken: null,
+    token: null,
     data: null,
     authenticated: false,
     timestamp: Date.now()

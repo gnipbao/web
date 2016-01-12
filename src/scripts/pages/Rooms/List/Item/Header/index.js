@@ -5,10 +5,14 @@ import style from './style';
 
 const { string, number } = PropTypes;
 
-export const Header = ({ id, name, rating }) => {
+export const Header = (props) => {
+  const { id, name, rating } = props;
+
   return (
     <div styleName='root'>
-      <h5 styleName='name'><Link to={`/rooms/${id}`}>{name}</Link></h5>
+      <h5 styleName='name'>
+        <Link to={`/rooms/${id}`}>{name}</Link>
+      </h5>
       {parseInt(rating) !== 0 ? <div styleName='rating'>{rating.toFixed(2)}</div> : null}
     </div>
   );

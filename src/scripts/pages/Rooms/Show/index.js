@@ -12,30 +12,30 @@ import style from './style';
 
 const { object } = PropTypes;
 
-@prefetch(({ dispatch, params: { id } }) => dispatch(actions.load(id)))
+function fetchData({ dispatch, params }) {
+  return dispatch(actions.load(params.id));
+}
+
+@prefetch(fetchData)
 @css(style)
 export class Page extends Component {
-  componentDidMount() {
-    const { load, entities, rooms, params } = this.props;
-
-    if (params &&  params.id && !entities.rooms[params.id] && !rooms.loading) load(params.id);
+  componentWillMount() {
+    const { load, loading, data, params } = this.props;
+    if (isEmpty(data) && !loading) load(params.id);
   }
 
   render() {
-    const {
-      params: { id },
-      rooms: { loading },
-      entities: { rooms }
-    } = this.props;
+    const { loading, data } = this.props;
 
-    if (loading) return <ProgressBar />;
-    if (id && rooms[id]) return this.renderRoom(rooms[id]);
+    if (isEmpty(data) || loading) {
+      return <ProgressBar />;
+    }
 
-    return null;
+    return this.renderContent(data);
   }
 
-  renderRoom(room) {
-    const { name } = room;
+  renderContent(data) {
+    const { name } = data;
 
     return (
       <section>
@@ -49,7 +49,14 @@ export class Page extends Component {
   }
 }
 
-export default connect(
-  ({ rooms, entities }) => ({ rooms, entities }),
-  actions
-)(Page);
+function select(state, ownProps) {
+  const { params: { id } } = ownProps;
+  const { entities, rooms } = state;
+
+  return {
+    ...rooms,
+    data: entities.rooms[id]
+  };
+}
+
+export default connect(select, actions)(Page);

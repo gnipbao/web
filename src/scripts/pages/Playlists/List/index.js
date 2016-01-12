@@ -14,37 +14,50 @@ import * as actions from 'modules/playlists';
 import Item from './Item';
 import style from './style';
 
-const { object } = PropTypes;
+const { func, bool, array } = PropTypes;
 
 @prefetch(({ dispatch }) => dispatch(actions.list()))
 @css(style)
 export class Page extends Component {
-  componentDidMount() {
-    const { list, entities: { playlists } } = this.props;
-    if (isEmpty(playlists)) list();
+  static propTypes = {
+    list: func.isRequired,
+    loading: func.isRequired,
+    collection: array
+  };
+
+  componentWillMount() {
+    const { list, loading, collection} = this.props;
+    if (isEmpty(collection) && !loading) list();
   }
 
   render() {
-    const { entities: { playlists } } = this.props;
+    const { loading, collection } = this.props;
 
-    if (!isEmpty(playlists)) {
-      const items = Object.values(playlists);
-
-      return (
-        <section>
-          <Helmet title='Playlists' />
-          <h1>Playlists</h1>
-          <div styleName='root'>
-            <List selectable ripple>
-              {items.map(item => <Item key={item.id} {...item} />)}
-            </List>
-          </div>
-        </section>
-      );
+    if (isEmpty(collection) || loading) {
+      return <ProgressBar />;
     }
 
-    return <ProgressBar />;
+    return (
+      <section>
+        <Helmet title='Playlists' />
+        <h1>Playlists</h1>
+        <div styleName='root'>
+          <List selectable ripple>
+            {collection.map(item => <Item key={item.id} {...item} />)}
+          </List>
+        </div>
+      </section>
+    );
   }
 }
 
-export default connect(s => s, actions)(Page);
+function select(state) {
+  const { playlists, entities } = state;
+
+  return {
+    ...playlists,
+    collection: playlists.ids.map(id => entities.playlists[id])
+  };
+}
+
+export default connect(select, actions)(Page);

@@ -18,25 +18,28 @@ export const NotFound = (props) => {
   };
 
   return (
-    <div styleName='root'>
+    <section>
       <Helmet title='404 - Not found' />
-      <h1 styleName='title'>404</h1>
-      <section styleName='actions'>
-        <List selectable ripple>
-          <ListItem
-            {...linkProps}
-            onClick={() => pushPath(homePath)}
-          />
-        </List>
-      </section>
-      <footer styleName='footer'>
-        <p>&copy; {currentYear} PartyRooms</p>
-      </footer>
-    </div>
+      <div styleName='root'>
+        <h1 styleName='title'>404</h1>
+        <section styleName='actions'>
+          <List selectable ripple>
+            <ListItem
+              {...linkProps}
+              onClick={() => pushPath(homePath)}
+            />
+          </List>
+        </section>
+        <footer styleName='footer'>
+          <p>&copy; {currentYear} PartyRooms</p>
+        </footer>
+      </div>
+    </section>
   );
 }
 
-export default connect(
-  ({ auth: { authToken } }) => ({ authenticated: Boolean(authToken) }),
-  { pushPath }
-)(css(NotFound, style));
+function select({ auth: { authenticated }}) {
+  return { authenticated };
+}
+
+export default connect(select, { pushPath })(css(NotFound, style));

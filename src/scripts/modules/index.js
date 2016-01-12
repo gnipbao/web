@@ -22,6 +22,4 @@ const reducers = appReducers.keys().reduce((acc, key) => {
   return acc;
 }, vendorReducers);
 
-console.log(reducers);
-
 export default combineReducers(reducers);

@@ -127,13 +127,18 @@ export class SignInPage extends Component {
   }
 }
 
+function select(state) {
+  const { router, auth } = state;
+  return {
+    router,
+    auth
+  };
+}
+
 export const SignInFormPage = reduxForm({
   form: 'signin',
   fields: ['code'],
   validate
 })(SignInPage);
 
-export default connect(
-  ({ router, auth }) => ({ router, auth }),
-  { login }
-)(SignInFormPage);
+export default connect(select, { login })(SignInFormPage);

@@ -1,4 +1,5 @@
 import Time from 'react-time';
+import { connect } from 'react-redux';
 import { CardText } from 'react-toolbox/lib/card';
 
 const { string, array, object } = PropTypes;
@@ -22,12 +23,14 @@ export const Content = (props) => {
 
   return (
     <CardText className={style.root}>
-      <Owner user={entities.users[owner]} />
-      {description && <p className={style.description}>{description}</p>}
+      <Owner user={owner} />
+      {description &&
+        <p className={style.description}>{description}</p>
+      }
       {playback &&
         <Playback
           offset={playback.offset}
-          track={entities.tracks[playback.track]} />
+          track={playback.track} />
       }
       <Stats { ...{ users, tracks } } />
     </CardText>
@@ -35,7 +38,7 @@ export const Content = (props) => {
 };
 
 Content.propTypes = {
-  owner: string.isRequired,
+  owner: object.isRequired,
   playback: object,
   description: string,
   state: string.isRequired,
