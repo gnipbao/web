@@ -9,7 +9,9 @@ const initialState = {
   tracks: {}
 };
 
-export default (state = initialState, { payload, meta, ...rest }) => {
+export default function(state = initialState, action) {
+  const { payload, meta } = action;
+
   const isApiAction = meta && meta[API];
   const hasData = payload && payload.data;
 

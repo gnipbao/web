@@ -65,6 +65,7 @@ export default async (req, res) => {
       const locals = {
         path: renderProps.location.pathname,
         query: renderProps.location.query,
+        params: renderProps.params,
         state: store.getState(),
         dispatch: store.dispatch
       };

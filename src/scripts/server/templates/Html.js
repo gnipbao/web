@@ -71,9 +71,9 @@ const Html = ({ state, assets, head, body }) => {
 
 Html.propTypes = {
   state: object.isRequired,
-  head: object.isRequired,
   assets: object.isRequired,
   body: string.isRequired,
+  head: object
 };
 
 export default Html;

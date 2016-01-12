@@ -43,7 +43,7 @@ export class Page extends Component {
   }
 }
 
-function mapStateToProps(state) {
+function select(state) {
   const { rooms, entities } = state;
 
   return { entities, ...rooms,
@@ -51,4 +51,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, actions)(Page);
+export default connect(select, actions)(Page);

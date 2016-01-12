@@ -70,11 +70,11 @@ export class App extends Component {
   }
 }
 
-function mapStateToProps(state) {
+function select(state) {
   return state;
 }
 
-export default connect(mapStateToProps, {
+export default connect(select, {
   replacePath,
   logout,
   resetProfile,

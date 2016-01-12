@@ -18,7 +18,7 @@ export default ({ dispatch, getState }) => next => async (action) => {
     const { request, schema } = meta[API];
     const { payload, ...rest } = action;
 
-    const response = await request();
+    const response = await request(payload);
     const { json, links } = response;
     const data = transform(json, schema);
 

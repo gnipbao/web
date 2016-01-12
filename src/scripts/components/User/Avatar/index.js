@@ -1,5 +1,6 @@
 import css from 'react-css-modules';
 import classNames from 'classnames';
+import { connect } from 'react-redux';
 import { Link } from 'react-router'
 
 import style from './style';
@@ -8,16 +9,10 @@ const { string, bool, node } = PropTypes;
 
 const Avatar = (props) => {
   const {
-    id,
-    rounded,
-    small,
-    big, 
-    rotate,
-    picture,
-    nickname,
-    firstName,
-    children,
-    ...other
+    currentUserId, id,
+    rounded, small, big, rotate,
+    picture, nickname, firstName,
+    children, ...other
   } = props;
 
 
@@ -26,7 +21,7 @@ const Avatar = (props) => {
   const styleName = classNames(shape, size, { rotate });
   const title = nickname || firstName;
 
-  const path = id ? `/users/${id}` : '/profile';
+  const path = id && id !== currentUserId ? `/users/${id}` : '/profile';
 
   return (
     <Link to={path} { ...{ ...other, styleName } }>
@@ -39,12 +34,16 @@ const Avatar = (props) => {
 };
 
 Avatar.propTypes = {
+  currentUserId: string.isRequired,
+  id: string,
+
   rounded: bool,
   small: bool,
   big: bool,
   rotate: bool,
+
   children: node,
-  id: string,
+
   picture: string,
   nickname: string,
   firstName: string
@@ -57,6 +56,8 @@ Avatar.defaultProps = {
   rotate: false
 };
 
-export default css(Avatar, style, {
-  allowMultiple: true
-});
+const select = ({ auth: { data: { sub } } }) => ({ currentUserId: sub });
+
+export default connect(select)(
+  css(Avatar, style, { allowMultiple: true })
+);

@@ -23,11 +23,9 @@ import style from './style';
 const { object } = PropTypes;
 
 function loadSubject({ dispatch, params }) {
-  return dispatch(
-    params && params.id ?
-      loadUser(params.id) :
-      loadProfile()
-  )
+  return params && params.id ?
+    dispatch(loadUser(params.id)) :
+    dispatch(loadProfile());
 }
 
 @prefetch(loadSubject)
@@ -35,7 +33,7 @@ function loadSubject({ dispatch, params }) {
 export class Page extends Component {
   state = { tabIndex: 1 };
 
-  componentDidMount() {
+  componentWillMount() {
     const {
       loadUser, loadProfile,
       params, entities, profile, users
@@ -97,15 +95,15 @@ export class Page extends Component {
   }
 }
 
-export default connect(({
-  profile,
-  users,
-  entities
-}) => ({
-  profile,
-  users,
-  entities
-}), {
+function select({ profile, users, entities }) {
+  return {
+    profile,
+    users,
+    entities
+  };
+}
+
+export default connect(select, {
   loadUser,
   loadProfile
 })(Page);
