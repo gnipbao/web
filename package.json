@@ -117,7 +117,7 @@
     "chai": "3.4.1",
     "chai-as-promised": "5.2.0",
     "codecov.io": "0.1.6",
-    "commitizen": "2.4.6",
+    "commitizen": "2.5.0",
     "compression-webpack-plugin": "0.2.0",
     "css-loader": "0.23.1",
     "cssnano": "3.4.0",
