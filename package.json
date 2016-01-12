@@ -210,7 +210,7 @@
     "postcss-size": "1.0.0",
     "postcss-svg": "1.0.4",
     "postcss-svg-fallback": "1.2.3",
-    "postcss-use": "2.0.1",
+    "postcss-use": "2.0.2",
     "postcss-write-svg": "2.0.0",
     "precss": "1.4.0",
     "prettyjson": "1.1.3",
