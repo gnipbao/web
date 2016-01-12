@@ -188,7 +188,7 @@
     "phantomjs": "1.9.19",
     "phantomjs-polyfill": "0.0.1",
     "postcss-assets": "3.0.3",
-    "postcss-autoreset": "1.1.1",
+    "postcss-autoreset": "1.1.2",
     "postcss-brand-colors": "0.3.0",
     "postcss-browser-reporter": "0.4.0",
     "postcss-color-rgba-fallback": "2.2.0",
