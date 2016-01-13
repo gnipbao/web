@@ -48,11 +48,10 @@ export const routes = (
       <Route path='/users/:id' component={profiles.show} />
 
       <Route path='/playlists' component={playlists.list} />
-      <Route path='/playlists/:id' component={playlists.show} />
       <Route path='/playlists/:id/edit' component={playlists.edit} />
 
       <Route path='/playlists/:id/tracks' component={tracks.list} />
-      <Route path='/playlists/:id/tracks/:track_id/edit' component={tracks.edit} />
+      <Route path='/playlists/:id/tracks/:trackId/edit' component={tracks.edit} />
 
       <Route path='/about' component={about} />
     </Route>

@@ -1,5 +1,13 @@
 import api from 'api/app';
 
-export const load = () => api.get('profile');
-export const invites = () => api.get('profile/invites');
-export const identities = () => api.get('profile/identities');
+export function load() {
+  return api.get('profile');
+}
+
+export function invites() {
+  return api.get('profile/invites');
+}
+
+export function identities() {
+  return api.get('profile/identities');
+}

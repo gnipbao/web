@@ -1,6 +1,15 @@
 import union from 'lodash/array/union'
 
-// general-purpose API CRUD reducers
+export const identity = ({ id }) => id;
+
+export const initialState = {
+  loading: false,
+  links: {},
+  pageCount: 0,
+  ids: []
+};
+
+// general-purpose CRUD reducers
 
 export function list(state, { data, links, error }) {
   if (!data) return { ...state, loading: true };
@@ -14,6 +23,18 @@ export function list(state, { data, links, error }) {
     ids: union(state.ids, data.result)
   };
 }
+
+export function paginate(slice, selectKey = identity) {
+  return function(state, payload) {
+    const key = selectKey(payload);
+    return {
+      ...state,
+      [slice]: {
+        [key]: list(state[key] || initialState, payload)
+      }
+    }
+  };
+};
 
 export function load(state, { data, error }) {
   if (!data) return { ...state, loading: true };

@@ -1,6 +1,10 @@
 import api from 'api/app';
 
-export const list = ({ page = 1, count = 10 }) =>
-  api.get('users', { page, per_page: count });
+export function list({ page = 1, count = 10 }) {
+  const params = { page, per_page: count };
+  return api.get('users', params);
+}
 
-export const find = id => api.get(`users/${id}`);
+export function find({ id }) {
+  return api.get(`users/${id}`);
+}

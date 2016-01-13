@@ -1,7 +1,8 @@
 import { Schema, arrayOf } from 'normalizr';
-import { API } from 'store/middleware/custom/api';
-import * as apiReducers from 'reducers/api';
 import { createAction, createReducer } from 'redux-act';
+
+import { API } from 'store/middleware/custom/api';
+import * as crud from 'reducers/crud';
 
 const identity = (arg = {}) => arg;
 const undef = () => undefined;
@@ -11,25 +12,26 @@ export const reducer = createReducer;
 
 export function apiAction(description, request, schema,
   payloadReducer = identity, metaReducer = undef) {
-  const apiMeta = { request, schema };
+  const meta = { request, schema };
 
   return createAction(description, payloadReducer,
-    (...args) => ({ ...metaReducer(...args), [API]: apiMeta }));
+    (...args) => ({ ...metaReducer(...args), [API]: meta }));
 }
 
-const initial = {
-  loading: false,
-  links: {},
-  pageCount: 0,
-  ids: []
-};
+export function apiReducer(actions, additionalState = {}) {
+  const {
+    list, load,
+    create, update, destroy,
+    ...handlers
+  } = actions;
 
-export function apiReducer(actions, initialState = initial) {
-  const { list, load, ...handlers } = actions;
-  const result = createReducer(handlers, initialState);
+  const result = reducer(handlers, {
+    ...crud.initialState,
+    ...additionalState
+  });
 
-  if (list) result.on(list, apiReducers.list);
-  if (load) result.on(load, apiReducers.load);
+  if (list) result.on(list, crud.list);
+  if (load) result.on(load, crud.load);
 
   return result;
 }

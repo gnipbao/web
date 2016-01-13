@@ -10,13 +10,10 @@ import Content from './Content';
 
 import style from './style';
 
-const { array, object, bool, func } = PropTypes;
+const { array, object, number, string, bool, func } = PropTypes;
 
 export const Item = (props) => {
-  const {
-    id, name, rating, inside,
-    ...content
-  } = props;
+  const { id, name, rating, inside, ...content } = props;
 
   return (
     <div styleName='root'>
@@ -30,6 +27,9 @@ export const Item = (props) => {
 };
 
 Item.propTypes = {
+  id: string.isRequired,
+  name: string.isRequired,
+  rating: number,
   inside: bool.isRequired
 };
 
@@ -39,11 +39,7 @@ function select(state, ownProps) {
     entities: { users, tracks }
   } = state;
 
-  const {
-    owner,
-    playback,
-    ...room
-  } = ownProps;
+  const { owner, playback, ...room } = ownProps;
 
   return {
     ...room,

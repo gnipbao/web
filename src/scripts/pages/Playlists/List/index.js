@@ -1,7 +1,6 @@
 import isEmpty from 'lodash/lang/isEmpty';
 import { connect } from 'react-redux';
 import css from 'react-css-modules';
-
 import { prefetch, defer } from 'react-fetcher';
 
 import { List } from 'react-toolbox/lib/list';
@@ -16,12 +15,16 @@ import style from './style';
 
 const { func, bool, array } = PropTypes;
 
-@prefetch(({ dispatch }) => dispatch(actions.list()))
+function fetchData({ dispatch }) {
+  return dispatch(actions.list());
+}
+
+@prefetch(fetchData)
 @css(style)
 export class Page extends Component {
   static propTypes = {
     list: func.isRequired,
-    loading: func.isRequired,
+    loading: bool.isRequired,
     collection: array
   };
 

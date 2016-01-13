@@ -3,7 +3,13 @@ import * as schemas from 'api/schemas';
 import * as service from 'services/profile';
 
 export const reset = action('profile.reset');
-export const load = apiAction('profile.load', service.load, schemas.user);
+
+export const load = apiAction(
+  'profile.load',
+  service.load,
+  schemas.user,
+  id => ({ id })
+);
 
 const initialState = {
   id: null,

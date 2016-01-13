@@ -31,9 +31,9 @@ export default [
   'moment',
   'parse-link-header',
   'react-intl',
-  // 'normalizr',
+  'normalizr',
+  'reselect',
   // 'react-pure-render',
-  // 'reselect',
   // 'react-themeable',
   // 'react-visibility-sensor',
 ]
