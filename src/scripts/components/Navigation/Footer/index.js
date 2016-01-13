@@ -10,8 +10,9 @@ import style from './style';
 
 const { func, object, bool } = PropTypes;
 
-export const Footer = ({ slim, logout, user }) => {
-  const { picture, nickname, first_name, role } = user;
+export const Footer = (props) => {
+  const { slim, logout, currentUser } = props;
+  const { picture, nickname, first_name, role } = currentUser;
 
   return (
     <div styleName={ slim ? 'slim' : 'normal' }>
@@ -40,7 +41,7 @@ export const Footer = ({ slim, logout, user }) => {
 Footer.propTypes = {
   slim: bool.isRequired,
   logout: func.isRequired,
-  user: object.isRequired
+  currentUser: object.isRequired
 };
 
 export default css(Footer, style);

@@ -70,9 +70,11 @@ export const login = (provider, inviteCode) =>
 
 const initialState = {
   token: session.token(),
-  authenticated: false,
   error: null,
   data: null,
+  currentUser: null,
+  currentUserId: null,
+  authenticated: false,
   loading: false,
   timestamp: null,
 };
@@ -95,6 +97,8 @@ export default reducer({
     ...state,
     token,
     data,
+    currentUserId: data.sub,
+    currentUser: data.user,
     authenticated: true,
     loading: false,
     timestamp: Date.now()
@@ -103,8 +107,6 @@ export default reducer({
   [logout]: () => ({
     ...initialState,
     token: null,
-    data: null,
-    authenticated: false,
     timestamp: Date.now()
   })
 }, initialState);

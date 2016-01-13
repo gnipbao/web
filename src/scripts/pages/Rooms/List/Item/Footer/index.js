@@ -9,10 +9,15 @@ import { CardActions } from 'react-toolbox/lib/card';
 import style from './style';
 
 const TooltipButton = Tooltip(Button);
-const { string, func } = PropTypes;
+const { bool, string, func } = PropTypes;
 
 export const Footer = (props) => {
-  const { id, currentUserId, enterAndRedirect } = props;
+  const {
+    id,
+    currentUserId,
+    canEnter,
+    enterAndRedirect
+  } = props;
 
   return (
     <CardActions styleName='root'>
@@ -22,6 +27,7 @@ export const Footer = (props) => {
       <TooltipButton styleName='enter'
         icon='input'
         tooltip='enter'
+        disabled={!canEnter}
         onClick={() => enterAndRedirect(id, currentUserId)}
       />
     </CardActions>
@@ -31,15 +37,15 @@ export const Footer = (props) => {
 Footer.propTypes = {
   id: string.isRequired,
   currentUserId: string.isRequired,
+  canEnter: bool.isRequired,
   enterAndRedirect: func.isRequired
 };
 
-function select(state) {
-  const { auth: { data: { sub } } } = state;
-  return { currentUserId: sub };
+function select(state, ownProps) {
+  const { auth: { currentUserId } } = state;
+  return { currentUserId };
 }
 
 export default connect(
-  select,
-  { enterAndRedirect }
+  select, { enterAndRedirect }
 )(css(Footer, style));

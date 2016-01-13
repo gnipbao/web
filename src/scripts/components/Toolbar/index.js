@@ -1,19 +1,22 @@
-import css from 'react-css-modules';
+import pick from 'lodash/object/pick';
+import { connect } from 'react-redux';
 
+import css from 'react-css-modules';
 import Select from 'react-select';
 import FontIcon from 'react-toolbox/lib/font_icon';
 import Button from 'react-toolbox/lib/button';
 import Tooltip from 'react-toolbox/lib/tooltip';
 import Input from 'react-toolbox/lib/input';
 
-const TooltipButton = Tooltip(Button);
+import { toggle as toggleNavigation } from 'modules/navigation';
 
 import style from './style';
 
+const TooltipButton = Tooltip(Button);
 const { bool, func, object, shape } = PropTypes;
 
 export const Toolbar = (props) => {
-  const { navigation } = props;
+  const { navigation, toggleNavigation } = props;
 
   const icon = navigation.slim ?
     'format_indent_increase' :
@@ -23,7 +26,7 @@ export const Toolbar = (props) => {
     <div styleName='root'>
       <TooltipButton flat ripple={false}
         icon={icon}
-        onClick={navigation.toggle}
+        onClick={toggleNavigation}
         tooltip='Toggle navigation bar'
         styleName='toggle'
       />
@@ -41,10 +44,14 @@ export const Toolbar = (props) => {
 };
 
 Toolbar.propTypes = {
-  navigation: shape({
-    slim: bool.isRequired,
-    toggle: func.isRequired
-  })
+  navigation: shape({ slim: bool.isRequired }),
+  toggleNavigation: func.isRequired
 };
 
-export default css(Toolbar, style);
+function select(state) {
+  return pick(state, 'navigation');
+}
+
+export default connect(
+  select, { toggleNavigation }
+)(css(Toolbar, style));

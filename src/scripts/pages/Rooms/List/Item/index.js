@@ -1,3 +1,4 @@
+import includes from 'lodash/collection/includes';
 import css from 'react-css-modules';
 import { connect } from 'react-redux';
 
@@ -12,30 +13,46 @@ import style from './style';
 const { array, object, bool, func } = PropTypes;
 
 export const Item = (props) => {
-  const { id, name, rating, ...content } = props;
+  const {
+    id, name, rating, inside,
+    ...content
+  } = props;
 
   return (
     <div styleName='root'>
       <Card styleName='card'>
         <Header { ...{ id, name, rating } } />
         <Content { ...content } />
-        <Footer { ...{ id } } />
+        <Footer { ...{ id } } canEnter={!inside} />
       </Card>
     </div>
   );
 };
 
+Item.propTypes = {
+  inside: bool.isRequired
+};
+
 function select(state, ownProps) {
-  const { entities: { users, tracks } } = state;
-  const { owner, playback, ...props } = ownProps;
+  const {
+    auth: { currentUserId },
+    entities: { users, tracks }
+  } = state;
+
+  const {
+    owner,
+    playback,
+    ...room
+  } = ownProps;
 
   return {
-    ...props,
+    ...room,
     owner: users[owner],
     playback: playback ? {
       ...playback,
       track: tracks[playback.track]
-    } : null
+    } : null,
+    inside: includes(room.users, currentUserId),
   };
 }
 

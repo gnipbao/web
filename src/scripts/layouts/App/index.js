@@ -16,8 +16,8 @@ const { func, string, object } = PropTypes;
 
 export class App extends Component {
   static propTypes = {
-    replacePath: func.isRequired,
     logout: func.isRequired,
+    replacePath: func.isRequired,
     resetProfile: func.isRequired
   };
 
@@ -28,39 +28,13 @@ export class App extends Component {
   }
 
   render() {
-    const {
-      auth: { data: { user } },
-      routing,
-      navigation,
-      toggleNavigation,
-      rooms,
-      playlists,
-      children
-    } = this.props;
-
-    const commonProps = {
-      user,
-      rooms,
-      playlists
-    };
-
-    const navigationProps = {
-      ...navigation,
-      ...commonProps
-    };
-
-    const toolbarProps = {
-      navigation: {
-        slim: navigation.slim,
-        toggle: toggleNavigation
-      }
-    };
+    const { children } = this.props;
 
     return (
       <div styleName='root'>
-        <Navigation { ...navigationProps } logout={::this.handleLogout} />
+        <Navigation logout={::this.handleLogout} />
         <div styleName='main'>
-          <Toolbar { ...toolbarProps } />
+          <Toolbar />
           <section styleName='content'>
             {children}
           </section>
@@ -70,13 +44,19 @@ export class App extends Component {
   }
 }
 
-function select(state) {
+function selectProps(state) {
   return state;
 }
 
-export default connect(select, {
-  replacePath,
-  logout,
-  resetProfile,
-  toggleNavigation
-})(css(App, style));
+function selectActions() {
+  return {
+    replacePath,
+    logout,
+    resetProfile
+  };
+}
+
+export default connect(
+  selectProps,
+  selectActions
+)(css(App, style));

@@ -56,7 +56,10 @@ Avatar.defaultProps = {
   rotate: false
 };
 
-const select = ({ auth: { data: { sub } } }) => ({ currentUserId: sub });
+function select(state) {
+  const { auth: { currentUserId } } = state;
+  return { currentUserId };
+}
 
 export default connect(select)(
   css(Avatar, style, { allowMultiple: true })

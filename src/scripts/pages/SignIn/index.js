@@ -100,7 +100,7 @@ export class SignInPage extends Component {
     return (
       <form styleName='form' data-valid={valid} onSubmit={::this.handleSubmit}>
         <div styleName='fields'>
-          <Input required
+          <Input
             {...inputProps}
             {...code}
             type='text'

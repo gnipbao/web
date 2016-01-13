@@ -1,4 +1,9 @@
 export default function(props) {
+  const {
+    roomsCount,
+    playlistsCount
+  } = props;
+
   return [
     {
       primary: true,
@@ -8,13 +13,13 @@ export default function(props) {
           icon: 'dashboard',
           path: '/rooms',
           label: 'rooms',
-          count: props.rooms.ids.length
+          count: roomsCount
         },
         {
           icon: 'library_music',
           path: '/playlists',
           label: 'playlists',
-          count: props.playlists.ids.length
+          count: playlistsCount
         }
       ]
     }
