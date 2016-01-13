@@ -45,7 +45,7 @@
     "express": "4.13.3",
     "fastclick": "1.0.6",
     "fontfaceobserver": "1.6.2",
-    "helmet": "1.0.2",
+    "helmet": "1.1.0",
     "history": "1.17.0",
     "howler": "1.1.28",
     "invariant": "2.2.0",
