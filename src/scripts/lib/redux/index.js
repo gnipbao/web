@@ -1,7 +1,6 @@
-import union from 'lodash/array/union'
-
 import { Schema, arrayOf } from 'normalizr';
 import { API } from 'store/middleware/custom/api';
+import * as apiReducers from 'reducers/api';
 import { createAction, createReducer } from 'redux-act';
 
 const identity = (arg = {}) => arg;
@@ -12,37 +11,11 @@ export const reducer = createReducer;
 
 export function apiAction(description, request, schema,
   payloadReducer = identity, metaReducer = undef) {
+  const apiMeta = { request, schema };
 
   return createAction(description, payloadReducer,
-    (...args) => ({ ...metaReducer(...args), [API]: { request, schema } })
-  );
+    (...args) => ({ ...metaReducer(...args), [API]: apiMeta }));
 }
-
-const reducers = {
-  list: (state, { data, links, error }) => {
-    if (!data) return { ...state, loading: true };
-    if (error) return { ...state, loading: false };
-
-    return {
-      ...state,
-      loading: false,
-      links,
-      pageCount: state.pageCount + 1,
-      ids: union(state.ids, data.result)
-    };
-  },
-
-  load: (state, { data, error }) => {
-    if (!data) return { ...state, loading: true };
-    if (error) return { ...state, loading: false };
-
-    return {
-      ...state,
-      loading: false,
-      ids: union(state.ids, [data.result])
-    };
-  }
-};
 
 const initial = {
   loading: false,
@@ -52,12 +25,11 @@ const initial = {
 };
 
 export function apiReducer(actions, initialState = initial) {
-  const result = createReducer({}, initialState);
+  const { list, load, ...handlers } = actions;
+  const result = createReducer(handlers, initialState);
 
-  const { list, load } = actions;
-
-  if (list) result.on(list, reducers.list);
-  if (load) result.on(load, reducers.load);
+  if (list) result.on(list, apiReducers.list);
+  if (load) result.on(load, apiReducers.load);
 
   return result;
 }

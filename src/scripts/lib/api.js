@@ -28,7 +28,7 @@ export default class Api {
       mode: 'cors',
       method,
       headers: requestHeaders,
-      body
+      body: JSON.stringify(body)
     }).then(
       ::this.processResponse,
       ::this.processError

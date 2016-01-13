@@ -1,5 +1,5 @@
 import css from 'react-css-modules';
-import { pushPath } from 'redux-simple-router';
+import { enterAndRedirect } from 'modules/rooms';
 import { connect } from 'react-redux';
 
 import Tooltip from 'react-toolbox/lib/tooltip';
@@ -12,7 +12,7 @@ const TooltipButton = Tooltip(Button);
 const { string, func } = PropTypes;
 
 export const Footer = (props) => {
-  const { pushPath, id } = props;
+  const { id, currentUserId, enterAndRedirect } = props;
 
   return (
     <CardActions styleName='root'>
@@ -22,7 +22,7 @@ export const Footer = (props) => {
       <TooltipButton styleName='enter'
         icon='input'
         tooltip='enter'
-        onClick={() => pushPath(`/rooms/${id}`)}
+        onClick={() => enterAndRedirect(id, currentUserId)}
       />
     </CardActions>
   );
@@ -30,7 +30,16 @@ export const Footer = (props) => {
 
 Footer.propTypes = {
   id: string.isRequired,
-  pushPath: func.isRequired
+  currentUserId: string.isRequired,
+  enterAndRedirect: func.isRequired
 };
 
-export default connect(s => s, { pushPath })(css(Footer, style));
+function select(state) {
+  const { auth: { data: { sub } } } = state;
+  return { currentUserId: sub };
+}
+
+export default connect(
+  select,
+  { enterAndRedirect }
+)(css(Footer, style));
