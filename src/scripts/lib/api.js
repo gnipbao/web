@@ -24,6 +24,8 @@ export default class Api {
       ...headers
     };
 
+    console.log(`fetching ${requestUrl}, headers: `, requestHeaders);
+
     return fetch(requestUrl, {
       mode: 'cors',
       method,

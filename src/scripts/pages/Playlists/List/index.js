@@ -28,11 +28,6 @@ export class Page extends Component {
     collection: array
   };
 
-  componentWillMount() {
-    const { list, loading, collection} = this.props;
-    if (isEmpty(collection) && !loading) list();
-  }
-
   render() {
     const { loading, collection } = this.props;
 

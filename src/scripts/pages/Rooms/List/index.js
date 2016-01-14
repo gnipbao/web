@@ -14,8 +14,14 @@ import style from './style';
 
 const { object, bool, array, func } = PropTypes;
 
-function fetchData({ dispatch }) {
-  return dispatch(actions.list());
+function fetchData(locals) {
+  const {
+    dispatch,
+    state: { rooms: { ids, loading } }
+  } = locals;
+
+  return isEmpty(ids) && !loading &&
+    dispatch(actions.list());
 }
 
 @prefetch(fetchData)
@@ -27,17 +33,11 @@ export class Page extends Component {
     collection: array
   };
 
-  componentWillMount() {
-    const { list, loading, collection } = this.props;
-    if (isEmpty(collection) && !loading) list();
-  }
-
   render() {
     const { loading, collection } = this.props;
 
-    if (loading || isEmpty(collection)) {
-      return <ProgressBar />;
-    }
+    if (loading) return <ProgressBar />;
+    if (isEmpty(collection)) return null;
 
     return (
       <section>

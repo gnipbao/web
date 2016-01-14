@@ -19,11 +19,6 @@ function fetchData({ dispatch, params }) {
 @prefetch(fetchData)
 @css(style)
 export class Page extends Component {
-  componentWillMount() {
-    const { load, loading, data, params } = this.props;
-    if (isEmpty(data) && !loading) load(params.id);
-  }
-
   render() {
     const { loading, data } = this.props;
 

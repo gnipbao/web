@@ -48,12 +48,12 @@ function selectProps(state) {
   return state;
 }
 
-function selectActions() {
-  return {
+function selectActions(dispatch) {
+  return bindActionCreators({
     replacePath,
     logout,
     resetProfile
-  };
+  }, dispatch);
 }
 
 export default connect(

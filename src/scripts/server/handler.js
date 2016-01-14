@@ -17,7 +17,7 @@ import history from 'lib/history';
 import render from 'lib/render';
 
 import createRoutes from 'routes';
-import getStatus from 'routes/getStatus';
+import getStatus from 'routes/utils/getStatus';
 
 const prettyError = new PrettyError();
 
@@ -62,16 +62,7 @@ export default async (req, res) => {
            status = ${status}
       `);
 
-      const locals = {
-        path: renderProps.location.pathname,
-        query: renderProps.location.query,
-        params: renderProps.params,
-        state: store.getState(),
-        dispatch: store.dispatch
-      };
-
       try {
-        await getPrefetchedData(renderProps.components, locals);
         const routerProps = { ...renderProps, location };
         const html = await render(history, store, routerProps);
         res.status(status).send(html);

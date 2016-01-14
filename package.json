@@ -19,7 +19,7 @@
       "browserSync": 3001,
       "browserSyncUI": 3002
     },
-    "sourceMap": true,
+    "sourceMap": false,
     "locale": "en_US",
     "ghooks": {
       "pre-commit": "# npm run security:check && npm run test",
