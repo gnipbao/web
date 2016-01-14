@@ -1,2 +1,4 @@
-export default (...keys) => keys.reduce((obj, key) =>
-  (key ? { ...obj, [key]: key } : obj), {});
+export default function(...keys) {
+  return keys.reduce((obj, key) =>
+    (key ? { ...obj, [key]: key } : obj), {});
+}

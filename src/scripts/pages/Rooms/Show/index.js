@@ -6,25 +6,22 @@ import { prefetch, defer } from 'react-fetcher';
 import Button from 'react-toolbox/lib/button';
 import ProgressBar from 'react-toolbox/lib/progress_bar';
 
+import fetchData from 'lib/fetchData';
 import * as actions from 'modules/rooms';
+import * as selectors from 'selectors/rooms';
 
 import style from './style';
 
 const { object } = PropTypes;
 
-function fetchData({ dispatch, params }) {
-  return dispatch(actions.load(params.id));
-}
-
-@prefetch(fetchData)
+@prefetch(fetchData('rooms', actions.load))
 @css(style)
 export class Page extends Component {
   render() {
     const { loading, data } = this.props;
 
-    if (isEmpty(data) || loading) {
-      return <ProgressBar />;
-    }
+    if (loading) return <ProgressBar />;
+    if (isEmpty(data)) return null;
 
     return this.renderContent(data);
   }
@@ -44,14 +41,4 @@ export class Page extends Component {
   }
 }
 
-function select(state, ownProps) {
-  const { params: { id } } = ownProps;
-  const { entities, rooms } = state;
-
-  return {
-    ...rooms,
-    data: entities.rooms[id]
-  };
-}
-
-export default connect(select, actions)(Page);
+export default connect(selectors.show, actions)(Page);

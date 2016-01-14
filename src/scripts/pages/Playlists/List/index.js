@@ -1,25 +1,21 @@
 import isEmpty from 'lodash/lang/isEmpty';
 import { connect } from 'react-redux';
 import css from 'react-css-modules';
-import { prefetch, defer } from 'react-fetcher';
+import { prefetch } from 'react-fetcher';
 
 import { List } from 'react-toolbox/lib/list';
-import Tooltip from 'react-toolbox/lib/tooltip';
-import Button from 'react-toolbox/lib/button';
 import ProgressBar from 'react-toolbox/lib/progress_bar';
 
+import fetchData from 'lib/fetchData';
 import * as actions from 'modules/playlists';
+import { list as selector } from 'selectors/playlists';
 
 import Item from './Item';
 import style from './style';
 
 const { func, bool, array } = PropTypes;
 
-function fetchData({ dispatch }) {
-  return dispatch(actions.list());
-}
-
-@prefetch(fetchData)
+@prefetch(fetchData('playlists', actions.list))
 @css(style)
 export class Page extends Component {
   static propTypes = {
@@ -49,13 +45,4 @@ export class Page extends Component {
   }
 }
 
-function select(state) {
-  const { playlists, entities } = state;
-
-  return {
-    ...playlists,
-    collection: playlists.ids.map(id => entities.playlists[id])
-  };
-}
-
-export default connect(select, actions)(Page);
+export default connect(selector, actions)(Page);

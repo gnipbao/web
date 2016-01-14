@@ -1,19 +1,16 @@
 import isEmpty from 'lodash/lang/isEmpty';
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 import css from 'react-css-modules';
 
-import { prefetch, defer } from 'react-fetcher';
+import { prefetch } from 'react-fetcher';
 
 import { Tabs, Tab } from 'react-toolbox/lib/tabs';
-import Tooltip from 'react-toolbox/lib/tooltip';
-import Button from 'react-toolbox/lib/button';
 import ProgressBar from 'react-toolbox/lib/progress_bar';
 
-const TooltipButton = Tooltip(Button);
-
+import fetchData from './fetchData';
 import { load as loadProfile } from 'modules/profile';
 import { load as loadUser } from 'modules/users';
+import { show as selector } from 'selectors/profile';
 
 import Info from 'components/User/Info';
 import Activity from './Activity';
@@ -23,20 +20,10 @@ import style from './style';
 
 const { object } = PropTypes;
 
-function fetchData({ dispatch, params }) {
-  return params && params.id ?
-    dispatch(loadUser(params.id)) :
-    dispatch(loadProfile());
-}
-
 @prefetch(fetchData)
 @css(style)
 export class Page extends Component {
   state = { tabIndex: 1 };
-
-  componentWillMount() {
-    this.load();
-  }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.id !== this.props.id) {
@@ -67,9 +54,8 @@ export class Page extends Component {
   render() {
     const { loading, data } = this.props;
 
-    if (isEmpty(data) || loading) {
-      return <ProgressBar />;
-    }
+    if (loading) return <ProgressBar />;
+    if (isEmpty(data)) return null;
 
     return this.renderContent(data);
   }
@@ -96,22 +82,9 @@ export class Page extends Component {
   }
 }
 
-function select(state, ownProps) {
-  const { profile, users, entities } = state;
-  const { params } = ownProps;
+const actions = {
+  loadUser,
+  loadProfile
+};
 
-  if (params && params.id) {
-    return {
-      id: params.id,
-      loading: users.loading,
-      data: entities.users[params.id]
-    };
-  }
-
-  return {
-    ...profile,
-    data: entities.users[profile.id]
-  };
-}
-
-export default connect(select, { loadUser, loadProfile })(Page);
+export default connect(selector, actions)(Page);

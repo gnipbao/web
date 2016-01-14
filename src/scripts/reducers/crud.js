@@ -11,6 +11,18 @@ export const initialState = {
 
 // general-purpose CRUD reducers
 
+export function paginate(slice, selectKey = identity) {
+  return function(state, payload) {
+    const key = selectKey(payload);
+    return {
+      ...state,
+      [slice]: {
+        [key]: list(state[key] || initialState, payload)
+      }
+    }
+  };
+};
+
 export function list(state, { data, links, error }) {
   if (!data) return { ...state, loading: true };
   if (error) return { ...state, loading: false };
@@ -23,18 +35,6 @@ export function list(state, { data, links, error }) {
     ids: union(state.ids, data.result)
   };
 }
-
-export function paginate(slice, selectKey = identity) {
-  return function(state, payload) {
-    const key = selectKey(payload);
-    return {
-      ...state,
-      [slice]: {
-        [key]: list(state[key] || initialState, payload)
-      }
-    }
-  };
-};
 
 export function load(state, { data, error }) {
   if (!data) return { ...state, loading: true };

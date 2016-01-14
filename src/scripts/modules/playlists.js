@@ -1,18 +1,16 @@
 import { apiAction, apiReducer } from 'lib/redux';
 import * as schemas from 'api/schemas';
 import * as service from 'services/playlists';
-
-import { combineReducers } from 'redux';
 import * as reducers from 'reducers/crud';
 
 export const list = apiAction(
-  'playlists.list',
+  'playlists.api.list',
   service.list,
   schemas.playlistArray
 );
 
 export const load = apiAction(
-  'playlists.load',
+  'playlists.api.load',
   service.find,
   schemas.playlist,
   id => ({ id })
@@ -20,7 +18,7 @@ export const load = apiAction(
 
 export const tracks = {
   list: apiAction(
-    'playlists.tracks.list',
+    'playlists.api.tracks.list',
     service.tracks.list,
     schemas.trackArray,
     id => ({ id })

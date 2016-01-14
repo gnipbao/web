@@ -1,30 +1,20 @@
 import isEmpty from 'lodash/lang/isEmpty';
 import { connect } from 'react-redux';
 import css from 'react-css-modules';
-import { prefetch, defer } from 'react-fetcher';
+import { prefetch } from 'react-fetcher';
 
-import Tooltip from 'react-toolbox/lib/tooltip';
-import Button from 'react-toolbox/lib/button';
 import ProgressBar from 'react-toolbox/lib/progress_bar';
 
+import fetchData from 'lib/fetchData';
 import * as actions from 'modules/rooms';
+import { list as selector } from 'selectors/rooms';
 
 import Item from './Item';
 import style from './style';
 
-const { object, bool, array, func } = PropTypes;
+const { bool, array, func } = PropTypes;
 
-function fetchData(locals) {
-  const {
-    dispatch,
-    state: { rooms: { ids, loading } }
-  } = locals;
-
-  return isEmpty(ids) && !loading &&
-    dispatch(actions.list());
-}
-
-@prefetch(fetchData)
+@prefetch(fetchData('rooms', actions.list))
 @css(style)
 export class Page extends Component {
   static propTypes = {
@@ -51,13 +41,4 @@ export class Page extends Component {
   }
 }
 
-function select(state) {
-  const { rooms, entities } = state;
-
-  return {
-    ...rooms,
-    collection: rooms.ids.map(id => entities.rooms[id])
-  };
-}
-
-export default connect(select, actions)(Page);
+export default connect(selector, actions)(Page);
