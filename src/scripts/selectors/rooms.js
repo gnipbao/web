@@ -1,13 +1,13 @@
 import { createSelector as selector } from 'reselect';
 
 import { denormalize } from './base';
-import { Filters } from 'modules/rooms';
+import { filters } from 'modules/rooms';
 
-const filters = {
-  [Filters.all]: (coll) => coll,
-  [Filters.public]: (coll) => coll.filter(i => !i.private),
-  [Filters.private]: (coll) => coll.filter(i => i.private),
-  [Filters.my]: (coll, me) => coll.filter(i => i.owner === me)
+const filterFuncs = {
+  [filters.all]: (coll) => coll,
+  [filters.public]: (coll) => coll.filter(i => !i.private),
+  [filters.private]: (coll) => coll.filter(i => i.private),
+  [filters.my]: (coll, me) => coll.filter(i => i.owner === me)
 };
 
 function applySearchFilter(collection, query) {
@@ -25,7 +25,7 @@ export const filtered = selector(
   s => s.auth.currentUserId,
   ({ collection, ...state }, filter, me) => ({
     ...state,
-    collection: filters[filter](collection, me)
+    collection: filterFuncs[filter](collection, me)
   })
 );
 

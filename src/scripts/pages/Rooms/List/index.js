@@ -7,31 +7,30 @@ import { prefetch } from 'react-fetcher';
 import ProgressBar from 'react-toolbox/lib/progress_bar';
 
 import fetchData from 'lib/fetchData';
-import * as actions from 'modules/rooms';
+import { actions, filters } from 'modules/rooms';
 import { list as selector } from 'selectors/rooms';
 
 import Filter from './Filter';
 import Item from './Item';
 import style from './style';
 
-const { bool, string, array, func, shape } = PropTypes;
+const { bool, string, array, func, oneOf, shape } = PropTypes;
 
 @prefetch(fetchData('rooms', actions.list))
 @css(style)
 export class Page extends Component {
   static propTypes = {
-    filter: string.isRequired,
+    filter: oneOf(Object.keys(filters)).isRequired,
     loading: bool.isRequired,
     collection: array,
     actions: shape({
       list: func.isRequired,
       filter: func.isRequired
-    })
+    }).isRequired
   };
 
   render() {
     const { filter, actions } = this.props;
-
 
     return (
       <section>
@@ -51,8 +50,7 @@ export class Page extends Component {
     if (loading) return <ProgressBar />;
     if (isEmpty(collection)) return null;
 
-    return collection.map(item =>
-      <Item key={item.id} { ...item } />);
+    return collection.map(item => <Item key={item.id} { ...item } />);
   }
 }
 

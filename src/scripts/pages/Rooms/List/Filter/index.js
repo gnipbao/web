@@ -1,7 +1,7 @@
 import css from 'react-css-modules';
 import Button from 'react-toolbox/lib/button';
 
-import { Filters } from 'modules/rooms';
+import { filters } from 'modules/rooms';
 
 import style from './style';
 
@@ -10,12 +10,12 @@ export const Filter = (props) => {
 
   return (
     <div styleName='root'>
-      {Object.keys(Filters).map(key =>
-        <Button flat styleName='filter'
-          primary={key === value}
-          disabled={key === value}
-          key={key}
+      {Object.keys(filters).map(key =>
+        <Button key={key}
+          flat
+          styleName='filter'
           label={key}
+          disabled={key === value}
           onClick={() => onChange(key)}
         />
       )}

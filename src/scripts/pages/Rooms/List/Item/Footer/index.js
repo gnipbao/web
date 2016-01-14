@@ -1,10 +1,11 @@
 import css from 'react-css-modules';
-import { enterAndRedirect } from 'modules/rooms';
 import { connect } from 'react-redux';
 
 import Tooltip from 'react-toolbox/lib/tooltip';
 import Button from 'react-toolbox/lib/button';
 import { CardActions } from 'react-toolbox/lib/card';
+
+import { actions } from 'modules/rooms';
 
 import style from './style';
 
@@ -16,7 +17,7 @@ export const Footer = (props) => {
     id,
     currentUserId,
     canEnter,
-    enterAndRedirect
+    enter
   } = props;
 
   return (
@@ -28,7 +29,7 @@ export const Footer = (props) => {
         icon='input'
         tooltip='enter'
         disabled={!canEnter}
-        onClick={() => enterAndRedirect(id, currentUserId)}
+        onClick={() => enter(id, currentUserId)}
       />
     </CardActions>
   );
@@ -38,7 +39,7 @@ Footer.propTypes = {
   id: string.isRequired,
   currentUserId: string.isRequired,
   canEnter: bool.isRequired,
-  enterAndRedirect: func.isRequired
+  enter: func.isRequired
 };
 
 function select(state, ownProps) {
@@ -46,6 +47,4 @@ function select(state, ownProps) {
   return { currentUserId };
 }
 
-export default connect(
-  select, { enterAndRedirect }
-)(css(Footer, style));
+export default connect(select, actions)(css(Footer, style));

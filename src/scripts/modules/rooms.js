@@ -6,53 +6,33 @@ import * as reducers from 'reducers/crud';
 import * as schemas from 'api/schemas';
 import * as service from 'services/rooms';
 
-export const Filters = keyMirror(
-  'all',
-  'public',
-  'private',
-  'my'
-);
+export const filters = keyMirror('all', 'public', 'private', 'my');
 
-export const list = apiAction(
-  'rooms.api.list',
-  service.list,
-  schemas.roomArray
-);
+const enterRoom = apiAction('rooms.api.enter', service.enter,
+  schemas.room, (id, userId) => ({ id, userId }));
 
-export const load = apiAction(
-  'rooms.api.load',
-  service.find,
-  schemas.room,
-  id => ({ id })
-);
-
-export const enter = apiAction(
-  'rooms.api.enter',
-  service.enter,
-  schemas.room,
-  (id, userId) => ({ id, userId })
-);
-
-export const enterAndRedirect = (id, userId) =>
-  (dispatch, getState) => {
-    dispatch(enter(id, userId));
+export const actions = {
+  filter: action('rooms.filter', (filter) => ({ filter })),
+  list: apiAction('rooms.api.list', service.list, schemas.roomArray),
+  load: apiAction('rooms.api.load', service.find, schemas.room, id => ({ id })),
+  enter: (id, userId) => (dispatch, getState) => {
+    dispatch(enterRoom(id, userId));
     dispatch(pushPath(`/rooms/${id}`));
-  };
+  }
+};
 
-export const filter = action('rooms.filter', (filter) => ({ filter }));
-
-const initialState = {
-  filter: Filters.all,
+export const initialState = {
+  filter: filters.all,
   searchQuery: null
 };
 
 const handlers = {
-  [enter]: reducers.load,
-  [filter]: (state, { filter }) => ({ ...state, filter })
+  [actions.enter]: reducers.load,
+  [actions.filter]: (state, { filter }) => ({ ...state, filter })
 };
 
 export default apiReducer({
-  list,
-  load,
+  list: actions.list,
+  load: actions.load,
   ...handlers
 }, initialState);
