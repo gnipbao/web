@@ -65,7 +65,7 @@
     "react-css-modules": "3.6.4",
     "react-dom": "0.14.6",
     "react-fetcher": "vyorkin-forks/react-fetcher",
-    "react-helmet": "2.2.0",
+    "react-helmet": "2.3.0",
     "react-intl": "2.0.0-pr-3",
     "react-progress-2": "4.1.0",
     "react-pure-render": "1.0.2",
