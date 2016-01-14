@@ -1,0 +1,13 @@
+@import "variables";
+@import "media";
+
+:root {
+}
+
+.root {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.filter {
+}

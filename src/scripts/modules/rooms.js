@@ -39,7 +39,7 @@ export const enterAndRedirect = (id, userId) =>
     dispatch(pushPath(`/rooms/${id}`));
   };
 
-const filter = action('rooms.filter', (filter) => ({ filter }));
+export const filter = action('rooms.filter', (filter) => ({ filter }));
 
 const initialState = {
   filter: Filters.all,
