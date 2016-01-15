@@ -9,6 +9,7 @@ import { toggle as toggleNavigation } from 'modules/navigation';
 
 import Navigation from 'components/Navigation';
 import Toolbar from 'components/Toolbar';
+import Player from 'components/Player';
 
 import style from './style';
 
@@ -38,6 +39,7 @@ export class App extends Component {
           <section styleName='content'>
             {children}
           </section>
+          <Player />
         </div>
       </div>
     );

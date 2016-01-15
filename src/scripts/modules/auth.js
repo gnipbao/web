@@ -75,8 +75,7 @@ const initialState = {
   currentUser: null,
   currentUserId: null,
   authenticated: false,
-  loading: false,
-  timestamp: null,
+  loading: false
 };
 
 export default reducer({
@@ -89,8 +88,7 @@ export default reducer({
   [loginError]: (state, { error }) => ({
     ...state,
     error,
-    loading: false,
-    timestamp: Date.now()
+    loading: false
   }),
 
   [loginComplete]: (state, { token, data }) => ({
@@ -100,13 +98,11 @@ export default reducer({
     currentUserId: data.sub,
     currentUser: data.user,
     authenticated: true,
-    loading: false,
-    timestamp: Date.now()
+    loading: false
   }),
 
   [logout]: () => ({
     ...initialState,
-    token: null,
-    timestamp: Date.now()
+    token: null
   })
 }, initialState);

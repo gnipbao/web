@@ -23,6 +23,7 @@ export class Page extends Component {
     filter: oneOf(Object.keys(filters)).isRequired,
     loading: bool.isRequired,
     collection: array,
+
     actions: shape({
       list: func.isRequired,
       filter: func.isRequired

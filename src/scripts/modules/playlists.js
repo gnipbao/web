@@ -26,7 +26,7 @@ export const tracks = {
 };
 
 const handlers = {
-  [tracks.list]: reducers.paginate('tracks')
+  [tracks.list]: reducers.nested('tracks')
 };
 
 const initialState = {

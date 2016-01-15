@@ -26,6 +26,8 @@ export default (
     <Route path='/playlists/:id/tracks' component={tracks.list} />
     <Route path='/playlists/:id/tracks/:trackId/edit' component={tracks.edit} />
 
+    <Route path='/tracks/:id' component={tracks.show} />
+
     <Route path='/about' component={about} />
   </Route>
 );

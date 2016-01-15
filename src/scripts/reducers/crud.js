@@ -11,14 +11,14 @@ export const initialState = {
 
 // general-purpose CRUD reducers
 
-export function paginate(slice, selectKey = identity) {
+export function nested(slice, selectKey = identity) {
   return function(state, payload) {
     const key = selectKey(payload);
+    const nestedState = state[key] || initialState;
+
     return {
       ...state,
-      [slice]: {
-        [key]: list(state[key] || initialState, payload)
-      }
+      [slice]: { [key]: list(nestedState, payload) }
     }
   };
 };

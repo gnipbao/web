@@ -20,7 +20,7 @@
 
 .normal {
   composes: nav;
-  @media (--medium) { min-width: 240px; }
+  @media (--medium) { min-width: 200px; }
 }
 
 .slim {

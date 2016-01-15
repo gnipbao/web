@@ -26,6 +26,7 @@ export default class InfiniteScroll extends Component {
 
   render() {
     const { loading, spinner, children } = this.props;
+
     return (
       <Scrollable onScroll={::this.handleScroll}>
         <div ref={c => this.container = c}>
