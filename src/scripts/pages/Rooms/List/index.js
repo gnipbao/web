@@ -10,8 +10,8 @@ import fetchData from 'lib/fetchData';
 import { actions, filters } from 'modules/rooms';
 import { list as selector } from 'selectors/rooms';
 
-import Filter from './Filter';
-import Item from './Item';
+import Filter from './filter';
+import Item from './item';
 import style from './style';
 
 const { bool, string, array, func, oneOf, shape } = PropTypes;

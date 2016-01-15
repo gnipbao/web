@@ -7,9 +7,9 @@ import { logout } from 'modules/auth';
 import { reset as resetProfile  } from 'modules/profile';
 import { toggle as toggleNavigation } from 'modules/navigation';
 
-import Navigation from 'components/Navigation';
-import Toolbar from 'components/Toolbar';
-import Player from 'components/Player';
+import Navigation from 'components/navigation';
+import Toolbar from 'components/toolbar';
+import Player from 'components/player';
 
 import style from './style';
 
@@ -29,7 +29,7 @@ export class App extends Component {
   }
 
   render() {
-    const { children } = this.props;
+    const { children, player } = this.props;
 
     return (
       <div styleName='root'>
@@ -39,7 +39,7 @@ export class App extends Component {
           <section styleName='content'>
             {children}
           </section>
-          <Player />
+          {player.track && <Player />}
         </div>
       </div>
     );

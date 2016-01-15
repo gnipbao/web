@@ -1,5 +1,5 @@
 import session from 'lib/session';
-import Api from 'lib/api';
+import API from 'lib/api';
 
 function getHeaders() {
   const headers = {
@@ -15,4 +15,4 @@ function getHeaders() {
 }
 
 export const url = settings.apiRoot;
-export default new Api(url, getHeaders);
+export default new API(url, getHeaders);

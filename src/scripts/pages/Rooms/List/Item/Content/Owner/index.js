@@ -1,7 +1,7 @@
 import css from 'react-css-modules';
 import { Link } from 'react-router';
 
-import Avatar from 'components/User/Avatar';
+import Avatar from 'components/user/avatar';
 import style from './style';
 
 const { object } = PropTypes;

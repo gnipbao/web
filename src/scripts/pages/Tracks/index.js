@@ -1,3 +1,3 @@
-export { default as edit } from './Edit';
-export { default as list } from './List';
-export { default as show } from './Show';
+export { default as edit } from './edit';
+export { default as list } from './list';
+export { default as show } from './show';

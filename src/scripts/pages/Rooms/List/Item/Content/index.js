@@ -4,9 +4,9 @@ import { CardText } from 'react-toolbox/lib/card';
 
 const { string, array, object } = PropTypes;
 
-import Owner from './Owner';
-import Playback from './Playback';
-import Stats from './Stats';
+import Owner from './owner';
+import Playback from './playback';
+import Stats from './stats';
 
 import style from './style';
 

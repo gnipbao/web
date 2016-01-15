@@ -5,7 +5,7 @@ import 'react-select/dist/react-select.css';
 import 'styles/toolbox/main';
 import 'styles/main';
 
-import Meta from './Meta';
+import Meta from './meta';
 import style from './style';
 
 @css(style)

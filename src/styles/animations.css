@@ -1,3 +1,6 @@
+@import "animations/initial";
+@import "animations/rotate";
+
 .initial {
   animation-fill-mode: both;
   animation-duration: 0.5s;
@@ -17,39 +20,5 @@
   &:hover {
     animation-duration: 0.5s;
     animation-name: rotate;
-  }
-}
-
-@keyframes fade-in-down {
-  0% {
-    opacity: 0;
-    transform: translateY(-2000px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fade-in-up {
-  0% {
-    opacity: 0;
-    transform: translateY(2000px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes rotate {
-  from {
-    transform-origin: center;
-    transform: none;
-  }
-
-  to {
-    transform-origin: center;
-    transform: rotate3d(0, 0, 1, 360deg);
   }
 }

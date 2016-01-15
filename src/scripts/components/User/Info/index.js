@@ -1,7 +1,7 @@
 import css from 'react-css-modules';
 
-import Avatar from 'components/User/Avatar';
-import Stats from 'components/User/Stats';
+import Avatar from 'components/user/avatar';
+import Stats from 'components/user/stats';
 
 import style from './style';
 

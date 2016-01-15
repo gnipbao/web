@@ -1,7 +1,7 @@
 import css from 'react-css-modules';
 
-import Time from './Time';
-import SeekBar from './SeekBar';
+import Time from './time';
+import SeekBar from './seek_bar';
 
 import style from './style';
 

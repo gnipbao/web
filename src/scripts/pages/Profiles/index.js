@@ -1,2 +1,2 @@
-export { default as edit } from './Edit';
-export { default as show } from './Show';
+export { default as edit } from './edit';
+export { default as show } from './show';

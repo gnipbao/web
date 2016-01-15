@@ -10,10 +10,10 @@ import storage from 'lib/storage';
 import * as actions from 'modules/player';
 import selector from 'selectors/player';
 
-import Popover from 'components/Popover';
-import Info from './Info';
-import Controls from './Controls';
-import Playlist from './Playlist';
+import Popover from 'components/popover';
+import Info from './info';
+import Controls from './controls';
+import Playlist from './playlist';
 
 import style from './style';
 
@@ -149,7 +149,7 @@ export class Player extends Component {
           src={track && track.url}>
         </audio>
         <div styleName='main'>
-          <Info {...track } />
+          {track && <Info {...track } />}
           <Controls { ...{ offset, duration } } />
         </div>
       </div>

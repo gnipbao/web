@@ -12,9 +12,9 @@ import { load as loadProfile } from 'modules/profile';
 import { load as loadUser } from 'modules/users';
 import { show as selector } from 'selectors/profile';
 
-import Info from 'components/User/Info';
-import Activity from './Activity';
-import Favorites from './Favorites';
+import Info from 'components/user/info';
+import Activity from './activity';
+import Favorites from './favorites';
 
 import style from './style';
 

@@ -1,15 +1,17 @@
-import notFound from './NotFound';
-import forbidden from './Forbidden';
+import notFound from './not_found';
+import forbidden from './forbidden';
 
-import signIn from './SignIn';
-import about from './About';
+import signIn from './sign_in';
+import about from './about';
 
-import * as rooms from './Rooms';
-import * as profiles from './Profiles';
-import * as playlists from './Playlists';
-import * as tracks from './Tracks';
+import * as rooms from './rooms';
+import * as profiles from './profiles';
+import * as playlists from './playlists';
+import * as tracks from './tracks';
 
-import * as admin from './Admin';
+import * as admin from './admin';
+
+// TODO: use require.context
 
 export default {
   notFound,

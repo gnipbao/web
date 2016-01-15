@@ -1,7 +1,7 @@
 import { RoutingContext } from 'react-router';
 import { Provider } from 'react-redux';
 
-import Html from 'server/templates/Html';
+import Html from 'server/templates/html';
 import loadAssets from 'server/utils/loadAssets';
 
 const assets = loadAssets();

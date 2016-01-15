@@ -1,2 +1,2 @@
-export * as users from './Users';
-export { default as dashboard } from './Dashboard';
+export * as users from './users';
+export { default as dashboard } from './dashboard';

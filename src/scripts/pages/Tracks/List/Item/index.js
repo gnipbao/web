@@ -14,12 +14,10 @@ export default class Item extends Component {
 
   togglePlayback() {
     const { playing } = this.state;
-    const audio = ReactDOM.findDOMNode(this.refs.audio);
-
     if (!playing) {
-      audio.play();
+      this.refs.audio.play();
     } else {
-      audio.pause();
+      this.refs.audio.pause();
     }
     this.setState({ playing: !playing });
   }

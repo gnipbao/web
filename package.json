@@ -47,6 +47,7 @@
     "fontfaceobserver": "1.6.3",
     "helmet": "1.0.2",
     "history": "1.17.0",
+    "howler": "goldfire/howler.js#v2.0.0-beta6",
     "humps": "1.0.0",
     "invariant": "2.2.0",
     "isomorphic-fetch": "2.2.0",
@@ -94,10 +95,10 @@
     "socket.io": "1.4.4",
     "socket.io-client": "1.4.4",
     "source-map-support": "0.4.0",
+    "spinkit": "1.2.5",
     "svg-inline-react": "0.3.1",
     "validator": "4.5.0",
-    "warning": "2.1.0",
-    "howler": "goldfire/howler.js#v2.0.0-beta6"
+    "warning": "2.1.0"
   },
   "devDependencies": {
     "app-module-path": "1.0.5",

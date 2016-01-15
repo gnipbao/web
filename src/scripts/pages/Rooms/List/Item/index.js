@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 
 import { Card } from 'react-toolbox/lib/card';
 
-import Header from './Header';
-import Footer from './Footer';
-import Content from './Content';
+import Header from './header';
+import Footer from './footer';
+import Content from './content';
 
 import style from './style';
 

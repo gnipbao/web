@@ -1,6 +1,6 @@
 import css from 'react-css-modules';
 
-import Item from './Item';
+import Item from './item';
 import style from './style';
 
 const { bool, func, array, string, object } = PropTypes;

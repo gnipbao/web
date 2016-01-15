@@ -11,11 +11,13 @@ const { object } = PropTypes;
 export class Page extends Component {
   render() {
     return (
-      <div>
+      <section>
         <Helmet title='Forbidden' />
-        <h1>You can't access this page</h1>
-        <p>Go away</p>
-      </div>
+        <div styleName='root'>
+          <h1>You can't access this page</h1>
+          <p>Go away</p>
+        </div>
+      </section>
     );
   }
 }

@@ -1,8 +1,9 @@
 import css from 'react-css-modules';
 
-import Avatar from 'components/User/Avatar';
 import Button from 'react-toolbox/lib/button';
 import Tooltip from 'react-toolbox/lib/tooltip';
+
+import Avatar from 'components/user/avatar';
 
 const TooltipButton = Tooltip(Button);
 

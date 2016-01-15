@@ -10,7 +10,7 @@ import fetchData from './fetchData';
 import { list as selector } from 'selectors/tracks';
 import { tracks as actions } from 'modules/playlists';
 
-import Item from './Item';
+import Item from './item';
 import style from './style';
 
 const { object, bool, array, func } = PropTypes;

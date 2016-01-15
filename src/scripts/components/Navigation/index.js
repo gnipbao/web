@@ -2,9 +2,9 @@ import css from 'react-css-modules';
 import { connect } from 'react-redux';
 
 import createMenus from './createMenus';
-import Header from './Header';
-import Footer from './Footer';
-import Menu from './Menu';
+import Header from './header';
+import Footer from './footer';
+import Menu from './menu';
 
 import style from './style';
 
