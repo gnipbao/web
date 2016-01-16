@@ -13,15 +13,18 @@ const Playback = (props) => {
   return (
     <div styleName='root'>
       <IconButton
+        neutral={false}
         icon='skip_previous'
         disabled={!first}
         onClick={onPrevious}
       />
       <IconButton
+        neutral={false}
         icon={playing ? 'pause' : 'play_arrow'}
         onClick={onTogglePlay}
       />
       <IconButton
+        neutral={false}
         icon='skip_next'
         disabled={!last}
         onClick={onNext}

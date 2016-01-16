@@ -8,10 +8,14 @@
 }
 
 .root {
-  display: flex;
-  align-items: center;
-  flex: 2;
-  margin-left: 10px;
+  display: none;
+
+  @media (--medium) {
+    display: flex;
+    align-items: center;
+    flex: 2;
+    margin-left: 10px;
+  }
 }
 
 .wrap {
