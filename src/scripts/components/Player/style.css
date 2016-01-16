@@ -4,7 +4,6 @@
 :root {
   --root-background: var(--brand-black);
   --root-text-color: var(--brand-light);
-  --root-border-color: color(var(--root-background) tint(10%));
 }
 
 .root {
@@ -15,8 +14,9 @@
   user-select: none;
   z-index: 999;
   background-color: var(--root-background);
-  border-top: 1px solid var(--root-border-color);
   color: var(--root-text-color);
+  box-shadow: 0 1px 1px rgba(#000, 0.3),
+              inset 0 1px 0 rgba(#fff, .08);
 }
 
 .main {

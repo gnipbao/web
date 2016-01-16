@@ -176,7 +176,8 @@ export class Player extends Component {
             onToggleRepeat={::this.toggleRepeat}
             onTOggleShuffle={::this.toggleShuffle}
             { ...options } />
-          <Volume value={volume} />
+          <Playlist />
+          <Volume muted={muted} value={volume} />
         </div>
       </div>
     );
