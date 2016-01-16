@@ -5,7 +5,7 @@ const { node, func } = PropTypes;
 export default class Scrollable extends Component {
   static propTypes = {
     onScroll: func.isRequired,
-    children: node.isRequired
+    children: node
   };
 
   componentDidMount() {

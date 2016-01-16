@@ -1,35 +1,38 @@
 import Scrollable from 'components/scrollable';
 
-const { node, bool, number, func } = PropTypes;
+const { node, bool, number, string, func } = PropTypes;
 
 export default class InfiniteScroll extends Component {
   static propTypes = {
-    children: node.isRequired,
+    children: node,
     load: func.isRequired,
     threshold: number,
     spinner: func,
-    loading: bool
+    enabled: bool,
+    loading: bool,
+    className: string
   };
 
   static defaultProps = {
+    enabled: true,
     threshold: 50
   };
 
   handleScroll(position, height, offset) {
-    if (this.props.loading) return;
+    const { enabled, loading, threshold, load } = this.props;
+    if (!enabled || loading) return;
 
-    const { threshold, load } = this.props;
     const remaining = this.container.offsetHeight - offset;
 
     if (remaining < threshold) load();
   }
 
   render() {
-    const { loading, spinner, children } = this.props;
+    const { loading, spinner, children, ...other } = this.props;
 
     return (
       <Scrollable onScroll={::this.handleScroll}>
-        <div ref={c => this.container = c}>
+        <div ref={c => this.container = c} { ...other }>
           {children}
           {loading && spinner && spinner()}
         </div>

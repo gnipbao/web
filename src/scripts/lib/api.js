@@ -2,6 +2,8 @@ import { stringify } from 'qs';
 import parseLinkHeader from 'parse-link-header';
 import fetch from 'isomorphic-fetch';
 
+// TODO: support web linking: https://tools.ietf.org/html/rfc5988
+
 export default class Api {
   constructor(root, getHeaders = () => {}) {
     this.root = root;

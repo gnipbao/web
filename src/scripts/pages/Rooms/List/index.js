@@ -8,18 +8,24 @@ import fetchData from 'lib/fetchData';
 import { actions, filters } from 'modules/rooms';
 import { list as selector } from 'selectors/rooms';
 
+import InfiniteScroll from 'components/infinite_scroll';
 import Spinner from 'components/spinners/folding_cube';
 import Filter from './filter';
 import Item from './item';
 import style from './style';
 
-const { bool, string, array, func, oneOf, shape } = PropTypes;
+const {
+  bool, string, number, object,
+  array, func, oneOf, shape
+} = PropTypes;
 
 @prefetch(fetchData('rooms', actions.list))
 @css(style)
 export class Page extends Component {
   static propTypes = {
     filter: oneOf(Object.keys(filters)).isRequired,
+    pageCount: number.isRequired,
+    links: object,
     loading: bool.isRequired,
     collection: array,
 
@@ -29,28 +35,33 @@ export class Page extends Component {
     }).isRequired
   };
 
+  hasMore = () => Boolean(
+    this.props.links &&
+    this.props.links.next
+  );
+
   render() {
-    const { filter, actions } = this.props;
+    const { filter, loading, actions } = this.props;
 
     return (
       <section>
         <Helmet title='Rooms' />
         <h1>Rooms</h1>
         <Filter value={filter} onChange={actions.filter} />
-        <div styleName='root'>
+        <InfiniteScroll styleName='root'
+          enabled={this.hasMore()}
+          loading={loading}
+          spinner={() => <Spinner />}
+          load={() => list(params.id, pageCount + 1)}>
           {this.renderContent()}
-        </div>
+        </InfiniteScroll>
       </section>
     );
   }
 
   renderContent() {
-    const { loading, collection } = this.props;
-
-    if (loading) return <Spinner />;
-    if (isEmpty(collection)) return null;
-
-    return collection.map(item => <Item key={item.id} { ...item } />);
+    if (isEmpty(this.props.collection)) return null;
+    return this.props.collection.map(item => <Item key={item.id} { ...item } />);
   }
 }
 

@@ -5,9 +5,13 @@
 }
 
 .root {
-  display: flex;
-  align-items: center;
-  margin-left: 20px;
-  font-size: 0.7em;
-  color: var(--text-muted);
+  display: none;
+
+  @media (--medium) {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    font-size: 0.7em;
+    color: var(--text-muted);
+  }
 }

@@ -14,7 +14,7 @@ export const initialState = {
 export function nested(slice, selectKey = identity) {
   return function(state, payload) {
     const key = selectKey(payload);
-    const nestedState = state[key] || initialState;
+    const nestedState = state[slice][key] || initialState;
 
     return {
       ...state,

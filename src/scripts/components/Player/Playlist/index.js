@@ -21,7 +21,7 @@ class Playlist extends Component {
       <div styleName='root'>
         <IconButton
           neutral={false}
-          icon='playlist_play'
+          icon='list'
           accent={expanded} />
       </div>
     )

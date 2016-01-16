@@ -10,7 +10,7 @@ export function find({ id }) {
 }
 
 export const tracks = {
-  list({ id, page = 1, count = 10 }) {
+  list({ id, page = 1, count = 20 }) {
     const params = { page, per_page: count };
     return api.get(`playlists/${id}/tracks`, params);
   }

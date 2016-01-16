@@ -21,7 +21,7 @@ export const tracks = {
     'playlists.api.tracks.list',
     service.tracks.list,
     schemas.trackArray,
-    id => ({ id })
+    (id, page, count) => ({ id, page, count })
   )
 };
 

@@ -22,10 +22,20 @@ export const Footer = (props) => {
 
   return (
     <CardActions styleName='root'>
+      <TooltipButton styleName='view' 
+        neutral={false}
+        icon='visibility'
+        tooltip='view' />
+      <TooltipButton styleName='favorite' 
+        neutral={false}
+        icon='favorite_border'
+        tooltip='add to favorites' />
       <TooltipButton styleName='listen' 
-        icon='play_arrow'
+        neutral={false}
+        icon='hearing'
         tooltip='listen' />
       <TooltipButton styleName='enter'
+        neutral={false}
         icon='input'
         tooltip='enter'
         disabled={!canEnter}

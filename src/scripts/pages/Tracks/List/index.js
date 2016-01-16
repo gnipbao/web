@@ -4,6 +4,8 @@ import css from 'react-css-modules';
 import { prefetch } from 'react-fetcher';
 
 import { List } from 'react-toolbox/lib/list';
+
+import InfiniteScroll from 'components/infinite_scroll';
 import Spinner from 'components/spinners/folding_cube';
 
 import fetchData from './fetchData';
@@ -14,38 +16,56 @@ import { changeTrack } from 'modules/player';
 import Item from './item';
 import style from './style';
 
-const { object, bool, array, func } = PropTypes;
+const {
+  object, number, bool,
+  string, array, func, shape
+} = PropTypes;
 
 @prefetch(fetchData)
 @css(style)
 export class Page extends Component {
   static propTypes = {
-    list: func.isRequired,
     params: object.isRequired,
+    pageCount: number.isRequired,
+    links: object,
+    list: func.isRequired,
     loading: bool,
     collection: array
   };
 
-  render() {
-    const { loading, collection, changeTrack } = this.props;
+  hasMore = () => Boolean(
+    this.props.links &&
+    this.props.links.next
+  );
 
-    if (loading) return <Spinner />;
-    if (isEmpty(collection)) return null;
+  render() {
+    const { params, pageCount, loading, list } = this.props;
 
     return (
       <section>
         <Helmet title='Tracks' />
         <h1>Tracks</h1>
-        <div styleName='root'>
-          <List selectable ripple>
-            {collection.map(item =>
-              <Item key={item.id}
-                onPlay={changeTrack}
-                { ...item } />)
-            }
-          </List>
-        </div>
+        <InfiniteScroll styleName='root'
+          enabled={this.hasMore()}
+          loading={loading}
+          spinner={() => <Spinner />}
+          load={() => list(params.id, pageCount + 1)}>
+          {this.renderContent()}
+        </InfiniteScroll>
       </section>
+    );
+  }
+
+  renderContent() {
+    if (isEmpty(this.props.collection)) return null;
+
+    return (
+      <List selectable ripple>
+        {this.props.collection.map(
+          item => <Item key={item.id}
+            onPlay={this.props.changeTrack} { ...item } />
+        )}
+      </List>
     );
   }
 }
