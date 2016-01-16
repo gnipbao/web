@@ -28,6 +28,29 @@ const {
 
 @css(style)
 export class Player extends Component {
+  static propTypes = {
+    auto: bool,
+    muted: bool,
+    shuffle: bool,
+    repeat: bool,
+    volume: number,
+
+    track: shape({
+      title: string,
+      artist: string,
+      duration: number,
+      url: string
+    })
+  };
+
+  static defaultProps = {
+    auto: true,
+    muted: Boolean(storage.get('player.muted', false)),
+    shuffle: Boolean(storage.get('player.shuffle', false)),
+    repeat: Boolean(storage.get('player.repeat', false)),
+    volume: Number(storage.get('player.volume', 0.5))
+  };
+
   state = {
     muted: this.props.muted,
     shuffle: this.props.shuffle,
@@ -38,15 +61,15 @@ export class Player extends Component {
   };
 
   componentDidMount() {
-    this.audio.addEventListener('loadedmetadata', ::this.handleLoadedMetadata, false);
-    this.audio.addEventListener('loadstart', ::this.handleLoadStart, false);
-    this.audio.addEventListener('pause', ::this.handlePause, false);
-    this.audio.addEventListener('play', ::this.handlePlay, false);
-    this.audio.addEventListener('timeupdate', ::this.handleTimeUpdate, false);
-    this.audio.addEventListener('volumechange', ::this.handleVolumeChange, false);
-    this.audio.addEventListener('ended', ::this.handleEnded, false);
+    this.audio.addEventListener('loadedmetadata', ::this.handleLoadedMetadata);
+    this.audio.addEventListener('loadstart', ::this.handleLoadStart);
+    this.audio.addEventListener('pause', ::this.handlePause);
+    this.audio.addEventListener('play', ::this.handlePlay);
+    this.audio.addEventListener('timeupdate', ::this.handleTimeUpdate);
+    this.audio.addEventListener('volumechange', ::this.handleVolumeChange);
+    this.audio.addEventListener('ended', ::this.handleEnded);
 
-    if (this.props.track && this.props.autoPlay) {
+    if (this.props.track && this.props.auto) {
       this.audio.play();
     }
   }
@@ -58,13 +81,13 @@ export class Player extends Component {
   }
 
   componentWillUnmount() {
-    this.audio.removeEventListener('loadedmetadata', this.handleLoadedMetadata, false);
-    this.audio.removeEventListener('loadstart', this.handleLoadStart, false);
-    this.audio.removeEventListener('pause', this.handlePause, false);
-    this.audio.removeEventListener('play', this.handlePlay, false);
-    this.audio.removeEventListener('timeupdate', this.handleTimeUpdate, false);
-    this.audio.removeEventListener('volumechange', this.handleVolumeChange, false);
-    this.audio.removeEventListener('ended', this.handleEnded, false);
+    this.audio.removeEventListener('loadedmetadata', this.handleLoadedMetadata);
+    this.audio.removeEventListener('loadstart', this.handleLoadStart);
+    this.audio.removeEventListener('pause', this.handlePause);
+    this.audio.removeEventListener('play', this.handlePlay);
+    this.audio.removeEventListener('timeupdate', this.handleTimeUpdate);
+    this.audio.removeEventListener('volumechange', this.handleVolumeChange);
+    this.audio.removeEventListener('ended', this.handleEnded);
   }
 
   handleLoadedMetadata() {
@@ -72,7 +95,7 @@ export class Player extends Component {
   }
 
   handleLoadStart() {
-    this.props.actions.seek(0);
+    this.props.actions.updateTime(0);
     this.setState({ duration: this.props.track && this.props.track.duration || 0 });
   }
 
@@ -91,7 +114,7 @@ export class Player extends Component {
     const currentTime = Math.floor(this.audio.currentTime);
 
     if (currentTime !== offset) {
-      this.props.actions.seek(currentTime);
+      this.props.actions.updateTime(currentTime);
     }
   }
 
@@ -99,7 +122,7 @@ export class Player extends Component {
     if (this.state.seeking) return;
 
     const volume = e.currentTarget.volume;
-    storage.set('volume', volume);
+    storage.set('player.volume', volume);
     this.setState({ volume });
   }
 
@@ -114,17 +137,17 @@ export class Player extends Component {
       // TODO: if there is a current playlist then if next track exists then
       // emit changeTrack action with its id, emit togglePlay(false) otherwise 
 
-      action.togglePlay(false);
+      actions.togglePlay(false);
     }
   }
 
   handleKeyDown(e) {
   }
 
-  changeTrack() {
-  }
-
-  changeVolume(e) {
+  changeVolume(volume) {
+    this.audio.volume = volume;
+    this.setState({ volume });
+    storage.set('player.volume', volume);
   }
 
   togglePlay() {
@@ -136,23 +159,36 @@ export class Player extends Component {
   }
 
   toggleMute() {
-    const { muted } = !this.state.muted;
+    const muted = !this.state.muted;
 
     this.audio = muted;
     this.setState({ muted });
+    storage.set('player.muted', muted);
   }
 
   toggleRepeat() {
-    this.setState({ repeat: !this.state.repeat });
+    const repeat = !this.state.repeat;
+    this.setState({ repeat });
+    storage.set('player.repeat', repeat);
   }
 
   toggleShuffle() {
-    this.setState({ shuffle: !this.state.shuffle });
+    const shuffle = !this.state.shuffle;
+    this.setState({ shuffle });
+    storage.set('player.shuffle', shuffle);
+  }
+
+  handleSeekStart() {
+    this.setState({ seeking: true });
+  }
+
+  handleSeekEnd() {
+    this.setState({ seeking: false });
   }
 
   render() {
     const { playing, offset, track, playlist } = this.props;
-    const { duration, muted, repeat, shuffle, volume } = this.state;
+    const { seeking, duration, muted, repeat, shuffle, volume } = this.state;
 
     const timing = { offset, duration };
     const options = { repeat, shuffle };
@@ -170,41 +206,23 @@ export class Player extends Component {
             onTogglePlay={::this.togglePlay}
             onPrevious={() => {}}
             onNext={() => {}} />
-          <SeekBar { ...timing } />
+          <SeekBar
+            onSeekStart={::this.handleSeekStart}
+            onSeekEnd={::this.handleSeekEnd}
+            { ...{ ...timing, seeking } } />
           <Time { ...timing } />
           <Options
             onToggleRepeat={::this.toggleRepeat}
-            onTOggleShuffle={::this.toggleShuffle}
+            onToggleShuffle={::this.toggleShuffle}
             { ...options } />
           <Playlist />
-          <Volume muted={muted} value={volume} />
+          <Volume onVolumeChange={::this.changeVolume}
+            { ...{ muted, volume } }
+          />
         </div>
       </div>
     );
   }
-}
-
-Player.propTypes = {
-  autoPlay: bool,
-  muted: bool,
-  shuffle: bool,
-  repeat: bool,
-  volume: number,
-
-  track: shape({
-    title: string,
-    artist: string,
-    duration: number,
-    url: string
-  })
-};
-
-Player.defaultProps = {
-  autoPlay: true,
-  muted: false,
-  shuffle: false,
-  repeat: false,
-  volume: storage.get('volume', 1)
 }
 
 function selectActions(dispatch) {

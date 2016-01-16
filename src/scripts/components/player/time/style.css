@@ -1,9 +1,6 @@
 @import "variables";
 @import "media";
 
-:root {
-}
-
 .root {
   display: none;
 
@@ -12,6 +9,6 @@
     align-items: center;
     margin-left: 20px;
     font-size: 0.7em;
-    color: var(--text-muted);
+    color: var(--text-color);
   }
 }

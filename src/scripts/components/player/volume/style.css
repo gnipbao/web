@@ -2,8 +2,65 @@
 @import "media";
 
 :root {
+  --root-background: color(var(--brand-black) shade(15%));
+  --percentage-border-color: color(var(--root-background) shade(40%));
+  --width: 48px;
 }
 
 .root {
   color: var(--brand-light);
+}
+
+.toggle {
+}
+
+.bar {
+  position: absolute;
+  bottom: 51px;
+  right: 0;
+  width: var(--width);
+  z-index: 1001;
+  background: var(--root-background);
+  border-radius: 4px 4px 0 0;
+}
+
+.collapsed {
+  composes: bar;
+  display: none;
+}
+
+.expanded {
+  composes: bar;
+}
+
+.percentage {
+  border-top: 1px solid var(--percentage-border-color);
+  border-bottom: 1px solid var(--percentage-border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  position: relative;
+  cursor: pointer;
+}
+
+.value {
+  width: 8px;
+  margin-left: -4px;
+  bottom: 0;
+  top: 50%;
+  background: var(--brand-success);
+  position: absolute;
+}
+
+.button {
+  width: var(--width);
+}
+
+.min {
+  composes: button;
+}
+
+.max {
+  composes: button;
 }
