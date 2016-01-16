@@ -1,4 +1,4 @@
-import isEmpty from 'lodash/lang/isEmpty';
+import isEmpty from 'lodash/isEmpty';
 import { tracks as actions } from 'modules/playlists';
 
 export default function(context) {

@@ -1,4 +1,4 @@
-import padStart from 'lodash/string/padLeft';
+import padLeft from 'lodash.padleft';
 import css from 'react-css-modules';
 
 import style from './style';
@@ -6,8 +6,8 @@ import style from './style';
 const { bool, func, object, shape } = PropTypes;
 
 function formatSeconds(time) {
-  const minutes = padStart(Math.floor(time / 60), 2, 0);
-  const seconds = padStart(time % 60, 2, 0);
+  const minutes = padLeft(Math.floor(time / 60), 2, 0);
+  const seconds = padLeft(time % 60, 2, 0);
 
   return `${minutes}:${seconds}`;
 }

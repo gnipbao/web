@@ -1,4 +1,4 @@
-import pick from 'lodash/object/pick';
+import pick from 'lodash/pick';
 import { connect } from 'react-redux';
 
 import css from 'react-css-modules';

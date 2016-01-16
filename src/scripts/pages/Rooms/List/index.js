@@ -1,4 +1,4 @@
-import isEmpty from 'lodash/lang/isEmpty';
+import isEmpty from 'lodash/isEmpty';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import css from 'react-css-modules';

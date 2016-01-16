@@ -1,4 +1,4 @@
-import includes from 'lodash/collection/includes';
+import includes from 'lodash/includes';
 import css from 'react-css-modules';
 import { connect } from 'react-redux';
 

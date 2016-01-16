@@ -1,4 +1,4 @@
-import union from 'lodash/array/union'
+import union from 'lodash/union'
 
 export const identity = ({ id }) => id;
 

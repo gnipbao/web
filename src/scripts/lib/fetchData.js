@@ -1,4 +1,4 @@
-import isEmpty from 'lodash/lang/isEmpty';
+import isEmpty from 'lodash/isEmpty';
 
 export default function(key, action) {
   return function (locals) {
