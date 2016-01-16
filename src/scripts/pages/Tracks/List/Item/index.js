@@ -6,6 +6,7 @@ import Button from 'react-toolbox/lib/button';
 
 const TooltipButton = Tooltip(Button);
 
+import { formatTitle } from 'lib/utils/format';
 import style from './style';
 
 @css(style)
@@ -16,7 +17,7 @@ export default class Item extends Component {
     return (
       <ListItem
         styleName='root'
-        caption={title}
+        caption={formatTitle(title)}
         legent={artist}
         leftIcon='music_note'
         rightIcon='play_circle_outline'

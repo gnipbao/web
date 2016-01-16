@@ -18,7 +18,10 @@ export function nested(slice, selectKey = identity) {
 
     return {
       ...state,
-      [slice]: { [key]: list(nestedState, payload) }
+      [slice]: {
+        ...state[slice],
+        [key]: list(nestedState, payload)
+      }
     }
   };
 };

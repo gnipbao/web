@@ -101,7 +101,7 @@ function run() {
     }
 
     if (__DEVTOOLS__ && !window.devToolsExtension) {
-      const DevTools = require('components/DevTools');
+      const DevTools = require('components/dev_tools');
 
       ReactDOM.render(
         <Provider store={store} key='provider'>
