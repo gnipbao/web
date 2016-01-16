@@ -10,21 +10,8 @@ import style from './style';
 
 @css(style)
 export default class Item extends Component {
-  state = { playing: false };
-
-  togglePlayback() {
-    const { playing } = this.state;
-    if (!playing) {
-      this.refs.audio.play();
-    } else {
-      this.refs.audio.pause();
-    }
-    this.setState({ playing: !playing });
-  }
-
   render() {
-    const { title, artist, url } = this.props;
-    const { playing } = this.state;
+    const { id, title, artist, onPlay } = this.props;
 
     return (
       <ListItem
@@ -33,10 +20,7 @@ export default class Item extends Component {
         legent={artist}
         leftIcon='music_note'
         rightIcon='play_circle_outline'
-        onClick={::this.togglePlayback}>
-
-        <audio ref='audio' src={url} />
-
+        onClick={() => onPlay(id)}>
       </ListItem>
     );
   }

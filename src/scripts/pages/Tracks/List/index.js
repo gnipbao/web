@@ -9,6 +9,7 @@ import ProgressBar from 'react-toolbox/lib/progress_bar';
 import fetchData from './fetchData';
 import { list as selector } from 'selectors/tracks';
 import { tracks as actions } from 'modules/playlists';
+import { changeTrack } from 'modules/player';
 
 import Item from './item';
 import style from './style';
@@ -26,7 +27,7 @@ export class Page extends Component {
   };
 
   render() {
-    const { loading, collection } = this.props;
+    const { loading, collection, changeTrack } = this.props;
 
     if (loading) return <ProgressBar />;
     if (isEmpty(collection)) return null;
@@ -37,7 +38,11 @@ export class Page extends Component {
         <h1>Tracks</h1>
         <div styleName='root'>
           <List selectable ripple>
-            {collection.map(item => <Item key={item.id} { ...item } />)}
+            {collection.map(item =>
+              <Item key={item.id}
+                onPlay={changeTrack}
+                { ...item } />)
+            }
           </List>
         </div>
       </section>
@@ -45,4 +50,4 @@ export class Page extends Component {
   }
 }
 
-export default connect(selector, actions)(Page);
+export default connect(selector, { ...actions, changeTrack })(Page);

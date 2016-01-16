@@ -1,0 +1,14 @@
+@import "variables";
+@import "media";
+
+:root {
+}
+
+.root {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  margin-left: 16px;
+  font-size: 0.7em;
+  color: var(--text-muted);
+}

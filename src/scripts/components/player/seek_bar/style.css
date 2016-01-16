@@ -1,0 +1,48 @@
+@import "variables";
+@import "media";
+
+:root {
+  --background: color(var(--brand-black) shade(40%));
+  --seek-bar-background: color(var(--brand-dark) tint(20%));
+  --progress-background: var(--brand-warning);
+}
+
+.root {
+  display: flex;
+  align-items: center;
+  flex: 2;
+}
+
+.wrap {
+  padding: 6px 0;
+  flex: 1;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.seek-bar {
+  position: relative;
+  height: 2px;
+  background-color: var(--seek-bar-background);
+}
+
+.progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: var(--progress-background);
+}
+
+.handle {
+  position: absolute;
+  top: -5px;
+  right: -6px;
+  width: 14px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--seek-bar-background);
+  border: 1px solid color(var(--seek-bar-background) tint(20%));
+}

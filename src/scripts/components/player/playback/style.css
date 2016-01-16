@@ -1,0 +1,9 @@
+@import "variables";
+
+.root {
+  & > button {
+    & > span {
+      color: var(--text-muted);
+    }
+  }
+}

@@ -18,7 +18,7 @@ export const Info = (props) => {
 
   return (
     <div styleName='root'>
-      <Link styleName='title' to={`/tracks/${id}`}>{formatTitle}</Link>
+      <Link styleName='title' to={`/tracks/${id}`}>{formattedTitle}</Link>
       <Link styleName='artist' to='http://google.com'>{artist}</Link>
     </div>
   );

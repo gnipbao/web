@@ -1,7 +1,18 @@
+const isAvailable = function(){
+  let test = 'test';
+  try {
+    localStorage.setItem(test, test);
+    localStorage.removeItem(test);
+    return true;
+  } catch(e) {
+    return false;
+  }
+}();
+
 export default {
   get: (key, defaultValue = null) =>
-    (localStorage && localStorage.getItem(key) || defaultValue),
+    (isAvailable && localStorage.getItem(key) || defaultValue),
 
   set: (key, value) =>
-    localStorage && localStorage.setItem(key, value)
+    isAvailable && localStorage.setItem(key, value)
 };

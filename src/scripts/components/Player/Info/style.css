@@ -5,9 +5,16 @@
 }
 
 .root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
 }
 
 .title {
+  font-size: responsive 1.4rem 1.6rem;
 }
+
 .artist {
+  font-size: responsive 1.2rem 1.4rem;
 }

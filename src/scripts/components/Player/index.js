@@ -12,12 +12,19 @@ import selector from 'selectors/player';
 
 import Popover from 'components/popover';
 import Info from './info';
-import Controls from './controls';
+import Playback from './playback';
+import SeekBar from './seek_bar';
+import Time from './time';
+import Options from './options';
 import Playlist from './playlist';
+import Volume from './volume';
 
 import style from './style';
 
-const { string, number, bool, func, object, shape } = PropTypes;
+const {
+  string, number, bool,
+  func, object, shape
+} = PropTypes;
 
 @css(style)
 export class Player extends Component {
@@ -26,22 +33,26 @@ export class Player extends Component {
     shuffle: this.props.shuffle,
     repeat: this.props.repeat,
     volume: this.props.volume,
-    duration: this.props.track && this.track.duration || 0,
+    duration: this.props.track && this.props.track.duration || 0,
     seeking: false
   };
 
   componentDidMount() {
-    this.audio.addEventListener('loadedmetadata', this.handleLoadedMetadata, false);
-    this.audio.addEventListener('loadstart', this.handleLoadStart, false);
-    this.audio.addEventListener('pause', this.handlePause, false);
-    this.audio.addEventListener('play', this.handlePlay, false);
-    this.audio.addEventListener('timeupdate', this.handleTimeUpdate, false);
-    this.audio.addEventListener('volumechange', this.handleVolumeChange, false);
-    this.audio.addEventListener('ended', this.handleEnded, false);
+    this.audio.addEventListener('loadedmetadata', ::this.handleLoadedMetadata, false);
+    this.audio.addEventListener('loadstart', ::this.handleLoadStart, false);
+    this.audio.addEventListener('pause', ::this.handlePause, false);
+    this.audio.addEventListener('play', ::this.handlePlay, false);
+    this.audio.addEventListener('timeupdate', ::this.handleTimeUpdate, false);
+    this.audio.addEventListener('volumechange', ::this.handleVolumeChange, false);
+    this.audio.addEventListener('ended', ::this.handleEnded, false);
+
+    if (this.props.track && this.props.autoPlay) {
+      this.audio.play();
+    }
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.track && prevProps.track !== this.props.track) {
+    if (!prevProps.track || prevProps.track !== this.props.track) {
       this.audio.play();
     }
   }
@@ -136,11 +147,15 @@ export class Player extends Component {
   }
 
   toggleShuffle() {
+    this.setState({ shuffle: !this.state.shuffle });
   }
 
   render() {
-    const { offset, track, playlist } = this.props;
-    const { duration } = this.state;
+    const { playing, offset, track, playlist } = this.props;
+    const { duration, muted, repeat, shuffle, volume } = this.state;
+
+    const timing = { offset, duration };
+    const options = { repeat, shuffle };
 
     return (
       <div styleName='root'>
@@ -149,8 +164,19 @@ export class Player extends Component {
           src={track && track.url}>
         </audio>
         <div styleName='main'>
-          {track && <Info {...track } />}
-          <Controls { ...{ offset, duration } } />
+          <Info { ...track } />
+          <Playback first last
+            playing={playing}
+            onTogglePlay={::this.togglePlay}
+            onPrevious={() => {}}
+            onNext={() => {}} />
+          <SeekBar { ...timing } />
+          <Time { ...timing } />
+          <Options
+            onToggleRepeat={::this.toggleRepeat}
+            onTOggleShuffle={::this.toggleShuffle}
+            { ...options } />
+          <Volume value={volume} />
         </div>
       </div>
     );
@@ -158,6 +184,7 @@ export class Player extends Component {
 }
 
 Player.propTypes = {
+  autoPlay: bool,
   muted: bool,
   shuffle: bool,
   repeat: bool,
@@ -172,10 +199,11 @@ Player.propTypes = {
 };
 
 Player.defaultProps = {
+  autoPlay: true,
   muted: false,
   shuffle: false,
   repeat: false,
-  volume: 50
+  volume: storage.get('volume', 1)
 }
 
 function selectActions(dispatch) {
