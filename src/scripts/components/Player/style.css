@@ -2,8 +2,9 @@
 @import "media";
 
 :root {
-  --background: color(var(--brand-black) shade(40%));
-  --text-color: var(--brand-light);
+  --root-background: var(--brand-black);
+  --root-text-color: var(--brand-light);
+  --root-border-color: color(var(--root-background) tint(10%));
 }
 
 .root {
@@ -13,9 +14,9 @@
   width: 100%;
   user-select: none;
   z-index: 999;
-  background-color: var(--background);
-  border-top: 1px solid color(var(--background) tint(10%));
-  color: var(--text-color);
+  background-color: var(--root-background);
+  border-top: 1px solid var(--root-border-color);
+  color: var(--root-text-color);
 }
 
 .main {

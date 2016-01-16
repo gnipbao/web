@@ -9,6 +9,7 @@
 
 .root {
   padding: 0;
+  border-top: 1px solid var(--border-color);
 
   & > button[data-react-toolbox="button"] {
     margin: 0;

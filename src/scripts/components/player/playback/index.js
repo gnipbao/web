@@ -15,7 +15,7 @@ const Playback = (props) => {
       <IconButton
         neutral={false}
         icon='skip_previous'
-        disabled={!first}
+        disabled={first}
         onClick={onPrevious}
       />
       <IconButton
@@ -26,7 +26,7 @@ const Playback = (props) => {
       <IconButton
         neutral={false}
         icon='skip_next'
-        disabled={!last}
+        disabled={last}
         onClick={onNext}
       />
     </div>

@@ -4,11 +4,11 @@ import css from 'react-css-modules';
 import { prefetch } from 'react-fetcher';
 
 import Button from 'react-toolbox/lib/button';
-import ProgressBar from 'react-toolbox/lib/progress_bar';
 
-import fetchData from 'lib/fetchData';
+import Spinner from 'components/spinners/folding_cube';
 import { actions } from 'modules/rooms';
 import * as selectors from 'selectors/rooms';
+import fetchData from 'lib/fetchData';
 
 import style from './style';
 
@@ -31,7 +31,7 @@ export class Page extends Component {
   renderContent() {
     const { loading, data } = this.props;
 
-    if (loading) return <ProgressBar />;
+    if (loading) return <Spinner />;
     if (isEmpty(data)) return null;
 
     const { name } = data;

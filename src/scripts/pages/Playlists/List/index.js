@@ -4,8 +4,7 @@ import css from 'react-css-modules';
 import { prefetch } from 'react-fetcher';
 
 import { List } from 'react-toolbox/lib/list';
-import ProgressBar from 'react-toolbox/lib/progress_bar';
-
+import Spinner from 'components/spinners/folding_cube';
 import fetchData from 'lib/fetchData';
 import * as actions from 'modules/playlists';
 import { list as selector } from 'selectors/playlists';
@@ -27,9 +26,8 @@ export class Page extends Component {
   render() {
     const { loading, collection } = this.props;
 
-    if (isEmpty(collection) || loading) {
-      return <ProgressBar />;
-    }
+    if (loading) return <Spinner />;
+    if (isEmpty(collection)) return null;
 
     return (
       <section>

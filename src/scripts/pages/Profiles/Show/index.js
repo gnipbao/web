@@ -5,12 +5,12 @@ import css from 'react-css-modules';
 import { prefetch } from 'react-fetcher';
 
 import { Tabs, Tab } from 'react-toolbox/lib/tabs';
-import ProgressBar from 'react-toolbox/lib/progress_bar';
 
-import fetchData from './fetchData';
+import Spinner from 'components/spinners/folding_cube';
 import { load as loadProfile } from 'modules/profile';
 import { load as loadUser } from 'modules/users';
 import { show as selector } from 'selectors/profile';
+import fetchData from './fetchData';
 
 import Info from 'components/user/info';
 import Activity from './activity';
@@ -54,7 +54,7 @@ export class Page extends Component {
   render() {
     const { loading, data } = this.props;
 
-    if (loading) return <ProgressBar />;
+    if (loading) return <Spinner />;
     if (isEmpty(data)) return null;
 
     return this.renderContent(data);

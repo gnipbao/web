@@ -2,6 +2,7 @@
 @import "media";
 
 :root {
+  --root-link-color: var(--brand-light);
 }
 
 .root {
@@ -13,12 +14,19 @@
   max-width: 190px;
 }
 
-.title {
+.link {
   composes: truncate from 'styles/utils';
-  font-size: responsive 1.4rem 1.5rem;
+  color: var(--root-link-color);
+  &:hover { color: color(var(--root-link-color) shade(20%)); }
+}
+
+.title {
+  composes: link;
+  font-size: responsive 1.2rem 1.4rem;
+  font-weight: bold;
 }
 
 .artist {
-  composes: truncate from 'styles/utils';
-  font-size: responsive 1.2rem 1.3rem;
+  composes: link;
+  font-size: responsive 1rem 1.2rem;
 }

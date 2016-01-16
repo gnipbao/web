@@ -3,6 +3,7 @@
 :root {
   --root-background: color(var(--background) shade(5%));
   --root-text-color: color(var(--text-color) shade(20%));
+  --root-border-color: color(var(--border-color) shade(5%));
 }
 
 .root {
@@ -10,6 +11,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 12px;
+  border-bottom: 1px solid var(--root-border-color);
   background-color: var(--root-background);
   color: var(--root-text-color);
 }

@@ -32,8 +32,5 @@ section {
 
 a {
   color: var(--link-color);
-
-  &:hover {
-    color: color(var(--link-color) blackness(20%));
-  }
+  &:hover { color: var(--link-hover-color); }
 }

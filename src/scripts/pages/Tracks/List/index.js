@@ -4,7 +4,7 @@ import css from 'react-css-modules';
 import { prefetch } from 'react-fetcher';
 
 import { List } from 'react-toolbox/lib/list';
-import ProgressBar from 'react-toolbox/lib/progress_bar';
+import Spinner from 'components/spinners/folding_cube';
 
 import fetchData from './fetchData';
 import { list as selector } from 'selectors/tracks';
@@ -29,7 +29,7 @@ export class Page extends Component {
   render() {
     const { loading, collection, changeTrack } = this.props;
 
-    if (loading) return <ProgressBar />;
+    if (loading) return <Spinner />;
     if (isEmpty(collection)) return null;
 
     return (

@@ -4,12 +4,11 @@ import { bindActionCreators } from 'redux';
 import css from 'react-css-modules';
 import { prefetch } from 'react-fetcher';
 
-import ProgressBar from 'react-toolbox/lib/progress_bar';
-
 import fetchData from 'lib/fetchData';
 import { actions, filters } from 'modules/rooms';
 import { list as selector } from 'selectors/rooms';
 
+import Spinner from 'components/spinners/folding_cube';
 import Filter from './filter';
 import Item from './item';
 import style from './style';
@@ -48,7 +47,7 @@ export class Page extends Component {
   renderContent() {
     const { loading, collection } = this.props;
 
-    if (loading) return <ProgressBar />;
+    if (loading) return <Spinner />;
     if (isEmpty(collection)) return null;
 
     return collection.map(item => <Item key={item.id} { ...item } />);
