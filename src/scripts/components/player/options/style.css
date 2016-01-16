@@ -1,6 +1,8 @@
 @import "variables";
 
 .root {
+  margin-left: 20px;
+
   & > button {
     & > span {
       color: var(--text-muted);

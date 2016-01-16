@@ -9,12 +9,15 @@
   flex-direction: column;
   align-items: center;
   flex: 1;
+  max-width: 190px;
 }
 
 .title {
+  composes: truncate from 'styles/utils';
   font-size: responsive 1.4rem 1.6rem;
 }
 
 .artist {
+  composes: truncate from 'styles/utils';
   font-size: responsive 1.2rem 1.4rem;
 }
