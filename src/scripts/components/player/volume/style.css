@@ -4,7 +4,7 @@
 :root {
   --width: 48px;
   --root-background: color(var(--brand-black) shade(15%));
-  --percentage-border-color: color(var(--root-background) shade(40%));
+  --bar-border-color: color(var(--root-background) shade(40%));
   --value-background: linear-gradient(to bottom, var(--brand-success) 0, color(var(--brand-success) shade(30%)) 100%);
 }
 
@@ -15,7 +15,7 @@
 .toggle {
 }
 
-.bar {
+.container {
   position: absolute;
   bottom: 51px;
   right: 0;
@@ -26,17 +26,17 @@
 }
 
 .collapsed {
-  composes: bar;
+  composes: container;
   display: none;
 }
 
 .expanded {
-  composes: bar;
+  composes: container;
 }
 
-.percentage {
-  border-top: 1px solid var(--percentage-border-color);
-  border-bottom: 1px solid var(--percentage-border-color);
+.bar {
+  border-top: 1px solid var(--bar-border-color);
+  border-bottom: 1px solid var(--bar-border-color);
   display: flex;
   align-items: center;
   justify-content: center;

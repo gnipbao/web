@@ -27,7 +27,7 @@
   }
 }
 
-.seek-bar {
+.bar {
   position: relative;
   height: 6px;
   background-color: var(--root-background);

@@ -135,7 +135,7 @@ export class Player extends Component {
       // TODO: select trandom track & emit changeTrack action
     } else {
       // TODO: if there is a current playlist then if next track exists then
-      // emit changeTrack action with its id, emit togglePlay(false) otherwise 
+      // emit changeTrack action with its id, emit togglePlay(false) otherwise
 
       actions.togglePlay(false);
     }
@@ -148,6 +148,11 @@ export class Player extends Component {
     this.audio.volume = volume;
     this.setState({ volume });
     storage.set('player.volume', volume);
+  }
+
+  seek(offset) {
+    this.audio.currentTime = offset;
+    this.props.actions.seek(offset);
   }
 
   togglePlay() {
@@ -190,8 +195,13 @@ export class Player extends Component {
     const { playing, offset, track, playlist } = this.props;
     const { seeking, duration, muted, repeat, shuffle, volume } = this.state;
 
-    const timing = { offset, duration };
     const options = { repeat, shuffle };
+    const timeable = { offset, duration };
+    const seekable = {
+      seeking,
+      onSeekStart: ::this.handleSeekStart,
+      onSeekEnd: ::this.handleSeekEnd
+    };
 
     return (
       <div styleName='root'>
@@ -205,19 +215,22 @@ export class Player extends Component {
             playing={playing}
             onTogglePlay={::this.togglePlay}
             onPrevious={() => {}}
-            onNext={() => {}} />
+            onNext={() => {}}
+          />
           <SeekBar
-            onSeekStart={::this.handleSeekStart}
-            onSeekEnd={::this.handleSeekEnd}
-            { ...{ ...timing, seeking } } />
-          <Time { ...timing } />
+            onSeek={::this.seek}
+            { ...{ ...timeable, ...seekable } }
+          />
+          <Time { ...timeable } />
           <Options
             onToggleRepeat={::this.toggleRepeat}
             onToggleShuffle={::this.toggleShuffle}
-            { ...options } />
+            { ...options }
+          />
           <Playlist />
-          <Volume onVolumeChange={::this.changeVolume}
-            { ...{ muted, volume } }
+          <Volume
+            onVolumeChange={::this.changeVolume}
+            { ...{ ...seekable, muted, volume } }
           />
         </div>
       </div>

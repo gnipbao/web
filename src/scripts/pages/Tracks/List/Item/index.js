@@ -17,6 +17,7 @@ export default class Item extends Component {
     return (
       <ListItem
         styleName='root'
+        selectable
         disabled={current}
         caption={strip(title)}
         legent={artist}
