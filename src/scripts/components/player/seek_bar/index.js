@@ -23,8 +23,14 @@ export class SeekBar extends Component {
     offset: this.props.offset
   };
 
+  componentWillUpdate(nextProps) {
+    if (nextProps.duration !== this.props.duration) {
+      this.setState({ offset: nextProps.offset });
+    }
+  }
+
   handleMouseDown(e) {
-    document.addEventListener('mousemove', this.handleMouseMove);
+    document.addEventListener('mousemove', this.seek);
     document.addEventListener('mouseup', this.handleMouseUp);
 
     this.props.onSeekStart();
@@ -33,18 +39,19 @@ export class SeekBar extends Component {
   handleMouseUp = (e) => {
     if (!this.props.seeking) return;
 
-    document.removeEventListener('mousemove', this.handleMouseMove);
+    document.removeEventListener('mousemove', this.seek);
     document.removeEventListener('mouseup', this.handleMouseUp);
 
     this.props.onSeekEnd();
     this.props.onSeek(this.state.offset);
   };
 
-  handleMouseMove = (e) => {
+  seek = (e) => {
     const boundingRect = this.bar.getBoundingClientRect();
     const value = (e.clientX - boundingRect.left) / this.bar.offsetWidth;
     const factor = clamp(value, 0, 1);
     const offset = Math.floor(factor * this.props.duration);
+
     this.setState({ offset });
   };
 
@@ -57,6 +64,7 @@ export class SeekBar extends Component {
         <div styleName='wrap'>
           <div styleName='bar'
             ref={r => this.bar = r}
+            onClick={this.seek}
             onMouseDown={::this.handleMouseDown}>
             <div styleName='progress' style={{ width: `${width}%` }}>
               <div styleName='handle'></div>
