@@ -12,11 +12,12 @@ import style from './style';
 @css(style)
 export default class Item extends Component {
   render() {
-    const { id, title, artist, onPlay } = this.props;
+    const { id, title, artist, current, onPlay } = this.props;
 
     return (
       <ListItem
         styleName='root'
+        disabled={current}
         caption={strip(title)}
         legent={artist}
         leftIcon='music_note'

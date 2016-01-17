@@ -57,13 +57,16 @@ export class Page extends Component {
   }
 
   renderContent() {
-    if (isEmpty(this.props.collection)) return null;
+    const { collection, currentTrack, changeTrack } = this.props;
+
+    if (isEmpty(collection)) return null;
 
     return (
       <List selectable ripple>
-        {this.props.collection.map(
+        {collection.map(
           item => <Item key={item.id}
-            onPlay={this.props.changeTrack} { ...item } />
+            current={item.id === currentTrack}
+            onPlay={changeTrack} { ...item } />
         )}
       </List>
     );
