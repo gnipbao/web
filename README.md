@@ -112,7 +112,6 @@ Options:
 * `profile`
 * `quiet` - set this to true and you'll see no error output in the console and it will make much harder to now whats wrong
 * `debug`
-* `lint`
 
 By default source maps is generated using `cheap-module-inline-source-map` option.
 If thats not enough for you then you can change it to `eval-source-map` or even the slowest `source-map`.

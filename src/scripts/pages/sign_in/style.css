@@ -38,6 +38,7 @@
   width: 300px;
 
   @media (--medium) { width: 420px; }
+
   @media (--large) { width: 600px; }
 
   [data-react-toolbox="tooltip"] {

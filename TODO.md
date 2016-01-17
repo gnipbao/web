@@ -18,7 +18,6 @@
 - [ ] try https://github.com/mdlawson/piping
 - [ ] integrate with https://github.com/Snyk/snyk
 - [ ] think about hydrate on client option
-- [ ] wait for stylelint v3, [try this again](https://github.com/stylelint/stylelint/issues/523)
 - [x] fix phantomjs issue when running tests in docker container (fuck it)
 
 ```

@@ -1,16 +1,27 @@
 @import "variables";
 @import "media";
 
+:root {
+  --username-font-size: responsive 1.4rem 1.8rem;
+
+  --role-font-size: responsive 1rem 1.4rem;
+  --role-text-color: color(var(--text-color) tint(30%));
+
+  --karma-font-size: responsive 1.6rem 2rem;
+  --karma-background-color: var(--brand-success);
+  --karma-text-color: var(--brand-light);
+}
+
 .root {
   lost-row: 1/3;
   lost-flex-container: column;
-
   align-items: center;
   justify-content: center;
 
   margin-top: 20px;
 
   @media (--medium) { lost-column: 1/3; }
+
   @media (--desktop) { lost-column: 1/4; }
 }
 
@@ -25,18 +36,20 @@
 
 .username {
   composes: truncate from "styles/utils";
-  font-size: responsive 1.4rem 1.8rem;
+
+  font-size: var(--username-font-size);
 }
 
 .role {
-  font-size: responsive 1rem 1.4rem;
-  color: color(var(--text-color) tint(30%));
+  font-size: var(--role-font-size);
+  color: var(--role-text-color);
 }
 
 .karma {
   composes: squared from "styles/badges";
+
   margin-top: 10px;
-  font-size: responsive 1.6rem 2rem;
-  background-color: var(--brand-success);
-  color: var(--brand-light);
+  font-size: var(--karma-font-size);
+  background-color: var(--karma-background-color);
+  color: var(--karma-text-color);
 }

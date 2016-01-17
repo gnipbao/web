@@ -4,17 +4,16 @@
 .root {
   display: flex;
   flex-direction: column;
-  background-color: var(--background);
-
-  @media (--medium) { flex-direction: row; }
 }
 
 .main {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  background-color: var(--background);
+
+  @media (--medium) { flex-direction: row; }
 }
 
 .content {
-  padding: 12px 10px 44px;
+  padding: 10px;
 }

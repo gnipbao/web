@@ -3,13 +3,8 @@ import { paths, postcss, argv } from '../../config';
 const {
   cssnext,
   assets,
-  fontMagician,
-  stylelint
+  fontMagician
 } = postcss;
-
-const linters = () => [
-  require('stylelint')(stylelint)
-];
 
 const reporters = () => [
   require('postcss-reporter'),
@@ -17,8 +12,6 @@ const reporters = () => [
 ];
 
 export default (bundler) => [
-  ...(argv.lint ? linters() : []),
-
   require('postcss-import')({
     addDependencyTo: bundler,
     path: [

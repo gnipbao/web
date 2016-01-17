@@ -3,6 +3,12 @@
 
 :root {
   --root-background: #fff;
+
+  --label-font-size: responsive 1.2rem 1.4rem;
+  --label-text-color: color(var(--text-color) tint(20%));
+
+  --value-font-size: responsive 1.4rem 1.8rem;
+  --value-text-color: color(var(--text-color) shade(20%));
 }
 
 .root {
@@ -13,24 +19,26 @@
   border: 1px solid transparent;
   border-radius: 2px;
   background-color: var(--root-background);
-  box-shadow: 0 1px 1px rgba(#000, .05);
+  box-shadow: 0 1px 1px rgba(#000, 0.05);
 
   @media (--medium) { flex-direction: column; }
+
   @media (--large) { flex-direction: row; }
 
-  .label, .value {
+  .label,
+  .value {
     display: block;
     margin-bottom: 4px;
   }
 
-  .value {
-    font-size: responsive 1.4rem 1.8rem;
-    font-weight: bold;
-    color: color(var(--text-color) shade(20%));
+  .label {
+    font-size: var(--label-font-size);
+    color: var(--label-text-color);
   }
 
-  .label {
-    font-size: responsive 1.2rem 1.4rem;
-    color: color(var(--text-color) tint(20%));
+  .value {
+    font-size: var(--value-font-size);
+    font-weight: bold;
+    color: var(--value-text-color);
   }
 }

@@ -61,13 +61,13 @@ export class Player extends Component {
   };
 
   componentDidMount() {
-    this.audio.addEventListener('loadedmetadata', ::this.handleLoadedMetadata);
-    this.audio.addEventListener('loadstart', ::this.handleLoadStart);
-    this.audio.addEventListener('pause', ::this.handlePause);
-    this.audio.addEventListener('play', ::this.handlePlay);
-    this.audio.addEventListener('timeupdate', ::this.handleTimeUpdate);
-    this.audio.addEventListener('volumechange', ::this.handleVolumeChange);
-    this.audio.addEventListener('ended', ::this.handleEnded);
+    this.audio.addEventListener('loadedmetadata', this.handleLoadedMetadata);
+    this.audio.addEventListener('loadstart', this.handleLoadStart);
+    this.audio.addEventListener('pause', this.handlePause);
+    this.audio.addEventListener('play', this.handlePlay);
+    this.audio.addEventListener('timeupdate', this.handleTimeUpdate);
+    this.audio.addEventListener('volumechange', this.handleVolumeChange);
+    this.audio.addEventListener('ended', this.handleEnded);
 
     if (this.props.track && this.props.auto) {
       this.audio.play();
@@ -98,24 +98,19 @@ export class Player extends Component {
     this.audio.removeEventListener('ended', this.handleEnded);
   }
 
-  handleLoadedMetadata() {
-    this.setState({ duration: Math.floor(this.audio.duration) });
-  }
+  handleLoadedMetadata = () => this.setState({
+    duration: Math.floor(this.audio.duration)
+  });
 
-  handleLoadStart() {
+  handleLoadStart = () => {
     this.props.actions.updateTime(0);
     this.setState({ duration: this.props.track && this.props.track.duration || 0 });
-  }
+  };
 
-  handlePause() {
-    this.props.actions.togglePlay(false);
-  }
+  handlePause = () => this.props.actions.togglePlay(false);
+  handlePlay = () => this.props.actions.togglePlay(true);
 
-  handlePlay() {
-    this.props.actions.togglePlay(true);
-  }
-
-  handleTimeUpdate() {
+  handleTimeUpdate = () => {
     if (this.state.seeking) return;
 
     const { actions, offset } = this.props;
@@ -124,17 +119,17 @@ export class Player extends Component {
     if (currentTime !== offset) {
       this.props.actions.updateTime(currentTime);
     }
-  }
+  };
 
-  handleVolumeChange(e) {
+  handleVolumeChange = (e) => {
     if (this.state.seeking) return;
 
     const volume = e.currentTarget.volume;
     storage.set('player.volume', volume);
     this.setState({ volume });
-  }
+  };
 
-  handleEnded() {
+  handleEnded = () => {
     const { actions, repeat, shuffle } = this.state;
 
     if (repeat) {
@@ -147,10 +142,7 @@ export class Player extends Component {
 
       actions.togglePlay(false);
     }
-  }
-
-  handleKeyDown(e) {
-  }
+  };
 
   changeVolume(volume) {
     this.audio.volume = volume;
@@ -159,8 +151,8 @@ export class Player extends Component {
   }
 
   seek(offset) {
-    this.audio.currentTime = offset;
     this.props.actions.seek(offset);
+    this.audio.currentTime = offset;
   }
 
   togglePlay() {
@@ -191,13 +183,8 @@ export class Player extends Component {
     storage.set('player.shuffle', shuffle);
   }
 
-  handleSeekStart() {
-    this.setState({ seeking: true });
-  }
-
-  handleSeekEnd() {
-    this.setState({ seeking: false });
-  }
+  handleSeekStart = () => this.setState({ seeking: true });
+  handleSeekEnd = () => this.setState({ seeking: false });
 
   render() {
     const { playing, offset, track, playlist } = this.props;
@@ -207,8 +194,8 @@ export class Player extends Component {
     const timeable = { offset, duration };
     const seekable = {
       seeking,
-      onSeekStart: ::this.handleSeekStart,
-      onSeekEnd: ::this.handleSeekEnd
+      onSeekStart: this.handleSeekStart,
+      onSeekEnd: this.handleSeekEnd
     };
 
     return (
@@ -235,7 +222,7 @@ export class Player extends Component {
             onToggleShuffle={::this.toggleShuffle}
             { ...options }
           />
-          <Playlist />
+          <Playlist {...playlist} />
           <Volume
             onVolumeChange={::this.changeVolume}
             { ...{ ...seekable, muted, volume } }

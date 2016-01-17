@@ -15,18 +15,19 @@ export class SeekBar extends Component {
     onSeekEnd: func.isRequired
   };
 
-  static defaultProps = {
-    offset: 0
-  };
+  static defaultProps = { offset: 0 };
 
-  state = {
-    offset: this.props.offset
-  };
+  state = { offset: this.props.offset };
 
   componentWillUpdate(nextProps) {
     if (nextProps.duration !== this.props.duration) {
       this.setState({ offset: nextProps.offset });
     }
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+    e.stopPropagation();
   }
 
   handleMouseDown(e) {
@@ -42,8 +43,8 @@ export class SeekBar extends Component {
     document.removeEventListener('mousemove', this.seek);
     document.removeEventListener('mouseup', this.handleMouseUp);
 
-    this.props.onSeekEnd();
     this.props.onSeek(this.state.offset);
+    this.props.onSeekEnd();
   };
 
   seek = (e) => {
@@ -51,6 +52,11 @@ export class SeekBar extends Component {
     const value = (e.clientX - boundingRect.left) / this.bar.offsetWidth;
     const factor = clamp(value, 0, 1);
     const offset = Math.floor(factor * this.props.duration);
+
+    // TODO: Refactor
+    if (!this.props.seeking) {
+      this.props.onSeek(offset);
+    }
 
     this.setState({ offset });
   };
@@ -64,10 +70,12 @@ export class SeekBar extends Component {
         <div styleName='wrap'>
           <div styleName='bar'
             ref={r => this.bar = r}
-            onClick={this.seek}
-            onMouseDown={::this.handleMouseDown}>
+            onClick={this.seek}>
             <div styleName='progress' style={{ width: `${width}%` }}>
-              <div styleName='handle'></div>
+              <div styleName='handle'
+                onClick={::this.handleClick}
+                onMouseDown={::this.handleMouseDown}>
+              </div>
             </div>
           </div>
         </div>

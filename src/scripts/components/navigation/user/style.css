@@ -29,7 +29,8 @@
 .slim {
   composes: root;
 
-  .info, .actions {
+  .info,
+  .actions {
     display: none;
   }
 }

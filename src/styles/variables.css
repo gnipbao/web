@@ -1,7 +1,10 @@
 :root {
+
   /* fonts */
-  --font-family: 'Roboto';
-  --font-size: 62.5%; /* 1em = 10px */
+  --font-family: "Roboto";
+
+  /* 1em = 10px */
+  --font-size: 62.5%;
   --font-size-base: 1.8rem;
 
   /* brand */

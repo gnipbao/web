@@ -1,13 +1,8 @@
-import path from 'path';
 import resolve from '../resolve';
-import config from 'stylelint-config-suitcss';
-
-const files = [
-  resolve.src('**/*.css'),
-  '!node_modules/normalize.css/normalize.css'
-];
+import paths from '../paths';
 
 export default {
-  config,
-  files
+  configFile: paths.stylelintConfig,
+  files: [resolve.src('**/*.css')],
+  ignoreFiles: [resolve.modules('**/*.css')]
 }

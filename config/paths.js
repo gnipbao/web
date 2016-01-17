@@ -21,5 +21,6 @@ export default {
 
   lcov: resolve.coverage('*/lcov.info'),
   eslintrc: resolve.root('.eslintrc'),
+  stylelintConfig: resolve.root('stylelint.config.js'),
   karmaConfig: resolve.root('karma.conf.js'),
 }

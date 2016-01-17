@@ -17,7 +17,6 @@ const Options = (props) => {
         styleName={repeat ? 'on' : 'off'}
         neutral={false}
         icon='repeat'
-        accent={repeat}
         onClick={onToggleRepeat}
       />
       <IconButton

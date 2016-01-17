@@ -33,8 +33,7 @@ export default class Item extends Component {
         caption={strip(title)}
         legent={artist}
         onClick={handleClick}
-        { ...{ leftIcon, rightIcon } }
-        >
+        { ...{ leftIcon, rightIcon } }>
       </ListItem>
     );
   }

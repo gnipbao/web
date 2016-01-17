@@ -19,8 +19,11 @@
 
 .card {
   lost-column: 1/1;
+
   @media (--medium) { lost-column: 1/2; }
+
   @media (--large) { lost-column: 1/3; }
+
   @media (--desktop) { lost-column: 1/4; }
 }
 

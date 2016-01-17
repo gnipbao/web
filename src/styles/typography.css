@@ -8,7 +8,9 @@ html {
   text-rendering: optimizeLegibility;
   font-smoothing: antialiased;
 }
-html, body {
+
+html,
+body {
   font-size: var(--font-size);
   lower-font-range: 22.5rem;
   upper-font-range: 85.375rem;
@@ -19,7 +21,12 @@ body {
   font-size: var(--font-size-base);
 }
 
-h1, h2, h3, h4, h6, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--text-color);
 }
 

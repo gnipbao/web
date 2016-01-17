@@ -33,14 +33,14 @@ export class App extends Component {
 
     return (
       <div styleName='root'>
-        <Navigation logout={::this.handleLogout} />
+        <Toolbar />
         <div styleName='main'>
-          <Toolbar />
+          <Navigation logout={::this.handleLogout} />
           <section styleName='content'>
             {children}
           </section>
-          {player.track && <Player />}
         </div>
+        {player.track && <Player />}
       </div>
     );
   }

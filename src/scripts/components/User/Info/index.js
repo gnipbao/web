@@ -9,14 +9,9 @@ const { object, string, number } = PropTypes;
 
 export const Info = (props) => {
   const {
-    id,
-    nickname,
-    firstName,
-    lastName,
-    picture,
-    role,
-    karma,
-    stats
+    id, nickname,
+    firstName, lastName,
+    picture, role, karma, stats
   } = props;
 
   const username = `${firstName} ${lastName}`;

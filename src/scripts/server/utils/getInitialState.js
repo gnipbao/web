@@ -17,7 +17,7 @@ function getAuthData(token) {
     currentUser: data.user,
     currentUserId: data.sub
   };
-};
+}
 
 export default function() {
   const token = session.token();

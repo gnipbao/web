@@ -32,9 +32,10 @@
   height: 6px;
   background-color: var(--root-background);
   border-radius: 2px;
-  box-shadow: inset 0 1px 0 rgba(#000, 0.1),
-              inset 0 -1px 1px rgba(#000, 0.1),
-              0 1px 0 rgba(#fff, 0.05)
+  box-shadow:
+    inset 0 1px 0 rgba(#000, 0.1),
+    inset 0 -1px 1px rgba(#000, 0.1),
+    0 1px 0 rgba(#fff, 0.05);
 }
 
 .progress {
@@ -55,6 +56,7 @@
   border-radius: 50%;
   background: var(--handle-background);
   border: 1px solid color(var(--brand-light) tint(20%));
-  box-shadow: 0 0 2px rgba(#000, 0.6),
-              inset 0 -1px 0 rgba(#000, 0.1)
+  box-shadow:
+    0 0 2px rgba(#000, 0.6),
+    inset 0 -1px 0 rgba(#000, 0.1);
 }

@@ -4,7 +4,10 @@ import reporter from 'postcss-reporter';
 import eslintFormatter from 'eslint-friendly-formatter';
 
 const wildcards = {
-  styles: path.join(paths.root, '**/*.css'),
+  styles: [
+    path.join(paths.scripts, '**/*.css'),
+    path.join(paths.styles, '**/*.css')
+  ],
   scripts: {
     app: path.join(paths.scripts, '**/*.js'),
     test: path.join(paths.test, '**/*.js')

@@ -2,14 +2,15 @@ import pick from 'lodash/pick';
 import { connect } from 'react-redux';
 
 import css from 'react-css-modules';
+import Sticky from 'react-sticky';
 import Select from 'react-select';
 import FontIcon from 'react-toolbox/lib/font_icon';
 import Button from 'react-toolbox/lib/button';
 import Tooltip from 'react-toolbox/lib/tooltip';
-import Input from 'react-toolbox/lib/input';
 
 import { toggle as toggleNavigation } from 'modules/navigation';
 
+import Header from './header';
 import style from './style';
 
 const TooltipButton = Tooltip(Button);
@@ -23,23 +24,18 @@ export const Toolbar = (props) => {
     'format_indent_decrease';
 
   return (
-    <div styleName='root'>
+    <Sticky className={style.root}
+      topOffset={120}
+      type={React.DOM.section}>
+      <Header slim={navigation.slim} title='Party Rooms' />
       <TooltipButton flat ripple={false}
+        neutral={false}
         icon={icon}
         onClick={toggleNavigation}
         tooltip='Toggle navigation bar'
         styleName='toggle'
       />
-      <TooltipButton flat
-        icon='search'
-        tooltip='Search rooms'
-        styleName='search'
-      />
-      <Input type='text'
-        label='search rooms'
-        styleName='input'
-      />
-    </div>
+    </Sticky>
   );
 };
 

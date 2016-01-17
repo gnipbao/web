@@ -21,9 +21,10 @@
 }
 
 .normal {
+  width: 200px;
   composes: root;
 
-  > .title {
+  .title {
     color: var(--brand-light);
     margin-left: 14px;
     font-size: 2rem;
@@ -33,8 +34,9 @@
 
 .slim {
   composes: root;
+  width: 60px;
 
-  > .title {
+  .title {
     display: none;
   }
 }

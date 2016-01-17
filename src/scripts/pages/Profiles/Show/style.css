@@ -3,6 +3,7 @@
 
 .root {
   lost-flex-container: column;
+
   @media (--medium) { lost-flex-container: row; }
 }
 
@@ -10,5 +11,6 @@
   lost-row: 2/3;
 
   @media (--medium) { lost-column: 2/3; }
+
   @media (--desktop) { lost-column: 3/4; }
 }
