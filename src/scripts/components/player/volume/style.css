@@ -2,9 +2,10 @@
 @import "media";
 
 :root {
+  --width: 48px;
   --root-background: color(var(--brand-black) shade(15%));
   --percentage-border-color: color(var(--root-background) shade(40%));
-  --width: 48px;
+  --value-background: linear-gradient(to bottom, var(--brand-success) 0, color(var(--brand-success) shade(30%)) 100%);
 }
 
 .root {
@@ -49,7 +50,7 @@
   margin-left: -4px;
   bottom: 0;
   top: 50%;
-  background: var(--brand-success);
+  background: var(--value-background);
   position: absolute;
 }
 

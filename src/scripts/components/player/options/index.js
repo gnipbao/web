@@ -14,15 +14,16 @@ const Options = (props) => {
   return (
     <div styleName='root'>
       <IconButton
+        styleName={repeat ? 'on' : 'off'}
         neutral={false}
         icon='repeat'
         accent={repeat}
         onClick={onToggleRepeat}
       />
       <IconButton
+        styleName={shuffle ? 'on' : 'off'}
         neutral={false}
         icon='shuffle'
-        accent={shuffle}
         onClick={onToggleShuffle}
       />
     </div>
