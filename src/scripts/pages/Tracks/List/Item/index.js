@@ -12,18 +12,29 @@ import style from './style';
 @css(style)
 export default class Item extends Component {
   render() {
-    const { id, title, artist, current, onPlay } = this.props;
+    const { id, title, artist, player } = this.props;
+    const current = id === player.track;
+
+    const leftIcon = current ?
+      'equalizer' : 'music_note';
+
+    const rightIcon = current && player.playing ?
+      'pause_circle_outline' :
+      'play_circle_outline';
+
+    const handleClick = current ?
+      () => player.togglePlay() :
+      () => player.changeTrack(id);
 
     return (
       <ListItem
-        styleName='root'
+        styleName={current ? 'on' : 'off'}
         selectable
-        disabled={current}
         caption={strip(title)}
         legent={artist}
-        leftIcon='music_note'
-        rightIcon='play_circle_outline'
-        onClick={() => onPlay(id)}>
+        onClick={handleClick}
+        { ...{ leftIcon, rightIcon } }
+        >
       </ListItem>
     );
   }

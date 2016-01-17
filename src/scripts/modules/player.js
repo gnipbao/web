@@ -1,3 +1,4 @@
+import isUndefined from 'lodash/isUndefined';
 import { action, reducer } from 'lib/redux';
 
 export const togglePlay = action('player.togglePlay', playing => ({ playing }));
@@ -14,9 +15,25 @@ const initialState = {
 };
 
 export default reducer({
-  [togglePlay]: (s, { playing }) => ({ ...s, playing }),
-  [stop]: s => ({ ...s, playing: false, track: null, offset: 0 }),
-  [changeTrack]: ({ track, ...s }, { id }) => ({ ...s, playing: true, track: id || track }),
+  [togglePlay]: (state, { playing }) => ({
+    ...state,
+    playing: isUndefined(playing) ?
+      !state.playing : playing
+  }),
+
+  [stop]: state => ({
+    ...state,
+    playing: false,
+    track: null,
+    offset: 0
+  }),
+
+  [changeTrack]: ({ track, ...state }, { id }) => ({
+    ...state,
+    playing: true,
+    track: id || track
+  }),
+
   [updateTime]: (s, { offset }) => ({ ...s, offset }),
   [seek]: (s, { offset }) => ({ ...s, offset })
 }, initialState);

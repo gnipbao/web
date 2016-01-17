@@ -75,6 +75,14 @@ export class Player extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    if (this.props.playing !== prevProps.playing) {
+      if (this.props.playing) {
+        this.audio.play();
+      } else {
+        this.audio.pause();
+      }
+    }
+
     if (!prevProps.track || prevProps.track !== this.props.track) {
       this.audio.play();
     }

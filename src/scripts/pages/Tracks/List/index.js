@@ -11,7 +11,7 @@ import Spinner from 'components/spinners/folding_cube';
 import fetchData from './fetchData';
 import { list as selector } from 'selectors/tracks';
 import { tracks as actions } from 'modules/playlists';
-import { changeTrack } from 'modules/player';
+import { changeTrack, togglePlay } from 'modules/player';
 
 import Item from './item';
 import style from './style';
@@ -57,7 +57,18 @@ export class Page extends Component {
   }
 
   renderContent() {
-    const { collection, currentTrack, changeTrack } = this.props;
+    const {
+      collection,
+      player,
+      changeTrack,
+      togglePlay
+    } = this.props;
+
+    const playerProps = {
+      ...player,
+      changeTrack,
+      togglePlay
+    };
 
     if (isEmpty(collection)) return null;
 
@@ -65,12 +76,15 @@ export class Page extends Component {
       <List selectable ripple>
         {collection.map(
           item => <Item key={item.id}
-            current={item.id === currentTrack}
-            onPlay={changeTrack} { ...item } />
+            { ...{ ...item, player: playerProps } } />
         )}
       </List>
     );
   }
 }
 
-export default connect(selector, { ...actions, changeTrack })(Page);
+export default connect(selector, {
+  ...actions,
+  togglePlay,
+  changeTrack
+})(Page);

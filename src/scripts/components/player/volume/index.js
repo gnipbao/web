@@ -25,7 +25,7 @@ export class Volume extends Component {
   }
 
   handleMouseDown(e) {
-    document.addEventListener('mousemove', this.changleVolume);
+    document.addEventListener('mousemove', this.handleMouseMove);
     document.addEventListener('mouseup', this.handleMouseUp);
 
     this.props.onSeekStart();
@@ -34,18 +34,19 @@ export class Volume extends Component {
   handleMouseUp = (e) => {
     if (!this.props.seeking) return;
 
-    document.removeEventListener('mousemove', this.changleVolume);
+    document.removeEventListener('mousemove', this.handleMouseMove);
     document.removeEventListener('mouseup', this.handleMouseUp);
 
     this.props.onSeekEnd();
   };
+
+  handleMouseMove = (e) => this.changeVolume(e);
 
   changeVolume = (e) => {
     const boundingRect = this.bar.getBoundingClientRect();
     const value = (e.clientY - boundingRect.top) / this.bar.offsetHeight;
     const factor = 1 - value;
     const volume = clamp(factor, 0, 1);
-
     this.props.onVolumeChange(volume);
   };
 
@@ -74,7 +75,8 @@ export class Volume extends Component {
             icon='volume_up'
             onClick={() => onVolumeChange(1)}
           />
-          <div styleName='bar' ref={r => this.bar = r}
+          <div styleName='bar'
+            ref={r => this.bar = r}
             onClick={this.changeVolume}
             onMouseDown={::this.handleMouseDown}>
             <div styleName='value' style={style}></div>

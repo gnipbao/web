@@ -2,3 +2,12 @@
 
 .root {
 }
+
+.off {
+  composes: root;
+}
+
+.on {
+  composes: root;
+  background-color: color(var(--background) shade(10%));
+}
