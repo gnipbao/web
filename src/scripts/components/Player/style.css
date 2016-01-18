@@ -11,8 +11,8 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  user-select: none;
   z-index: 999;
+  user-select: none;
   background-color: var(--root-background);
   color: var(--root-text-color);
   box-shadow:

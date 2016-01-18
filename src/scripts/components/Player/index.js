@@ -206,7 +206,7 @@ export class Player extends Component {
         component='div'
         transitionName={pick(style, ['appear', 'appearActive'])}
         transitionEnterTimeout={500}
-        transitionLeaveTimeout={300}
+        transitionLeaveTimeout={500}
         transitionAppear={true}
         transitionAppearTimeout={500}>
         <audio id='audio'

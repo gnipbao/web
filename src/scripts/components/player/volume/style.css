@@ -25,18 +25,6 @@
   border-radius: 4px 4px 0 0;
 }
 
-.enter {
-}
-
-.enterActive {
-}
-
-.leave {
-}
-
-.leaveActive {
-}
-
 .bar {
   border-top: 1px solid var(--bar-border-color);
   border-bottom: 1px solid var(--bar-border-color);

@@ -7,14 +7,16 @@
   composes: vertical from "styles/layout";
 
   padding: 8px;
-  list-style: none;
   font-size: 1.6rem;
   background-color: var(--brand-info);
   color: var(--brand-light);
 }
 
-.title {
+.appear {
+  opacity: 0.01;
 }
 
-.artist {
+.appearActive {
+  opacity: 1;
+  transition: opacity 0.3s ease-in;
 }

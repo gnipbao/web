@@ -5,6 +5,7 @@
   --root-background: color(var(--brand-black) shade(40%));
   --progress-background: var(--brand-info);
   --handle-background: linear-gradient(to bottom, var(--brand-light) 0, color(var(--brand-light) shade(20%)) 100%);
+  --bar-height: 8px;
 }
 
 .root {
@@ -19,7 +20,6 @@
 }
 
 .wrap {
-  padding: 6px 0;
   flex: 1;
 
   &:hover {
@@ -29,7 +29,7 @@
 
 .bar {
   position: relative;
-  height: 6px;
+  height: var(--bar-height);
   background-color: var(--root-background);
   border-radius: 2px;
   box-shadow:
@@ -44,14 +44,15 @@
   left: 0;
   height: 100%;
   border-radius: 2px;
-  background-color: var(--progress-background);
+  background: var(--progress-background);
+  box-shadow: inset 0 0 1px 0 rgba(#000, 0.8);
 }
 
 .handle {
   position: absolute;
-  top: -5px;
-  right: -8px;
-  size: 16px;
+  top: -6px;
+  right: -10px;
+  size: 20px;
   cursor: ew-resize;
   border-radius: 50%;
   background: var(--handle-background);

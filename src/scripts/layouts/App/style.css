@@ -18,5 +18,5 @@
   width: 100vw;
   padding: 230px 0 20px;
 
-  @media (--medium) { padding: 10px; }
+  @media (--medium) { padding: 60px 10px; }
 }
