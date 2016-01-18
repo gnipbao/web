@@ -11,7 +11,7 @@ export default function(props) {
       items: [
         {
           icon: 'dashboard',
-          path: '/rooms',
+          path: '/',
           label: 'rooms',
           count: roomsCount
         },

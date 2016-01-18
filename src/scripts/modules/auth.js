@@ -61,7 +61,7 @@ export const login = (provider, inviteCode) =>
       if (state && state.attempted) {
         dispatch(replacePath(state.attempted));
       } else {
-        dispatch(replacePath('/rooms'));
+        dispatch(replacePath('/'));
       }
     } catch (error) {
       dispatch(loginError(error));

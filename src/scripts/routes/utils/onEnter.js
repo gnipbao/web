@@ -9,7 +9,7 @@ export default function(route, { dispatch, getState }) {
     if (route.requireAuth && !authenticated) {
       replaceState({ attempted: location.pathname + location.search }, '/sign-in');
     } else if (route.requireUnauth && authenticated) {
-      replaceState(null, '/rooms');
+      replaceState(null, '/');
     } else if (route.requireRoles) {
       if (!route.requireRoles.includes(currentUser.role)) {
         replaceState(null, '/forbidden');

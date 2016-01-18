@@ -9,7 +9,7 @@ import style from './style';
 
 export const NotFound = (props) => {
   const { authenticated, pushPath } = props;
-  const homePath = authenticated ? '/rooms' : '/sign-in';
+  const homePath = authenticated ? '/' : '/sign-in';
   const currentYear = new Date().getFullYear();
 
   const linkProps = {

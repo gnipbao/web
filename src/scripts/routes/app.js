@@ -1,4 +1,4 @@
-import { Route } from 'react-router';
+import { Route, IndexRoute } from 'react-router';
 import * as layouts from 'layouts';
 import {
   about,
@@ -9,8 +9,9 @@ import {
 } from 'pages';
 
 export default (
-  <Route component={layouts.app} requireAuth>
-    <Route path='/rooms' component={rooms.list} />
+  <Route path='/' component={layouts.app} requireAuth>
+    <IndexRoute component={rooms.list} />
+
     <Route path='/rooms/:id' component={rooms.show} />
     <Route path='/rooms/:id/new' component={rooms.create} />
     <Route path='/rooms/:id/edit' component={rooms.edit} />

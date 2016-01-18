@@ -8,7 +8,7 @@ export default (
     requireAuth
     requireRoles={['moderator', 'admin', 'developer']}>
 
-    <IndexRoute components={admin.dashboard} />
+    <IndexRoute component={admin.dashboard} />
 
     <Route path='/admin/users' component={admin.users.list} />
     <Route path='/admin/users/:id' component={admin.users.show} />
