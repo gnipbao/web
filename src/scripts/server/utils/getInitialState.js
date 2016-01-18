@@ -1,5 +1,6 @@
 import jwtDecode from 'jwt-decode';
 import session from 'lib/session';
+import isMobile from 'ismobilejs';
 
 const unauthState = {
   data: null,
@@ -19,11 +20,15 @@ function getAuthData(token) {
   };
 }
 
-export default function() {
+export default function(req) {
+  const mobile = isMobile(req.headers['user-agent']).any;
   const token = session.token();
   const authData = getAuthData(token);
 
   return {
+    environment: {
+      mobile
+    },
     auth: {
       token,
       authenticated: Boolean(token),

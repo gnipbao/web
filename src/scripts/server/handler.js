@@ -29,7 +29,7 @@ export default async (req, res) => {
     cookie.plugToRequest(req, res);
     const location = createLocation(req.originalUrl);
 
-    const initialState = getInitialState();
+    const initialState = getInitialState(req);
     console.info('initialState: ', initialState);
 
     const store = createStore(initialState);

@@ -4,9 +4,6 @@
 :root {
   --background: color(var(--brand-black) shade(30%));
   --text-color: color(var(--brand-light));
-
-  --expanded-width: 200px;
-  --collapsed-width: 60px;
 }
 
 .nav {
@@ -26,12 +23,12 @@
   composes: nav;
 
   @media (--medium) {
-    min-width: var(--expanded-width);
-    width: var(--expanded-width);
+    min-width: var(--navigation-width-expanded);
+    width: var(--navigation-width-expanded);
 
     .sticky {
-      min-width: var(--expanded-width);
-      width: var(--expanded-width);
+      min-width: var(--navigation-width-expanded);
+      width: var(--navigation-width-expanded);
     }
   }
 }
@@ -40,12 +37,12 @@
   composes: nav;
 
   @media (--medium) {
-    min-width: var(--collapsed-width);
-    width: var(--collapsed-width);
+    min-width: var(--navigation-width-collapsed);
+    width: var(--navigation-width-collapsed);
 
     .sticky {
-      min-width: var(--collapsed-width);
-      width: var(--collapsed-width);
+      min-width: var(--navigation-width-collapsed);
+      width: var(--navigation-width-collapsed);
     }
   }
 }

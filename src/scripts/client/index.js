@@ -17,6 +17,7 @@ import FastClick from 'fastclick';
 import { Provider } from 'react-redux';
 import { syncReduxAndRouter } from 'redux-simple-router';
 import createStore from 'store/create';
+import * as environment from 'modules/environment';
 import io from 'socket.io-client';
 
 import history from 'lib/history';
@@ -51,6 +52,16 @@ function run() {
   const initialState = window.__state || {};
 
   const store = createStore(initialState);
+  store.dispatch(environment.init());
+  window.addEventListener(
+    'optimizedResize',
+    () => store.dispatch(
+      environment.resize(
+        window.innerWidth,
+        window.innerHeight
+      )
+    )
+  );
   syncReduxAndRouter(history, store);
 
   const container = window.document.getElementById('root');
