@@ -10,7 +10,7 @@ import {
 
 export default (
   <Route path='/' component={layouts.app} requireAuth>
-    <IndexRoute component={rooms.list} />
+    <IndexRoute component={rooms.list} requireAuth />
 
     <Route path='/rooms/:id' component={rooms.show} />
     <Route path='/rooms/:id/new' component={rooms.create} />

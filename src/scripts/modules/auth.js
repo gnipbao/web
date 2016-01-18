@@ -5,6 +5,7 @@ import { replacePath } from 'redux-simple-router';
 import { action, reducer } from 'lib/redux';
 import openPopup from 'lib/utils/popup';
 import session from 'lib/session';
+import * as service from 'services/auth';
 
 function authenticate(provider, code, tab) {
   const name = !!tab ? '_blank' : provider;
@@ -47,8 +48,6 @@ const loginStart = action('auth.login.start');
 const loginComplete = action('auth.login.complete');
 const loginError = action('auth.login.error');
 
-export const logout = action('auth.logout', () => session.signOut());
-
 export const login = (provider, inviteCode) =>
   async (dispatch, getState) => {
     dispatch(loginStart({ provider, inviteCode }));
@@ -67,6 +66,13 @@ export const login = (provider, inviteCode) =>
       dispatch(loginError(error));
     }
   };
+
+const logoutComplete = action('auth.logout.complete');
+export const logout = () => async (dispatch) => {
+  await service.logout();
+  session.signOut();
+  dispatch(logoutComplete());
+};
 
 const initialState = {
   token: session.token(),
@@ -101,7 +107,7 @@ export default reducer({
     loading: false
   }),
 
-  [logout]: () => ({
+  [logoutComplete]: () => ({
     ...initialState,
     token: null
   })
