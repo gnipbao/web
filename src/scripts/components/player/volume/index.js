@@ -1,5 +1,6 @@
 import clamp from 'lodash/clamp';
 import css from 'react-css-modules';
+import CSSTransitionGroup from 'react-addons-css-transition-group';
 import { IconButton } from 'react-toolbox/lib/button';
 
 import style from './style';
@@ -68,7 +69,7 @@ export class Volume extends Component {
           icon={toggleIcon}
           onClick={::this.handleToggle}
         />
-        <div styleName={ expanded ? 'expanded' : 'collapsed' }>
+        {expanded && <div styleName='container'>
           <IconButton styleName='max'
             ripple={false}
             neutral={false}
@@ -87,7 +88,7 @@ export class Volume extends Component {
             icon='volume_off'
             onClick={() => onVolumeChange(0)}
           />
-        </div>
+        </div>}
       </div>
     );
   }

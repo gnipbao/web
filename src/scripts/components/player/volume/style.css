@@ -25,13 +25,16 @@
   border-radius: 4px 4px 0 0;
 }
 
-.collapsed {
-  composes: container;
-  display: none;
+.enter {
 }
 
-.expanded {
-  composes: container;
+.enterActive {
+}
+
+.leave {
+}
+
+.leaveActive {
 }
 
 .bar {

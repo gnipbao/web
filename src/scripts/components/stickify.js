@@ -3,25 +3,33 @@ export default function(InnerComponent, threshold = 0) {
     state = { sticky: false };
 
     componentDidMount() {
-      window.addEventListener('scroll', this.handleScroll);
+      window.addEventListener('optimizedScroll', this.handleScroll);
       window.addEventListener('touchmove', this.handleScroll);
     }
 
     componentWillUnmount() {
-      window.removeEventListener('scroll', this.handleScroll);
+      window.removeEventListener('optimizedScroll', this.handleScroll);
       window.removeEventListener('touchmove', this.handleScroll);
     }
 
     handleScroll = () => {
-      if (window.scrollY >= threshold && !this.state.sticky) {
+      const offset = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (offset >= threshold && !this.state.sticky) {
         this.setState({ sticky: true });
-      } else if (window.scrollY < threshold && this.state.sticky) {
+      } else if (offset < threshold && this.state.sticky) {
         this.setState({ sticky: false });
       }
     };
 
     render() {
-      return <InnerComponent sticky={this.state.sticky} {...this.props} />;
+      return (
+        <InnerComponent
+          ref={r => this.component = r}
+          sticky={this.state.sticky}
+          {...this.props}
+        />
+      );
     }
   }
 }

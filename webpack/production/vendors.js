@@ -30,6 +30,7 @@ export default [
   'howler',
   'moment',
   'parse-link-header',
+  'react-motion',
   'react-intl',
   'normalizr',
   'reselect',

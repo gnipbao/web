@@ -19,12 +19,6 @@ export class SeekBar extends Component {
 
   state = { offset: this.props.offset };
 
-  componentWillUpdate(nextProps) {
-    if (nextProps.duration !== this.props.duration) {
-      this.setState({ offset: nextProps.offset });
-    }
-  }
-
   handleClick(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -62,7 +56,10 @@ export class SeekBar extends Component {
   };
 
   render() {
-    const factor = this.state.offset / this.props.duration;
+    const offset = this.props.seeking ?
+      this.state.offset : this.props.offset;
+
+    const factor = offset / this.props.duration;
     const width = factor * 100;
 
     return (

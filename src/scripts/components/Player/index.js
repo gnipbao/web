@@ -201,9 +201,14 @@ export class Player extends Component {
     };
 
     return (
-      <CSSTransitionGroup styleName='root' component='div'
+      <CSSTransitionGroup
+        styleName='root'
+        component='div'
         transitionName={pick(style, ['appear', 'appearActive'])}
-        transitionAppear={true} transitionAppearTimeout={500}>
+        transitionEnterTimeout={500}
+        transitionLeaveTimeout={300}
+        transitionAppear={true}
+        transitionAppearTimeout={500}>
         <audio id='audio'
           ref={ref => this.audio = ref}
           src={track && track.url}>

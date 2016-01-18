@@ -1,5 +1,4 @@
 import css from 'react-css-modules';
-import classNames from 'classnames';
 import { connect } from 'react-redux';
 
 import stickify from 'components/stickify';
