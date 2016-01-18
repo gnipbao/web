@@ -13,9 +13,14 @@ function getEnvMiddleware() {
   }
 }
 
-export default applyMiddleware(
-  thunk,
-  promise,
-  api,
-  ...getEnvMiddleware()
-);
+export function setup(router) {
+  const env = getEnvMiddleware();
+
+  return applyMiddleware(
+    router,
+    thunk,
+    promise,
+    api,
+    ...env
+  );
+}

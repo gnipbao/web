@@ -1,6 +1,6 @@
 import Qs from 'qs';
 import jwtDecode from 'jwt-decode';
-import { replacePath } from 'redux-simple-router';
+import { routeActions } from 'redux-simple-router';
 
 import { action, reducer } from 'lib/redux';
 import openPopup from 'lib/utils/popup';
@@ -58,9 +58,9 @@ export const login = (provider, inviteCode) =>
 
       const { routing: { state } } = getState();
       if (state && state.attempted) {
-        dispatch(replacePath(state.attempted));
+        dispatch(routeActions.replace(state.attempted));
       } else {
-        dispatch(replacePath('/'));
+        dispatch(routeActions.replace('/'));
       }
     } catch (error) {
       dispatch(loginError(error));

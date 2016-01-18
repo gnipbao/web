@@ -15,7 +15,6 @@ import logger from 'debug-dude';
 import FontFaceObserver from 'fontfaceobserver';
 import FastClick from 'fastclick';
 import { Provider } from 'react-redux';
-import { syncReduxAndRouter } from 'redux-simple-router';
 import createStore from 'store/create';
 import * as environment from 'modules/environment';
 import io from 'socket.io-client';
@@ -51,7 +50,7 @@ function run() {
 
   const initialState = window.__state || {};
 
-  const store = createStore(initialState);
+  const store = createStore(history, initialState);
   store.dispatch(environment.init({
     width: window.innerWidth,
     height: window.innerHeight
@@ -66,8 +65,6 @@ function run() {
       )
     )
   );
-
-  syncReduxAndRouter(history, store);
 
   const container = window.document.getElementById('root');
   const component = render(history, store);

@@ -1,4 +1,4 @@
-import { RoutingContext } from 'react-router';
+import { RouterContext } from 'react-router';
 import { Provider } from 'react-redux';
 
 import Html from 'server/templates/html';
@@ -10,7 +10,7 @@ const { renderToString } = ReactDOMServer;
 export default (store, routerProps) => {
   const root = (
     <Provider store={store}>
-      <RoutingContext {...routerProps} />
+      <RouterContext {...routerProps} />
     </Provider>
   );
 

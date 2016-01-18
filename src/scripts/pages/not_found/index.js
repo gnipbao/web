@@ -1,6 +1,6 @@
 import css from 'react-css-modules';
 import { connect } from 'react-redux';
-import { pushPath } from 'redux-simple-router';
+import { routeActions } from 'redux-simple-router';
 import { List, ListItem } from 'react-toolbox/lib/list';
 
 import history from 'lib/history';
@@ -8,7 +8,7 @@ import history from 'lib/history';
 import style from './style';
 
 export const NotFound = (props) => {
-  const { authenticated, pushPath } = props;
+  const { authenticated, replace } = props;
   const homePath = authenticated ? '/' : '/sign-in';
   const currentYear = new Date().getFullYear();
 
@@ -26,7 +26,7 @@ export const NotFound = (props) => {
           <List selectable ripple>
             <ListItem
               {...linkProps}
-              onClick={() => pushPath(homePath)}
+              onClick={() => replace(homePath)}
             />
           </List>
         </section>
@@ -42,4 +42,4 @@ function select({ auth: { authenticated }}) {
   return { authenticated };
 }
 
-export default connect(select, { pushPath })(css(NotFound, style));
+export default connect(select, routeActions)(css(NotFound, style));

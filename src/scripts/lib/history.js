@@ -1,7 +1,7 @@
-import useStandardScroll from 'scroll-behavior/lib/useStandardScroll';
+import { useRouterHistory } from 'react-router';
 
 export default (
   __SERVER__ ?
-    require('history/lib/createMemoryHistory')() :
-    useStandardScroll(require('history/lib/createBrowserHistory'))()
+    useRouterHistory(require('history/lib/createMemoryHistory'))() :
+    require('react-router').browserHistory
 );

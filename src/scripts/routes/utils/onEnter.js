@@ -1,18 +1,18 @@
 import { getPrefetchedData, getDeferredData } from 'react-fetcher';
 
 export default function(route, { dispatch, getState }) {
-  return async (nextState, replaceState) => {
+  return async (nextState, replace) => {
     let state = getState();
     let { auth: { authenticated, currentUser } } = state;
     let { params, location } = nextState;
 
     if (route.requireAuth && !authenticated) {
-      replaceState({ attempted: location.pathname + location.search }, '/sign-in');
+      replace({ attempted: location.pathname + location.search }, '/sign-in');
     } else if (route.requireUnauth && authenticated) {
-      replaceState(null, '/');
+      replace(null, '/');
     } else if (route.requireRoles) {
       if (!route.requireRoles.includes(currentUser.role)) {
-        replaceState(null, '/forbidden');
+        replace(null, '/forbidden');
       }
     } else if (__CLIENT__) {
       const components = [route.component];

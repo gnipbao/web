@@ -1,5 +1,5 @@
 import keyMirror from 'lib/keyMirror';
-import { pushPath } from 'redux-simple-router';
+import { routeActions } from 'redux-simple-router';
 import { apiAction, apiReducer, action } from 'lib/redux';
 
 import * as reducers from 'reducers/crud';
@@ -17,7 +17,7 @@ export const actions = {
   load: apiAction('rooms.api.load', service.find, schemas.room, id => ({ id })),
   enter: (id, userId) => (dispatch, getState) => {
     dispatch(enterRoom(id, userId));
-    dispatch(pushPath(`/rooms/${id}`));
+    dispatch(routeActions.push(`/rooms/${id}`));
   }
 };
 

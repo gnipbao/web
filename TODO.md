@@ -1,3 +1,4 @@
+- [ ] plug in eslint-plugin-filenames plugin!
 - [ ] wait for PR https://github.com/markdalgleish/react-fetcher/pull/5 && update package.json
 - [ ] fix my CommonJS style export default's and remove add-module-exports plugin
 - [ ] take a look at https://github.com/mxstbr/react-boilerplate

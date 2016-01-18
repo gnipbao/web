@@ -18,7 +18,6 @@ export default [
   'classnames',
   'react-css-modules',
   'serialize-javascript',
-  'scroll-behavior',
   'svg-inline-react',
   'fastclick',
   'fontfaceobserver',

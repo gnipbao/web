@@ -1,7 +1,7 @@
 import css from 'react-css-modules';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { replacePath } from 'redux-simple-router';
+import { routeActions } from 'redux-simple-router';
 
 import { logout } from 'modules/auth';
 import { reset as resetProfile  } from 'modules/profile';
@@ -18,14 +18,14 @@ const { func, string, object } = PropTypes;
 export class App extends Component {
   static propTypes = {
     logout: func.isRequired,
-    replacePath: func.isRequired,
+    replace: func.isRequired,
     resetProfile: func.isRequired
   };
 
   handleLogout() {
     this.props.logout();
     this.props.resetProfile();
-    this.props.replacePath('/sign-in');
+    this.props.replace('/sign-in');
   }
 
   render() {
@@ -50,15 +50,8 @@ function selectProps(state) {
   return state;
 }
 
-function selectActions(dispatch) {
-  return bindActionCreators({
-    replacePath,
-    logout,
-    resetProfile
-  }, dispatch);
-}
-
-export default connect(
-  selectProps,
-  selectActions
-)(css(App, style));
+export default connect(selectProps, {
+  ...routeActions,
+  logout,
+  resetProfile
+})(css(App, style));
