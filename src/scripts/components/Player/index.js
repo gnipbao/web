@@ -7,8 +7,7 @@ import CSSTransitionGroup from 'react-addons-css-transition-group';
 import Button from 'react-toolbox/lib/button';
 import ProgressBar from 'react-toolbox/lib/progress_bar';
 
-import storage from 'lib/storage';
-
+import * as storage from 'lib/storage';
 import * as actions from 'modules/player';
 import selector from 'selectors/player';
 
@@ -71,6 +70,7 @@ export class Player extends Component {
     this.audio.addEventListener('volumechange', this.handleVolumeChange);
     this.audio.addEventListener('ended', this.handleEnded);
 
+    this.audio.volume = this.state.volume;
     if (this.props.track && this.props.auto) {
       this.audio.play();
     }

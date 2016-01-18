@@ -9,13 +9,13 @@ const isAvailable = function(){
   }
 }();
 
-export default {
-  get(key, defaultValue = null) {
-    if (!isAvailable) return defaultValue;
-    const value = localStorage.getItem(key);
-    return value === null ? defaultValue : value;
-  },
+export function get(key, defaultValue = null) {
+  if (!isAvailable) return defaultValue;
 
-  set: (key, value) =>
-    isAvailable && localStorage.setItem(key, value)
-};
+  const value = localStorage.getItem(key);
+  return value === null ? defaultValue : JSON.parse(value);
+}
+
+export function set(key, value) {
+  return isAvailable && localStorage.setItem(key, JSON.stringify(value));
+}
