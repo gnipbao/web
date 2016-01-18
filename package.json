@@ -105,7 +105,7 @@
     "app-module-path": "1.0.5",
     "appcache-webpack-plugin": "1.2.1",
     "autoprefixer": "6.3.1",
-    "autoprefixer-loader": "3.1.0",
+    "autoprefixer-loader": "3.2.0",
     "babel-core": "6.4.0",
     "babel-eslint": "5.0.0-beta6",
     "babel-loader": "6.2.1",
