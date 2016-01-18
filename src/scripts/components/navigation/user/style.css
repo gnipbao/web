@@ -1,4 +1,5 @@
 @import "variables";
+@import "media";
 
 :root {
   --background: color(var(--brand-black) shade(10%));
@@ -9,10 +10,6 @@
   align-items: center;
   padding: 12px;
   background-color: var(--background);
-}
-
-.normal {
-  composes: root;
 
   .info {
     flex-grow: 2;
@@ -26,12 +23,18 @@
   }
 }
 
-.slim {
+.expanded {
+  composes: root;
+}
+
+.collapsed {
   composes: root;
 
-  .info,
-  .actions {
-    display: none;
+  @media (--medium) {
+    .info,
+    .actions {
+      display: none;
+    }
   }
 }
 

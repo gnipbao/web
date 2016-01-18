@@ -12,11 +12,11 @@ import style from './style';
 const { func, object, bool } = PropTypes;
 
 export const User = (props) => {
-  const { slim, logout, currentUser } = props;
+  const { expanded, logout, currentUser } = props;
   const { picture, nickname, first_name, role } = currentUser;
 
   return (
-    <div styleName={ slim ? 'slim' : 'normal' }>
+    <div styleName={ expanded ? 'expanded' : 'collapsed' }>
       <Avatar rounded small rotate
         styleName='avatar'
         { ...{ nickname, first_name, picture } }
@@ -40,7 +40,7 @@ export const User = (props) => {
 }
 
 User.propTypes = {
-  slim: bool.isRequired,
+  expanded: bool.isRequired,
   logout: func.isRequired,
   currentUser: object.isRequired
 };

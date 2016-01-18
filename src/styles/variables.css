@@ -84,4 +84,10 @@
   --shadow-key-umbra-opacity: 0.2;
   --shadow-key-penumbra-opacity: 0.14;
   --shadow-ambient-shadow-opacity: 0.12;
+
+  /* sizes */
+  --toolbar-height: 6rem;
+
+  --navigation-width-expanded: 20rem;
+  --navigation-width-collapsed: 6rem;
 }

@@ -3,9 +3,9 @@ import { action, reducer } from 'lib/redux';
 export const toggle = action('navigation.toggle');
 
 const initialState = {
-  slim: false
+  expanded: true
 };
 
 export default reducer({
-  [toggle]: ({ slim, ...state }) => ({ slim: !slim, ...state })
+  [toggle]: ({ expanded, ...state }) => ({ expanded: !expanded, ...state })
 }, initialState);

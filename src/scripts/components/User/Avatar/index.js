@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { Link } from 'react-router'
 
+import selector from './selector';
 import style from './style';
 
 const { string, bool, node } = PropTypes;
@@ -56,11 +57,6 @@ Avatar.defaultProps = {
   rotate: false
 };
 
-function select(state) {
-  const { auth: { currentUserId } } = state;
-  return { currentUserId };
-}
-
-export default connect(select)(
+export default connect(selector)(
   css(Avatar, style, { allowMultiple: true })
 );

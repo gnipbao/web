@@ -10,28 +10,26 @@ export const Item = (props) => {
   const {
     path,
     label,
-    slim,
+    expanded,
     icon,
     count,
     ...linkProps
   } = props;
 
   return (
-    <Link
-      styleName='root'
-      activeClassName={style.active}
-      to={path}
-      {...linkProps }>
-
+    <Link styleName={expanded ? 'expanded' : 'collapsed'}
+      activeClassName={style.active} to={path} {...linkProps}>
       {icon ? <FontIcon styleName='icon' value={icon} /> : null}
-      {!slim && label ? <abbr styleName='label'>{label}</abbr> : null}
-      {!slim && count && parseInt(count) !== 0 ? <small styleName='count'>{count}</small> : null}
+      {label ? <abbr styleName='label'>{label}</abbr> : null}
+      {count && parseInt(count) !== 0 ? <small styleName='count'>{count}</small> : null}
     </Link>
   );
 };
 
 Item.propTypes = {
+  path: string.isRequired,
   label: string.isRequired,
+  expanded: bool.isRequired,
   icon: string,
   count: number
 };

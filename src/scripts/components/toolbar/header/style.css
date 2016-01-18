@@ -11,7 +11,7 @@
   align-content: center;
   align-items: center;
   padding: 12px;
-  height: 60px;
+  height: var(--navigation-width-collapsed);
   background-color: var(--background);
 
   svg {
@@ -20,9 +20,9 @@
   }
 }
 
-.normal {
-  width: 200px;
+.expanded {
   composes: root;
+  width: var(--navigation-width-expanded);
 
   .title {
     color: var(--brand-light);
@@ -32,9 +32,9 @@
   }
 }
 
-.slim {
+.collapsed {
   composes: root;
-  width: 60px;
+  width: var(--navigation-width-collapsed);
 
   .title {
     display: none;

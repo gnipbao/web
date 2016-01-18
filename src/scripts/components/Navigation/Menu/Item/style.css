@@ -33,6 +33,19 @@
   }
 }
 
+.expanded {
+  composes: root;
+}
+
+.collapsed {
+  composes: root;
+
+  @media (--medium) {
+    .label { display: none; }
+    .count { display: none; }
+  }
+}
+
 .active {
   background-color: var(--background-active);
 }

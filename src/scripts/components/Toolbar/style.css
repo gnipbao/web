@@ -5,8 +5,9 @@
 }
 
 .button {
+  width: 5rem;
   min-width: 5rem;
-  min-height: 6rem;
+  min-height: var(--toolbar-height);
 }
 
 .toggle {
@@ -14,18 +15,9 @@
   background-color: var(--background);
 }
 
-.search {
-  composes: button;
-  background-color: #fff;
-}
-
-.input {
-  min-width: 28rem;
-}
-
-.root {
+.normal {
   display: none;
-  height: 6rem;
+  height: var(--toolbar-height);
   background-color: #fff;
   box-shadow:
     0 1px 1px rgba(#000, 0.3),
@@ -37,6 +29,15 @@
   }
 }
 
+.sticky {
+  composes: normal;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 1001;
+}
+
 .button {
   color: var(--text-color);
 
@@ -44,10 +45,6 @@
     background-color: #fff;
     color: var(--brand-dark);
   }
-}
-
-.search {
-  composes: button;
 }
 
 .toggle {

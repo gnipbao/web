@@ -7,7 +7,7 @@ const { bool, func, array, string, object } = PropTypes;
 
 export const Menu = (props) => {
   const {
-    slim,
+    expanded,
     primary,
     title,
     items
@@ -15,11 +15,11 @@ export const Menu = (props) => {
 
   return (
     <nav styleName={ primary ? 'primary' : 'normal' }>
-      {!slim && title && <h4 styleName='title'>{title}</h4>}
+      {expanded && title && <h4 styleName='title'>{title}</h4>}
       <ul styleName='list'>
         {items.map((item) =>
           <li key={item.path} styleName='item'>
-            <Item { ...{ ...item, slim } } />
+            <Item { ...{ ...item, expanded } } />
           </li>
         )}
       </ul>
@@ -28,7 +28,7 @@ export const Menu = (props) => {
 };
 
 Menu.propTypes = {
-  slim: bool.isRequired,
+  expanded: bool.isRequired,
   primary: bool,
   title: string,
   items: array.isRequired

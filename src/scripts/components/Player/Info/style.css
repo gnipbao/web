@@ -12,8 +12,8 @@
   flex-direction: column;
   flex: 1;
   padding: 0 6px;
-  min-width: 60px;
-  max-width: 190px;
+  min-width: var(--navigation-width-collapsed);
+  max-width: var(--navigation-width-expanded);
 }
 
 .link {

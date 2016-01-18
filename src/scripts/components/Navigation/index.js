@@ -1,35 +1,34 @@
 import css from 'react-css-modules';
+import classNames from 'classnames';
 import { connect } from 'react-redux';
 
-import Sticky from 'react-sticky';
+import stickify from 'components/stickify';
+import selector from './selector';
 import createMenus from './createMenus';
 import User from './user';
 import Menu from './menu';
-
 import style from './style';
 
-const { func, string, number, object, bool } = PropTypes;
-
+const {
+  string, number, bool,
+  object, func
+} = PropTypes;
 
 export const Navigation = (props) => {
-  const { currentUser, slim, logout } = props;
+  const {
+    expanded, sticky,
+    currentUser, logout
+  } = props;
+
   const menus = createMenus(props);
 
-  const stickyStyle = {
-    position: 'fixed',
-    top: '60px',
-    width: slim ? '60px' : '200px'
-  };
-
   return (
-    <section className={slim ? style.slim : style.normal}>
-      <Sticky stickyStyle={stickyStyle}
-        topOffset={120}
-        type={React.DOM.aside}>
-        {menus.map((menu) => <Menu key={menu.title} {...{ ...menu, slim } } />)}
-        <User {...{ slim, currentUser, logout } }/>
-      </Sticky>
-    </section>
+    <aside styleName={expanded ? 'expanded' : 'collapsed'}>
+      <div styleName={sticky ? 'sticky' : 'normal'}>
+        {menus.map((menu) => <Menu key={menu.title} {...{ ...menu, expanded } } />)}
+        <User {...{ expanded, currentUser, logout } }/>
+      </div>
+    </aside>
   );
 };
 
@@ -38,27 +37,13 @@ Navigation.propTypes = {
   currentUser: object.isRequired,
   roomsCount: number.isRequired,
   playlistsCount: number.isRequired,
-  slim: bool
+  expanded: bool
 };
 
 Navigation.defaultProps = {
-  slim: false
+  expanded: true
 };
 
-function select(state) {
-  const {
-    auth: { currentUser },
-    navigation: { slim },
-    rooms,
-    playlists
-  } = state;
-
-  return {
-    slim,
-    currentUser,
-    roomsCount: rooms.ids.length,
-    playlistsCount: playlists.ids.length,
-  };
-}
-
-export default connect(select)(css(Navigation, style));
+export const StyledNavigation = css(Navigation, style, { allowMultiple: true });
+export const StickifiedNavigation = stickify(StyledNavigation, 300);
+export default connect(selector)(StickifiedNavigation);
