@@ -9,10 +9,10 @@ export default function(route, { dispatch, getState }) {
     if (route.requireAuth && !authenticated) {
       replace({ attempted: location.pathname + location.search }, '/sign-in');
     } else if (route.requireUnauth && authenticated) {
-      replace(null, '/');
+      replace('/');
     } else if (route.requireRoles) {
       if (!route.requireRoles.includes(currentUser.role)) {
-        replace(null, '/forbidden');
+        replace('/forbidden');
       }
     } else if (__CLIENT__) {
       const components = [route.component];

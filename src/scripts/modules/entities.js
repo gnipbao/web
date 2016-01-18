@@ -6,7 +6,8 @@ const initialState = {
   providers: {},
   rooms: {},
   playlists: {},
-  tracks: {}
+  tracks: {},
+  favorites: {}
 };
 
 export default function(state = initialState, action) {

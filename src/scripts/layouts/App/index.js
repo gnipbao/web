@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { routeActions } from 'redux-simple-router';
 
+import { reset } from 'modules';
 import { logout } from 'modules/auth';
-import { reset as resetProfile  } from 'modules/profile';
 import { toggle as toggleNavigation } from 'modules/navigation';
 
 import Navigation from 'components/navigation';
@@ -19,12 +19,12 @@ export class App extends Component {
   static propTypes = {
     logout: func.isRequired,
     replace: func.isRequired,
-    resetProfile: func.isRequired
+    reset: func.isRequired
   };
 
   handleLogout() {
     this.props.logout();
-    this.props.resetProfile();
+    this.props.reset();
     this.props.replace('/sign-in');
   }
 
@@ -53,5 +53,5 @@ function selectProps(state) {
 export default connect(selectProps, {
   ...routeActions,
   logout,
-  resetProfile
+  reset
 })(css(App, style));

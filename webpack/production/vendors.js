@@ -25,6 +25,7 @@ export default [
   'react-select',
   'react-time',
   'redux-analytics',
+  'redux-recycle',
   'react-notification-system',
   'howler',
   'moment',

@@ -9,7 +9,7 @@ import appRoutes from './app';
 
 export const routes = (
   <Route component={layouts.base}>
-    <Route path='/sign-in' component={signIn} requireUnauth />
+    <Route path='/sign-in' component={signIn} />
 
     {adminRoutes}
     {appRoutes}
