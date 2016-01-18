@@ -4,7 +4,7 @@ import { routeActions } from 'redux-simple-router';
 
 import { action, reducer } from 'lib/redux';
 import openPopup from 'lib/utils/popup';
-import session from 'lib/session';
+import * as session from 'lib/session';
 import * as service from 'services/auth';
 
 function authenticate(provider, code, tab) {
@@ -33,7 +33,7 @@ function waitRedirect(provider, popup) {
           if (params.auth_token) {
             const token = params.auth_token;
             const data = jwtDecode(token);
-            session.signIn(token);
+            session.login(token);
             resolve({ token, data });
           } else if (params.error) {
             reject({ error: params.error });
@@ -70,7 +70,7 @@ export const login = (provider, inviteCode) =>
 const logoutComplete = action('auth.logout.complete');
 export const logout = () => async (dispatch) => {
   await service.logout();
-  session.signOut();
+  session.logout();
   dispatch(logoutComplete());
 };
 

@@ -1,4 +1,4 @@
-import session from 'lib/session';
+import * as session from 'lib/session';
 import API from 'lib/api';
 
 function getHeaders() {

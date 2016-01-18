@@ -1,31 +1,17 @@
 import cookie from 'react-cookie';
 
-export default {
-  AUTH_KEY: 'authToken',
-  AUTH_EXPIRATION: new Date().getTime() + settings.session.ttl,
+export const AUTH_KEY = 'authToken';
+export const LOCALE_KEY = 'locale';
 
-  LOCALE_KEY: 'locale',
-
-  signIn(authToken) {
-    cookie.save(this.AUTH_KEY, authToken, {
-      expires: new Date(this.AUTH_EXPIRATION)
-    });
-    return authToken;
-  },
-
-  signOut() {
-    cookie.remove(this.AUTH_KEY);
-  },
-
-  token() {
-    return cookie.load(this.AUTH_KEY) || null;
-  },
-
-  authenticated() {
-    return !!this.token();
-  },
-
-  setLocale(locale) {
-    cookie.set(this.LOCALE_KEY, locale, { path: '/' });
-  }
+export const login = (authToken) => {
+  cookie.save(AUTH_KEY, authToken, {
+    path: '/',
+    expires: new Date(new Date().getTime() + settings.session.ttl)
+  });
+  return authToken;
 };
+
+export const logout = () => cookie.remove(AUTH_KEY);
+export const token = () => cookie.load(AUTH_KEY) || null;
+export const authenticated = () => !!token();
+export const setLocale = (locale) => cookie.set(LOCALE_KEY, locale, { path: '/' });

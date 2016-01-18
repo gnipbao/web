@@ -10,8 +10,11 @@ const isAvailable = function(){
 }();
 
 export default {
-  get: (key, defaultValue = null) =>
-    (isAvailable && localStorage.getItem(key) || defaultValue),
+  get(key, defaultValue = null) {
+    if (!isAvailable) return defaultValue;
+    const value = localStorage.getItem(key);
+    return value === null ? defaultValue : value;
+  },
 
   set: (key, value) =>
     isAvailable && localStorage.setItem(key, value)

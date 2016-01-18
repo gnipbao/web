@@ -1,5 +1,5 @@
 import { action, reducer } from 'lib/redux';
-import session from 'lib/session';
+import * as session from 'lib/session';
 
 export const setLocale = action('locale.set', (locale, messages) => {
   session.setLocale(locale);

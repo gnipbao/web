@@ -1,5 +1,5 @@
 import jwtDecode from 'jwt-decode';
-import session from 'lib/session';
+import * as session from 'lib/session';
 import isMobile from 'ismobilejs';
 
 const unauthState = {
