@@ -1,6 +1,8 @@
+import pick from 'lodash/pick';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import css from 'react-css-modules';
+import CSSTransitionGroup from 'react-addons-css-transition-group';
 
 import Button from 'react-toolbox/lib/button';
 import ProgressBar from 'react-toolbox/lib/progress_bar';
@@ -199,7 +201,9 @@ export class Player extends Component {
     };
 
     return (
-      <div styleName='root'>
+      <CSSTransitionGroup styleName='root' component='div'
+        transitionName={pick(style, ['appear', 'appearActive'])}
+        transitionAppear={true} transitionAppearTimeout={500}>
         <audio id='audio'
           ref={ref => this.audio = ref}
           src={track && track.url}>
@@ -228,7 +232,7 @@ export class Player extends Component {
             { ...{ ...seekable, muted, volume } }
           />
         </div>
-      </div>
+      </CSSTransitionGroup>
     );
   }
 }

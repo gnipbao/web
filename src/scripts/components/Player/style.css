@@ -20,6 +20,17 @@
     inset 0 1px 0 rgba(#fff, 0.08);
 }
 
+.appear {
+  opacity: 0.01;
+  margin-bottom: -52px;
+}
+
+.appearActive {
+  opacity: 1;
+  margin-bottom: 0;
+  transition: margin-bottom 0.3s linear, opacity 0.3s ease-in;
+}
+
 .main {
   display: flex;
   align-items: center;
