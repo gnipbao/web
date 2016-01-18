@@ -7,9 +7,12 @@ const initialState = {
 };
 
 export const init = action('environment.init');
-export const resize = action('environment.windowResize', (width, height) => ({ width, height }));
+export const resize = action(
+  'environment.windowResize',
+  (width, height) => ({ width, height })
+);
 
 export default reducer({
-  [init]: s => s,
+  [init]: (s, { width, height }) => ({ ...s, width, height }),
   [resize]: (s, { width, height }) => ({ ...s, width, height })
 }, initialState);

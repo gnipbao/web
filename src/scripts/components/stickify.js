@@ -1,11 +1,6 @@
 export default function(InnerComponent, threshold = 0) {
   return class Sticky extends Component {
-    state = { sticky: false };
-
-    constructor(props) {
-      super(props);
-      this.handleScroll = this.handleScroll.bind(this);
-    }
+    state = { sticky: threshold === 0 };
 
     componentDidMount() {
       window.addEventListener('optimizedScroll', this.handleScroll);
@@ -17,7 +12,7 @@ export default function(InnerComponent, threshold = 0) {
       window.removeEventListener('touchmove', this.handleScroll);
     }
 
-    handleScroll() {
+    handleScroll = () => {
       const offset = window.pageYOffset || document.documentElement.scrollTop;
 
       if (offset >= threshold && !this.state.sticky) {
@@ -25,14 +20,10 @@ export default function(InnerComponent, threshold = 0) {
       } else if (offset < threshold && this.state.sticky) {
         this.setState({ sticky: false });
       }
-    }
+    };
 
     render() {
-      return (
-        <InnerComponent ref={r => this.container = r}
-          sticky={this.state.sticky} {...this.props}
-        />
-      );
+      return <InnerComponent sticky={this.state.sticky} {...this.props} />;
     }
   }
 }

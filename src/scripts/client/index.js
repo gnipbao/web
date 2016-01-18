@@ -52,7 +52,11 @@ function run() {
   const initialState = window.__state || {};
 
   const store = createStore(initialState);
-  store.dispatch(environment.init());
+  store.dispatch(environment.init({
+    width: window.innerWidth,
+    height: window.innerHeight
+  }));
+
   window.addEventListener(
     'optimizedResize',
     () => store.dispatch(
@@ -62,6 +66,7 @@ function run() {
       )
     )
   );
+
   syncReduxAndRouter(history, store);
 
   const container = window.document.getElementById('root');
