@@ -10,5 +10,5 @@ export default [
   helmet.frameguard('sameorigin'),
   helmet.xssFilter(),
   helmet.noSniff(),
-  helmet.ieNoOpen(),
+  helmet.ieNoOpen()
 ];

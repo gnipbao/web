@@ -18,7 +18,7 @@ export default (store, routerProps) => {
     body: renderToString(root),
     head: Helmet.rewind(),
     state: store.getState(),
-    assets,
+    assets
   };
 
   const html = <Html {...props } />;

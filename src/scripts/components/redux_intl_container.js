@@ -6,7 +6,7 @@ export default compose(
   connect(
     s => ({
       ...s.locale,
-      key: s.locale.locale,
+      key: s.locale.locale
     })
   )
 )(IntlProvider);

@@ -10,5 +10,5 @@ function getEnvMiddleware() {
 
 export default [
   ...getEnvMiddleware(),
-  ...common,
+  ...common
 ];

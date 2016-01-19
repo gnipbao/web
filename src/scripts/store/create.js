@@ -14,7 +14,7 @@ export default function(history, initialState = {}) {
   const store = create(reducers, initialState);
 
   if (__DEVELOPMENT__ && __DEVTOOLS__) {
-    middleware.listenForReplays(store)
+    routerMiddleware.listenForReplays(store)
   }
 
   if (__DEVELOPMENT__ && module.hot) {

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import css from 'react-css-modules';
 import cookie from 'react-cookie';
-import { spring, Motion } from 'react-motion';
+import { spring, presets, Motion } from 'react-motion';
 
 import Button from 'react-toolbox/lib/button';
 import ProgressBar from 'react-toolbox/lib/progress_bar';
@@ -61,8 +61,6 @@ export class Player extends Component {
     this.audio.addEventListener('timeupdate', this.handleTimeUpdate);
     this.audio.addEventListener('volumechange', this.handleVolumeChange);
     this.audio.addEventListener('ended', this.handleEnded);
-      
-    console.log('VOLUME: ', this.load('player.volume'));
 
     this.audio.volume = this.state.volume;
     if (this.props.track && this.props.auto) {
@@ -79,7 +77,7 @@ export class Player extends Component {
       }
     }
 
-    if (!prevProps.track || prevProps.track !== this.props.track) {
+    if (this.props.track && (!prevProps.track || prevProps.track !== this.props.track)) {
       this.audio.play();
     }
   }
@@ -202,8 +200,8 @@ export class Player extends Component {
     };
 
     const animationStyle = {
-      bottom: spring(track ? 0 : -51, [80, 20]),
-      opacity: spring(track ? 1 : 0.01, [160, 80])
+      bottom: spring(track ? 0 : -51),
+      opacity: spring(track ? 1 : 0.01)
     };
 
     return (

@@ -37,7 +37,7 @@ export const User = (props) => {
       </div>
     </div>
   );
-}
+};
 
 User.propTypes = {
   expanded: bool.isRequired,

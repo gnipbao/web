@@ -52,7 +52,7 @@ Footer.propTypes = {
   enter: func.isRequired
 };
 
-function select(state, ownProps) {
+function select(state) {
   const { auth: { currentUserId } } = state;
   return { currentUserId };
 }

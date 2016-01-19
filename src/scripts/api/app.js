@@ -4,7 +4,7 @@ import API from 'lib/api';
 function getHeaders() {
   const headers = {
     'Accept': 'application/json',
-    'Content-Type': 'application/json',
+    'Content-Type': 'application/json'
   };
 
   if (session.authenticated()) {

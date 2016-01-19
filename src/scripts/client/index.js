@@ -11,7 +11,6 @@ if (__PRODUCTION__ && __CLIENT__) {
   });
 }
 
-import logger from 'debug-dude';
 import FontFaceObserver from 'fontfaceobserver';
 import FastClick from 'fastclick';
 import { Provider } from 'react-redux';

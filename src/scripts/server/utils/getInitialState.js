@@ -20,7 +20,7 @@ function getAuthData(token) {
   };
 }
 
-export default function(req) {
+export default function (req) {
   const mobile = isMobile(req.headers['user-agent']).any;
   const token = session.token();
   const authData = getAuthData(token);

@@ -24,7 +24,7 @@ class Playlist extends Component {
           icon='list'
           accent={expanded} />
       </div>
-    )
+    );
   }
 }
 

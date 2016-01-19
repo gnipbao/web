@@ -12,7 +12,7 @@ export const initialState = {
 // general-purpose CRUD reducers
 
 export function nested(slice, selectKey = identity) {
-  return function(state, payload) {
+  return (state, payload) => {
     const key = selectKey(payload);
     const nestedState = state[slice][key] || initialState;
 

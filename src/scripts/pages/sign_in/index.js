@@ -28,7 +28,7 @@ const buttons = [
   { name: 'soundcloud', icon: soundcloudIcon, tooltip: 'SoundCloud' },
   { name: 'facebook', icon: facebookIcon, tooltip: 'Facebook' },
   { name: 'twitter', icon: twitterIcon, tooltip: 'Twitter' },
-  { name: 'google', icon: googleIcon, tooltip: 'Google+', provider: 'google_oauth2' },
+  { name: 'google', icon: googleIcon, tooltip: 'Google+', provider: 'google_oauth2' }
 ];
 
 @css(style)

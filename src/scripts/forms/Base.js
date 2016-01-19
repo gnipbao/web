@@ -3,6 +3,7 @@ const { func, bool } = PropTypes;
 export default class Form extends Component {
   static propTypes = {
     onSubmit: func.isRequired,
+    className: string,
     valid: bool
   };
 

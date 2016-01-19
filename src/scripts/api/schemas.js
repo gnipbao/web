@@ -39,4 +39,4 @@ export {
   track, trackArray,
   user, userArray,
   provider
-}
+};

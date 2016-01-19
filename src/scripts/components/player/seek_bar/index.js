@@ -10,6 +10,7 @@ export class SeekBar extends Component {
   static propTypes = {
     seeking: bool.isRequired,
     offset: number,
+    duration: number,
     onSeek: func.isRequired,
     onSeekStart: func.isRequired,
     onSeekEnd: func.isRequired

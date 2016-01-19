@@ -1,10 +1,10 @@
 import css from 'react-css-modules';
-import { Link } from 'react-router'; 
+import { Link } from 'react-router';
 
 import { strip } from 'lib/utils/format';
 import style from './style';
 
-const { bool, string, func, object, shape } = PropTypes;
+const { bool, string, object, shape } = PropTypes;
 
 export const Info = (props) => {
   const { id, title, artist } = props;

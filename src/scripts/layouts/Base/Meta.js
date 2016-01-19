@@ -16,7 +16,7 @@ const Meta = ({ og, twitter, ...props }) => {
       { property: 'og:image', content: og.image || logoUrl },
       { property: 'og:locale', content: og.locale || settings.locale },
       { property: 'og:description', content: og.description || description },
-      { property: 'og:type', content: og.type || 'website' },
+      { property: 'og:type', content: og.type || 'website' }
     ],
     twitter: (twitter) => [
       { property: 'twitter:card', content: twitter.card || 'summary' },
@@ -26,7 +26,7 @@ const Meta = ({ og, twitter, ...props }) => {
       { property: 'twitter:description', content: twitter.description || description },
       { property: 'twitter:image', content: twitter.image || logoUrl },
       { property: 'twitter:image:width', content: twitter.imageWidth || imageSize.width },
-      { property: 'twitter:image:height', content: twitter.imageHeight || imageSize.height },
+      { property: 'twitter:image:height', content: twitter.imageHeight || imageSize.height }
     ]
   };
 

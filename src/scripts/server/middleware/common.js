@@ -14,4 +14,4 @@ export default [
   morgan(getLogFormat(), { immediate: true }),
   favicon(path.join(__dirname, 'public', 'favicon.ico')),
   Express.static(path.join(__dirname, 'public')),
-]
+];

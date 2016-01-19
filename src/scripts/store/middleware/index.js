@@ -17,10 +17,10 @@ export function setup(router) {
   const env = getEnvMiddleware();
 
   return applyMiddleware(
+    ...env,
     router,
     thunk,
     promise,
-    api,
-    ...env
+    api
   );
 }

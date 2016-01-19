@@ -19,7 +19,7 @@ export default function(route, { dispatch, getState }) {
       const locals = {
         state, params, dispatch,
         path: location.pathname,
-        query: location.query,
+        query: location.query
       };
 
       await getPrefetchedData(components, locals);
