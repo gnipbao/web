@@ -1,6 +1,5 @@
 import pick from 'lodash/pick';
 import css from 'react-css-modules';
-import CSSTransitionGroup from 'react-addons-css-transition-group';
 
 import style from './style';
 
@@ -11,14 +10,7 @@ export const Playback = (props) => {
   const label = `${title} by ${artist}`;
 
   return (
-    <CSSTransitionGroup styleName='root' component='dev'
-      transitionName={pick(style, ['appear', 'appearActive'])}
-      transitionEnterTimeout={500}
-      transitionLeaveTimeout={500}
-      transitionAppear={true}
-      transitionAppearTimeout={500}>
-      <span>{label}</span>
-    </CSSTransitionGroup>
+    <div styleName='root'>{label}</div>
   );
 };
 

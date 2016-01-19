@@ -25,8 +25,8 @@ export class SeekBar extends Component {
   }
 
   handleMouseDown(e) {
-    document.addEventListener('mousemove', this.seek);
-    document.addEventListener('mouseup', this.handleMouseUp);
+    document.documentElement.addEventListener('mousemove', this.seek);
+    document.documentElement.addEventListener('mouseup', this.handleMouseUp);
 
     this.props.onSeekStart();
   }
@@ -34,8 +34,8 @@ export class SeekBar extends Component {
   handleMouseUp = (e) => {
     if (!this.props.seeking) return;
 
-    document.removeEventListener('mousemove', this.seek);
-    document.removeEventListener('mouseup', this.handleMouseUp);
+    document.documentElement.removeEventListener('mousemove', this.seek);
+    document.documentElement.removeEventListener('mouseup', this.handleMouseUp);
 
     this.props.onSeek(this.state.offset);
     this.props.onSeekEnd();
@@ -47,7 +47,6 @@ export class SeekBar extends Component {
     const factor = clamp(value, 0, 1);
     const offset = Math.floor(factor * this.props.duration);
 
-    // TODO: Refactor
     if (!this.props.seeking) {
       this.props.onSeek(offset);
     }

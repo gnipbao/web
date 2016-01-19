@@ -8,7 +8,7 @@
   --icon-font-size: responsive 1.4rem 1.8rem;
   --icon-text-color: var(--brand-light);
 
-  --label-font-size: responsive 1.2rem 1.4rem;
+  --label-font-size: responsive 1.2rem 1.3rem;
   --count-font-size: responsive 0.8rem 1rem;
 
   --text-color: color(var(--brand-light) shade(30%));
@@ -69,5 +69,6 @@
   margin-left: 14px;
   font-size: var(--label-font-size);
   font-weight: bold;
+  text-transform: capitalize;
   color: var(--text-color);
 }

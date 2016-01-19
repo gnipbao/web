@@ -8,9 +8,13 @@
 
 .root {
   position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   left: 0;
   bottom: 0;
   width: 100%;
+  height: 51px;
   z-index: 999;
   user-select: none;
   background-color: var(--root-background);
@@ -18,22 +22,4 @@
   box-shadow:
     0 1px 1px rgba(#000, 0.3),
     inset 0 1px 0 rgba(#fff, 0.08);
-}
-
-.appear {
-  opacity: 0.01;
-  margin-bottom: -52px;
-}
-
-.appearActive {
-  opacity: 1;
-  margin-bottom: 0;
-  transition: margin-bottom 0.3s linear, opacity 0.3s ease-in;
-}
-
-.main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px;
 }

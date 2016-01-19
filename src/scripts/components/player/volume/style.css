@@ -2,7 +2,7 @@
 @import "media";
 
 :root {
-  --width: 48px;
+  --width: 5rem;
   --root-background: color(var(--brand-black) shade(15%));
   --bar-border-color: color(var(--root-background) shade(40%));
   --value-background: linear-gradient(to bottom, var(--brand-success) 0, color(var(--brand-success) shade(30%)) 100%);
@@ -13,6 +13,12 @@
 }
 
 .toggle {
+  size: var(--width);
+  border-radius: 0;
+
+  & > [data-react-toolbox="ripple"] {
+    border-radius: 0;
+  }
 }
 
 .container {

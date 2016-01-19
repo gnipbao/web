@@ -40,7 +40,7 @@ export class App extends Component {
             {children}
           </section>
         </div>
-        {player.track && <Player />}
+        <Player />
       </div>
     );
   }

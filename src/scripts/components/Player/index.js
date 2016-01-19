@@ -1,13 +1,14 @@
 import pick from 'lodash/pick';
+import isUndefined from 'lodash/isUndefined';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import css from 'react-css-modules';
-import CSSTransitionGroup from 'react-addons-css-transition-group';
+import cookie from 'react-cookie';
+import { spring, Motion } from 'react-motion';
 
 import Button from 'react-toolbox/lib/button';
 import ProgressBar from 'react-toolbox/lib/progress_bar';
 
-import * as storage from 'lib/storage';
 import * as actions from 'modules/player';
 import selector from 'selectors/player';
 
@@ -31,11 +32,6 @@ const {
 export class Player extends Component {
   static propTypes = {
     auto: bool,
-    muted: bool,
-    shuffle: bool,
-    repeat: bool,
-    volume: number,
-
     track: shape({
       title: string,
       artist: string,
@@ -45,18 +41,14 @@ export class Player extends Component {
   };
 
   static defaultProps = {
-    auto: true,
-    muted: Boolean(storage.get('player.muted', false)),
-    shuffle: Boolean(storage.get('player.shuffle', false)),
-    repeat: Boolean(storage.get('player.repeat', false)),
-    volume: Number(storage.get('player.volume', 0.5))
+    auto: true
   };
 
   state = {
-    muted: this.props.muted,
-    shuffle: this.props.shuffle,
-    repeat: this.props.repeat,
-    volume: this.props.volume,
+    muted: this.load('player.muted', false),
+    shuffle: this.load('player.shuffle', false),
+    repeat: this.load('player.repeat', false),
+    volume: this.load('player.volume', 0.5),
     duration: this.props.track && this.props.track.duration || 0,
     seeking: false
   };
@@ -69,6 +61,8 @@ export class Player extends Component {
     this.audio.addEventListener('timeupdate', this.handleTimeUpdate);
     this.audio.addEventListener('volumechange', this.handleVolumeChange);
     this.audio.addEventListener('ended', this.handleEnded);
+      
+    console.log('VOLUME: ', this.load('player.volume'));
 
     this.audio.volume = this.state.volume;
     if (this.props.track && this.props.auto) {
@@ -100,6 +94,15 @@ export class Player extends Component {
     this.audio.removeEventListener('ended', this.handleEnded);
   }
 
+  save(key, value) {
+    cookie.save(key, value, { path: '/' });
+  }
+
+  load(key, defaultValue) {
+    const value = cookie.load(key);
+    return isUndefined(value) ? defaultValue : value;
+  }
+
   handleLoadedMetadata = () => this.setState({
     duration: Math.floor(this.audio.duration)
   });
@@ -124,10 +127,8 @@ export class Player extends Component {
   };
 
   handleVolumeChange = (e) => {
-    if (this.state.seeking) return;
-
     const volume = e.currentTarget.volume;
-    storage.set('player.volume', volume);
+    this.save('player.volume', volume);
     this.setState({ volume });
   };
 
@@ -148,8 +149,8 @@ export class Player extends Component {
 
   changeVolume(volume) {
     this.audio.volume = volume;
+    this.save('player.volume', volume);
     this.setState({ volume });
-    storage.set('player.volume', volume);
   }
 
   seek(offset) {
@@ -170,19 +171,19 @@ export class Player extends Component {
 
     this.audio = muted;
     this.setState({ muted });
-    storage.set('player.muted', muted);
+    this.save('player.muted', muted);
   }
 
   toggleRepeat() {
     const repeat = !this.state.repeat;
     this.setState({ repeat });
-    storage.set('player.repeat', repeat);
+    this.save('player.repeat', repeat);
   }
 
   toggleShuffle() {
     const shuffle = !this.state.shuffle;
     this.setState({ shuffle });
-    storage.set('player.shuffle', shuffle);
+    this.save('player.shuffle', shuffle);
   }
 
   handleSeekStart = () => this.setState({ seeking: true });
@@ -200,44 +201,44 @@ export class Player extends Component {
       onSeekEnd: this.handleSeekEnd
     };
 
+    const animationStyle = {
+      bottom: spring(track ? 0 : -51, [80, 20]),
+      opacity: spring(track ? 1 : 0.01, [160, 80])
+    };
+
     return (
-      <CSSTransitionGroup
-        styleName='root'
-        component='div'
-        transitionName={pick(style, ['appear', 'appearActive'])}
-        transitionEnterTimeout={500}
-        transitionLeaveTimeout={500}
-        transitionAppear={true}
-        transitionAppearTimeout={500}>
-        <audio id='audio'
-          ref={ref => this.audio = ref}
-          src={track && track.url}>
-        </audio>
-        <div styleName='main'>
-          <Info { ...track } />
-          <Playback first last
-            playing={playing}
-            onTogglePlay={::this.togglePlay}
-            onPrevious={() => {}}
-            onNext={() => {}}
-          />
-          <SeekBar
-            onSeek={::this.seek}
-            { ...{ ...timeable, ...seekable } }
-          />
-          <Time { ...timeable } />
-          <Options
-            onToggleRepeat={::this.toggleRepeat}
-            onToggleShuffle={::this.toggleShuffle}
-            { ...options }
-          />
-          <Playlist {...playlist} />
-          <Volume
-            onVolumeChange={::this.changeVolume}
-            { ...{ ...seekable, muted, volume } }
-          />
-        </div>
-      </CSSTransitionGroup>
+      <Motion style={animationStyle}>
+        {s =>
+          <div className={style.root} style={s}>
+            {track && <Info { ...track } />}
+            <Playback first last
+              playing={playing}
+              onTogglePlay={::this.togglePlay}
+              onPrevious={() => {}}
+              onNext={() => {}}
+            />
+            <SeekBar
+              onSeek={::this.seek}
+              { ...{ ...timeable, ...seekable } }
+            />
+            <Time { ...timeable } />
+            <Options
+              onToggleRepeat={::this.toggleRepeat}
+              onToggleShuffle={::this.toggleShuffle}
+              { ...options }
+            />
+            <Playlist {...playlist} />
+            <Volume
+              onVolumeChange={::this.changeVolume}
+              { ...{ muted, volume } }
+            />
+            <audio id='audio'
+              ref={ref => this.audio = ref}
+              src={track && track.url}>
+            </audio>
+          </div>
+        }
+      </Motion>
     );
   }
 }

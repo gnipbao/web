@@ -2,6 +2,7 @@
 @import "media";
 
 :root {
+  --background: color(var(--brand-success) shade(10%));
   --root-link-color: var(--brand-light);
   --title-font-size: responsive 1.2rem 1.4rem;
   --artist-font-size: responsive 1rem 1.2rem;
@@ -10,15 +11,19 @@
 .root {
   display: flex;
   flex-direction: column;
+  height: 51px;
+  justify-content: center;
   flex: 1;
   padding: 0 6px;
   min-width: var(--navigation-width-collapsed);
+  width: var(--navigation-width-expanded);
   max-width: var(--navigation-width-expanded);
 }
 
 .link {
   composes: truncate from "styles/utils";
   color: var(--root-link-color);
+
   &:hover {
     color: color(var(--root-link-color) shade(20%));
   }

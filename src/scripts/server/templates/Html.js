@@ -17,6 +17,7 @@ const Html = ({ state, assets, head, body }) => {
         <meta httpEquiv='cleartype' content='on' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
 
+        {head && head.base.toComponent()}
         {head && head.title.toComponent()}
         {head && head.meta.toComponent()}
         {head && head.link.toComponent()}
@@ -64,6 +65,7 @@ const Html = ({ state, assets, head, body }) => {
         <div id='root' dangerouslySetInnerHTML={{ __html: body }} />
         <script dangerouslySetInnerHTML={{ __html: `window.__state = ${serializedState};` }} />
         {scripts.map((src) => <script key={src} src={`/${src}`} defer />)}
+        {head && head.script.toComponent()}
       </body>
     </html>
   );

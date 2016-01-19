@@ -14,4 +14,4 @@ export const login = (authToken) => {
 export const logout = () => cookie.remove(AUTH_KEY);
 export const token = () => cookie.load(AUTH_KEY) || null;
 export const authenticated = () => !!token();
-export const setLocale = (locale) => cookie.set(LOCALE_KEY, locale, { path: '/' });
+export const setLocale = (locale) => cookie.save(LOCALE_KEY, locale, { path: '/' });
