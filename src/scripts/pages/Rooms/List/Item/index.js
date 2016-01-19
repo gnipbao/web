@@ -1,4 +1,3 @@
-import includes from 'lodash/includes';
 import css from 'react-css-modules';
 import { connect } from 'react-redux';
 
@@ -8,6 +7,7 @@ import Header from './header';
 import Footer from './footer';
 import Content from './content';
 
+import selector from './selector';
 import style from './style';
 
 const { array, object, number, string, bool, func } = PropTypes;
@@ -33,23 +33,4 @@ Item.propTypes = {
   inside: bool.isRequired
 };
 
-function select(state, ownProps) {
-  const {
-    auth: { currentUserId },
-    entities: { users, tracks }
-  } = state;
-
-  const { owner, playback, ...room } = ownProps;
-
-  return {
-    ...room,
-    owner: users[owner],
-    playback: playback ? {
-      ...playback,
-      track: tracks[playback.track]
-    } : null,
-    inside: includes(room.users, currentUserId),
-  };
-}
-
-export default connect(select)(css(Item, style));
+export default connect(selector)(css(Item, style));
