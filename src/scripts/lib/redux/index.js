@@ -30,8 +30,9 @@ export function apiReducer(actions, additionalState = {}) {
   });
 
   if (fetch) result.on(fetch, crud.load);
-  if (update) result.on(update, crud.load);
   if (list) result.on(list, crud.list);
+  if (update) result.on(update, crud.load);
+  if (destroy) result.on(destroy, crud.destroy);
 
   return result;
 }

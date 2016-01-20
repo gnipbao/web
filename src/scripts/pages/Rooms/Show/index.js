@@ -10,6 +10,8 @@ import { actions } from 'modules/rooms';
 import * as selectors from 'selectors/rooms';
 import fetchData from 'lib/fetchData';
 
+import Members from './Members';
+import Playlist from './Playlist';
 import style from './style';
 
 const { bool, object, func } = PropTypes;
@@ -34,11 +36,13 @@ export class Page extends Component {
     if (loading) return <Spinner />;
     if (isEmpty(data)) return null;
 
-    const { name } = data;
+    const { name, tracks, users } = data;
 
     return (
       <div>
         <h1>{name}</h1>
+        <Playlist tracks={tracks} />
+        <Members users={users} />
       </div>
     );
   }
