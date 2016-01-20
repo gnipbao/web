@@ -1,6 +1,6 @@
 import api from 'api/app';
 
-export function load() {
+export function fetch() {
   return api.get('profile');
 }
 

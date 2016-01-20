@@ -18,6 +18,10 @@ export default class Api {
     return this.ajax(endpoint, 'post', { headers, body });
   }
 
+  destroy(endpoint, headers = {}) {
+    return this.ajax(endpoint, 'delete', { headers });
+  }
+
   ajax(endpoint, method, data) {
     const { params, headers = {}, body = null } = data;
     const requestUrl = this.url(endpoint, params);

@@ -4,29 +4,30 @@ import * as service from 'services/playlists';
 import * as reducers from 'reducers/crud';
 
 export const list = apiAction(
-  'playlists.api.list',
-  service.list,
-  schemas.playlistArray
+  'playlists.api.list', {
+    request: service.list,
+    schema: schemas.playlistArray
+  }
 );
 
-export const load = apiAction(
-  'playlists.api.load',
-  service.find,
-  schemas.playlist,
-  id => ({ id })
+export const fetch = apiAction(
+  'playlists.api.fetch', {
+    request: service.fetch,
+    schema: schemas.playlist
+  }, id => ({ id })
 );
 
 export const tracks = {
   list: apiAction(
-    'playlists.api.tracks.list',
-    service.tracks.list,
-    schemas.trackArray,
-    (id, page, count) => ({ id, page, count })
+    'playlists.api.tracks.list', {
+      request: service.tracks.list,
+      schema: schemas.trackArray,
+    }, (id, page, count) => ({ id, page, count })
   )
 };
 
 const handlers = {
-  [tracks.list]: reducers.nested('tracks')
+  [tracks.list]: reducers.nested('tracks', reducers.list)
 };
 
 const initialState = {
@@ -35,6 +36,6 @@ const initialState = {
 
 export default apiReducer({
   list,
-  load,
+  fetch,
   ...handlers
 }, initialState);

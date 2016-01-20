@@ -10,7 +10,10 @@ import Content from './content';
 import selector from './selector';
 import style from './style';
 
-const { array, object, number, string, bool, func } = PropTypes;
+const {
+  array, object, number,
+  string, bool, func
+} = PropTypes;
 
 export const Item = (props) => {
   const { id, name, rating, inside, ...content } = props;
@@ -20,7 +23,7 @@ export const Item = (props) => {
       <Card styleName='card'>
         <Header { ...{ id, name, rating } } />
         <Content { ...content } />
-        <Footer { ...{ id } } canEnter={!inside} />
+        <Footer { ...{ id, inside } } />
       </Card>
     </div>
   );
@@ -29,8 +32,8 @@ export const Item = (props) => {
 Item.propTypes = {
   id: string.isRequired,
   name: string.isRequired,
-  rating: number,
-  inside: bool.isRequired
+  inside: bool.isRequired,
+  rating: number
 };
 
 export default connect(selector)(css(Item, style));

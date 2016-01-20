@@ -14,7 +14,7 @@ import style from './style';
 
 const { bool, object, func } = PropTypes;
 
-@prefetch(fetchData('rooms', actions.load))
+@prefetch(fetchData('rooms', actions.fetch))
 @css(style)
 export class Page extends Component {
   render() {

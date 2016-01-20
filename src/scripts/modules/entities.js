@@ -1,4 +1,6 @@
-import merge from 'lodash/merge'
+import mergeWith from 'lodash/mergewith'
+import isArray from 'lodash/isArray';
+
 import { API } from 'store/middleware/custom/api';
 
 const initialState = {
@@ -10,14 +12,17 @@ const initialState = {
   favorites: {}
 };
 
+function merger(objValue, srcValue) {
+  if (isArray(objValue)) {
+    return srcValue;
+  }
+}
+
 export default function(state = initialState, action) {
   const { payload, meta } = action;
 
-  const isApiAction = meta && meta[API];
-  const hasData = payload && payload.data;
-
-  if (isApiAction && hasData) {
-    return merge({}, state, payload.data.entities);
+  if (meta && meta[API] && payload && payload.data) {
+    return mergeWith({}, state, payload.data.entities, merger);
   }
 
   return state;

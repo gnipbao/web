@@ -5,6 +5,6 @@ export function list({ page = 1, count = 10 }) {
   return api.get('users', params);
 }
 
-export function find({ id }) {
+export function fetch({ id }) {
   return api.get(`users/${id}`);
 }

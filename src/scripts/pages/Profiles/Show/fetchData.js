@@ -1,5 +1,5 @@
-import { load as loadProfile } from 'modules/profile';
-import { load as loadUser } from 'modules/users';
+import { fetch as fetchProfile } from 'modules/profile';
+import { fetch as fetchUser } from 'modules/users';
 
 export default function(context) {
   const {
@@ -12,13 +12,11 @@ export default function(context) {
     }
   } = context;
 
-  if (params && params.id) {
-    if (!entities.users[params.id] && !users.loading) {
-      return dispatch(loadUser(params.id))
-    }
+  if (params && params.id && !entities.users[params.id] && !users.loading) {
+    return dispatch(fetchUser(params.id))
   }
 
   if (!entities.users[profile.id] && !profile.loading) {
-    return dispatch(loadProfile());
+    return dispatch(fetchProfile());
   }
 }

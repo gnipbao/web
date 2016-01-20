@@ -10,17 +10,16 @@ const undef = () => undefined;
 export const action = createAction;
 export const reducer = createReducer;
 
-export function apiAction(description, request, schema,
+export function apiAction(description, api,
   payloadReducer = identity, metaReducer = undef) {
-  const meta = { request, schema };
 
   return createAction(description, payloadReducer,
-    (...args) => ({ ...metaReducer(...args), [API]: meta }));
+    (...args) => ({ ...metaReducer(...args), [API]: api }));
 }
 
 export function apiReducer(actions, additionalState = {}) {
   const {
-    list, load,
+    fetch, list,
     create, update, destroy,
     ...handlers
   } = actions;
@@ -30,8 +29,9 @@ export function apiReducer(actions, additionalState = {}) {
     ...additionalState
   });
 
+  if (fetch) result.on(fetch, crud.load);
+  if (update) result.on(update, crud.load);
   if (list) result.on(list, crud.list);
-  if (load) result.on(load, crud.load);
 
   return result;
 }

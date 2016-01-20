@@ -10,6 +10,7 @@ const transform = (json, schema) => {
 
 export default ({ dispatch, getState }) => next => async (action) => {
   const { meta } = action;
+
   if (!meta || !meta[API]) return next(action);
 
   next(action);
@@ -20,7 +21,7 @@ export default ({ dispatch, getState }) => next => async (action) => {
 
     const response = await request(payload);
     const { json, links } = response;
-    const data = transform(json, schema);
+    const data = schema ? transform(json, schema) : json;
 
     return next({ ...rest, payload: { ...payload, data, links } });
   } catch (error) {

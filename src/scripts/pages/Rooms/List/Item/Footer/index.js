@@ -13,12 +13,10 @@ const TooltipButton = Tooltip(Button);
 const { bool, string, func } = PropTypes;
 
 export const Footer = (props) => {
-  const {
-    id,
-    currentUserId,
-    canEnter,
-    enter
-  } = props;
+  const { id, currentUserId, inside } = props;
+
+  const membershipAction = inside ? 'exit' : 'enter';
+  const membershipActionHandler = () => props[membershipAction](id, currentUserId);
 
   return (
     <CardActions styleName='root'>
@@ -34,12 +32,11 @@ export const Footer = (props) => {
         neutral={false}
         icon='hearing'
         tooltip='listen' />
-      <TooltipButton styleName='enter'
+      <TooltipButton styleName={membershipAction}
         neutral={false}
-        icon='input'
-        tooltip='enter'
-        disabled={!canEnter}
-        onClick={() => enter(id, currentUserId)}
+        icon={ inside ? 'eject' : 'input' }
+        tooltip={membershipAction}
+        onClick={membershipActionHandler}
       />
     </CardActions>
   );
@@ -48,8 +45,9 @@ export const Footer = (props) => {
 Footer.propTypes = {
   id: string.isRequired,
   currentUserId: string.isRequired,
-  canEnter: bool.isRequired,
-  enter: func.isRequired
+  inside: bool.isRequired,
+  enter: func.isRequired,
+  exit: func.isRequired
 };
 
 function select(state) {
@@ -57,4 +55,4 @@ function select(state) {
   return { currentUserId };
 }
 
-export default connect(select, actions)(css(Footer, style));
+export default connect(select, actions.room)(css(Footer, style));

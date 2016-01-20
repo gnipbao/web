@@ -1,17 +1,19 @@
 import api from 'api/app';
 
-export function list({ page = 1, count = 10} ) {
-  const params = { page, per_page: count };
-  return api.get('playlists', params);
+export function fetch({ id }) {
+  return api.get(`playlists/${id}`);
 }
 
-export function find({ id }) {
-  return api.get(`playlists/${id}`);
+export function list({ page = 1, count = 10 }) {
+  return api.get('playlists', { page, per_page: count });
 }
 
 export const tracks = {
   list({ id, page = 1, count = 20 }) {
-    const params = { page, per_page: count };
-    return api.get(`playlists/${id}/tracks`, params);
+    return api.get(`playlists/${id}/tracks`, {
+        page,
+        per_page: count
+      }
+    );
   }
 };

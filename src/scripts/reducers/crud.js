@@ -1,4 +1,5 @@
 import union from 'lodash/union'
+import difference from 'lodash/difference';
 
 export const identity = ({ id }) => id;
 
@@ -11,7 +12,7 @@ export const initialState = {
 
 // general-purpose CRUD reducers
 
-export function nested(slice, selectKey = identity) {
+export function nested(slice, reducer, selectKey = identity) {
   return (state, payload) => {
     const key = selectKey(payload);
     const nestedState = state[slice][key] || initialState;
@@ -20,7 +21,7 @@ export function nested(slice, selectKey = identity) {
       ...state,
       [slice]: {
         ...state[slice],
-        [key]: list(nestedState, payload)
+        [key]: reducer(nestedState, payload)
       }
     }
   };
@@ -50,4 +51,24 @@ export function load(state, { data, error }) {
   };
 }
 
-// TODO: update, delete
+export function destroy(selectKey = identity) {
+  return function(state, { data, error, ...payload }) {
+    if (!data) return { ...state, loading: true };
+    if (error) return { ...state, loading: false };
+
+    const key = selectKey(payload);
+
+    return {
+      ...state,
+      loading: false,
+      ids: data ? difference(state.ids, [key]) : ids
+    };
+  }
+}
+
+export function update(state, { data, error }) {
+  if (!data) return { ...state, loading: true };
+  if (error) return { ...state, loading: false };
+
+  return { ...state, loading: false };
+}

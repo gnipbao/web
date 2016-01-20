@@ -7,8 +7,8 @@ import { prefetch } from 'react-fetcher';
 import { Tabs, Tab } from 'react-toolbox/lib/tabs';
 
 import Spinner from 'components/spinners/folding_cube';
-import { load as loadProfile } from 'modules/profile';
-import { load as loadUser } from 'modules/users';
+import { fetch as fetchProfile } from 'modules/profile';
+import { fetch as fetchUser } from 'modules/users';
 import { show as selector } from 'selectors/profile';
 import fetchData from './fetchData';
 
@@ -27,20 +27,20 @@ export class Page extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.id !== this.props.id) {
-      this.load(nextProps);
+      this.fetch(nextProps);
     }
   }
 
-  load(props = this.props) {
+  fetch(props = this.props) {
     const {
-      loadUser, loadProfile,
+      fetchUser, fetchProfile,
       params, loading, data
     } = props;
 
     if (isEmpty(data) && !loading) {
       return params && params.id ?
-        loadUser(params.id) :
-        loadProfile();
+        fetchUser(params.id) :
+        fetchProfile();
     }
   }
 
@@ -83,8 +83,8 @@ export class Page extends Component {
 }
 
 const actions = {
-  loadUser,
-  loadProfile
+  fetchUser,
+  fetchProfile
 };
 
 export default connect(selector, actions)(Page);
