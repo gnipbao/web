@@ -16,31 +16,13 @@ import FastClick from 'fastclick';
 import { Provider } from 'react-redux';
 import createStore from 'store/create';
 import * as environment from 'modules/environment';
-import io from 'socket.io-client';
 
 import history from 'lib/history';
 import render from 'lib/render';
 import throttle from 'lib/utils/throttle';
+import * as socket from './socket';
 
-function setupSocket() {
-  const port = process.env.PORT || settings.port || 80;
-  const socket = io(`http://localhost:${port}`);
-
-  // TODO: connection events should be reflected in UI in dev env at least
-  // using notifications, snackbar or something similar
-  //
-  // see https://github.com/socketio/socket.io-client#events-1
-
-  socket.on('connect', () => {
-    console.log('[PARTY] connected');
-  });
-
-  socket.on('message', data => {
-    console.log('[PARTY] server says: ', data.text);
-  });
-}
-
-window.socket = setupSocket();
+window.socket = socket.setup();
 
 function run() {
   // custom throttled events

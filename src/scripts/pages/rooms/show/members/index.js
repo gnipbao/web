@@ -10,7 +10,7 @@ export const Members = (props) => {
 
   return (
     <div styleName='root'>
-      {users.map(user => <Item {...user} />)}
+      {users.map(user => <Item key={user.id} user={user} />)}
     </div>
   );
 };

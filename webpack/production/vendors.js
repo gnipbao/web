@@ -26,7 +26,6 @@ export default [
   'react-time',
   'redux-analytics',
   'redux-recycle',
-  'react-notification-system',
   'howler',
   'moment',
   'parse-link-header',

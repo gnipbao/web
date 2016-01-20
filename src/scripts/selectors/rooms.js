@@ -42,9 +42,9 @@ export const show = selector(
   denormalize('rooms'),
   s => s.entities.users,
   s => s.entities.tracks,
-  (source, users, tracks) => ({
+  ({ data, ...source }, users, tracks) => ({
     ...source,
-    users: source.users.map(id => users[id]),
-    tracks: source.tracks.map(id => tracks[id])
+    users: data.users.map(id => users[id]),
+    tracks: data.tracks.map(id => tracks[id])
   })
 );

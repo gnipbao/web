@@ -37,7 +37,11 @@ export default (environments, environmentName, argv) => {
       webRoot: JSON.stringify(webRoot),
       authRoot: JSON.stringify(process.env.AUTH_ROOT),
       apiRoot: JSON.stringify(process.env.API_ROOT),
-
+      rethinkdb: {
+        host: process.env.RETHINKDB_HOST,
+        port: process.env.RETHINKDB_PORT,
+        db: process.env.RETHINKDB_DATABASE
+      },
       session: { ttl: 24 * 60 * 60 * 1000 }
     }
   };

@@ -7,6 +7,7 @@ import { reset } from 'modules';
 import { logout } from 'modules/auth';
 import { toggle as toggleNavigation } from 'modules/navigation';
 
+import NotificationSystem from 'components/notification_system';
 import Navigation from 'components/navigation';
 import Toolbar from 'components/toolbar';
 import Player from 'components/player';
@@ -29,7 +30,7 @@ export class App extends Component {
   }
 
   render() {
-    const { children, player } = this.props;
+    const { children } = this.props;
 
     return (
       <div styleName='root'>
@@ -40,6 +41,7 @@ export class App extends Component {
             {children}
           </section>
         </div>
+        <NotificationSystem />
         <Player />
       </div>
     );

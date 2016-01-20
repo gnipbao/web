@@ -7,10 +7,11 @@ import PrettyError from 'pretty-error';
 
 import Express from 'express';
 import { Server } from 'http';
-import SocketIO from 'socket.io';
 
 import middleware from './middleware';
 import handler from './handler';
+import * as db from './db';
+import * as socket from './socket';
 
 const { log, info, warn, error } = logger('app:server');
 
@@ -20,20 +21,7 @@ const prettyError = new PrettyError();
 const app = new Express();
 const server = new Server(app);
 
-const io = new SocketIO(server);
-io.on('connection', socket => {
-  log('client connected');
-
-  socket.emit('message', { text: 'whats up?' });
-
-  socket.on('ping', () => {
-    socket.emit('message', { text: 'pong' });
-  });
-
-  socket.on('disconnect', () => {
-    log('client disconnected');
-  });
-});
+socket.setup(server);
 
 middleware.forEach(m => app.use(m));
 app.use(handler);

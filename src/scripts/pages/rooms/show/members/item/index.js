@@ -6,7 +6,7 @@ import style from './style';
 
 const { bool, string, object, number } = PropTypes;
 
-export const Item = (props) => {
+export const Item = ({ user }) => {
   const {
     id, firstName, lastName,
     karma, state,
@@ -17,13 +17,11 @@ export const Item = (props) => {
 
   return (
     <div styleName='root'>
-      <Avatar rounded rotate
-        styleName='avatar'
-        { ...{ ...avatarProps, id } }
-      />
-      <span styleName='username'>
-        <Link to={`/users/${id}`}>{username}</Link>
-      </span>
+      <Avatar rounded rotate styleName='avatar'
+        { ...{ ...avatarProps, id } } />
+      <Link styleName='username' to={`/users/${id}`}>
+        {username}
+      </Link>
     </div>
   );
 };

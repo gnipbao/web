@@ -5,7 +5,7 @@ import style from './style';
 const { string, bool, node } = PropTypes;
 
 @css(style)
-class Popover extends Component {
+export default class Popover extends Component {
   static propTypes = {
   };
 
@@ -16,5 +16,3 @@ class Popover extends Component {
     )
   }
 }
-
-export default Popover;
