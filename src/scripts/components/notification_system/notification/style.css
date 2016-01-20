@@ -1,63 +1,72 @@
 @import "variables";
 
 :root {
-  --opacity: 0.9;
+  --opacity: 0.8;
   --opacity-hover: 1;
 
-  --root-background: var(--background);
-  --root-text-color: var(--text-color);
+  --root-background: var(--brand-dark);
+  --root-text-color: var(--brand-light);
+  --padding: 8px;
+
+  --icon-font-size: 3.2rem;
 }
 
 .root {
-  box-sizing: border-box;
-  padding: 15px 15px 15px 58px;
-  border-radius: 2px;
-  cursor: pointer;
-  font-size: 1em;
-  line-height: 1.2em;
-  position: relative;
+  display: flex;
+  align-items: center;
   margin-top: 15px;
+  padding: var(--padding);
+  cursor: pointer;
+  position: relative;
+  font-size: 1.4rem;
   color: var(--root-text-color);
   background-color: var(--root-background);
   opacity: var(--opacity);
+  border-radius: 2px;
   box-shadow:
-    0 2px 1px 0 rgba(#000, 0.1),
-    0 2px 1px -2px rgba(#000, 0.3),
-    0 1px 4px 0 rgba(#000, 0.12);
+    0 2px 1px 0 rgba(#000, 0.2),
+    0 2px 1px -2px rgba(#000, 0.4),
+    0 1px 4px 0 rgba(#000, 0.22);
 
   &:hover {
     opacity: var(--opacity-hover);
   }
 }
 
+.icon {
+  font-size: var(--icon-font-size);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-left: var(--padding);
+}
+
 .message {
-  color: var(--root-text-color);
 }
 
 .title {
-  font-size: 1em;
-  line-height: 1.2em;
+  font-size: 1.4rem;
   font-weight: bold;
-  margin: 0 0 5px 0;
   color: var(--root-text-color);
 }
 
 .info {
   composes: root;
-  background-color: var(--brand-info-pastel);
 }
 
 .success {
   composes: root;
-  background-color: var(--brand-success-pastel);
+  background-color: var(--brand-success);
 }
 
 .warning {
   composes: root;
-  background-color: var(--brand-warning-pastel);
+  background-color: var(--brand-warning);
 }
 
 .error {
   composes: root;
-  background-color: var(--brand-danger-pastel);
+  background-color: var(--brand-danger);
 }

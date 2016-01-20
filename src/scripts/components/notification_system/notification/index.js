@@ -9,6 +9,13 @@ const {
   oneOf, oneOfType
 } = PropTypes;
 
+const typeIcon = {
+  info: 'info_outline',
+  success: 'done',
+  warning: 'warning',
+  error: 'error_outline'
+};
+
 @css(style)
 export default class Notification extends Component {
   static propTypes = {
@@ -47,8 +54,11 @@ export default class Notification extends Component {
 
     return (
       <div styleName={type} onClick={::this.handleClick}>
-        {title && <h4 styleName='title'>{title}</h4>}
-        <div styleName='message'>{message}</div>
+        <FontIcon styleName='icon' value={typeIcon[type]} />
+        <div styleName='content'>
+          {title && <h4 styleName='title'>{title}</h4>}
+          <div styleName='message'>{message}</div>
+        </div>
       </div>
     );
   }

@@ -44,7 +44,7 @@ export class Page extends Component {
         <h1>{name}</h1>
         <Playlist tracks={tracks} />
         <Members users={users} />
-        <Button onClick={() => actions.notification.create('success', 'this is zaebis when music4ka ka4aet')} label='ebash' />
+        <Button onClick={() => actions.notification.create('error', 'this is zaebis when music4ka ka4aet', 'here is my title, its very very long', 2000)} label='ebash' />
       </div>
     );
   }
