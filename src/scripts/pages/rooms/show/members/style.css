@@ -1,7 +1,14 @@
 @import "variables";
+@import "media";
 
 :root {
+  --root-background: var(--brand-black);
 }
 
-.root {
+.members {
+  background-color: var(--root-background);
+
+  @media (--medium) { lost-column: 1/4; }
+
+  @media (--large) { lost-column: 1/5; }
 }

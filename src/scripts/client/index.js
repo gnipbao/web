@@ -22,7 +22,6 @@ import render from 'lib/render';
 import throttle from 'lib/utils/throttle';
 import * as socket from './socket';
 
-window.socket = socket.setup();
 
 function run() {
   // custom throttled events
@@ -37,6 +36,7 @@ function run() {
     height: window.innerHeight
   }));
 
+  window.socket = socket.setup(store);
   window.addEventListener(
     'optimizedResize',
     () => store.dispatch(

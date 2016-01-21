@@ -9,9 +9,9 @@ export const Members = (props) => {
   const { users } = props;
 
   return (
-    <div styleName='root'>
+    <aside styleName='members'>
       {users.map(user => <Item key={user.id} user={user} />)}
-    </div>
+    </aside>
   );
 };
 

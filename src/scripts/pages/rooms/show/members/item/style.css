@@ -1,13 +1,20 @@
 @import "variables";
 
 :root {
+  --root-border-color: color(var(--brand-black) shade(50%));
 }
 
 .root {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid var(--root-border-color);
 }
 
 .avatar {
 }
 
 .username {
+  margin-left: 8px;
+  font-size: 1.2rem;
 }

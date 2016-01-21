@@ -6,7 +6,6 @@
 
   --root-background: var(--brand-dark);
   --root-text-color: var(--brand-light);
-  --padding: 8px;
 
   --icon-font-size: 3.2rem;
 }
@@ -15,7 +14,7 @@
   display: flex;
   align-items: center;
   margin-top: 15px;
-  padding: var(--padding);
+  padding: 10px 15px;
   cursor: pointer;
   position: relative;
   font-size: 1.4rem;
@@ -40,7 +39,7 @@
 .content {
   display: flex;
   flex-direction: column;
-  margin-left: var(--padding);
+  margin-left: 20px;
 }
 
 .message {
@@ -48,6 +47,7 @@
 
 .title {
   font-size: 1.4rem;
+  line-height: 2.1rem;
   font-weight: bold;
   color: var(--root-text-color);
 }
@@ -63,7 +63,7 @@
 
 .warning {
   composes: root;
-  background-color: var(--brand-warning);
+  background-color: color(var(--brand-warning) shade(50%));
 }
 
 .error {

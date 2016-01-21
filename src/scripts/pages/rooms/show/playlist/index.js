@@ -1,14 +1,18 @@
 import css from 'react-css-modules';
 
+import Track from './Track';
 import style from './style';
 
 const { bool, string, object, number } = PropTypes;
 
-export const Members = (props) => {
+export const Playlist = (props) => {
+  const { tracks } = props;
+
   return (
-    <div styleName='root'>
+    <div styleName='playlist'>
+      {tracks.map(track => <Item key={track.id} {...track} />)}
     </div>
   );
 };
 
-export default css(Members, style);
+export default css(Playlist, style);

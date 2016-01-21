@@ -1,7 +1,14 @@
 @import "variables";
+@import "media";
 
 :root {
+  --root-background: var(--background);
 }
 
-.root {
+.playlist {
+  background-color: var(--root-background);
+
+  @media (--medium) { lost-column: 3/4; }
+
+  @media (--medium) { lost-column: 4/5; }
 }

@@ -56,7 +56,7 @@ export default class Notification extends Component {
       <div styleName={type} onClick={::this.handleClick}>
         <FontIcon styleName='icon' value={typeIcon[type]} />
         <div styleName='content'>
-          {title && <h4 styleName='title'>{title}</h4>}
+          {title && <h6 styleName='title'>{title}</h6>}
           <div styleName='message'>{message}</div>
         </div>
       </div>

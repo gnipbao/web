@@ -19,7 +19,7 @@ const Avatar = (props) => {
 
   const shape = rounded ? 'rounded' : 'squared';
   const size = small ? 'small' : big ? 'big' : 'normal';
-  const styleName = classNames(shape, size, { rotate });
+  const styleName = classNames(shape, size, { rotate, empty: !picture });
   const title = nickname || firstName;
 
   const path = id && id !== currentUserId ? `/users/${id}` : '/profile';

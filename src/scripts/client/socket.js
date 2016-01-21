@@ -1,8 +1,13 @@
 import io from 'socket.io-client';
+import { bindActionCreators } from 'redux';
 
-export function setup() {
+import * as actions from 'modules/notifications';
+
+export function setup(store) {
   const port = process.env.PORT || settings.port || 80;
   const socket = io(`http://localhost:${port}`);
+
+  const notification = bindActionCreators(actions, store.dispatch);
 
   // TODO: connection events should be reflected in UI in dev env at least
   // using notifications, snackbar or something similar
@@ -10,11 +15,23 @@ export function setup() {
   // see https://github.com/socketio/socket.io-client#events-1
 
   socket.on('connect', () => {
-    console.log('[PARTY] connected');
+    notification.create('success', 'connected', 'PARTY');
   });
 
   socket.on('message', data => {
-    console.log('[PARTY] server says: ', data.text);
+    notification.create('info', `server says: ${data.text}`, 'PARTY');
+  });
+
+  socket.on('join', data => {
+    const { user: { firstName, lastName }, room } = data;
+    const username = `${firstName} ${lastName}`;
+    notification.create('info', `${username} joined ${room.name}`);
+  });
+
+  socket.on('leave', data => {
+    const { user: { firstName, lastName }, room } = data;
+    const username = `${firstName} ${lastName}`;
+    notification.create('info', `${username} left ${room.name}`);
   });
 
   return socket;

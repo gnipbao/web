@@ -131,7 +131,8 @@ export class Player extends Component {
   };
 
   handleEnded = () => {
-    const { actions, repeat, shuffle } = this.state;
+    const { actions } = this.props;
+    const { repeat, shuffle } = this.state;
 
     if (repeat) {
       this.audio.play();

@@ -3,7 +3,12 @@ import { argv } from '../../config';
 export default {
   publicPath: '/',
   headers: { 'Access-Control-Allow-Origin': '*' },
-  watchOptions: { aggregateTimeout: 0 },
+  watchOptions: {
+    // polling always just works,
+    // everywhere, anytime
+    poll: true,
+    aggregateTimeout: 0
+  },
   stats: {
     children: false,
     colors: true,

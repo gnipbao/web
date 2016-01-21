@@ -27,9 +27,7 @@ export class Page extends Component {
     return (
       <section>
         <Helmet title='Room' />
-        <div styleName='root'>
-          {this.renderContent()}
-        </div>
+        {this.renderContent()}
       </section>
     );
   }
@@ -40,19 +38,21 @@ export class Page extends Component {
     const { name, tracks, users, actions } = this.props;
 
     return (
-      <div>
-        <h1>{name}</h1>
+      <div styleName='root'>
         <Playlist tracks={tracks} />
         <Members users={users} />
-        <Button onClick={() => actions.notification.create('error', 'this is zaebis when music4ka ka4aet', 'here is my title, its very very long', 2000)} label='ebash' />
       </div>
     );
   }
 }
 
-export default connect(selectors.show, d => ({
-  actions: {
-    room: bindActionCreators(roomActions, d),
-    notification: bindActionCreators(notificationActions, d)
-  }
-}))(Page);
+function selectActions(dispatch) {
+  return {
+    actions: {
+      room: bindActionCreators(roomActions, dispatch),
+      notification: bindActionCreators(notificationActions, dispatch)
+    }
+  };
+}
+
+export default connect(selectors.show, selectActions)(Page);
