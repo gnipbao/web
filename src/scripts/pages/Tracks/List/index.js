@@ -1,17 +1,18 @@
 import isEmpty from 'lodash/isEmpty';
 import { connect } from 'react-redux';
 import css from 'react-css-modules';
-import { prefetch } from 'react-fetcher';
 
 import { List } from 'react-toolbox/lib/list';
 
 import InfiniteScroll from 'components/infinite_scroll';
 import Spinner from 'components/spinners/folding_cube';
 
+import { prefetch } from 'lib/fetcher';
 import fetchData from './fetchData';
-import { list as selector } from 'selectors/tracks';
-import { tracks as actions } from 'modules/playlists';
-import { changeTrack, togglePlay } from 'modules/player';
+
+import * as playlistActions from 'modules/playlists/actions';
+import * as playerActions from 'modules/player/actions';
+import * as selectors from 'modules/tracks/selectors';
 
 import Item from './item';
 import style from './style';
@@ -83,8 +84,7 @@ export class Page extends Component {
   }
 }
 
-export default connect(selector, {
-  ...actions,
-  togglePlay,
-  changeTrack
+export default connect(selectors.list, {
+  ...playlistActions.tracks,
+  ...playerActions
 })(Page);

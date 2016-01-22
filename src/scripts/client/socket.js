@@ -1,7 +1,7 @@
 import io from 'socket.io-client';
 import { bindActionCreators } from 'redux';
 
-import * as actions from 'modules/notifications';
+import * as actions from 'modules/notifications/actions';
 
 export function setup(store) {
   const port = process.env.PORT || settings.port || 80;
@@ -15,11 +15,15 @@ export function setup(store) {
   // see https://github.com/socketio/socket.io-client#events-1
 
   socket.on('connect', () => {
-    notification.create('success', 'connected', 'PARTY');
+    notification.create('success', 'connected', 'System');
+  });
+
+  socket.on('disconnect', () => {
+    notification.create('error', 'disconnected', 'System');
   });
 
   socket.on('message', data => {
-    notification.create('info', `server says: ${data.text}`, 'PARTY');
+    notification.create('info', `server says: ${data.text}`, 'Message');
   });
 
   socket.on('join', data => {

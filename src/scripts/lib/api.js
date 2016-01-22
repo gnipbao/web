@@ -1,3 +1,4 @@
+import { autobind } from 'core-decorators';
 import { stringify } from 'qs';
 import parseLinkHeader from 'parse-link-header';
 import fetch from 'isomorphic-fetch';
@@ -38,8 +39,8 @@ export default class Api {
       headers: requestHeaders,
       body: body && JSON.stringify(body)
     }).then(
-      ::this.processResponse,
-      ::this.processError
+      this.processResponse,
+      this.processError
     );
   }
 
@@ -52,6 +53,7 @@ export default class Api {
     return params ? '?' + stringify(params) : '';
   }
 
+  @autobind
   processResponse(response) {
     return new Promise((resolve, reject) => {
       if (response.ok) {
@@ -68,6 +70,7 @@ export default class Api {
     });
   }
 
+  @autobind
   processError(err) {
     console.error('api error (fetch): ', err);
     return Promise.reject(err);

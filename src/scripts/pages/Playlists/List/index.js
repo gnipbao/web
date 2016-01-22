@@ -1,16 +1,17 @@
 import isEmpty from 'lodash/isEmpty';
 import { connect } from 'react-redux';
 import css from 'react-css-modules';
-import { prefetch } from 'react-fetcher';
 
 import { List } from 'react-toolbox/lib/list';
 
 import InfiniteScroll from 'components/infinite_scroll';
 import Spinner from 'components/spinners/folding_cube';
 
+import { prefetch } from 'lib/fetcher';
 import fetchData from 'lib/fetchData';
-import * as actions from 'modules/playlists';
-import { list as selector } from 'selectors/playlists';
+
+import * as actions from 'modules/playlists/actions';
+import * as selectors from 'modules/playlists/selectors';
 
 import Item from './item';
 import style from './style';
@@ -34,10 +35,7 @@ export class Page extends Component {
   );
 
   render() {
-    const {
-      pageCount,
-      loading, collection
-    } = this.props;
+    const { pageCount, loading, collection } = this.props;
 
     if (isEmpty(collection)) return null;
 
@@ -59,4 +57,4 @@ export class Page extends Component {
   }
 }
 
-export default connect(selector, actions)(Page);
+export default connect(selectors.list, actions)(Page);

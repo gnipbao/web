@@ -1,3 +1,4 @@
+import { autobind } from 'core-decorators';
 import pick from 'lodash/pick';
 import isUndefined from 'lodash/isUndefined';
 import { connect } from 'react-redux';
@@ -9,8 +10,8 @@ import { spring, presets, Motion } from 'react-motion';
 import Button from 'react-toolbox/lib/button';
 import ProgressBar from 'react-toolbox/lib/progress_bar';
 
-import * as actions from 'modules/player';
-import selector from 'selectors/player';
+import * as actions from 'modules/player/actions';
+import selector from 'modules/player/selector';
 
 import Popover from 'components/popover';
 import Info from './info';
@@ -146,17 +147,20 @@ export class Player extends Component {
     }
   };
 
+  @autobind
   changeVolume(volume) {
     this.audio.volume = volume;
     this.save('player.volume', volume);
     this.setState({ volume });
   }
 
+  @autobind
   seek(offset) {
     this.props.actions.seek(offset);
     this.audio.currentTime = offset;
   }
 
+  @autobind
   togglePlay() {
     if (this.props.playing) {
       this.audio.pause();
@@ -173,12 +177,14 @@ export class Player extends Component {
     this.save('player.muted', muted);
   }
 
+  @autobind
   toggleRepeat() {
     const repeat = !this.state.repeat;
     this.setState({ repeat });
     this.save('player.repeat', repeat);
   }
 
+  @autobind
   toggleShuffle() {
     const shuffle = !this.state.shuffle;
     this.setState({ shuffle });
@@ -212,23 +218,23 @@ export class Player extends Component {
             {track && <Info { ...track } />}
             <Playback first last
               playing={playing}
-              onTogglePlay={::this.togglePlay}
+              onTogglePlay={this.togglePlay}
               onPrevious={() => {}}
               onNext={() => {}}
             />
             <SeekBar
-              onSeek={::this.seek}
+              onSeek={this.seek}
               { ...{ ...timeable, ...seekable } }
             />
             <Time { ...timeable } />
             <Options
-              onToggleRepeat={::this.toggleRepeat}
-              onToggleShuffle={::this.toggleShuffle}
+              onToggleRepeat={this.toggleRepeat}
+              onToggleShuffle={this.toggleShuffle}
               { ...options }
             />
             <Playlist {...playlist} />
             <Volume
-              onVolumeChange={::this.changeVolume}
+              onVolumeChange={this.changeVolume}
               { ...{ muted, volume } }
             />
             <audio id='audio'

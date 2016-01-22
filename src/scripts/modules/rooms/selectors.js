@@ -1,21 +1,21 @@
 import { createSelector as selector } from 'reselect';
 
-import { denormalize } from './base';
-import { filters } from 'modules/rooms';
+import { denormalize } from 'selectors';
+import filters from 'modules/rooms/filters';
 
 const filterFuncs = {
   [filters.all]: (coll) => coll,
-  [filters.public]: (coll) => coll.filter(i => !i.private),
-  [filters.private]: (coll) => coll.filter(i => i.private),
-  [filters.my]: (coll, me) => coll.filter(i => i.owner === me)
+  [filters.public]: (coll) => coll.filter(r => !r.private),
+  [filters.private]: (coll) => coll.filter(r => r.private),
+  [filters.my]: (coll, me) => coll.filter(r => r.owner === me)
 };
 
 function applySearchFilter(collection, query) {
   if (!query) return collection;
 
-  return collection.filter(i =>
-    i.name.includes(query) ||
-    i.description && i.description.includes(query)
+  return collection.filter(room =>
+    room.name.includes(query) ||
+    room.description && room.description.includes(query)
   );
 }
 

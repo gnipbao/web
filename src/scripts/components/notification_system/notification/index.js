@@ -1,3 +1,4 @@
+import { autobind } from 'core-decorators';
 import css from 'react-css-modules';
 import FontIcon from 'react-toolbox/lib/font_icon';
 
@@ -23,14 +24,14 @@ export default class Notification extends Component {
     type: oneOf(['info', 'success', 'warning', 'error']),
     message: string.isRequired,
     title: oneOfType([string, number]),
+    timeout: number.isRequired,
     onClick: func,
     onDestroy: func
   };
 
   static defaultProps = {
     type: 'info',
-    title: null,
-    timeout: TIMEOUT_DEFAULT
+    title: null
   };
 
   componentDidMount() {
@@ -42,6 +43,7 @@ export default class Notification extends Component {
   componentWillUnmount = () => this.timer && clearTimeout(this.timer);
   destroy = () => this.props.onDestroy(this.props.id);
 
+  @autobind
   handleClick(e) {
     if (this.props.onClick) {
       this.props.onClick(e);
@@ -53,7 +55,7 @@ export default class Notification extends Component {
     const { type, title, message } = this.props;
 
     return (
-      <div styleName={type} onClick={::this.handleClick}>
+      <div styleName={type} onClick={this.handleClick}>
         <FontIcon styleName='icon' value={typeIcon[type]} />
         <div styleName='content'>
           {title && <h6 styleName='title'>{title}</h6>}

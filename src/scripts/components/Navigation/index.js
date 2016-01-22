@@ -2,7 +2,7 @@ import css from 'react-css-modules';
 import { connect } from 'react-redux';
 
 import stickify from 'components/stickify';
-import selector from './selector';
+import selector from 'modules/navigation/selector';
 import createMenus from './createMenus';
 import User from './user';
 import Menu from './menu';

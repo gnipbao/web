@@ -1,5 +1,4 @@
-- [ ] plug in eslint-plugin-filenames plugin!
-- [ ] wait for PR https://github.com/markdalgleish/react-fetcher/pull/5 && update package.json
+- [ ] plug in eslint-plugin-filenames plugin && rename files according to airbnb styleguide
 - [ ] fix my CommonJS style export default's and remove add-module-exports plugin
 - [ ] take a look at https://github.com/mxstbr/react-boilerplate
 - [ ] try https://github.com/khankuan/react-tourist and https://github.com/usablica/intro.js for an interactive tour / guide

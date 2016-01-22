@@ -1,17 +1,18 @@
+import { autobind } from 'core-decorators';
 import isEmpty from 'lodash/isEmpty';
 import { connect } from 'react-redux';
 import css from 'react-css-modules';
 
-import { prefetch } from 'react-fetcher';
-
 import { Tabs, Tab } from 'react-toolbox/lib/tabs';
 
-import Spinner from 'components/spinners/folding_cube';
-import { fetch as fetchProfile } from 'modules/profile';
-import { fetch as fetchUser } from 'modules/users';
-import { show as selector } from 'selectors/profile';
+import { prefetch } from 'lib/fetcher';
 import fetchData from './fetchData';
 
+import * as userActions from 'modules/users/actions';
+import * as profileActions from 'modules/profile/actions';
+import * as selectors from 'modules/profile/selectors';
+
+import Spinner from 'components/spinners/folding_cube';
 import Info from 'components/user/info';
 import Activity from './activity';
 import Favorites from './favorites';
@@ -44,6 +45,7 @@ export class Page extends Component {
     }
   }
 
+  @autobind
   handleTabChange(tabIndex) {
     this.setState({ tabIndex });
   }
@@ -70,7 +72,7 @@ export class Page extends Component {
           <Info { ...data } />
           <Tabs styleName='tabs'
             index={this.state.tabIndex}
-            onChange={::this.handleTabChange}>
+            onChange={this.handleTabChange}>
             <Tab label='Activity'><Activity /></Tab>
             <Tab label='Favorites' onActive={this.handleActive}><Favorites /></Tab>
             <Tab label='Invites'><p>Nothing to see here...</p></Tab>
@@ -83,8 +85,8 @@ export class Page extends Component {
 }
 
 const actions = {
-  fetchUser,
-  fetchProfile
+  fetchUser: userActions.fetch,
+  fetchProfile: profileActions.fetch
 };
 
-export default connect(selector, actions)(Page);
+export default connect(selectors.show, actions)(Page);

@@ -1,3 +1,4 @@
+import { autobind } from 'core-decorators';
 import Scrollable from 'components/scrollable';
 
 const { node, bool, number, string, func } = PropTypes;
@@ -18,6 +19,7 @@ export default class InfiniteScroll extends Component {
     threshold: 50
   };
 
+  @autobind
   handleScroll(position, height, offset) {
     const { enabled, loading, threshold, load } = this.props;
     if (!enabled || loading) return;
@@ -31,7 +33,7 @@ export default class InfiniteScroll extends Component {
     const { loading, spinner, children, ...other } = this.props;
 
     return (
-      <Scrollable onScroll={::this.handleScroll}>
+      <Scrollable onScroll={this.handleScroll}>
         <div ref={c => this.container = c} { ...other }>
           {children}
           {loading && spinner && spinner()}

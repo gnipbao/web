@@ -15,7 +15,7 @@ import FontFaceObserver from 'fontfaceobserver';
 import FastClick from 'fastclick';
 import { Provider } from 'react-redux';
 import createStore from 'store/create';
-import * as environment from 'modules/environment';
+import * as environmentActions from 'modules/environment/actions';
 
 import history from 'lib/history';
 import render from 'lib/render';
@@ -31,7 +31,7 @@ function run() {
   const initialState = window.__state || {};
 
   const store = createStore(history, initialState);
-  store.dispatch(environment.init({
+  store.dispatch(environmentActions.init({
     width: window.innerWidth,
     height: window.innerHeight
   }));
@@ -40,7 +40,7 @@ function run() {
   window.addEventListener(
     'optimizedResize',
     () => store.dispatch(
-      environment.resize(
+      environmentActions.resize(
         window.innerWidth,
         window.innerHeight
       )

@@ -1,4 +1,4 @@
-import { getPrefetchedData, getDeferredData } from 'react-fetcher';
+import { getPrefetchedData, getDeferredData } from 'lib/fetcher';
 
 export default function(route, { dispatch, getState }) {
   return async (nextState, replace) => {

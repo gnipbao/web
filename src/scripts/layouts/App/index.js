@@ -1,11 +1,11 @@
+import { autobind } from 'core-decorators';
 import css from 'react-css-modules';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { routeActions } from 'redux-simple-router';
 
 import { reset } from 'modules';
-import { logout } from 'modules/auth';
-import { toggle as toggleNavigation } from 'modules/navigation';
+import * as authActions from 'modules/auth/actions';
 
 import NotificationSystem from 'components/notification_system';
 import Navigation from 'components/navigation';
@@ -19,14 +19,15 @@ const { func, string, object } = PropTypes;
 export class App extends Component {
   static propTypes = {
     logout: func.isRequired,
-    replace: func.isRequired,
+    replacePath: func.isRequired,
     reset: func.isRequired
   };
 
+  @autobind
   handleLogout() {
     this.props.logout();
     this.props.reset();
-    this.props.replace('/sign-in');
+    this.props.replacePath('/sign-in');
   }
 
   render() {
@@ -36,7 +37,7 @@ export class App extends Component {
       <div styleName='root'>
         <Toolbar />
         <div styleName='main'>
-          <Navigation logout={::this.handleLogout} />
+          <Navigation logout={this.handleLogout} />
           <section styleName='content'>
             {children}
           </section>
@@ -53,7 +54,7 @@ function selectProps(state) {
 }
 
 export default connect(selectProps, {
-  ...routeActions,
-  logout,
+  replacePath: routeActions.replace,
+  logout: authActions.logout,
   reset
 })(css(App, style));

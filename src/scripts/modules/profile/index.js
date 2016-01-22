@@ -1,13 +1,5 @@
-import { apiAction, action, reducer } from 'lib/redux';
-import * as schemas from 'api/schemas';
-import * as service from 'services/profile';
-
-export const fetch = apiAction(
-  'profile.api.fetch', {
-    request: service.fetch,
-    schema: schemas.user,
-  }, id => ({ id })
-);
+import { reducer } from 'lib/redux';
+import { fetch } from './actions';
 
 const initialState = {
   id: null,

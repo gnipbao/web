@@ -2,11 +2,13 @@ import isEmpty from 'lodash/isEmpty';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import css from 'react-css-modules';
-import { prefetch } from 'react-fetcher';
 
+import { prefetch } from 'lib/fetcher';
 import fetchData from 'lib/fetchData';
-import { actions, filters } from 'modules/rooms';
-import { list as selector } from 'selectors/rooms';
+
+import filters from 'modules/rooms/filters';
+import * as actions from 'modules/rooms/actions';
+import * as selectors from 'modules/rooms/selectors';
 
 import InfiniteScroll from 'components/infinite_scroll';
 import Spinner from 'components/spinners/folding_cube';
@@ -69,4 +71,4 @@ function selectActions(dispatch) {
   return { actions: bindActionCreators(actions, dispatch) };
 }
 
-export default connect(selector, selectActions)(Page);
+export default connect(selectors.list, selectActions)(Page);

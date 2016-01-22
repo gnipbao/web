@@ -1,3 +1,4 @@
+import { autobind } from 'core-decorators';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import css from 'react-css-modules';
@@ -8,7 +9,7 @@ import Button from 'react-toolbox/lib/button';
 import Tooltip from 'react-toolbox/lib/tooltip';
 import Snackbar from 'react-toolbox/lib/snackbar';
 
-import { login } from 'modules/auth';
+import * as authActions from 'modules/auth/actions';
 import { validate } from './validation';
 import style from './style';
 
@@ -43,10 +44,12 @@ export class SignInPage extends Component {
     fields: object.isRequired
   };
 
+  @autobind
   handleLogin(provider, code) {
     this.props.login(provider, code);
   }
 
+  @autobind
   handleSubmit(e) {
     e.preventDefault();
   }
@@ -58,6 +61,7 @@ export class SignInPage extends Component {
     this.setState({ showErrors });
   }
 
+  @autobind
   handleSnackbarTimeout() {
     this.setState({ showErrors: false });
   }
@@ -83,7 +87,7 @@ export class SignInPage extends Component {
         icon='error_outline'
         active={this.state.showErrors}
         label={this.props.auth.error || ''}
-        onTimeout={::this.handleSnackbarTimeout}
+        onTimeout={this.handleSnackbarTimeout}
       />
     );
   }
@@ -98,7 +102,7 @@ export class SignInPage extends Component {
     };
 
     return (
-      <form styleName='form' data-valid={valid} onSubmit={::this.handleSubmit}>
+      <form styleName='form' data-valid={valid} onSubmit={this.handleSubmit}>
         <div styleName='fields'>
           <Input
             {...inputProps}
@@ -141,4 +145,6 @@ export const SignInFormPage = reduxForm({
   validate
 })(SignInPage);
 
-export default connect(select, { login })(SignInFormPage);
+export default connect(select, {
+  login: authActions.login
+})(SignInFormPage);

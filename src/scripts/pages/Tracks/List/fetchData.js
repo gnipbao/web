@@ -1,5 +1,5 @@
 import isEmpty from 'lodash/isEmpty';
-import { tracks as actions } from 'modules/playlists';
+import * as actions from 'modules/playlists/actions';
 
 export default function(context) {
   const {
@@ -11,6 +11,6 @@ export default function(context) {
   const data = tracks[id];
 
   if (!data || isEmpty(data.ids) && !data.loading) {
-    return dispatch(actions.list(id));
+    return dispatch(actions.tracks.list(id));
   }
 }

@@ -2,18 +2,17 @@ import isEmpty from 'lodash/isEmpty';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import css from 'react-css-modules';
-import { prefetch } from 'react-fetcher';
 
 import Button from 'react-toolbox/lib/button';
 
-import Spinner from 'components/spinners/folding_cube';
+import * as notificationActions from 'modules/notifications/actions';
+import * as selectors from 'modules/rooms/selectors';
+import * as roomActions from 'modules/rooms/actions';
 
-import * as notificationActions from 'modules/notifications';
-import { actions as roomActions } from 'modules/rooms';
-
-import * as selectors from 'selectors/rooms';
+import { prefetch } from 'lib/fetcher';
 import fetchData from 'lib/fetchData';
 
+import Spinner from 'components/spinners/folding_cube';
 import Members from './Members';
 import Playlist from './Playlist';
 import style from './style';

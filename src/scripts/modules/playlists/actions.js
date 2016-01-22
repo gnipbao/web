@@ -1,7 +1,7 @@
-import { apiAction, apiReducer } from 'lib/redux';
+import { apiAction } from 'lib/redux';
+
 import * as schemas from 'api/schemas';
 import * as service from 'services/playlists';
-import * as reducers from 'reducers/crud';
 
 export const list = apiAction(
   'playlists.api.list', {
@@ -25,17 +25,3 @@ export const tracks = {
     }, (id, page, count) => ({ id, page, count })
   )
 };
-
-const handlers = {
-  [tracks.list]: reducers.nested('tracks', reducers.list)
-};
-
-const initialState = {
-  tracks: {}
-};
-
-export default apiReducer({
-  list,
-  fetch,
-  ...handlers
-}, initialState);

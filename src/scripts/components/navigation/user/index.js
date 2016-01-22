@@ -4,11 +4,9 @@ import Button from 'react-toolbox/lib/button';
 import Tooltip from 'react-toolbox/lib/tooltip';
 
 import Avatar from 'components/user/avatar';
-
-const TooltipButton = Tooltip(Button);
-
 import style from './style';
 
+const TooltipButton = Tooltip(Button);
 const { func, object, bool } = PropTypes;
 
 export const User = (props) => {

@@ -5,7 +5,7 @@ import Tooltip from 'react-toolbox/lib/tooltip';
 import Button from 'react-toolbox/lib/button';
 import { CardActions } from 'react-toolbox/lib/card';
 
-import { actions } from 'modules/rooms';
+import * as actions from 'modules/rooms/actions';
 
 import style from './style';
 

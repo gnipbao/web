@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 
 import Notification from './notification';
-import { destroy } from 'modules/notifications';
+import * as actions from 'modules/notifications/actions';
 
 import style from './style';
 
@@ -52,5 +52,5 @@ export class NotificationSystem extends Component {
 
 export default connect(
   s => ({ source: s.notifications }),
-  { destroy }
+  actions
 )(NotificationSystem);

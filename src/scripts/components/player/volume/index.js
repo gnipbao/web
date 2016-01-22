@@ -1,3 +1,4 @@
+import { autobind } from 'core-decorators';
 import clamp from 'lodash/clamp';
 import css from 'react-css-modules';
 import { IconButton } from 'react-toolbox/lib/button';
@@ -17,34 +18,46 @@ export class Volume extends Component {
 
   state = { expanded: false };
 
+  @autobind
   handleToggle() {
     const expanded = !this.state.expanded;
     this.setState({ expanded });
   }
 
+  @autobind
   handleMouseDown(e) {
     window.addEventListener('mousemove', this.handleMouseMove);
     window.addEventListener('mouseup', this.handleMouseUp);
   }
 
-  handleMouseUp = (e) => {
+  @autobind
+  handleMouseUp(e) {
     window.removeEventListener('mousemove', this.handleMouseMove);
     window.removeEventListener('mouseup', this.handleMouseUp);
   };
 
   handleMouseMove = (e) => this.changeVolume(e);
 
-  changeVolume = (e) => {
-    const boundingRect = this.bar.getBoundingClientRect();
-    const value = (e.clientY - boundingRect.top) / this.bar.offsetHeight;
+  @autobind
+  changeVolume(e) {
+    const boundingRect = this.refs.bar.getBoundingClientRect();
+    const value = (e.clientY - boundingRect.top) / this.refs.bar.offsetHeight;
     const factor = 1 - value;
     const volume = clamp(factor, 0, 1);
 
     this.props.onVolumeChange(volume);
   };
 
+  changeVolumeToMin() {
+    this.props.onVolumeChange(0);
+  }
+
+  changeVolumeToMax() {
+    this.props.onVolumeChange(1);
+  }
+
   render() {
-    const { volume, muted, onVolumeChange } = this.props;
+    const { volume, muted } = this.props;
     const { expanded } = this.state;
 
     const silent = muted || volume === 0;
@@ -53,34 +66,36 @@ export class Volume extends Component {
 
     const percentage = volume * 100;
     const valueStyle = { top: (100 - percentage) + '%' };
+    const animationStyle = {
+      opacity: spring(expanded ? 1 : 0.01, presets.stiff)
+    };
 
     return (
       <div styleName='root'>
         <IconButton styleName='toggle'
           neutral={false}
           icon={toggleIcon}
-          onClick={::this.handleToggle}
+          onClick={this.handleToggle}
         />
-        <Motion style={{ opacity: spring(expanded ? 1 : 0.01, presets.stiff) }}>
+        <Motion style={animationStyle}>
           {s =>
             <div className={style.container} style={s}>
               <IconButton className={style.max}
                 ripple={false}
                 neutral={false}
                 icon='volume_up'
-                onClick={() => onVolumeChange(1)}
+                onClick={this.changeVolumeToMax}
               />
               <div className={style.bar}
-                ref={r => this.bar = r}
                 onClick={this.changeVolume}
-                onMouseDown={::this.handleMouseDown}>
+                onMouseDown={this.handleMouseDown}>
                 <div className={style.value} style={valueStyle}></div>
               </div>
               <IconButton className={style.min}
                 ripple={false}
                 neutral={false}
                 icon='volume_off'
-                onClick={() => onVolumeChange(0)}
+                onClick={this.changeVolumeToMin}
               />
             </div>
           }

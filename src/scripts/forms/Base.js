@@ -1,3 +1,5 @@
+import { autobind } from 'core-decorators';
+
 const { func, bool } = PropTypes;
 
 export default class Form extends Component {
@@ -21,8 +23,8 @@ export default class Form extends Component {
     return (
       <form
         data-valid={this.props.valid}
-        onSubmit={::this.handleSubmit}
-        onChange={::this.handleChange}
+        onSubmit={this.handleSubmit}
+        onChange={this.handleChange}
         className={this.props.className}>
         {this.props.children}
       </form>
@@ -30,6 +32,7 @@ export default class Form extends Component {
   }
 
 
+  @autobind
   handleChange(event) {
     const element = event.target;
 
@@ -40,6 +43,7 @@ export default class Form extends Component {
   }
 
 
+  @autobind
   handleSubmit(e) {
     e.preventDefault();
 

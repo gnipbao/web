@@ -1,8 +1,7 @@
-import { action, reducer } from 'lib/redux';
+import { reducer } from 'lib/redux';
+import { toggle } from './actions';
 
-export const toggle = action('navigation.toggle');
-
-const initialState = {
+export const initialState = {
   expanded: true
 };
 

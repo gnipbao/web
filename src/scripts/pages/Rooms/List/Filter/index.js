@@ -1,7 +1,7 @@
 import css from 'react-css-modules';
 import Button from 'react-toolbox/lib/button';
 
-import { filters } from 'modules/rooms';
+import filters from 'modules/rooms/filters';
 
 import style from './style';
 

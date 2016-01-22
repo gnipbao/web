@@ -5,7 +5,7 @@ import Select from 'react-select';
 import FontIcon from 'react-toolbox/lib/font_icon';
 import Button from 'react-toolbox/lib/button';
 
-import { toggle as toggleNavigation } from 'modules/navigation';
+import * as navigationActions from 'modules/navigation/actions';
 
 import stickify from 'components/stickify';
 import Header from './header';
@@ -42,5 +42,7 @@ Toolbar.propTypes = {
 export const StyledToolbar = css(Toolbar, style);
 export const StickifiedToolbar = stickify(StyledToolbar);
 export default connect(
-  selector, { toggleNavigation }
+  selector, {
+    toggleNavigation: navigationActions.toggle
+  }
 )(StickifiedToolbar);

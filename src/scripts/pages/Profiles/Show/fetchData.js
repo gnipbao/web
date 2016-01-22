@@ -1,5 +1,5 @@
-import { fetch as fetchProfile } from 'modules/profile';
-import { fetch as fetchUser } from 'modules/users';
+import * as profileActions from 'modules/profile/actions';
+import * as userActions from 'modules/users/actions';
 
 export default function(context) {
   const {
@@ -13,10 +13,10 @@ export default function(context) {
   } = context;
 
   if (params && params.id && !entities.users[params.id] && !users.loading) {
-    return dispatch(fetchUser(params.id))
+    return dispatch(userActions.fetch(params.id))
   }
 
   if (!entities.users[profile.id] && !profile.loading) {
-    return dispatch(fetchProfile());
+    return dispatch(profileActions.fetch());
   }
 }

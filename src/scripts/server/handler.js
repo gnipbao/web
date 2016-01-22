@@ -9,10 +9,10 @@ import { bindActionCreators } from 'redux';
 import { routeActions } from 'redux-simple-router';
 import fetch from 'isomorphic-fetch';
 import cookie from 'react-cookie';
-import { getPrefetchedData } from 'react-fetcher';
 
 import getInitialState from './utils/getInitialState';
 import createStore from 'store/create';
+import { getPrefetchedData } from 'lib/fetcher';
 import history from 'lib/history';
 import render from 'lib/render';
 
