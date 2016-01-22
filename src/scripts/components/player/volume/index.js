@@ -40,18 +40,20 @@ export class Volume extends Component {
 
   @autobind
   changeVolume(e) {
-    const boundingRect = this.refs.bar.getBoundingClientRect();
-    const value = (e.clientY - boundingRect.top) / this.refs.bar.offsetHeight;
+    const boundingRect = this.bar.getBoundingClientRect();
+    const value = (e.clientY - boundingRect.top) / this.bar.offsetHeight;
     const factor = 1 - value;
     const volume = clamp(factor, 0, 1);
 
     this.props.onVolumeChange(volume);
   };
 
+  @autobind
   changeVolumeToMin() {
     this.props.onVolumeChange(0);
   }
 
+  @autobind
   changeVolumeToMax() {
     this.props.onVolumeChange(1);
   }
@@ -87,6 +89,7 @@ export class Volume extends Component {
                 onClick={this.changeVolumeToMax}
               />
               <div className={style.bar}
+                ref={r => this.bar = r}
                 onClick={this.changeVolume}
                 onMouseDown={this.handleMouseDown}>
                 <div className={style.value} style={valueStyle}></div>

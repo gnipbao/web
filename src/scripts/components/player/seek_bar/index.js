@@ -35,7 +35,8 @@ export default class SeekBar extends Component {
     this.props.onSeekStart();
   }
 
-  handleMouseUp = (e) => {
+  @autobind
+  handleMouseUp(e) {
     if (!this.props.seeking) return;
 
     document.documentElement.removeEventListener('mousemove', this.seek);
@@ -45,7 +46,8 @@ export default class SeekBar extends Component {
     this.props.onSeekEnd();
   };
 
-  seek = (e) => {
+  @autobind
+  seek(e) {
     const boundingRect = this.refs.bar.getBoundingClientRect();
     const value = (e.clientX - boundingRect.left) / this.refs.bar.offsetWidth;
     const factor = clamp(value, 0, 1);
@@ -69,8 +71,7 @@ export default class SeekBar extends Component {
     return (
       <div styleName='root'>
         <div styleName='wrap'>
-          <div styleName='bar'
-            onClick={this.seek}>
+          <div styleName='bar' ref='bar' onClick={this.seek}>
             <div styleName='progress' style={progressStyle}>
               <div styleName='handle'
                 onClick={this.handleClick}

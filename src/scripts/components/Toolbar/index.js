@@ -17,12 +17,13 @@ const { bool, func, object, shape } = PropTypes;
 export const Toolbar = (props) => {
   const { sticky, expanded, toggleNavigation } = props;
 
+  const styleName = sticky ? 'sticky' : 'normal'
   const icon = expanded ?
     'format_indent_decrease' :
     'format_indent_increase';
 
   return (
-    <header styleName={sticky ? 'sticky' : 'normal'}>
+    <header styleName={styleName}>
       <Header expanded={expanded} title='Party Rooms' />
       <Button flat ripple={false}
         neutral={false}
