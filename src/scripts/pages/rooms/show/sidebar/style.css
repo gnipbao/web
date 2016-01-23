@@ -1,0 +1,28 @@
+@import "./vars";
+@import "media";
+
+.sidebar {
+  min-height: 400px;
+  min-width: 30rem;
+  margin-left: 12px;
+  background-color: var(--root-background);
+  border-left: 1px solid var(--root-border-color);
+  border-right: 1px solid var(--root-border-color);
+  box-shadow:
+    0 0 2px rgba(#000, 0.2),
+    inset 0 1px 0 rgba(#fff, 0.05);
+}
+
+.tabs {
+  align-items: center;
+}
+
+.normal {
+}
+
+.sticky {
+  position: fixed;
+  z-index: 999;
+
+  @media (--medium) { top: var(--sticky-top); }
+}

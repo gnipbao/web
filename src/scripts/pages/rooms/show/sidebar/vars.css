@@ -1,0 +1,9 @@
+@import "variables";
+
+:root {
+  --root-background: var(--background) tint(20%));
+  --root-text-color: var(--text-color);
+  --root-border-color: color(var(--root-background) shade(10%));
+
+  --sticky-top: var(--toolbar-height);
+}

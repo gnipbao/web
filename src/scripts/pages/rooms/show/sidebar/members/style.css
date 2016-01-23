@@ -1,0 +1,9 @@
+@import "../vars";
+
+:root {
+  --title-background: color(var(--root-background) shade(5%));
+  --title-text-color: color(var(--root-text-color) shade(8%));
+}
+
+.members {
+}

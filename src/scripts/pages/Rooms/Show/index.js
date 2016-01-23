@@ -13,8 +13,8 @@ import { prefetch } from 'lib/fetcher';
 import fetchData from 'lib/fetchData';
 
 import Spinner from 'components/spinners/folding_cube';
-import Members from './Members';
-import Playlist from './Playlist';
+import SideBar from './sidebar';
+import Playlist from './playlist';
 import style from './style';
 
 const { bool, object, func } = PropTypes;
@@ -38,8 +38,9 @@ export class Page extends Component {
 
     return (
       <div styleName='root'>
+        <h1>{name}</h1>
         <Playlist tracks={tracks} />
-        <Members users={users} />
+        <SideBar users={users} />
       </div>
     );
   }

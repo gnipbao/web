@@ -2,7 +2,6 @@ import { autobind } from 'core-decorators';
 import isEmpty from 'lodash/isEmpty';
 import { connect } from 'react-redux';
 import css from 'react-css-modules';
-
 import { Tabs, Tab } from 'react-toolbox/lib/tabs';
 
 import { prefetch } from 'lib/fetcher';

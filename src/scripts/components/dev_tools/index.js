@@ -5,19 +5,19 @@ import SliderMonitor from 'redux-slider-monitor';
 import LogMonitor from 'redux-devtools-log-monitor';
 import DockMonitor from 'redux-devtools-dock-monitor';
 
-// const Monitor = (
-//   <DockMonitor toggleVisibilityKey='ctrl-h'
-//                changePositionKey='ctrl-q'>
-//     <ChartMonitor />
-//   </DockMonitor>
-// );
-
 const Monitor = (
   <DockMonitor toggleVisibilityKey='ctrl-h'
                changePositionKey='ctrl-q'>
-    <LogMonitor />
+    <ChartMonitor />
   </DockMonitor>
 );
+
+// const Monitor = (
+//   <DockMonitor toggleVisibilityKey='ctrl-h'
+//                changePositionKey='ctrl-q'>
+//     <LogMonitor />
+//   </DockMonitor>
+// );
 
 // const Monitor = (
 //   <DockMonitor toggleVisibilityKey='ctrl-h'
