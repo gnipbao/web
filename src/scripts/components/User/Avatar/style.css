@@ -11,13 +11,12 @@
   --normal-font-size: 3.4rem;
 
   --big-size: 128px;
-  --big-font-size: 11rem;
+  --big-font-size: 10rem;
 }
 
 .root {
   position: relative;
   display: inline-block;
-  overflow: hidden;
   text-align: center;
   color: var(--root-text-color);
 }
@@ -47,6 +46,19 @@
   & > .image {
     border-radius: 50%;
   }
+}
+
+.online {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: -1px;
+  width: 10px;
+  height: 10px;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 100%;
+  background-color: var(--brand-success);
 }
 
 .small {

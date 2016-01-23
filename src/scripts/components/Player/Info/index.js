@@ -10,7 +10,7 @@ export const Info = (props) => {
   const { id, title, artist } = props;
 
   return (
-    <div styleName='root'>
+    <div styleName='info'>
       <Link styleName='title' to={`/tracks/${id}`}>{strip(title)}</Link>
       <Link styleName='artist' to='http://google.com'>{strip(artist)}</Link>
     </div>

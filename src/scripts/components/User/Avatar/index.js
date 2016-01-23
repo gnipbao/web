@@ -13,7 +13,7 @@ const Avatar = (props) => {
     currentUserId, id,
     rounded, small, big, rotate,
     picture, nickname, firstName,
-    children, ...other
+    children, online, ...other
   } = props;
 
 
@@ -30,6 +30,7 @@ const Avatar = (props) => {
       {picture ?
         <img styleName='image' src={picture} title={title || 'avatar'} /> :
         <span styleName='letter'>{title && title[0] || '?'}</span>}
+      {online && <i styleName='online'></i>}
     </Link>
   );
 };

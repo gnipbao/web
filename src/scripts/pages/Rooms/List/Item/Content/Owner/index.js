@@ -15,6 +15,7 @@ export const Owner = ({ user }) => {
       <dt>
         <Avatar rounded rotate
           styleName='avatar'
+          online={state === 'online'}
           { ...{ ...avatarProps, id } }
         />
       </dt>

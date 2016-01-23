@@ -12,7 +12,7 @@ const Options = (props) => {
   } = props;
 
   return (
-    <div styleName='root'>
+    <div styleName='options'>
       <IconButton
         styleName={repeat ? 'on' : 'off'}
         neutral={false}

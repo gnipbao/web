@@ -22,10 +22,11 @@ export class Volume extends Component {
   handleToggle() {
     const expanded = !this.state.expanded;
     this.setState({ expanded });
+    if (expanded) document.addEventListener('mousedown', this.handleMouseDown);
   }
 
   @autobind
-  handleMouseDown(e) {
+  handleBarMouseDown(e) {
     window.addEventListener('mousemove', this.handleMouseMove);
     window.addEventListener('mouseup', this.handleMouseUp);
   }
@@ -34,9 +35,25 @@ export class Volume extends Component {
   handleMouseUp(e) {
     window.removeEventListener('mousemove', this.handleMouseMove);
     window.removeEventListener('mouseup', this.handleMouseUp);
-  };
+  }
 
   handleMouseMove = (e) => this.changeVolume(e);
+
+  @autobind
+  handleMouseDown(e) {
+    if (!this.state.expanded) return;
+
+    e.stopPropagation();
+
+    let source = e.target;
+    while (source.parentNode) {
+      if (source === this.root) return;
+      source = source.parentNode;
+    }
+
+    document.removeEventListener('mousedown', this.handleMouseDown);
+    this.setState({ expanded: false });
+  };
 
   @autobind
   changeVolume(e) {
@@ -73,7 +90,7 @@ export class Volume extends Component {
     };
 
     return (
-      <div styleName='root'>
+      <div styleName='volume' ref={r => this.root = r }>
         <IconButton styleName='toggle'
           neutral={false}
           icon={toggleIcon}
@@ -91,7 +108,7 @@ export class Volume extends Component {
               <div className={style.bar}
                 ref={r => this.bar = r}
                 onClick={this.changeVolume}
-                onMouseDown={this.handleMouseDown}>
+                onMouseDown={this.handleBarMouseDown}>
                 <div className={style.value} style={valueStyle}></div>
               </div>
               <IconButton className={style.min}

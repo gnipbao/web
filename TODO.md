@@ -1,3 +1,5 @@
+- [ ] learn and use https://github.com/mozilla/localForage
+- [ ] checkout https://github.com/coodoo/flowery
 - [ ] plug in eslint-plugin-filenames plugin && rename files according to airbnb styleguide
 - [ ] fix my CommonJS style export default's and remove add-module-exports plugin
 - [ ] take a look at https://github.com/mxstbr/react-boilerplate

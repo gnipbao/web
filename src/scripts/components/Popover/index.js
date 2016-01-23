@@ -7,11 +7,12 @@ const { string, bool, node } = PropTypes;
 @css(style)
 export default class Popover extends Component {
   static propTypes = {
+    children: node.isRequired
   };
 
   render() {
     return (
-      <div styleName='root'>
+      <div styleName='popover'>
       </div>
     )
   }

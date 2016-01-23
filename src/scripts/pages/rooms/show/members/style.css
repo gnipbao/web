@@ -2,13 +2,40 @@
 @import "media";
 
 :root {
-  --root-background: var(--brand-black);
+  --root-background: color(var(--background) tint(20%));
+  --root-text-color: var(--text-color);
+  --root-border-color: color(var(--root-background) shade(10%));
+
+  --title-background: color(var(--root-background) shade(5%));
+  --title-text-color: color(var(--root-text-color) shade(8%));
 }
 
 .members {
+  min-height: 400px;
+  min-width: 20rem;
+  margin-left: 12px;
   background-color: var(--root-background);
+  border-left: 1px solid var(--root-border-color);
+  border-right: 1px solid var(--root-border-color);
+  box-shadow:
+    0 0 2px rgba(#000, 0.2),
+    inset 0 1px 0 rgba(#fff, 0.05);
+}
 
-  @media (--medium) { lost-column: 1/4; }
+.title {
+  padding: 8px 15px;
+  background-color: var(--title-background);
+  color: var(--title-text-color);
+  border-bottom: 1px solid var(--root-border-color);
+  font-weight: bold;
+}
 
-  @media (--large) { lost-column: 1/5; }
+.normal {
+}
+
+.sticky {
+  position: fixed;
+  z-index: 999;
+
+  @media (--medium) { top: var(--toolbar-height); }
 }

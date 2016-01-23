@@ -1,5 +1,7 @@
 import css from 'react-css-modules';
+import FontIcon from 'react-toolbox/lib/font_icon';
 
+import TransitiveNumber from 'react-transitive-number';
 import style from './style';
 
 const { array } = PropTypes;
@@ -10,12 +12,12 @@ export const Stats = (props) => {
   return (
     <ul styleName='root'>
       <li styleName='users'>
-        <span styleName='value'>{users.length}</span>
-        <span styleName='label'>users</span>
+        <FontIcon styleName='label' value='people' />
+        <TransitiveNumber styleName='value'>{users.length}</TransitiveNumber>
       </li>
       <li styleName='tracks'>
-        <span styleName='value'>{tracks.length}</span>
-        <span styleName='label'>tracks</span>
+        <FontIcon styleName='label' value='music_note' />
+        <TransitiveNumber styleName='value'>{tracks.length}</TransitiveNumber>
       </li>
     </ul>
   );

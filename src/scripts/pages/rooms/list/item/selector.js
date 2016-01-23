@@ -15,7 +15,7 @@ export default selector(
     ...params.room,
     owner: users[params.owner],
     playback: params.playback ? {
-      ...playback,
+      ...params.playback,
       track: tracks[params.playback.track]
     } : null,
     inside: includes(params.room.users, currentUserId)

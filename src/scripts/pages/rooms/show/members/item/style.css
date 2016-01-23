@@ -1,14 +1,32 @@
 @import "variables";
 
 :root {
-  --root-border-color: color(var(--brand-black) shade(50%));
+  --root-background: color(var(--background) tint(20%));
+  --root-font-size: responsive 1rem 1.2rem;
+
+  --root-link-color: var(--text-color);
+  --root-link-hover-color: color(var(--root-link-color) tint(25%));
+
+  --root-border-color: color(var(--root-background) shade(8%));
 }
 
 .root {
   display: flex;
   align-items: center;
-  padding: 10px 15px;
+  padding: 8px 15px;
   border-bottom: 1px solid var(--root-border-color);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.online {
+  composes: root;
+}
+
+.offline {
+  composes: root;
 }
 
 .avatar {
@@ -16,5 +34,11 @@
 
 .username {
   margin-left: 8px;
-  font-size: 1.2rem;
+  font-size: var(--root-font-size);
+  font-weight: bold;
+  color: var(--root-link-color);
+
+  &:hover {
+    color: var(--root-link-hover-color);
+  }
 }

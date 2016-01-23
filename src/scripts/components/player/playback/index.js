@@ -11,7 +11,7 @@ const Playback = (props) => {
   } = props;
 
   return (
-    <div styleName='root'>
+    <div styleName='playback'>
       <IconButton
         neutral={false}
         icon='skip_previous'

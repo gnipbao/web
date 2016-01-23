@@ -24,7 +24,7 @@
 
   @media (--large) { lost-column: 1/3; }
 
-  @media (--desktop) { lost-column: 1/4; }
+  @media (--desktop) { lost-column: 1/5; }
 }
 
 .vertical {

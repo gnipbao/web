@@ -1,5 +1,6 @@
 import css from 'react-css-modules';
 import { IconButton } from 'react-toolbox/lib/button';
+import { spring, presets, Motion } from 'react-motion';
 
 import style from './style';
 
@@ -18,7 +19,7 @@ class Playlist extends Component {
     const { expanded } = this.state;
 
     return (
-      <div styleName='root'>
+      <div styleName='playlist'>
         <IconButton
           neutral={false}
           icon='list'

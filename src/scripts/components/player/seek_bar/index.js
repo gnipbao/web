@@ -69,7 +69,7 @@ export default class SeekBar extends Component {
     const progressStyle = { width: `${width}%` };
 
     return (
-      <div styleName='root'>
+      <div styleName='seek-bar'>
         <div styleName='wrap'>
           <div styleName='bar' ref='bar' onClick={this.seek}>
             <div styleName='progress' style={progressStyle}>

@@ -41,7 +41,7 @@ Toolbar.propTypes = {
 };
 
 export const StyledToolbar = css(Toolbar, style);
-export const StickifiedToolbar = stickify(StyledToolbar);
+export const StickifiedToolbar = stickify(StyledToolbar, 120, true);
 export default connect(
   selector, {
     toggleNavigation: navigationActions.toggle

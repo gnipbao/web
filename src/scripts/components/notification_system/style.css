@@ -6,7 +6,7 @@
   width: 32rem;
   padding: 4px 20px;
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y: auto;
 }
 
 .enter {

@@ -44,5 +44,5 @@ Navigation.defaultProps = {
 };
 
 export const StyledNavigation = css(Navigation, style, { allowMultiple: true });
-export const StickifiedNavigation = stickify(StyledNavigation);
+export const StickifiedNavigation = stickify(StyledNavigation, 120);
 export default connect(selector)(StickifiedNavigation);

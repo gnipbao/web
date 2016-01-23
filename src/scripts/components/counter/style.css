@@ -1,0 +1,10 @@
+@import "variables";
+
+:root {
+}
+
+.root {
+  display: inline-block;
+  position: relative;
+  white-space: pre;
+}

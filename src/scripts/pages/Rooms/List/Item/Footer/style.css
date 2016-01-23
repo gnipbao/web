@@ -1,15 +1,17 @@
 @import "variables";
 
 :root {
-  --root-background: #fff;
-  --root-text-color: color(var(--text-color) tint(50%));
+  --root-background: color(var(--background) shade(5%));
+  --root-text-color: color(var(--text-color) shade(30%));
+  --root-border-color: color(var(--root-background) shade(10%));
+
   --button-hover-background: color(var(--root-background) shade(10%));
-  --button-hover-text-color: color(var(--text-color) tint(20%));
+  --button-hover-text-color: color(var(--root-text-color) shade(10%));
 }
 
 .root {
   padding: 0;
-  border-top: 1px solid var(--border-color);
+  border-top: 1px solid var(--root-border-color);
 
   & > [data-react-toolbox="button"] {
     margin: 0;

@@ -8,7 +8,7 @@
   --value-background: linear-gradient(to bottom, var(--brand-success) 0, color(var(--brand-success) shade(30%)) 100%);
 }
 
-.root {
+.volume {
   color: var(--brand-light);
 }
 

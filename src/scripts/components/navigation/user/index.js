@@ -15,19 +15,13 @@ export const User = (props) => {
 
   return (
     <div styleName={ expanded ? 'expanded' : 'collapsed' }>
-      <Avatar rounded small rotate
-        styleName='avatar'
-        { ...{ nickname, first_name, picture } }
-      />
+      <Avatar rounded small rotate { ...{ nickname, first_name, picture } } />
       <dl styleName='info'>
         <dt styleName='username'>{first_name}</dt>
         <dt styleName='role'>{role}</dt>
       </dl>
       <div styleName='actions'>
-        <TooltipButton
-          floating
-          mini
-          primary
+        <TooltipButton floating mini primary
           icon='exit_to_app'
           tooltip='sign out'
           onClick={logout}

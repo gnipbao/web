@@ -3,5 +3,15 @@
 :root {
 }
 
-.root {
+.popover {
+  position: relative;
+}
+
+.expanded {
+  composes: popover;
+}
+
+.collapsed {
+  composes: popover;
+  display: none;
 }

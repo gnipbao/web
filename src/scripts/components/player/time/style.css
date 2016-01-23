@@ -1,7 +1,7 @@
 @import "variables";
 @import "media";
 
-.root {
+.time {
   display: none;
 
   @media (--medium) {

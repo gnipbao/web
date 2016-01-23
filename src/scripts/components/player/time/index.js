@@ -18,7 +18,7 @@ export const Time = (props) => {
 
   const formatedValue = `${offset} / ${duration}`;
 
-  return <span styleName='root'>{formatedValue}</span>;
+  return <span styleName='time'>{formatedValue}</span>;
 };
 
 export default css(Time, style);

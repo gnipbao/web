@@ -11,7 +11,7 @@ class Playlist extends Component {
 
   render() {
     return (
-      <div styleName='root'>
+      <div styleName='item'>
       </div>
     )
   }

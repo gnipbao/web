@@ -1,0 +1,17 @@
+@import "variables";
+
+:root {
+}
+
+.sym {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.inc {
+}
+
+.dec {
+}

@@ -38,9 +38,6 @@
   }
 }
 
-.avatar {
-}
-
 .username {
   composes: truncate from "styles/utils";
 }

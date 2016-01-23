@@ -34,7 +34,7 @@ export class App extends Component {
     const { children } = this.props;
 
     return (
-      <div styleName='root'>
+      <div styleName='app'>
         <Toolbar />
         <div styleName='main'>
           <Navigation logout={this.handleLogout} />

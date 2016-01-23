@@ -1,5 +1,7 @@
 import css from 'react-css-modules';
 import { Link } from 'react-router'
+import FontIcon from 'react-toolbox/lib/font_icon';
+import TransitiveNumber from 'react-transitive-number';
 
 import style from './style';
 
@@ -13,18 +15,18 @@ export const Stats = (props) => {
   } = props;
 
   return (
-    <ul styleName='root'>
+    <ul styleName='stats'>
       <li>
-        <span styleName='value'>{roomsCount}</span>
-        <span styleName='label'>rooms</span>
+        <FontIcon styleName='label' value='dashboard' />
+        <TransitiveNumber styleName='value'>{roomsCount}</TransitiveNumber>
       </li>
       <li>
-        <span styleName='value'>{playlistsCount}</span>
-        <span styleName='label'>playlists</span>
+        <FontIcon styleName='label' value='library_music' />
+        <TransitiveNumber styleName='value'>{playlistsCount}</TransitiveNumber>
       </li>
       <li>
-        <span styleName='value'>{tracksCount}</span>
-        <span styleName='label'>tracks</span>
+        <FontIcon styleName='label' value='music_note' />
+        <TransitiveNumber styleName='value'>{tracksCount}</TransitiveNumber>
       </li>
     </ul>
   );

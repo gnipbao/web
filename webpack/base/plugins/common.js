@@ -10,7 +10,8 @@ const modules = {
   ReactDOMServer: 'react-dom/server',
   themeable: 'react-themeable',
   dude: 'debug-dude',
-  Helmet: 'react-helmet'
+  Helmet: 'react-helmet',
+  Joyride: 'react-joyride'
 };
 
 export default [

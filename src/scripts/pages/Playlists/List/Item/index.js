@@ -13,7 +13,7 @@ export const Item = (props) => {
 
   return (
     <ListItem
-      styleName='root'
+      styleName='item'
       caption={title}
       avatar={owner.picture}
       legend={owner.firstName}

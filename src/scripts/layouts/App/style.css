@@ -1,7 +1,7 @@
 @import "variables";
 @import "media";
 
-.root {
+.app {
   display: flex;
   flex-direction: column;
 }
@@ -15,8 +15,6 @@
 }
 
 .content {
-  width: 100vw;
-  padding: 230px 0 0 20px;
-
-  @media (--medium) { padding: 60px 0 0 10px; }
+  width: 100%;
+  padding: 10px;
 }

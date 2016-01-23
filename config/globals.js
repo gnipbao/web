@@ -20,7 +20,7 @@ export default (environments, environmentName, argv) => {
     __PROFILE__: argv.profile,
     __DEBUG__: argv.debug,
 
-    __DEVTOOLS__: environments.development && true,
+    __DEVTOOLS__: environments.development && false,
   };
 
   const webRoot = process.env.WEB_ROOT || server.url;

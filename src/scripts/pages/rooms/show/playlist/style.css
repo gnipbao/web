@@ -6,9 +6,10 @@
 }
 
 .playlist {
+  width: 100%;
   background-color: var(--root-background);
+}
 
-  @media (--medium) { lost-column: 3/4; }
-
-  @media (--medium) { lost-column: 4/5; }
+.title {
+  padding: 8px 15px;
 }

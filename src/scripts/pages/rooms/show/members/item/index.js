@@ -16,8 +16,10 @@ export const Item = ({ user }) => {
   const username = `${firstName} ${lastName}`;
 
   return (
-    <div styleName='root'>
-      <Avatar small rounded rotate styleName='avatar'
+    <div styleName={state}>
+      <Avatar small rounded rotate
+        styleName='avatar'
+        online={state === 'online'}
         { ...{ ...avatarProps, id } } />
       <Link styleName='username' to={`/users/${id}`}>
         {username}

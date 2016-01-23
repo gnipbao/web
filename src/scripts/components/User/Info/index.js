@@ -17,7 +17,7 @@ export const Info = (props) => {
   const username = `${firstName} ${lastName}`;
 
   return (
-    <section styleName='root'>
+    <section styleName='info'>
       <Avatar rounded big
         styleName='avatar'
         { ...{ id, nickname, firstName, picture } }

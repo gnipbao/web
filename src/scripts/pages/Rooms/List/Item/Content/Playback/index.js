@@ -1,16 +1,20 @@
 import css from 'react-css-modules';
+import Typist from 'react-typist';
 
+import format from 'lib/utils/format';
 import style from './style';
 
 const { number, object } = PropTypes;
+const typistOptions = { cursor: { show: false } };
 
 export const Playback = (props) => {
   const { track: { title, artist } } = props;
-  const label = `${title} by ${artist}`;
+  const formattedTitle = format(title);
+  const formattedArtist = format(artist);
 
-  return (
-    <div styleName='root'>{label}</div>
-  );
+  const label = `${formattedTitle} by ${formattedArtist}`;
+
+  return <Typist styleName='root' {...typistOptions}>{label}</Typist>;
 };
 
 Playback.propTypes = {

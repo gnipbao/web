@@ -1,4 +1,5 @@
 import css from 'react-css-modules';
+import { List } from 'react-toolbox/lib/list';
 
 import Track from './Track';
 import style from './style';
@@ -9,9 +10,10 @@ export const Playlist = (props) => {
   const { tracks } = props;
 
   return (
-    <div styleName='playlist'>
-      {tracks.map(track => <Item key={track.id} {...track} />)}
-    </div>
+    <List styleName='playlist'>
+      <h6 styleName='title'>Track list</h6>
+      {tracks.map(track => <Track key={track.id} track={track} />)}
+    </List>
   );
 };
 

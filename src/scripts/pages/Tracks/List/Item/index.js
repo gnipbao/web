@@ -6,7 +6,7 @@ import Button from 'react-toolbox/lib/button';
 
 const TooltipButton = Tooltip(Button);
 
-import { strip } from 'lib/utils/format';
+import format from 'lib/utils/format';
 import style from './style';
 
 @css(style)
@@ -30,8 +30,8 @@ export default class Item extends Component {
       <ListItem
         styleName={current ? 'on' : 'off'}
         selectable
-        caption={strip(title)}
-        legent={artist}
+        caption={format(title)}
+        legend={artist}
         onClick={handleClick}
         { ...{ leftIcon, rightIcon } }>
       </ListItem>

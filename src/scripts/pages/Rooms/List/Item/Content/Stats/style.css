@@ -1,27 +1,24 @@
 @import "variables";
 
 :root {
-  --label-font-size: responsive 1.2rem 1.4rem;
+  --root-border-color: color(var(--background) shade(8%));
+
+  --label-font-size: responsive 1.6rem 1.8rem;
   --label-text-color: var(--text-color);
-  --value-font-size: responsive 1.8rem 2.2rem;
+  --value-font-size: responsive 1.8rem 2rem;
 
-  --users-background: var(--brand-success-pastel);
-  --users-text-color: var(--brand-success);
+  --users-background: var(--background);
+  --users-text-color: var(--brand-dark);
 
-  --tracks-background: var(--brand-info-pastel);
-  --tracks-text-color: var(--brand-info);
+  --tracks-background: var(--background);
+  --tracks-text-color: var(--brand-dark);
 }
 
 .root {
   composes: stats from "styles/layout";
 
-  .label,
-  .value {
-    display: block;
-    margin-bottom: 4px;
-  }
-
   .label {
+    margin-bottom: 4px;
     font-size: var(--label-font-size);
     color: var(--label-text-color);
   }
@@ -33,6 +30,8 @@
 }
 
 .item {
+  display: flex;
+  flex-direction: column;
   width: 50%;
   padding: 8px;
 }
@@ -41,6 +40,7 @@
   composes: item;
   background-color: var(--users-background);
   color: var(--users-text-color);
+  border-right: 1px solid var(--root-border-color);
 }
 
 .tracks {
