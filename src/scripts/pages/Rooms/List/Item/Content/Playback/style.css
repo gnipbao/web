@@ -1,15 +1,21 @@
 @import "variables";
 
 :root {
+  --root-link-color: var(--brand-light);
 }
 
 .root {
   composes: vertical from "styles/layout";
 
   padding: 8px;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
+  font-weight: bold;
   background-color: var(--brand-info);
-  color: var(--brand-light);
+  color: var(--root-link-color);
+
+  &:hover {
+    color: color(var(--root-link-color) tint(20%));
+  }
 }
 
 .appear {

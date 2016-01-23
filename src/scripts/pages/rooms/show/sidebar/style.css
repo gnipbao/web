@@ -3,7 +3,7 @@
 
 .sidebar {
   min-height: 400px;
-  min-width: 30rem;
+  min-width: 24rem;
   margin-left: 12px;
   background-color: var(--root-background);
   border-left: 1px solid var(--root-border-color);
