@@ -1,9 +1,11 @@
 @import "variables";
 
 :root {
+  --root-hover-background-color: color(var(--background) shade(5%));
+
   --title-font-size: responsive 1.2rem 1.4rem;
-  --title-text-color: color(var(--text-color) shade(15%));
-  --title-hover-text-color: color(var(--title-text-color) shade(20%));
+  --title-text-color: color(var(--text-color) shade(40%));
+  --title-hover-text-color: color(var(--title-text-color) shade(50%));
 
   --artist-font-size: responsive 1.1rem 1.2rem;
   --artist-text-color: color(var(--text-color) shade(5%));
@@ -14,10 +16,11 @@
   align-items: center;
   justify-content: space-between;
   flex: 2;
-  padding: 6px 12px;
+  padding: 4px 6px;
   color: var(--title-text-color);
 
   &:hover {
+    background-color: var(--root-hover-background-color);
     color: var(--title-hover-text-color);
   }
 }
@@ -39,13 +42,11 @@
 }
 
 .title {
-  composes: truncate from "styles/utils";
   font-size: var(--title-font-size);
   color: var(--title-text-color);
 }
 
 .artist {
-  composes: truncate from "styles/utils";
   padding-top: 4px;
   font-size: var(--artist-font-size);
   color: var(--artist-text-color);

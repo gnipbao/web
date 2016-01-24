@@ -1,7 +1,13 @@
 @import "variables";
+@import "media";
 
 .options {
-  margin-left: 20px;
+  display: none;
+
+  @media (--medium) {
+    display: block;
+    margin-left: 20px;
+  }
 }
 
 .off {

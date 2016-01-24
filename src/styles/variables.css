@@ -90,4 +90,7 @@
 
   --navigation-width-expanded: 20rem;
   --navigation-width-collapsed: 6rem;
+
+  --equalizer-width: 40px;
+  --equalizer-height: 30px;
 }

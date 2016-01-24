@@ -15,13 +15,13 @@ const Controls = (props) => {
 
   return (
     <span styleName='controls'>
-      <Button mini raised styleName='toggle-playback'
+      <Button mini floating styleName='toggle-playback'
         neutral={false} onClick={togglePlayback}
         icon={toggleActionName} tooltip={toggleActionName} />
-      <Button mini raised styleName='edit'
+      <Button mini floating styleName='edit'
         neutral={false}
         icon='mode_edit' tooltip='edit track' />
-      <Button mini raised styleName='destroy'
+      <Button mini floating styleName='destroy'
         neutral={false} onClick={() => destroy(track.id)}
         icon='delete' tooltip='delete from playlist' />
     </span>

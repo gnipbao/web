@@ -23,8 +23,17 @@
   flex: 1;
   padding: 0 6px 0 12px;
   min-width: var(--navigation-width-collapsed);
-  width: var(--navigation-width-expanded);
-  max-width: var(--navigation-width-expanded);
+  max-width: calc(var(--navigation-width-expanded) - var(--equalizer-width));
+
+  @media (--medium) {
+    width: calc(var(--navigation-width-expanded) - var(--equalizer-width));
+  }
+}
+
+.equalizer {
+  display: none;
+
+  @media (--medium) { display: block; }
 }
 
 .link {

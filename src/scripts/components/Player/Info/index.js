@@ -7,12 +7,14 @@ import style from './style';
 
 const { bool, string, object, shape } = PropTypes;
 
+// TODO: Equalizer component is CPU consuming, replace with animation.gif
+
 export const Info = (props) => {
   const { id, title, artist, playing } = props;
 
   return (
     <div styleName='root'>
-      <Equalizer playing={playing} />
+      <Equalizer styleName='equalizer' playing={playing} />
       <div styleName='info'>
         <Link styleName='title' to={`/tracks/${id}`}>{strip(title)}</Link>
         <Link styleName='artist' to='http://google.com'>{strip(artist)}</Link>
