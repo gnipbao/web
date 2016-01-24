@@ -1,4 +1,5 @@
 import isEmpty from 'lodash/isEmpty';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import css from 'react-css-modules';
 
@@ -29,9 +30,10 @@ export class Page extends Component {
     params: object.isRequired,
     pageCount: number.isRequired,
     links: object,
-    list: func.isRequired,
     loading: bool,
-    collection: array
+    collection: array,
+    playerActions: object.isRequired,
+    trackActions: object.isRequired
   };
 
   hasMore = () => Boolean(
@@ -40,7 +42,7 @@ export class Page extends Component {
   );
 
   render() {
-    const { params, pageCount, loading, list } = this.props;
+    const { params, pageCount, loading, trackActions } = this.props;
 
     return (
       <section>
@@ -50,7 +52,7 @@ export class Page extends Component {
           enabled={this.hasMore()}
           loading={loading}
           spinner={() => <Spinner />}
-          load={() => list(params.id, pageCount + 1)}>
+          load={() => trackActions.list(params.id, pageCount + 1)}>
           {this.renderContent()}
         </InfiniteScroll>
       </section>
@@ -61,30 +63,35 @@ export class Page extends Component {
     const {
       collection,
       player,
-      changeTrack,
-      togglePlay
+      playerActions,
+      trackActions
     } = this.props;
 
-    const playerProps = {
-      ...player,
-      changeTrack,
-      togglePlay
-    };
-
     if (isEmpty(collection)) return null;
+
+    const trackProps = {
+      player,
+      playerActions,
+      trackActions
+    };
 
     return (
       <ul styleName='list'>
         {collection.map(track =>
           <Track key={track.id}
-            track={track} player={playerProps} />)
+            track={track} { ...trackProps }
+          />)
         }
       </ul>
     );
   }
 }
 
-export default connect(selectors.list, {
-  ...playlistActions.tracks,
-  ...playerActions
-})(Page);
+function selectActions(dispatch) {
+  return {
+    playerActions: bindActionCreators(playerActions, dispatch),
+    trackActions: bindActionCreators(playlistActions.tracks, dispatch)
+  };
+}
+
+export default connect(selectors.list, selectActions)(Page);

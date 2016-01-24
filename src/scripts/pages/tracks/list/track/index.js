@@ -1,32 +1,46 @@
 import css from 'react-css-modules';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import * as actions from 'modules/playlists/actions';
 
 import Info from './info';
 import Controls from './controls';
 import style from './style';
 
-@css(style)
-export default class Item extends Component {
-  render() {
-    const { track, player, actions } = this.props;
-    const current = track.id === player.track;
+const { object, func } = PropTypes;
 
-    const togglePlayback = current ?
-      () => player.togglePlay() :
-      () => player.changeTrack(track.id);
+const Track = (props) => {
+  const {
+    player, track,
+    playerActions,
+    trackActions
+  } = props;
 
-    const componentProps = { 
-      playing: player.playing,
-      track,
-      current,
-      togglePlayback,
-      ...actions
-    };
+  const current = track.id === player.track;
 
-    return (
-      <div styleName='track'>
-        <Info { ...componentProps } />
-        <Controls { ...componentProps } />
-      </div>
-    );
-  }
+  const togglePlayback = current ?
+    () => playerActions.togglePlay() :
+    () => playerActions.changeTrack(track.id);
+
+  const componentProps = { 
+    playing: player.playing,
+    track,
+    current,
+    togglePlayback
+  };
+
+  return (
+    <div styleName='track'>
+      <Info { ...componentProps } />
+      <Controls { ...{ ...componentProps, ...playerActions} } />
+    </div>
+  );
 }
+
+Track.propTypes = {
+  playerActions: object.isRequired,
+  trackActions: object.isRequired
+};
+
+export default css(Track, style);
