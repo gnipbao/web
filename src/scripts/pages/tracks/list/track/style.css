@@ -1,0 +1,10 @@
+@import "variables";
+
+:root {
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+}

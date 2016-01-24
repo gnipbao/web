@@ -1,5 +1,6 @@
 import css from 'react-css-modules';
 import SVG from 'svg-inline-react';
+import { Link } from 'react-router';
 
 import style from './style';
 import logo from './logo';
@@ -7,10 +8,10 @@ import logo from './logo';
 const { string, bool } = PropTypes;
 
 export const Header = ({ title, expanded }) => (
-  <div styleName={ expanded ? 'expanded' : 'collapsed' }>
+  <Link to='/' styleName={ expanded ? 'expanded' : 'collapsed' }>
     <SVG src={logo} />
     <h1 styleName='title'>{title}</h1>
-  </div>
+  </Link>
 );
 
 Header.propTypes = {

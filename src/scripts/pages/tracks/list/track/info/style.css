@@ -1,0 +1,52 @@
+@import "variables";
+
+:root {
+  --title-font-size: responsive 1.2rem 1.4rem;
+  --title-text-color: color(var(--text-color) shade(15%));
+  --title-hover-text-color: color(var(--title-text-color) shade(20%));
+
+  --artist-font-size: responsive 1.1rem 1.2rem;
+  --artist-text-color: color(var(--text-color) shade(5%));
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 2;
+  padding: 6px 12px;
+  color: var(--title-text-color);
+
+  &:hover {
+    color: var(--title-hover-text-color);
+  }
+}
+
+.off {
+  composes: info;
+}
+
+.on {
+  composes: info;
+  background-color: color(var(--background) shade(10%));
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 0 10px;
+}
+
+.title {
+  composes: truncate from "styles/utils";
+  font-size: var(--title-font-size);
+  color: var(--title-text-color);
+}
+
+.artist {
+  composes: truncate from "styles/utils";
+  padding-top: 4px;
+  font-size: var(--artist-font-size);
+  color: var(--artist-text-color);
+}

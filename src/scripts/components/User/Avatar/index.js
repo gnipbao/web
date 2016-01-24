@@ -16,7 +16,6 @@ const Avatar = (props) => {
     children, online, ...other
   } = props;
 
-
   const shape = rounded ? 'rounded' : 'squared';
   const size = small ? 'small' : big ? 'big' : 'normal';
   const styleName = classNames(shape, size, { rotate, empty: !picture });

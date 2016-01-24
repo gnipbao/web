@@ -15,5 +15,9 @@ export const tracks = {
         per_page: count
       }
     );
+  },
+
+  destroy({ id, trackId }) {
+    return api.destroy(`playlists/${id}/tracks/${trackId}`);
   }
 };

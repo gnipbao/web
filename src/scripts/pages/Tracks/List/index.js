@@ -14,7 +14,7 @@ import * as playlistActions from 'modules/playlists/actions';
 import * as playerActions from 'modules/player/actions';
 import * as selectors from 'modules/tracks/selectors';
 
-import Item from './item';
+import Track from './track';
 import style from './style';
 
 const {
@@ -74,12 +74,12 @@ export class Page extends Component {
     if (isEmpty(collection)) return null;
 
     return (
-      <List selectable ripple>
-        {collection.map(
-          item => <Item key={item.id}
-            { ...{ ...item, player: playerProps } } />
-        )}
-      </List>
+      <ul styleName='list'>
+        {collection.map(track =>
+          <Track key={track.id}
+            track={track} player={playerProps} />)
+        }
+      </ul>
     );
   }
 }
