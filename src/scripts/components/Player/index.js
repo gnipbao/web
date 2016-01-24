@@ -215,7 +215,7 @@ export class Player extends Component {
       <Motion style={animationStyle}>
         {s =>
           <div className={style.root} style={s}>
-            {track && <Info { ...track } />}
+            <Info playing={playing} { ...track } />
             <Playback first last
               playing={playing}
               onTogglePlay={this.togglePlay}

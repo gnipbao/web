@@ -8,6 +8,13 @@
   --artist-font-size: responsive 1rem 1.2rem;
 }
 
+.root {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 6px;
+}
+
 .info {
   display: flex;
   flex-direction: column;

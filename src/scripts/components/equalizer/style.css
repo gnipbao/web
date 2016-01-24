@@ -1,0 +1,97 @@
+.equalizer {
+  overflow: hidden;
+  height: 30px;
+  width: 40px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.stopped {
+  composes: equalizer;
+
+  .bar {
+    animation: none;
+    animation-name: none;
+  }
+}
+
+.playing {
+  composes: equalizer;
+}
+
+.bar {
+  height: 1px;
+  width: 3px;
+  display: inline-block;
+  background-color: #ffffd2;
+  bottom: 0;
+  position: absolute;
+   
+  animation-duration: 500ms;
+  animation-play-state: running;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.bar-1 { 
+  composes: bar;
+  left: 0; 
+  animation-name: bar-1;
+  animation-delay: 0ms;
+}
+.bar-2 { 
+  composes: bar;
+  left: 6px; 
+  animation-name: bar-2; 
+  animation-delay: 300ms;
+}
+.bar-3 { 
+  composes: bar;
+  left: 12px;
+  animation-name: bar-3;
+  animation-delay: 600ms;
+}
+.bar-4 { 
+  composes: bar;
+  left: 18px;
+  animation-name: bar-4;
+  animation-delay: 900ms;
+}
+.bar-5 { 
+  composes: bar;
+  left: 24px;
+  animation-name: bar-5;
+  animation-delay: 1200ms;
+}
+.bar-6 { 
+  composes: bar;
+  left: 30px;
+  animation-name: bar-6;
+  animation-delay: 1500ms;
+}
+
+@keyframes bar-1 {
+  from { height: 1px; }
+  to { height: 22px; }
+}
+@keyframes bar-2 {
+  from { height: 1px; }
+  to { height: 15px; }
+}
+@keyframes bar-3 {
+  from { height: 1px; }
+  to { height: 30px; }
+}
+@keyframes bar-4 {
+  from { height: 1px; }
+  to { height: 20px; }
+}
+@keyframes bar-5 {
+  from { height: 1px; }
+  to { height: 15px; }
+}
+@keyframes bar-6 {
+  from { height: 1px; }
+  to { height: 15px; }
+}

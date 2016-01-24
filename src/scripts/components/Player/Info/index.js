@@ -2,17 +2,21 @@ import css from 'react-css-modules';
 import { Link } from 'react-router';
 
 import { strip } from 'lib/utils/format';
+import Equalizer from 'components/equalizer';
 import style from './style';
 
 const { bool, string, object, shape } = PropTypes;
 
 export const Info = (props) => {
-  const { id, title, artist } = props;
+  const { id, title, artist, playing } = props;
 
   return (
-    <div styleName='info'>
-      <Link styleName='title' to={`/tracks/${id}`}>{strip(title)}</Link>
-      <Link styleName='artist' to='http://google.com'>{strip(artist)}</Link>
+    <div styleName='root'>
+      <Equalizer playing={playing} />
+      <div styleName='info'>
+        <Link styleName='title' to={`/tracks/${id}`}>{strip(title)}</Link>
+        <Link styleName='artist' to='http://google.com'>{strip(artist)}</Link>
+      </div>
     </div>
   );
 };
