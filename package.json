@@ -198,7 +198,7 @@
     "mocha-lcov-reporter": "1.0.0",
     "next-update": "1.2.1",
     "node-sass": "3.4.2",
-    "phantomjs": "1.9.19",
+    "phantomjs": "2.1.1",
     "phantomjs-polyfill": "0.0.1",
     "postcss-assets": "3.0.3",
     "postcss-autoreset": "1.1.5",
