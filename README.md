@@ -14,6 +14,8 @@
 
 ![logo](https://raw.githubusercontent.com/partyrooms/web/master/src/assets/images/logo.png)
 
+![Rooms list page](https://raw.githubusercontent.com/partyrooms/web/development/docs/images/rooms-list.png)
+
 # Related
 
 * [API](https://github.com/partyrooms/api) and [Swagger UI](https://github.com/partyrooms/swagger-ui)
