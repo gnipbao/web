@@ -241,7 +241,7 @@
     "run-sequence": "1.1.5",
     "sass-loader": "3.1.2",
     "serviceworker-loader": "0.1.0",
-    "sinon": "1.17.2",
+    "sinon": "1.17.3",
     "sinon-chai": "2.8.0",
     "stats-webpack-plugin": "vyorkin-forks/stats-webpack-plugin",
     "style-loader": "0.13.0",
