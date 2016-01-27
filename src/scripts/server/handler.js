@@ -6,7 +6,7 @@ import Qs from 'qs';
 import { match } from 'react-router';
 import createLocation from 'history/lib/createLocation';
 import { bindActionCreators } from 'redux';
-import { routeActions } from 'redux-simple-router';
+import { routeActions } from 'react-router-redux';
 import fetch from 'isomorphic-fetch';
 import cookie from 'react-cookie';
 
@@ -49,7 +49,7 @@ export default async (req, res) => {
       const routingState = query.attempted && { attempted: query.attempted };
 
       // doesn't matter, routing state will be overwritten anyways,
-      // see https://github.com/rackt/redux-simple-router/issues/122
+      // see https://github.com/rackt/react-router-redux/issues/122
       store.dispatch(routeActions.replace(location.pathname, routingState));
 
       const status = getStatus(renderProps.routes, 200);

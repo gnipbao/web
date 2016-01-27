@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import { syncHistory } from 'redux-simple-router';
+import { syncHistory } from 'react-router-redux';
 
 import { setup } from './middleware';
 import enhance from './enhance';

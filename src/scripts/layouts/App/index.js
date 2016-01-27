@@ -2,7 +2,7 @@ import { autobind } from 'core-decorators';
 import css from 'react-css-modules';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { routeActions } from 'redux-simple-router';
+import { routeActions } from 'react-router-redux';
 
 import { reset } from 'modules';
 import * as authActions from 'modules/auth/actions';

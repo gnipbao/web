@@ -1,5 +1,5 @@
 import { action } from 'lib/redux';
-import { routeActions } from 'redux-simple-router';
+import { routeActions } from 'react-router-redux';
 
 import * as session from 'lib/session';
 import * as service from 'services/auth';

@@ -6,7 +6,7 @@ export default [
   'react',
   'react-addons-css-transition-group',
   'react-dom',
-  'redux-simple-router',
+  'react-router-redux',
   'react-router',
   'history',
   'react-toolbox',

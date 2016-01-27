@@ -4,7 +4,7 @@
 - [ ] fix my CommonJS style export default's and remove add-module-exports plugin
 - [ ] take a look at https://github.com/mxstbr/react-boilerplate
 - [ ] try https://github.com/khankuan/react-tourist and https://github.com/usablica/intro.js for an interactive tour / guide
-- [ ] keep looking at https://github.com/rackt/redux-simple-router/issues/122 "attempted" apparently will work when its fixed
+- [x] keep looking at https://github.com/rackt/redux-simple-router/issues/122 "attempted" apparently will work when its fixed
 - [ ] replace isomorphic-fetch with [bjax](https://github.com/gitterHQ/bjax)
 - [ ] property lookup doesn't work https://github.com/jonathantneal/precss/issues/47
 - [x] fix custom media extensions (see cssnext.js), is the problem related to incorrect cssnext options

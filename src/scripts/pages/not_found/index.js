@@ -1,6 +1,6 @@
 import css from 'react-css-modules';
 import { connect } from 'react-redux';
-import { routeActions } from 'redux-simple-router';
+import { routeActions } from 'react-router-redux';
 import { List, ListItem } from 'react-toolbox/lib/list';
 
 import history from 'lib/history';
