@@ -193,7 +193,7 @@
     "lost": "6.7.1",
     "map-obj": "1.0.1",
     "minimist": "1.2.0",
-    "mocha": "2.4.4",
+    "mocha": "2.4.5",
     "mocha-better-spec-reporter": "3.0.1",
     "mocha-lcov-reporter": "1.0.0",
     "next-update": "1.2.1",
