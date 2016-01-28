@@ -126,7 +126,7 @@
     "babel-register": "6.4.3",
     "browser-sync": "2.11.1",
     "bundle-loader": "0.5.4",
-    "chai": "3.4.1",
+    "chai": "3.5.0",
     "chai-as-promised": "5.2.0",
     "codecov.io": "0.1.6",
     "commitizen": "2.5.0",
