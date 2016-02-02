@@ -137,7 +137,7 @@
     "del": "2.2.0",
     "doiuse": "2.2.2",
     "electron-prebuilt": "0.36.7",
-    "enzyme": "1.4.0",
+    "enzyme": "1.5.0",
     "eslint": "1.10.3",
     "eslint-config-airbnb": "4.0.0",
     "eslint-friendly-formatter": "1.2.2",
