@@ -86,7 +86,7 @@
     "redux": "pr1ntr/redux",
     "redux-act": "0.3.0",
     "redux-analytics": "0.3.0",
-    "redux-form": "4.1.5",
+    "redux-form": "4.1.7",
     "redux-logger": "2.5.0",
     "redux-promise": "0.5.1",
     "redux-recycle": "1.0.1",
