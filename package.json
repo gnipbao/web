@@ -132,7 +132,7 @@
     "commitizen": "2.5.0",
     "compression-webpack-plugin": "0.3.0",
     "css-loader": "0.23.1",
-    "cssnano": "3.5.0",
+    "cssnano": "3.5.1",
     "cz-conventional-changelog": "1.1.5",
     "del": "2.2.0",
     "doiuse": "2.2.2",
