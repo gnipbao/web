@@ -161,7 +161,7 @@
     "gulp-codecov.io": "1.0.1",
     "gulp-coveralls": "0.1.4",
     "gulp-debug": "2.1.2",
-    "gulp-eslint": "1.1.1",
+    "gulp-eslint": "2.0.0",
     "gulp-load-plugins": "1.2.0",
     "gulp-mocha": "2.2.0",
     "gulp-nsp": "2.3.0",
