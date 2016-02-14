@@ -150,7 +150,7 @@
     "extract-text-webpack-plugin": "1.0.1",
     "fetch-mock": "4.1.0",
     "file-loader": "0.8.5",
-    "fixpack": "2.2.0",
+    "fixpack": "2.3.0",
     "flowcheck": "0.2.7",
     "forever": "0.15.1",
     "forever-monitor": "1.7.0",
