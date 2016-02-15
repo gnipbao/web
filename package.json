@@ -148,7 +148,7 @@
     "exact-semver": "1.2.0",
     "exports-loader": "0.6.3",
     "extract-text-webpack-plugin": "1.0.1",
-    "fetch-mock": "4.1.0",
+    "fetch-mock": "4.1.1",
     "file-loader": "0.8.5",
     "fixpack": "2.3.0",
     "flowcheck": "0.2.7",
