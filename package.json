@@ -195,7 +195,7 @@
     "minimist": "1.2.0",
     "mocha": "2.4.5",
     "mocha-better-spec-reporter": "3.0.1",
-    "mocha-lcov-reporter": "1.1.0",
+    "mocha-lcov-reporter": "1.2.0",
     "next-update": "1.2.2",
     "node-sass": "v3.4.2",
     "phantomjs": "2.1.3",
