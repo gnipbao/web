@@ -247,7 +247,7 @@
     "style-loader": "0.13.0",
     "stylelint": "4.4.0",
     "stylelint-config-suitcss": "4.0.0",
-    "svg-inline-loader": "0.4.0",
+    "svg-inline-loader": "0.4.1",
     "toolbox-loader": "0.0.3",
     "url-loader": "0.5.7",
     "webpack": "1.12.14",
