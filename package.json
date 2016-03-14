@@ -205,7 +205,7 @@
     "postcss-brand-colors": "0.4.0",
     "postcss-browser-reporter": "0.4.0",
     "postcss-color-rgba-fallback": "2.2.0",
-    "postcss-cssnext": "2.4.0",
+    "postcss-cssnext": "2.5.0",
     "postcss-custom-media": "5.0.1",
     "postcss-easings": "0.3.0",
     "postcss-flexbugs-fixes": "2.0.0",
