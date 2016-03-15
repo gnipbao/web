@@ -88,7 +88,7 @@
     "redux-analytics": "0.3.0",
     "redux-form": "4.2.0",
     "redux-logger": "2.6.0",
-    "redux-promise": "0.5.1",
+    "redux-promise": "0.5.2",
     "redux-recycle": "1.1.1",
     "redux-search": "2.1.0",
     "redux-simple-router": "2.0.4",
