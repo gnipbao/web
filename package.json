@@ -36,7 +36,7 @@
     "classnames": "2.2.3",
     "compression": "1.6.1",
     "core-decorators": "0.11.0",
-    "core-js": "2.1.1",
+    "core-js": "2.2.0",
     "cors": "2.7.1",
     "crypto": "0.0.3",
     "debug": "2.2.0",
