@@ -64,7 +64,7 @@
     "parse-link-header": "0.4.1",
     "pretty-error": "2.0.0",
     "qs": "6.1.0",
-    "query-string": "3.0.1",
+    "query-string": "3.0.3",
     "react": "0.14.6",
     "react-addons-css-transition-group": "0.14.7",
     "react-cookie": "0.4.5",
