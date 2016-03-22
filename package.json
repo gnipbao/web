@@ -56,7 +56,7 @@
     "jwt-decode": "1.5.1",
     "localforage": "1.4.0",
     "lodash": "4.5.1",
-    "lru-cache": "4.0.0",
+    "lru-cache": "4.0.1",
     "moment": "2.11.2",
     "morgan": "1.7.0",
     "normalize.css": "3.0.3",
