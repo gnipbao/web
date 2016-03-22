@@ -179,7 +179,7 @@
     "karma-chai": "0.1.0",
     "karma-chai-as-promised": "0.1.2",
     "karma-chai-sinon": "0.1.5",
-    "karma-chrome-launcher": "0.2.2",
+    "karma-chrome-launcher": "0.2.3",
     "karma-coverage": "0.5.3",
     "karma-electron-launcher": "0.1.0",
     "karma-firefox-launcher": "0.1.7",
