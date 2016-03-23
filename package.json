@@ -102,7 +102,7 @@
     "socket.io-client": "1.4.4",
     "source-map-support": "0.4.0",
     "spinkit": "1.2.5",
-    "svg-inline-react": "0.3.1",
+    "svg-inline-react": "1.0.1",
     "validator": "5.0.0",
     "warning": "2.1.0"
   },
