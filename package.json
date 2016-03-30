@@ -60,7 +60,7 @@
     "moment": "2.11.2",
     "morgan": "1.7.0",
     "normalize.css": "3.0.3",
-    "normalizr": "2.0.0",
+    "normalizr": "2.0.1",
     "parse-link-header": "0.4.1",
     "pretty-error": "2.0.0",
     "qs": "6.1.0",
