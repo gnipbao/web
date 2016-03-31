@@ -82,7 +82,7 @@
     "react-toolbox": "0.14.1",
     "react-transitive-number": "2.0.1",
     "react-typist": "0.3.0",
-    "react-visibility-sensor": "3.0.0",
+    "react-visibility-sensor": "3.1.0",
     "redux": "pr1ntr/redux",
     "redux-act": "0.3.0",
     "redux-analytics": "0.3.0",
