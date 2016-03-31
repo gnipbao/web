@@ -111,7 +111,7 @@
     "appcache-webpack-plugin": "1.2.1",
     "autoprefixer": "6.3.3",
     "babel-core": "6.5.2",
-    "babel-eslint": "5.0.0",
+    "babel-eslint": "6.0.2",
     "babel-loader": "6.2.4",
     "babel-plugin-add-module-exports": "0.1.2",
     "babel-plugin-react-require": "vyorkin-forks/babel-plugin-react-require#customized",
