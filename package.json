@@ -103,7 +103,7 @@
     "source-map-support": "0.4.0",
     "spinkit": "1.2.5",
     "svg-inline-react": "0.3.1",
-    "validator": "5.0.0",
+    "validator": "5.2.0",
     "warning": "2.1.0"
   },
   "devDependencies": {
