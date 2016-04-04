@@ -212,7 +212,7 @@
     "postcss-focus": "1.0.0",
     "postcss-font-magician": "1.4.0",
     "postcss-hexrgba": "0.2.0",
-    "postcss-import": "8.0.2",
+    "postcss-import": "8.1.0",
     "postcss-initial": "1.4.1",
     "postcss-input-style": "0.3.0",
     "postcss-loader": "0.8.1",
