@@ -55,7 +55,7 @@
     "isomorphic-fetch": "2.2.1",
     "jwt-decode": "1.5.1",
     "localforage": "1.4.0",
-    "lodash": "4.5.1",
+    "lodash": "4.8.1",
     "lru-cache": "4.0.0",
     "moment": "2.11.2",
     "morgan": "1.7.0",
