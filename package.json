@@ -221,7 +221,7 @@
     "postcss-reporter": "1.3.3",
     "postcss-responsive-type": "vyorkin-forks/postcss-responsive-type",
     "postcss-size": "1.0.0",
-    "postcss-svg": "1.0.4",
+    "postcss-svg": "1.0.5",
     "postcss-svg-fallback": "1.3.0",
     "postcss-use": "2.0.2",
     "postcss-write-svg": "2.1.0",
