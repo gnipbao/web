@@ -46,7 +46,7 @@
     "express": "4.13.4",
     "fastclick": "1.0.6",
     "fontfaceobserver": "1.6.4",
-    "helmet": "1.1.0",
+    "helmet": "2.0.0",
     "history": "2.0.0",
     "howler": "goldfire/howler.js#v2.0.0-beta6",
     "humps": "1.0.0",
