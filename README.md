@@ -10,7 +10,7 @@
 
 [![Codecov stats](https://codecov.io/github/partyrooms/web/branch.svg?limit=50&vg=on&legend=on&color=on&branch=master)](https://codecov.io/github/partyrooms/web/branch.svg?limit=50&vg=on&legend=on&color=on&branch=master)
 
-# PartyRooms / Web
+# PartyRooms / Web (NOT FINISHED, ABANDONED)
 
 ![logo](https://raw.githubusercontent.com/partyrooms/web/master/src/assets/images/logo.png)
 
